@@ -21,5 +21,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           rootDirectory: './docs'
-          baseUrl: '/AY2324S1-CS2103T-F10-3' # replace with your repo name
+          baseUrl: '/tp' # replace with your repo name
           version: '^5.1.0'
