@@ -11,7 +11,7 @@
         "jane-doe": "Jane Doe",
         "johnny-doe": "Johnny Doe",
         "jean-doe": "Jean Doe",
-        "james-doe": "James Doe"
+        "seah-zi-xiang": "Seah Zi Xiang"
       },
       "headingKeywords": {}
     },
@@ -34,6 +34,11 @@
         "repository-wide-checks": "Repository-wide checks",
         "making-a-release": "Making a release"
       },
+      "headingKeywords": {}
+    },
+    {
+      "src": "DeveloperGuide-RecipeBook.md",
+      "headings": {},
       "headingKeywords": {}
     },
     {
@@ -104,6 +109,11 @@
       "headingKeywords": {}
     },
     {
+      "src": "UserGuide-RecipeBook.md",
+      "headings": {},
+      "headingKeywords": {}
+    },
+    {
       "src": "UserGuide.md",
       "title": "User Guide",
       "headings": {
@@ -141,6 +151,11 @@
       "headings": {
         "project-addressbook-level-3": "Project: AddressBook Level 3"
       },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/prawnzyy.md",
+      "headings": {},
       "headingKeywords": {}
     },
     {
