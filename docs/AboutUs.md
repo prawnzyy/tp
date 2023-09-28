@@ -21,12 +21,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
+### Tan Tze Young
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/itstytan.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/ItsTYtan)]
+[[portfolio](team/itstytan.md)]
 
 * Role: Team Lead
 * Responsibilities: UI
