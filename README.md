@@ -10,6 +10,7 @@
 * Example usages:
   * as a medium for home bakers to store their current ingredients.
   * as a way for bakers and cooks to find the corresponding recipes.
+  * as a central for check whether they have the necessary ingredients for a specific recipe.
 * The project simulates an ingredient stock as well as recipe viewer.
   * It is **written in OOP fashion**. It provides a **reasonably well-written** code base.
   * It comes with a **reasonable level of user and developer documentation.
