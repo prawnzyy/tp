@@ -8,8 +8,8 @@
         "about-us": "About Us",
         "project-team": "Project team",
         "john-doe": "John Doe",
-        "jane-doe": "Jane Doe",
-        "johnny-doe": "Johnny Doe",
+        "tan-tze-young": "Tan Tze Young",
+        "toh-li-yuan": "Toh Li Yuan",
         "jean-doe": "Jean Doe",
         "seah-zi-xiang": "Seah Zi Xiang"
       },
@@ -38,7 +38,13 @@
     },
     {
       "src": "DeveloperGuide-RecipeBook.md",
-      "headings": {},
+      "headings": {
+        "appendix-requirements": "Appendix: Requirements",
+        "product-scope": "Product Scope",
+        "use-cases": "Use Cases",
+        "non-functional-requirements": "Non-Functional Requirements",
+        "glossary": "Glossary"
+      },
       "headingKeywords": {}
     },
     {
@@ -109,12 +115,7 @@
       "headingKeywords": {}
     },
     {
-      "src": "UserGuide-RecipeBook.md",
-      "headings": {},
-      "headingKeywords": {}
-    },
-    {
-      "src": "UserGuide.md",
+      "src": "UserGuide (Pristine).md",
       "title": "User Guide",
       "headings": {
         "ab-3-user-guide": "AB-3 User Guide",
@@ -138,11 +139,40 @@
       "headingKeywords": {}
     },
     {
+      "src": "UserGuide.md",
+      "title": "User Guide",
+      "headings": {
+        "recipebook-user-guide": "RecipeBook User Guide",
+        "quick-start": "Quick start",
+        "features": "Features",
+        "viewing-help-help": "Viewing help : help",
+        "adding-an-ingredient-add": "Adding an ingredient: add",
+        "using-up-ingredients-use": "Using up ingredients : use",
+        "finding-the-quantity-of-an-ingredient-by-name-stock": "Finding the quantity of an ingredient by name: stock",
+        "clearing-all-entries-clear": "Clearing all entries : clear",
+        "exiting-the-program-exit": "Exiting the program : exit",
+        "viewing-recipes-coming-in-v1-3": "Viewing Recipes [coming in v1.3]",
+        "adding-recipes-coming-in-v1-3": "Adding Recipes [coming in v1.3]",
+        "modifying-recipes-coming-in-v1-3": "Modifying Recipes [coming in v1.3]",
+        "saving-the-data": "Saving the data",
+        "editing-the-data-file": "Editing the data file",
+        "faq": "FAQ",
+        "known-issues": "Known issues",
+        "command-summary": "Command summary"
+      },
+      "headingKeywords": {}
+    },
+    {
       "src": "index.md",
       "title": "",
       "headings": {
         "addressbook-level-3": "AddressBook Level-3"
       },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/itstytan.md",
+      "headings": {},
       "headingKeywords": {}
     },
     {
@@ -155,6 +185,11 @@
     },
     {
       "src": "team/prawnzyy.md",
+      "headings": {},
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/tohliyuan.md",
       "headings": {},
       "headingKeywords": {}
     },
