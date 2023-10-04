@@ -1,4 +1,4 @@
-Tan Tze Young's Project Portfolio Page
+Dhruvi Ketan Rathod's Project Portfolio Page
 
 Project: [Ba]king [Br]ead
 
@@ -12,8 +12,5 @@ Given below are my contributions to the project.
 #### Contribution to UG: [TO BE ADDED]
 #### Contribution to DG: [TO BE ADDED]
 #### Contributions to team-based tasks
-- Push user story issues onto GitHub.
-- Created UI mockups for the project
 #### Review/mentoring contributions [TO BE ADDED]
 #### Contributions beyond the project team [TO BE ADDED]
-

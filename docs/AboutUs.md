@@ -68,3 +68,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: Admin and UI
+
+
+### Dhruvi Ketan Rathod
+
+<img src="images/dhruvir29.png" width="200px">
+
+[[github](http://github.com/dhruvir29)]
+[[portfolio](team/dhruvir29.md)]
+
+* Role: Developer
+* Responsibilities: Logic 

@@ -14,5 +14,5 @@
 * The project simulates an ingredient stock as well as recipe viewer.
   * It is **written in OOP fashion**. It provides a **reasonably well-written** code base.
   * It comes with a **reasonable level of user and developer documentation.
-* It is named `[Br]eaking [Br]ead` as a pun to the show breaking bad and also to tie in with the idea of food.
-* For a detailed documentation, visit [[Br]eaking [Br]ead](https://ay2324s1-cs2103t-f10-3.github.io/tp/)
+* It is named `[Ba]king [Br]ead` as a pun to the show breaking bad and also to tie in with the idea of food.
+* For a detailed documentation, visit [[Ba]king [Br]ead](https://ay2324s1-cs2103t-f10-3.github.io/tp/)

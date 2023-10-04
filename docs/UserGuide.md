@@ -94,7 +94,7 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
 Examples:
 *  `use n/Milk q/600 u/ml` Depletes the current quantity of milk by 600 ml.
-*  `use n/Egg` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `use n/Egg` Depletes the current quantity of egg by the default amount.
 
 ### Finding the quantity of an ingredient by name: `stock`
 
