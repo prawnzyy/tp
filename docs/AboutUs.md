@@ -21,24 +21,24 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
+### Tan Tze Young
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/itstytan.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/ItsTYtan)]
+[[portfolio](team/itstytan.md)]
 
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Toh Li Yuan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tohliyuan.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/TohLiYuan)] [[portfolio](team/tohliyuan.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Storage
 
 ### Jean Doe
 
@@ -50,12 +50,21 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
+<<<<<<< HEAD
 ### Thaddeus Ong
+=======
+### Seah Zi Xiang
+>>>>>>> cf0d7de5e068b4f96a8d8a89ad2163481dc444f9
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/prawnzyy.png" width="200px">
 
+<<<<<<< HEAD
 [[github](http://github.com/thaddeusong)]
 [[portfolio](team/thaddeusong.md)]
+=======
+[[github](http://github.com/prawnzyy)]
+[[portfolio](team/prawnzyy.md)]
+>>>>>>> cf0d7de5e068b4f96a8d8a89ad2163481dc444f9
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Admin and UI
