@@ -50,21 +50,20 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-<<<<<<< HEAD
 ### Thaddeus Ong
-=======
+
+[[github](http://github.com/thaddeusong)]
+[[portfolio](team/thaddeusong.md)]
+
+* Role: Developer
+* Responsibilities: Logic and Model
+
 ### Seah Zi Xiang
->>>>>>> cf0d7de5e068b4f96a8d8a89ad2163481dc444f9
 
 <img src="images/prawnzyy.png" width="200px">
 
-<<<<<<< HEAD
-[[github](http://github.com/thaddeusong)]
-[[portfolio](team/thaddeusong.md)]
-=======
 [[github](http://github.com/prawnzyy)]
 [[portfolio](team/prawnzyy.md)]
->>>>>>> cf0d7de5e068b4f96a8d8a89ad2163481dc444f9
 
 * Role: Developer
 * Responsibilities: Admin and UI
