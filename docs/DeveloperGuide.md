@@ -58,6 +58,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 #### MSS
 1. User requests to use up specific quantities of an ingredient
 2. RecipeBook reduces the quantity of that ingredient in the stock
+
    Use case ends.
 
 #### Extensions
@@ -73,6 +74,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 #### MSS
 1. User requests to view the stock of specific ingredients
 2. RecipeBook shows the ingredient and the quantity of the ingredient
+   
    Use case ends.
 
 
@@ -86,6 +88,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 #### MSS
 1. User requests to view a specific recipe
 2. RecipeBook shows the corresponding recipe
+
    Use case ends.
 
 #### Extensions
