@@ -32,7 +32,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Thaddeus Ong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/thaddeusong.png" width="200px">
 
 [[github](http://github.com/thaddeusong)]
 [[portfolio](team/thaddeusong.md)]
