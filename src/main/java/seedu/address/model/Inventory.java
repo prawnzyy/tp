@@ -90,7 +90,7 @@ public class Inventory implements ReadOnlyInventory {
      * Removes {@code key} from this {@code Inventory}.
      * {@code key} must exist in the address book.
      */
-    public void removePerson(Ingredient key) {
+    public void removeIngredient(Ingredient key) {
         ingredients.remove(key);
     }
 

@@ -95,7 +95,7 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteIngredient(Ingredient target) {
-        inventory.removePerson(target);
+        inventory.removeIngredient(target);
     }
 
     @Override

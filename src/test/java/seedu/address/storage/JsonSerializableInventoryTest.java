@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
-import seedu.address.model.AddressBook;
-import seedu.address.testutil.TypicalPersons;
+import seedu.address.model.Inventory;
+import seedu.address.testutil.TypicalIngredients;
 
 public class JsonSerializableInventoryTest {
 
@@ -24,9 +24,9 @@ public class JsonSerializableInventoryTest {
     public void toModelType_typicalPersonsFile_success() throws Exception {
         JsonSerializableInventory dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
                 JsonSerializableInventory.class).get();
-        AddressBook addressBookFromFile = dataFromFile.toModelType();
-        AddressBook typicalPersonsAddressBook = TypicalPersons.getTypicalAddressBook();
-        assertEquals(addressBookFromFile, typicalPersonsAddressBook);
+        Inventory inventoryFromFile = dataFromFile.toModelType();
+        Inventory typicalIngredientInventory = TypicalIngredients.getTypicalInventory();
+        assertEquals(inventoryFromFile, typicalIngredientInventory);
     }
 
     @Test
