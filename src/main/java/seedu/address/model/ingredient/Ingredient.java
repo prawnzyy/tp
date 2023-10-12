@@ -2,13 +2,9 @@ package seedu.address.model.ingredient;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
@@ -18,6 +14,9 @@ public class Ingredient {
 
     // Identity fields
     private final Name name;
+
+    private Quantity quantity;
+
     /*
     private final Phone phone;
     private final Email email;
@@ -30,10 +29,11 @@ public class Ingredient {
     /**
      * Every field must be present and not null.
      */
-    public Ingredient(Name name) {
+    public Ingredient(Name name, Quantity quantity) {
         // requireAllNonNull(name, phone, email, address, tags);
         requireAllNonNull(name);
         this.name = name;
+        this.quantity = quantity;
         /*
         this.phone = phone;
         this.email = email;
@@ -41,6 +41,11 @@ public class Ingredient {
         this.tags.addAll(tags);
         */
     }
+
+    /**
+     * Factory method to create an Ingredient instance.
+     * @return
+     */
 
 
     public Name getName() {
@@ -71,10 +76,32 @@ public class Ingredient {
      */
 
     /**
-     * Returns true if both persons have the same name.
-     * This defines a weaker notion of equality between two persons.
+     * Combines another ingredient of the same type with this ingredient, adding their quantities together.
+     * @param otherIngredient
      */
-    public boolean isSamePerson(Ingredient otherIngredient) {
+    protected void combineWith(Ingredient otherIngredient) {
+        //otherIngredient is guaranteed to be of the same type as this ingredient.
+        this.quantity.add(otherIngredient.quantity);
+    }
+
+    /**
+     * Converts the quantity of this ingredient to a specified unit.
+     * @return The quantity in the specified unit.
+     */
+    public Quantity convertToUnit() {
+        //TODO
+        return quantity;
+    }
+
+    public Quantity getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * Returns true if both ingredients have the same name.
+     * This defines a weaker notion of equality between two ingredients.
+     */
+    public boolean isSameIngredient(Ingredient otherIngredient) {
         if (otherIngredient == this) {
             return true;
         }

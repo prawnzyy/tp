@@ -56,6 +56,7 @@ public class Name {
         }
 
         Name otherName = (Name) other;
+        //TODO Change to case-insensitive comparison
         return fullName.equals(otherName.fullName);
     }
 
