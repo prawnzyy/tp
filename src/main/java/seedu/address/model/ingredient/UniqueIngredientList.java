@@ -36,16 +36,24 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
     }
 
     /**
-     * Returns the quantity of the Ingredient queried.
+     * Returns the quantity of the specified Ingredient.
      */
-    public Quantity quantity(Ingredient ingredient) {
+    public Quantity getQuantityOf(Ingredient ingredient) {
         requireNonNull(ingredient);
-        return internalList.get(internalList.indexOf(ingredient)).getQuantity();
+        if (internalList.contains(ingredient)) {
+            int index = internalList.indexOf(ingredient);
+            return internalList.get(index).getQuantity();
+        }
+        else {
+            //If ingredient is not in list, return quantity of zero
+            return new Quantity(0, Unit.GRAM);
+        }
     }
 
     /**
      * Adds an ingredient to the list.
      * If the ingredient is already in the list, then add the quantity to the existing quantity.
+     * @param The ingredient to add to the list.
      */
     public void add(Ingredient toAdd) {
         requireNonNull(toAdd);
@@ -56,28 +64,23 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
     }
 
     /**
-     * Replaces the person {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the list.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the list.
+     * Subtracts the ingredient {@code ingredient} quantity by {@code quantity}.
+     * {@code ingredient} must exist in the list.
      */
-    public void setIngredient(Ingredient target, Ingredient editedIngredient) {
-        requireAllNonNull(target, editedIngredient);
+    public void useIngredient(Ingredient target, Quantity quantity) {
+        requireAllNonNull(target, quantity);
 
         int index = internalList.indexOf(target);
         if (index == -1) {
             throw new IngredientNotFoundException();
         }
 
-        if (!target.isSameIngredient(editedIngredient) && contains(editedIngredient)) {
-            throw new DuplicateIngredientException();
-        }
-
-        internalList.set(index, editedIngredient);
+        internalList.get(index).use(quantity);
     }
 
     /**
-     * Removes the equivalent person from the list.
-     * The person must exist in the list.
+     * Removes the equivalent ingredient from the list.
+     * The ingredient must exist in the list.
      */
     public void remove(Ingredient toRemove) {
         requireNonNull(toRemove);
@@ -85,6 +88,14 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
             throw new IngredientNotFoundException();
         }
     }
+
+    /**
+     * Empties the list.
+     */
+    public void clear(){
+        internalList.clear();
+    }
+
 
     public void setIngredients(UniqueIngredientList replacement) {
         requireNonNull(replacement);

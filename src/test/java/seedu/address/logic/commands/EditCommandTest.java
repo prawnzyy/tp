@@ -44,7 +44,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getInventory()), new UserPrefs());
-        expectedModel.setIngredient(model.getFilteredIngredientList().get(0), editedPerson);
+        expectedModel.useIngredient(model.getFilteredIngredientList().get(0), editedPerson);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -65,7 +65,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getInventory()), new UserPrefs());
-        expectedModel.setIngredient(lastPerson, editedPerson);
+        expectedModel.useIngredient(lastPerson, editedPerson);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -94,7 +94,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getInventory()), new UserPrefs());
-        expectedModel.setIngredient(model.getFilteredIngredientList().get(0), editedPerson);
+        expectedModel.useIngredient(model.getFilteredIngredientList().get(0), editedPerson);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }

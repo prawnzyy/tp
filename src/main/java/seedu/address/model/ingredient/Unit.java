@@ -6,7 +6,8 @@ import java.util.Map;
 
 public  enum Unit {
     GRAM,
-    KILOGRAM;
+    KILOGRAM,
+    PIECE;
 
     //May need to update this to 3-dimensional matrix for different ingredient conversions.
     private static final Map<Unit, Map<Unit, Double>> conversionMatrix = new HashMap<>();
@@ -43,5 +44,10 @@ public  enum Unit {
      */
     protected static double getConversionRatio(Unit from, Unit to) {
         return conversionMatrix.get(from).get(to);
+    }
+
+    @Override
+    public String toString() {
+        return name();
     }
 }
