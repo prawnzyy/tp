@@ -79,8 +79,8 @@ public class ModelManager implements Model {
     //=========== StockBook ================================================================================
 
     @Override
-    public void setInventory(ReadOnlyInventory stockBook) {
-        this.inventory.resetData(stockBook);
+    public void setInventory(ReadOnlyInventory stock) {
+        this.inventory.resetData(stock);
     }
 
     @Override
