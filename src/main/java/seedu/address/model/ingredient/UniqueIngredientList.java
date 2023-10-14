@@ -12,15 +12,14 @@ import seedu.address.model.ingredient.exceptions.DuplicateIngredientException;
 import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
- * A person is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating of
- * persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a person uses Person#equals(Object) so
- * as to ensure that the person with exactly the same fields will be removed.
+ * A list of ingredients that enforces uniqueness between its elements and does not allow nulls.
+ * An ingredient is considered unique by comparing using {@code Ingredient#isSameIngredient(Ingredient)}. As such, adding and updating of
+ * ingredients uses Ingredient#isSameIngredient(Ingredient) for equality so as to ensure that the ingredient being added or updated is
+ * unique in terms of identity in the UniqueIngredientlist.
  *
  * Supports a minimal set of list operations.
  *
- * @see Ingredient#isSamePerson(Ingredient)
+ * @see Ingredient#isSameIngredient(Ingredient)
  */
 public class UniqueIngredientList implements Iterable<Ingredient> {
 
@@ -29,48 +28,59 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains a specified ingredient as the given argument.
      */
     public boolean contains(Ingredient toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::isSamePerson);
+        return internalList.stream().anyMatch(toCheck::isSameIngredient);
     }
 
     /**
-     * Adds a person to the list.
-     * The person must not already exist in the list.
+     * Returns the quantity of the specified Ingredient.
+     */
+    public Quantity getQuantityOf(Ingredient ingredient) {
+        requireNonNull(ingredient);
+        if (internalList.contains(ingredient)) {
+            int index = internalList.indexOf(ingredient);
+            return internalList.get(index).getQuantity();
+        }
+        else {
+            //If ingredient is not in list, return quantity of zero
+            return new Quantity(0, Unit.GRAM);
+        }
+    }
+
+    /**
+     * Adds an ingredient to the list.
+     * If the ingredient is already in the list, then add the quantity to the existing quantity.
+     * @param The ingredient to add to the list.
      */
     public void add(Ingredient toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateIngredientException();
+            internalList.get(internalList.indexOf(toAdd)).combineWith(toAdd);
         }
         internalList.add(toAdd);
     }
 
     /**
-     * Replaces the person {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the list.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the list.
+     * Subtracts the ingredient {@code ingredient} quantity by {@code quantity}.
+     * {@code ingredient} must exist in the list.
      */
-    public void setIngredient(Ingredient target, Ingredient editedIngredient) {
-        requireAllNonNull(target, editedIngredient);
+    public void useIngredient(Ingredient target, Quantity quantity) {
+        requireAllNonNull(target, quantity);
 
         int index = internalList.indexOf(target);
         if (index == -1) {
             throw new IngredientNotFoundException();
         }
 
-        if (!target.isSamePerson(editedIngredient) && contains(editedIngredient)) {
-            throw new DuplicateIngredientException();
-        }
-
-        internalList.set(index, editedIngredient);
+        internalList.get(index).use(quantity);
     }
 
     /**
-     * Removes the equivalent person from the list.
-     * The person must exist in the list.
+     * Removes the equivalent ingredient from the list.
+     * The ingredient must exist in the list.
      */
     public void remove(Ingredient toRemove) {
         requireNonNull(toRemove);
@@ -78,6 +88,14 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
             throw new IngredientNotFoundException();
         }
     }
+
+    /**
+     * Empties the list.
+     */
+    public void clear(){
+        internalList.clear();
+    }
+
 
     public void setIngredients(UniqueIngredientList replacement) {
         requireNonNull(replacement);
@@ -140,7 +158,7 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
     private boolean ingredientsAreUnique(List<Ingredient> ingredients) {
         for (int i = 0; i < ingredients.size() - 1; i++) {
             for (int j = i + 1; j < ingredients.size(); j++) {
-                if (ingredients.get(i).isSamePerson(ingredients.get(j))) {
+                if (ingredients.get(i).isSameIngredient(ingredients.get(j))) {
                     return false;
                 }
             }

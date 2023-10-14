@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.UniqueIngredientList;
 
 /**
@@ -31,7 +32,7 @@ public class Inventory implements ReadOnlyInventory {
     public Inventory() {}
 
     /**
-     * Creates an Inventory using the Persons in the {@code toBeCopied}
+     * Creates an Inventory using the Ingredients in the {@code toBeCopied}
      */
     public Inventory(ReadOnlyInventory toBeCopied) {
         this();
@@ -41,8 +42,8 @@ public class Inventory implements ReadOnlyInventory {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of the ingredient list with {@code ingredients}.
+     * {@code ingredients} must not contain duplicate ingredients.
      */
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients.setIngredients(ingredients);
@@ -53,7 +54,6 @@ public class Inventory implements ReadOnlyInventory {
      */
     public void resetData(ReadOnlyInventory newData) {
         requireNonNull(newData);
-
         setIngredients(newData.getIngredientList());
     }
 
@@ -65,6 +65,14 @@ public class Inventory implements ReadOnlyInventory {
     public boolean hasIngredient(Ingredient ingredient) {
         requireNonNull(ingredient);
         return ingredients.contains(ingredient);
+    }
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     */
+    public Quantity getQuantityOf(Ingredient ingredient) {
+        requireNonNull(ingredient);
+        return ingredients.getQuantityOf(ingredient);
     }
 
     /**
@@ -80,10 +88,9 @@ public class Inventory implements ReadOnlyInventory {
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
      */
-    public void setIngredient(Ingredient target, Ingredient editedIngredient) {
-        requireNonNull(editedIngredient);
-
-        ingredients.setIngredient(target, editedIngredient);
+    public void useIngredient(Ingredient target, Quantity quantity) {
+        requireNonNull(target);
+        ingredients.useIngredient(target, quantity);
     }
 
     /**
@@ -94,6 +101,9 @@ public class Inventory implements ReadOnlyInventory {
         ingredients.remove(key);
     }
 
+    public void clear() {
+        ingredients.clear();
+    }
     //// util methods
 
     @Override
@@ -127,4 +137,5 @@ public class Inventory implements ReadOnlyInventory {
     public int hashCode() {
         return ingredients.hashCode();
     }
+
 }

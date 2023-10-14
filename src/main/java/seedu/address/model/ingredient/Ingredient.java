@@ -2,13 +2,9 @@ package seedu.address.model.ingredient;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
@@ -18,22 +14,16 @@ public class Ingredient {
 
     // Identity fields
     private final Name name;
-    /*
-    private final Phone phone;
-    private final Email email;
-
-    // Data fields
-    private final Address address;
-    private final Set<Tag> tags = new HashSet<>();
-    */
+    private Quantity quantity;
 
     /**
      * Every field must be present and not null.
      */
-    public Ingredient(Name name) {
+    public Ingredient(Name name, Quantity quantity) {
         // requireAllNonNull(name, phone, email, address, tags);
         requireAllNonNull(name);
         this.name = name;
+        this.quantity = quantity;
         /*
         this.phone = phone;
         this.email = email;
@@ -42,39 +32,36 @@ public class Ingredient {
         */
     }
 
-
+    /**
+     * Get the name of this ingredient.
+     * @return
+     */
     public Name getName() {
         return name;
     }
-    /*
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-    */
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    /*
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
-    }
-
-     */
 
     /**
-     * Returns true if both persons have the same name.
-     * This defines a weaker notion of equality between two persons.
+     * Get the quantity of this ingredient.
+     * @return
      */
-    public boolean isSamePerson(Ingredient otherIngredient) {
+    public Quantity getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * Combines another ingredient of the same type with this ingredient, combining their quantities .
+     * @param otherIngredient
+     */
+    protected void combineWith(Ingredient otherIngredient) {
+        //otherIngredient is guaranteed to be of the same type as this ingredient.
+        this.quantity.add(otherIngredient.quantity);
+    }
+
+    /**
+     * Returns true if both ingredients have the same name.
+     * This defines a weaker notion of equality between two ingredients.
+     */
+    public boolean isSameIngredient(Ingredient otherIngredient) {
         if (otherIngredient == this) {
             return true;
         }
@@ -85,7 +72,7 @@ public class Ingredient {
 
     /**
      * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * This defines a stronger notion of equality between two ingredients.
      */
     @Override
     public boolean equals(Object other) {
@@ -100,16 +87,10 @@ public class Ingredient {
 
         Ingredient otherIngredient = (Ingredient) other;
         return name.equals(otherIngredient.name);
-                //&& phone.equals(otherIngredient.phone)
-                //&& email.equals(otherIngredient.email)
-                //&& address.equals(otherIngredient.address)
-                //&& tags.equals(otherIngredient.tags);
     }
 
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
-        // return Objects.hash(name, phone, email, address, tags);
         return Objects.hash(name);
     }
 
@@ -117,11 +98,11 @@ public class Ingredient {
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                //.add("phone", phone)
-                //.add("email", email)
-                //.add("address", address)
-                //.add("tags", tags)
+                .add("quantity", quantity)
                 .toString();
     }
 
+    public void use(Quantity quantity) {
+        this.quantity.subtract(quantity);
+    }
 }
