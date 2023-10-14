@@ -29,17 +29,17 @@ class JsonAdaptedIngredient {
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedIngredient(@JsonProperty("name") String name) {
+    public JsonAdaptedIngredient(@JsonProperty("name") String name, String quantity) {
         this.name = name;
-        this.quantity = "";
+        this.quantity = quantity;
     }
 
     /**
      * Converts a given {@code Person} into this class for Jackson use.
      */
     public JsonAdaptedIngredient(Ingredient source) {
-        this.name = source.getName().fullName;
-        this.quantity = source.getQuantity().toString();
+        name = source.getName().fullName;
+        quantity = source.getQuantity().toString();
     }
 
     /**

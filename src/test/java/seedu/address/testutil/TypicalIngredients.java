@@ -9,14 +9,15 @@ import java.util.List;
 
 import seedu.address.model.Inventory;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Unit;
 
 /**
  * A utility class containing a list of {@code Person} objects to be used in tests.
  */
 public class TypicalIngredients {
 
-    public static final Ingredient ALICE = new IngredientBuilder().withName("Alice Pauline").build();
-    public static final Ingredient BENSON = new IngredientBuilder().withName("Benson Meier").build();
+    public static final Ingredient FLOUR = new IngredientBuilder().withName("Flour").withQuantity(1.0, Unit.GRAM).build();
+    public static final Ingredient EGG = new IngredientBuilder().withName("Egg").withQuantity(1.0, Unit.PIECE).build();
     public static final Ingredient CARL = new IngredientBuilder().withName("Carl Kurz").build();
     public static final Ingredient DANIEL = new IngredientBuilder().withName("Daniel Meier").build();
     public static final Ingredient ELLE = new IngredientBuilder().withName("Elle Meyer").build();
@@ -47,6 +48,6 @@ public class TypicalIngredients {
     }
 
     public static List<Ingredient> getTypicalIngredients() {
-        return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+        return new ArrayList<>(Arrays.asList(FLOUR, EGG, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 }

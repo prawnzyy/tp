@@ -21,11 +21,8 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.ingredient.Address;
-import seedu.address.model.ingredient.Email;
 import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -83,7 +80,7 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.useIngredient(personToEdit, editedPerson);
+        model.useIngredient(personToEdit, null);
         model.updateFilteredIngredientList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
     }
@@ -101,7 +98,7 @@ public class EditCommand extends Command {
         //Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         //Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Ingredient(updatedName);
+        return new Ingredient(updatedName, null);
     }
 
     @Override
@@ -134,9 +131,6 @@ public class EditCommand extends Command {
      */
     public static class EditPersonDescriptor {
         private Name name;
-        private Phone phone;
-        private Email email;
-        private Address address;
         private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
@@ -147,18 +141,15 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
-            setAddress(toCopy.address);
             setTags(toCopy.tags);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
-        public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
-        }
+//        public boolean isAnyFieldEdited() {
+//            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+//        }
 
         public void setName(Name name) {
             this.name = name;
@@ -168,29 +159,29 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
-        }
-
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
-        }
-
-        public void setEmail(Email email) {
-            this.email = email;
-        }
-
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
-        }
+//        public void setPhone(Phone phone) {
+//            this.phone = phone;
+//        }
+//
+//        public Optional<Phone> getPhone() {
+//            return Optional.ofNullable(phone);
+//        }
+//
+//        public void setEmail(Email email) {
+//            this.email = email;
+//        }
+//
+//        public Optional<Email> getEmail() {
+//            return Optional.ofNullable(email);
+//        }
+//
+//        public void setAddress(Address address) {
+//            this.address = address;
+//        }
+//
+//        public Optional<Address> getAddress() {
+//            return Optional.ofNullable(address);
+//        }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
@@ -222,9 +213,6 @@ public class EditCommand extends Command {
 
             EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
             return Objects.equals(name, otherEditPersonDescriptor.name)
-                    && Objects.equals(phone, otherEditPersonDescriptor.phone)
-                    && Objects.equals(email, otherEditPersonDescriptor.email)
-                    && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags);
         }
 
@@ -232,9 +220,6 @@ public class EditCommand extends Command {
         public String toString() {
             return new ToStringBuilder(this)
                     .add("name", name)
-                    .add("phone", phone)
-                    .add("email", email)
-                    .add("address", address)
                     .add("tags", tags)
                     .toString();
         }

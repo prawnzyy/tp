@@ -3,7 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.ALICE;
+import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalIngredients.HOON;
 import static seedu.address.testutil.TypicalIngredients.IDA;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
@@ -73,7 +73,7 @@ public class JsonInventoryStorageTest {
 
         // Modify data, overwrite exiting file, and read back
         original.addIngredient(HOON);
-        original.removeIngredient(ALICE);
+        original.removeIngredient(FLOUR);
         jsonInventoryStorage.saveInventory(original, filePath);
         readBack = jsonInventoryStorage.readInventory(filePath).get();
         assertEquals(original, new Inventory(readBack));
