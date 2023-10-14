@@ -52,12 +52,12 @@ public class JsonInventoryStorageTest {
 
     @Test
     public void readInventory_invalidPersonInventory_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readInventory("invalidPersonInventory.json"));
+        assertThrows(DataLoadingException.class, () -> readInventory("invalidIngredientInventory.json"));
     }
 
     @Test
     public void readInventory_invalidAndValidPersonInventory_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readInventory("invalidAndValidPersonInventory.json"));
+        assertThrows(DataLoadingException.class, () -> readInventory("invalidAndValidIngredientInventory.json"));
     }
 
     @Test
@@ -72,14 +72,13 @@ public class JsonInventoryStorageTest {
         assertEquals(original, new Inventory(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addIngredient(HOON);
         original.removeIngredient(FLOUR);
         jsonInventoryStorage.saveInventory(original, filePath);
         readBack = jsonInventoryStorage.readInventory(filePath).get();
         assertEquals(original, new Inventory(readBack));
 
         // Save and read without specifying file path
-        original.addIngredient(IDA);
+        original.addIngredient(FLOUR);
         jsonInventoryStorage.saveInventory(original); // file path not specified
         readBack = jsonInventoryStorage.readInventory().get(); // file path not specified
         assertEquals(original, new Inventory(readBack));
