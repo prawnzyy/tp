@@ -6,7 +6,7 @@ import seedu.address.model.ingredient.exceptions.UnitFormatException;
 import java.util.HashMap;
 import java.util.Map;
 
-public  enum Unit {
+public enum Unit {
     GRAM,
     KILOGRAM,
     PIECE;

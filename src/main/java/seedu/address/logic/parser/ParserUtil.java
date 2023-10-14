@@ -10,6 +10,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ingredient.Name;
+import seedu.address.model.ingredient.Unit;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -47,50 +48,19 @@ public class ParserUtil {
         return new Name(trimmedName);
     }
 
-    /**
-     * Parses a {@code String phone} into a {@code Phone}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code phone} is invalid.
-     */
-//    public static Phone parsePhone(String phone) throws ParseException {
-//        requireNonNull(phone);
-//        String trimmedPhone = phone.trim();
-//        if (!Phone.isValidPhone(trimmedPhone)) {
-//            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
-//        }
-//        return new Phone(trimmedPhone);
-//    }
-//
-//    /**
-//     * Parses a {@code String address} into an {@code Address}.
-//     * Leading and trailing whitespaces will be trimmed.
-//     *
-//     * @throws ParseException if the given {@code address} is invalid.
-//     */
-//    public static Address parseAddress(String address) throws ParseException {
-//        requireNonNull(address);
-//        String trimmedAddress = address.trim();
-//        if (!Address.isValidAddress(trimmedAddress)) {
-//            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
-//        }
-//        return new Address(trimmedAddress);
-//    }
-//
-//    /**
-//     * Parses a {@code String email} into an {@code Email}.
-//     * Leading and trailing whitespaces will be trimmed.
-//     *
-//     * @throws ParseException if the given {@code email} is invalid.
-//     */
-//    public static Email parseEmail(String email) throws ParseException {
-//        requireNonNull(email);
-//        String trimmedEmail = email.trim();
-//        if (!Email.isValidEmail(trimmedEmail)) {
-//            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
-//        }
-//        return new Email(trimmedEmail);
-//    }
+    public static double parseAmount(String amount) throws ParseException {
+        requireNonNull(amount);
+        try {
+            return Double.parseDouble(amount);
+        } catch (NumberFormatException e) {
+            throw new ParseException("Invalid amount format: " + amount);
+        }
+    }
+
+    public static Unit parseUnitOfIngredient(String unit) throws ParseException {
+        requireNonNull(unit);
+        return Unit.parseUnit(unit);
+    }
 
     /**
      * Parses a {@code String tag} into a {@code Tag}.
