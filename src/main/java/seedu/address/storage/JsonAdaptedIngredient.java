@@ -10,12 +10,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.ingredient.Address;
-import seedu.address.model.ingredient.Email;
 import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Phone;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
 
 /**
  * Jackson-friendly version of {@link Ingredient}.
@@ -25,13 +23,15 @@ class JsonAdaptedIngredient {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Ingredient's %s field is missing!";
 
     private final String name;
+    private final String quantity;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedIngredient(@JsonProperty("name") String name) {
+    public JsonAdaptedIngredient(@JsonProperty("name") String name, @JsonProperty("quantity") String quantity) {
         this.name = name;
+        this.quantity = quantity;
     }
 
     /**
@@ -39,6 +39,7 @@ class JsonAdaptedIngredient {
      */
     public JsonAdaptedIngredient(Ingredient source) {
         name = source.getName().fullName;
+        quantity = source.getQuantity().toString();
     }
 
     /**
@@ -54,7 +55,10 @@ class JsonAdaptedIngredient {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
         final Name modelName = new Name(name);
+        final Quantity modelQuantity = Quantity.parseQuantity(quantity);
 
-        return new Ingredient(modelName);
+        return new Ingredient(modelName, modelQuantity);
     }
+
+
 }

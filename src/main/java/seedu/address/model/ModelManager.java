@@ -73,7 +73,7 @@ public class ModelManager implements Model {
     @Override
     public void setInventoryFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+        userPrefs.setInventoryFilePath(addressBookFilePath);
     }
 
     //=========== StockBook ================================================================================

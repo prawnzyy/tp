@@ -3,11 +3,10 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.ingredient.Address;
-import seedu.address.model.ingredient.Email;
 import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Phone;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -18,6 +17,7 @@ public class IngredientBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     private Name name;
+    private Quantity quantity;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -41,8 +41,13 @@ public class IngredientBuilder {
         return this;
     }
 
+    public IngredientBuilder withQuantity(double val, Unit unit) {
+        this.quantity = new Quantity(val, unit);
+        return this;
+    }
+
     public Ingredient build() {
-        return new Ingredient(name);
+        return new Ingredient(name, quantity);
     }
 
 }

@@ -1,6 +1,8 @@
 package seedu.address.model.ingredient;
 
 
+import seedu.address.model.ingredient.exceptions.UnitFormatException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ public  enum Unit {
     KILOGRAM,
     PIECE;
 
+    public static final String MESSAGE_CONSTRAINTS = "Unit should be GRAM, KILOGRAM or PIECE";
     //May need to update this to 3-dimensional matrix for different ingredient conversions.
     private static final Map<Unit, Map<Unit, Double>> conversionMatrix = new HashMap<>();
 
@@ -50,4 +53,17 @@ public  enum Unit {
     public String toString() {
         return name();
     }
+
+    public static Unit parseUnit(String str) {
+        if (str.equals(Unit.KILOGRAM.name())) {
+            return Unit.KILOGRAM;
+        } else if (str.equals(Unit.GRAM.name())) {
+            return Unit.GRAM;
+        } else if (str.equals(Unit.PIECE.name())) {
+            return Unit.PIECE;
+        } else {
+            throw new UnitFormatException(str);
+        }
+    }
+
 }

@@ -52,4 +52,13 @@ public class Quantity {
     public String toString() {
         return value + " " + unit.toString();
     }
+
+    public static Quantity parseQuantity(String quantityString) {
+        String[] splitStr = quantityString.split(" ");
+
+        double val = Double.parseDouble(splitStr[0]);
+        Unit unit = Unit.parseUnit(splitStr[1]);
+
+        return new Quantity(val, unit);
+    }
 }

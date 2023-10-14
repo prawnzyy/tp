@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.ALICE;
+import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalIngredients.BOB;
 
 import org.junit.jupiter.api.Test;
@@ -25,18 +25,18 @@ public class IngredientTest {
     @Test
     public void isSamePerson() {
         // same object -> returns true
-        assertTrue(ALICE.isSameIngredient(ALICE));
+        assertTrue(FLOUR.isSameIngredient(FLOUR));
 
         // null -> returns false
-        assertFalse(ALICE.isSameIngredient(null));
+        assertFalse(FLOUR.isSameIngredient(null));
 
         // same name, all other attributes different -> returns true
-        Ingredient editedAlice = new IngredientBuilder(ALICE).build();
-        assertTrue(ALICE.isSameIngredient(editedAlice));
+        Ingredient editedAlice = new IngredientBuilder(FLOUR).build();
+        assertTrue(FLOUR.isSameIngredient(editedAlice));
 
         // different name, all other attributes same -> returns false
-        editedAlice = new IngredientBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.isSameIngredient(editedAlice));
+        editedAlice = new IngredientBuilder(FLOUR).withName(VALID_NAME_BOB).build();
+        assertFalse(FLOUR.isSameIngredient(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
         Ingredient editedBob = new IngredientBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
@@ -51,29 +51,29 @@ public class IngredientTest {
     @Test
     public void equals() {
         // same values -> returns true
-        Ingredient aliceCopy = new IngredientBuilder(ALICE).build();
-        assertTrue(ALICE.equals(aliceCopy));
+        Ingredient aliceCopy = new IngredientBuilder(FLOUR).build();
+        assertTrue(FLOUR.equals(aliceCopy));
 
         // same object -> returns true
-        assertTrue(ALICE.equals(ALICE));
+        assertTrue(FLOUR.equals(FLOUR));
 
         // null -> returns false
-        assertFalse(ALICE.equals(null));
+        assertFalse(FLOUR.equals(null));
 
         // different type -> returns false
-        assertFalse(ALICE.equals(5));
+        assertFalse(FLOUR.equals(5));
 
         // different person -> returns false
-        assertFalse(ALICE.equals(BOB));
+        assertFalse(FLOUR.equals(BOB));
 
         // different name -> returns false
-        Ingredient editedAlice = new IngredientBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
+        Ingredient editedAlice = new IngredientBuilder(FLOUR).withName(VALID_NAME_BOB).build();
+        assertFalse(FLOUR.equals(editedAlice));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = Ingredient.class.getCanonicalName() + "{name=" + ALICE.getName() + "}";
-        assertEquals(expected, ALICE.toString());
+        String expected = Ingredient.class.getCanonicalName() + "{name=" + FLOUR.getName() + "}";
+        assertEquals(expected, FLOUR.toString());
     }
 }

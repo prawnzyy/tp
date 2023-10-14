@@ -3,7 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.ALICE;
+import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalIngredients.HOON;
 import static seedu.address.testutil.TypicalIngredients.IDA;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
@@ -52,12 +52,12 @@ public class JsonInventoryStorageTest {
 
     @Test
     public void readInventory_invalidPersonInventory_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readInventory("invalidPersonInventory.json"));
+        assertThrows(DataLoadingException.class, () -> readInventory("invalidIngredientInventory.json"));
     }
 
     @Test
     public void readInventory_invalidAndValidPersonInventory_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readInventory("invalidAndValidPersonInventory.json"));
+        assertThrows(DataLoadingException.class, () -> readInventory("invalidAndValidIngredientInventory.json"));
     }
 
     @Test
@@ -72,14 +72,13 @@ public class JsonInventoryStorageTest {
         assertEquals(original, new Inventory(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addIngredient(HOON);
-        original.removeIngredient(ALICE);
+        original.removeIngredient(FLOUR);
         jsonInventoryStorage.saveInventory(original, filePath);
         readBack = jsonInventoryStorage.readInventory(filePath).get();
         assertEquals(original, new Inventory(readBack));
 
         // Save and read without specifying file path
-        original.addIngredient(IDA);
+        original.addIngredient(FLOUR);
         jsonInventoryStorage.saveInventory(original); // file path not specified
         readBack = jsonInventoryStorage.readInventory().get(); // file path not specified
         assertEquals(original, new Inventory(readBack));

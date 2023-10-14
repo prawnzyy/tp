@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.ALICE;
+import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 
 import java.util.Arrays;
@@ -44,8 +44,8 @@ public class AddressBookTest {
     @Test
     public void resetData_withDuplicateIngredients_throwsDuplicateIngredientException() {
         // Two persons with the same identity fields
-        Ingredient editedAlice = new IngredientBuilder(ALICE).build();
-        List<Ingredient> newIngredients = Arrays.asList(ALICE, editedAlice);
+        Ingredient editedAlice = new IngredientBuilder(FLOUR).build();
+        List<Ingredient> newIngredients = Arrays.asList(FLOUR, editedAlice);
         AddressBookStub newData = new AddressBookStub(newIngredients);
 
         assertThrows(DuplicateIngredientException.class, () -> inventory.resetData(newData));
@@ -58,19 +58,19 @@ public class AddressBookTest {
 
     @Test
     public void hasIngredient_ingredientNotInInventory_returnsFalse() {
-        assertFalse(inventory.hasIngredient(ALICE));
+        assertFalse(inventory.hasIngredient(FLOUR));
     }
 
     @Test
     public void hasIngredient_ingredientInInventory_returnsTrue() {
-        inventory.addIngredient(ALICE);
-        assertTrue(inventory.hasIngredient(ALICE));
+        inventory.addIngredient(FLOUR);
+        assertTrue(inventory.hasIngredient(FLOUR));
     }
 
     @Test
     public void hasIngredient_ingredientWithSameIdentityFieldsInInventory_returnsTrue() {
-        inventory.addIngredient(ALICE);
-        Ingredient editedAlice = new IngredientBuilder(ALICE).build();
+        inventory.addIngredient(FLOUR);
+        Ingredient editedAlice = new IngredientBuilder(FLOUR).build();
         assertTrue(inventory.hasIngredient(editedAlice));
     }
 
