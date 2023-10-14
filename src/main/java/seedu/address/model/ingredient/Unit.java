@@ -1,6 +1,8 @@
 package seedu.address.model.ingredient;
 
 
+import seedu.address.model.ingredient.exceptions.UnitFormatException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,4 +52,17 @@ public  enum Unit {
     public String toString() {
         return name();
     }
+
+    public static Unit parseUnit(String str) {
+        if (str == Unit.KILOGRAM.name()) {
+            return Unit.KILOGRAM;
+        } else if (str == Unit.GRAM.name()) {
+            return Unit.GRAM;
+        } else if (str == Unit.PIECE.name()) {
+            return Unit.PIECE;
+        } else {
+            throw new UnitFormatException(str);
+        }
+    }
+
 }
