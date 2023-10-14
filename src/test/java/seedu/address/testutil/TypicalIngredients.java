@@ -48,6 +48,6 @@ public class TypicalIngredients {
     }
 
     public static List<Ingredient> getTypicalIngredients() {
-        return new ArrayList<>(Arrays.asList(FLOUR, EGG, CARL, DANIEL, ELLE, FIONA, GEORGE));
+        return new ArrayList<>(Arrays.asList(FLOUR, EGG));
     }
 }

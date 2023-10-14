@@ -29,7 +29,7 @@ class JsonAdaptedIngredient {
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedIngredient(@JsonProperty("name") String name, String quantity) {
+    public JsonAdaptedIngredient(@JsonProperty("name") String name, @JsonProperty("quantity") String quantity) {
         this.name = name;
         this.quantity = quantity;
     }
