@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 
 /**
@@ -53,18 +54,11 @@ public interface Model {
     /** Returns the AddressBook */
     ReadOnlyInventory getInventory();
 
-    /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
-     */
-    boolean hasIngredient(Ingredient ingredient);
+    boolean hasIngredient(Name ingredientName);
 
-    Quantity getQuantityOf(Ingredient ingredient);
+    Quantity getQuantityOf(Name ingredientName);
 
-    /**
-     * Deletes the given person.
-     * The person must exist in the address book.
-     */
-    void deleteIngredient(Ingredient target);
+    void deleteIngredient(Name ingredientName);
 
     void deleteIngredients();
 
@@ -74,12 +68,8 @@ public interface Model {
      */
     void addIngredient(Ingredient ingredient);
 
-    /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
-     */
-    void useIngredient(Ingredient target, Quantity quantity);
+
+    void useIngredient(Name ingredientName, Quantity quantity);
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Ingredient> getFilteredIngredientList();

@@ -1,14 +1,14 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Quantity;
-import seedu.address.model.ingredient.UniqueIngredientList;
+import seedu.address.model.ingredient.*;
+import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
  * Wraps all data at the address-book level
@@ -62,17 +62,26 @@ public class Inventory implements ReadOnlyInventory {
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
-    public boolean hasIngredient(Ingredient ingredient) {
-        requireNonNull(ingredient);
-        return ingredients.contains(ingredient);
+    public boolean hasIngredient(Name ingredientName) {
+        requireNonNull(ingredientName);
+
+        for (Ingredient ingredient : ingredients) {
+            if(ingredient.getName().equals(ingredientName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
-     */
-    public Quantity getQuantityOf(Ingredient ingredient) {
-        requireNonNull(ingredient);
-        return ingredients.getQuantityOf(ingredient);
+    public Quantity getQuantityOf(Name ingredientName) {
+        requireNonNull(ingredientName);
+        for (Ingredient ingredient : ingredients) {
+            if(ingredient.getName().equals(ingredientName)) {
+                return ingredient.getQuantity();
+            }
+        }
+        //If ingredient can't be found, then return 0 quantity
+        return new Quantity(0, Unit.GRAM);
     }
 
     /**
@@ -88,17 +97,29 @@ public class Inventory implements ReadOnlyInventory {
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
      */
-    public void useIngredient(Ingredient target, Quantity quantity) {
-        requireNonNull(target);
-        ingredients.useIngredient(target, quantity);
+    public void useIngredient(Name ingredientName, Quantity quantity) {
+        requireAllNonNull(ingredientName, quantity);
+        for (Ingredient ingredient : ingredients) {
+            if(ingredient.getName().equals(ingredientName)) {
+                ingredient.use(quantity);
+                return;
+            }
+        }
+        throw new IngredientNotFoundException();
     }
 
     /**
      * Removes {@code key} from this {@code Inventory}.
      * {@code key} must exist in the address book.
      */
-    public void removeIngredient(Ingredient key) {
-        ingredients.remove(key);
+    public void removeIngredient(Name ingredientName) {
+        for (Ingredient ingredient : ingredients) {
+            if(ingredient.getName().equals(ingredientName)) {
+                removeIngredient(ingredientName);
+                break;
+            }
+        }
+        throw new IngredientNotFoundException();
     }
 
     public void clear() {
