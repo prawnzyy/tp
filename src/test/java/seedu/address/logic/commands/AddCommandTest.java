@@ -57,7 +57,7 @@ public class AddCommandTest {
 //        // null -> returns false
 //        assertFalse(addAliceCommand.equals(null));
 //
-//        // different person -> returns false
+//        // different ingredient -> returns false
 //        assertFalse(addAliceCommand.equals(addBobCommand));
 //    }
 
@@ -103,7 +103,7 @@ public class AddCommandTest {
 //        }
 
 //        @Override
-//        public void addPerson(Person person) {
+//        public void addPerson(Person ingredient) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
@@ -118,7 +118,7 @@ public class AddCommandTest {
 //        }
 //
 //        @Override
-//        public boolean hasPerson(Person person) {
+//        public boolean hasPerson(Person ingredient) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
@@ -144,39 +144,39 @@ public class AddCommandTest {
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single ingredient.
      */
 //    private class ModelStubWithPerson extends ModelStub {
-//        private final Person person;
+//        private final Person ingredient;
 //
-//        ModelStubWithPerson(Person person) {
-//            requireNonNull(person);
-//            this.person = person;
+//        ModelStubWithPerson(Person ingredient) {
+//            requireNonNull(ingredient);
+//            this.ingredient = ingredient;
 //        }
 //
 //        @Override
-//        public boolean hasPerson(Person person) {
-//            requireNonNull(person);
-//            return this.person.isSamePerson(person);
+//        public boolean hasPerson(Person ingredient) {
+//            requireNonNull(ingredient);
+//            return this.ingredient.isSamePerson(ingredient);
 //        }
 //    }
 //
 //    /**
-//     * A Model stub that always accept the person being added.
+//     * A Model stub that always accept the ingredient being added.
 //     */
 //    private class ModelStubAcceptingPersonAdded extends ModelStub {
 //        final ArrayList<Person> personsAdded = new ArrayList<>();
 //
 //        @Override
-//        public boolean hasPerson(Person person) {
-//            requireNonNull(person);
-//            return personsAdded.stream().anyMatch(person::isSamePerson);
+//        public boolean hasPerson(Person ingredient) {
+//            requireNonNull(ingredient);
+//            return personsAdded.stream().anyMatch(ingredient::isSamePerson);
 //        }
 //
 //        @Override
-//        public void addPerson(Person person) {
-//            requireNonNull(person);
-//            personsAdded.add(person);
+//        public void addPerson(Person ingredient) {
+//            requireNonNull(ingredient);
+//            personsAdded.add(ingredient);
 //        }
 //
 //        @Override

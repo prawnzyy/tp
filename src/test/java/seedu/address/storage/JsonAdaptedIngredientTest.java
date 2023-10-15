@@ -34,9 +34,9 @@ public class JsonAdaptedIngredientTest {
     /*
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedIngredient person = new JsonAdaptedIngredient(null);
+        JsonAdaptedIngredient ingredient = new JsonAdaptedIngredient(null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, ingredient::toModelType);
     }
     */
 

@@ -33,9 +33,9 @@ public class AddressBookParserTest {
 
 //    @Test
 //    public void parseCommand_add() throws Exception {
-//        Person person = new IngredientBuilder().build();
-//        AddCommand command = (AddCommand) parser.parseCommand(IngredientUtil.getAddCommand(person));
-//        assertEquals(new AddCommand(person), command);
+//        Person ingredient = new IngredientBuilder().build();
+//        AddCommand command = (AddCommand) parser.parseCommand(IngredientUtil.getAddCommand(ingredient));
+//        assertEquals(new AddCommand(ingredient), command);
 //    }
 
     @Test
@@ -53,8 +53,8 @@ public class AddressBookParserTest {
 
 //    @Test
 //    public void parseCommand_edit() throws Exception {
-//        Person person = new IngredientBuilder().build();
-//        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
+//        Person ingredient = new IngredientBuilder().build();
+//        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(ingredient).build();
 //        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
 //                + INDEX_FIRST_PERSON.getOneBased() + " " + IngredientUtil.getEditIngredientDescriptorDetails(descriptor));
 //        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);

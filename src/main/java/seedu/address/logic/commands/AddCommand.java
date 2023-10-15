@@ -13,7 +13,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ingredient.Ingredient;
 
 /**
- * Adds a person to the address book.
+ * Adds a ingredient to the address book.
  */
 public class AddCommand extends Command {
 
