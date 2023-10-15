@@ -36,24 +36,9 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
     }
 
     /**
-     * Returns the quantity of the specified Ingredient.
-     */
-    public Quantity getQuantityOf(Ingredient ingredient) {
-        requireNonNull(ingredient);
-        if (internalList.contains(ingredient)) {
-            int index = internalList.indexOf(ingredient);
-            return internalList.get(index).getQuantity();
-        }
-        else {
-            //If ingredient is not in list, return quantity of zero
-            return new Quantity(0, Unit.GRAM);
-        }
-    }
-
-    /**
      * Adds an ingredient to the list.
      * If the ingredient is already in the list, then add the quantity to the existing quantity.
-     * @param The ingredient to add to the list.
+     * @param toAdd The ingredient to add to the list.
      */
     public void add(Ingredient toAdd) {
         requireNonNull(toAdd);
@@ -61,21 +46,6 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
             internalList.get(internalList.indexOf(toAdd)).combineWith(toAdd);
         }
         internalList.add(toAdd);
-    }
-
-    /**
-     * Subtracts the ingredient {@code ingredient} quantity by {@code quantity}.
-     * {@code ingredient} must exist in the list.
-     */
-    public void useIngredient(Ingredient target, Quantity quantity) {
-        requireAllNonNull(target, quantity);
-
-        int index = internalList.indexOf(target);
-        if (index == -1) {
-            throw new IngredientNotFoundException();
-        }
-
-        internalList.get(index).use(quantity);
     }
 
     /**

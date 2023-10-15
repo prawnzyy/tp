@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 
 /**
@@ -89,20 +90,21 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasIngredient(Ingredient ingredient) {
-        requireNonNull(ingredient);
-        return inventory.hasIngredient(ingredient);
+    public boolean hasIngredient(Name ingredientName) {
+        requireNonNull(ingredientName);
+
+        return inventory.hasIngredient(ingredientName);
     }
 
     @Override
-    public Quantity getQuantityOf(Ingredient ingredient) {
-        requireNonNull(ingredient);
-        return inventory.getQuantityOf(ingredient);
+    public Quantity getQuantityOf(Name ingredientName) {
+        requireNonNull(ingredientName);
+        return inventory.getQuantityOf(ingredientName);
     }
 
     @Override
-    public void deleteIngredient(Ingredient target) {
-        inventory.removeIngredient(target);
+    public void deleteIngredient(Name ingredientName) {
+        inventory.removeIngredient(ingredientName);
     }
 
     @Override
@@ -116,9 +118,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void useIngredient(Ingredient target, Quantity quantity) {
-        requireAllNonNull(target, quantity);
-        inventory.useIngredient(target, quantity);
+    public void useIngredient(Name ingredientName, Quantity quantity) {
+        requireAllNonNull(ingredientName, quantity);
+        inventory.useIngredient(ingredientName, quantity);
     }
 
     //=========== Filtered Person List Accessors =============================================================
