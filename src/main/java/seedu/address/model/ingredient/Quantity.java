@@ -14,6 +14,9 @@ public class Quantity {
         this.unit = unit;
     }
 
+    public double getValue() {
+        return value;
+    }
     /**
      * Adds a quantity to this quantity.
      * @param otherQuantity

@@ -10,16 +10,19 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.UseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Inventory;
 import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
+import seedu.address.model.Model;
 
 
 /**
  * Parses input arguments and creates a new AddCommand object
  */
 public class UseCommandParser implements Parser<UseCommand> {
+    Model model;
 
     /**
      * Parses the given {@code String} of arguments in the context of the UseCommand
@@ -37,10 +40,13 @@ public class UseCommandParser implements Parser<UseCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
+
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+
         if (!arePrefixesPresent(argMultimap, PREFIX_QUANTITY, PREFIX_UNIT)) {
-            return new UseCommand(name, name.getQuantity());
+            return new UseCommand(name, model.getQuantityOf(name));
         }
+
         double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
         Unit unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
         Quantity quantity = new Quantity(amount, unit);

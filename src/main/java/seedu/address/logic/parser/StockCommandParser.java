@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,7 +10,6 @@ import java.util.List;
 
 
 public class StockCommandParser implements Parser<StockCommand> {
-    // doesn't work for just the word stock
 
     /**
      * Parses the given {@code String} of arguments in the context of the StockCommand
@@ -18,10 +18,9 @@ public class StockCommandParser implements Parser<StockCommand> {
      */
     public StockCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
-        // show the entire stock for when there are no arguments
+        // show the entire stock for when there are no arguments - check!
         if (trimmedArgs.isEmpty()) {
-            List<String> emptyKeywordsList = Collections.emptyList();
-            return new StockCommand(new NameContainsKeywordsPredicate(emptyKeywordsList));
+            return new StockCommand(PREDICATE_SHOW_ALL_PERSONS);
         }
 
         String[] nameKeywords = trimmedArgs.split("\\s+");
@@ -30,4 +29,3 @@ public class StockCommandParser implements Parser<StockCommand> {
     }
 
 }
-
