@@ -8,6 +8,8 @@ import seedu.address.model.Inventory;
 import seedu.address.model.ReadOnlyInventory;
 import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -16,12 +18,15 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Ingredient[] getSampleIngredients() {
         return new Ingredient[] {
-            new Ingredient(new Name("Alex Yeoh"), null),
+            new Ingredient(new Name("Alex Yeoh"), new Quantity(100, Unit.GRAM)),
+                /*
             new Ingredient(new Name("Bernice Yu"), null),
             new Ingredient(new Name("Charlotte Oliveiro"), null),
             new Ingredient(new Name("David Li"), null),
             new Ingredient(new Name("Irfan Ibrahim"), null),
             new Ingredient(new Name("Roy Balakrishnan"), null)
+            */
+
         };
     }
 

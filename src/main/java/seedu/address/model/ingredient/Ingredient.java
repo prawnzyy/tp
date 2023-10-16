@@ -62,7 +62,7 @@ public class Ingredient {
      * This defines a weaker notion of equality between two ingredients.
      */
     public boolean isSameIngredient(Ingredient otherIngredient) {
-        if (otherIngredient == this) {
+        if (otherIngredient.equals(this)) {
             return true;
         }
 
