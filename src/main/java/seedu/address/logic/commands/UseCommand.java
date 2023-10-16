@@ -36,6 +36,7 @@ public class UseCommand extends Command {
             + PREFIX_UNIT + "ml ";
 
     public static final String MESSAGE_SUCCESS = "Ingredient used: %1$s";
+    public static final String MESSAGE_USED_UP = "Ingredient used up: %1$s";
 
     private final Name toUse;
     private final Quantity quantityUsed;
@@ -46,12 +47,19 @@ public class UseCommand extends Command {
         quantityUsed = quantity;
     }
 
-    //check this after the useIngredient method has been changed
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.useIngredient(toUse, quantityUsed);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toUse)));
+        // check method used for when the entire ingredient is depleted
+        if ((model.getQuantityOf(toUse).getValue() - quantityUsed.getValue())<= 0) {
+            model.deleteIngredient(toUse);
+            return new CommandResult(String.format(MESSAGE_USED_UP, Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
+        } else {
+            model.useIngredient(toUse, quantityUsed);
+            return new CommandResult(String.format(MESSAGE_SUCCESS,
+                    Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
+        }
     }
 
     @Override
@@ -69,10 +77,10 @@ public class UseCommand extends Command {
         return toUse.equals(otherUseCommand.toUse);
     }
 
-//    @Override
-//    public String toString() {
-//        return new ToStringBuilder(this)
-//                .add("toUse", toUse)
-//                .toString();
-//    }
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("toUse", toUse)
+                .toString();
+    }
 }

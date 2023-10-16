@@ -49,7 +49,7 @@ class JsonSerializableInventory {
         Inventory inventory = new Inventory();
         for (JsonAdaptedIngredient jsonAdaptedIngredient : ingredients) {
             Ingredient ingredient = jsonAdaptedIngredient.toModelType();
-            if (inventory.hasIngredient(ingredient)) {
+            if (inventory.hasIngredient(ingredient.getName())) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
             inventory.addIngredient(ingredient);

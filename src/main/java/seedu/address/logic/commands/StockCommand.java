@@ -5,7 +5,10 @@ import seedu.address.logic.Messages;
 
 import seedu.address.model.Model;
 
+import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
+
+import java.util.function.Predicate;
 
 import static java.util.Objects.requireNonNull;
 
@@ -19,11 +22,13 @@ import static java.util.Objects.requireNonNull;
                 + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
                 + "Example: " + COMMAND_WORD + " flour milk";
 
-        private final NameContainsKeywordsPredicate predicate;
+        private final Predicate<Ingredient> predicate;
 
-        public StockCommand(NameContainsKeywordsPredicate predicate) {
+        public StockCommand(Predicate<Ingredient> predicate) {
             this.predicate = predicate;
         }
+
+
 
         @Override
         public CommandResult execute(Model model) {
