@@ -63,19 +63,19 @@ public interface Model {
     void deleteIngredients();
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * Adds the given ingredient.
+     * {@code ingredient} must not already exist in the address book.
      */
     void addIngredient(Ingredient ingredient);
 
 
     void useIngredient(Name ingredientName, Quantity quantity);
 
-    /** Returns an unmodifiable view of the filtered person list */
+    /** Returns an unmodifiable view of the filtered ingredient list */
     ObservableList<Ingredient> getFilteredIngredientList();
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered ingredient list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredIngredientList(Predicate<Ingredient> predicate);

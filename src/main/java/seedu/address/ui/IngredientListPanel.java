@@ -11,29 +11,29 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.ingredient.Ingredient;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of ingredients.
  */
-public class PersonListPanel extends UiPart<Region> {
-    private static final String FXML = "PersonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
+public class IngredientListPanel extends UiPart<Region> {
+    private static final String FXML = "IngredientListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(IngredientListPanel.class);
 
     @FXML
     private ListView<Ingredient> ingredientListView;
 
     /**
-     * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
+     * Creates a {@code IngredientListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Ingredient> personList) {
+    public IngredientListPanel(ObservableList<Ingredient> personList) {
         super(FXML);
         System.out.println(personList);
         ingredientListView.setItems(personList);
-        ingredientListView.setCellFactory(listView -> new PersonListViewCell());
+        ingredientListView.setCellFactory(listView -> new IngredientListViewCell());
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code PersonCard}.
+     * Custom {@code ListCell} that displays the graphics of an {@code Ingredient} using an {@code IngredientCard}.
      */
-    class PersonListViewCell extends ListCell<Ingredient> {
+    class IngredientListViewCell extends ListCell<Ingredient> {
         @Override
         protected void updateItem(Ingredient ingredient, boolean empty) {
             super.updateItem(ingredient, empty);
@@ -42,7 +42,7 @@ public class PersonListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new PersonCard(ingredient, getIndex() + 1).getRoot());
+                setGraphic(new IngredientCard(ingredient, getIndex() + 1).getRoot());
             }
         }
     }

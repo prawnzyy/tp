@@ -12,14 +12,14 @@ import seedu.address.model.Model;
 import seedu.address.model.ingredient.Ingredient;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Deletes a ingredient identified using it's displayed index from the address book.
  */
 public class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
+            + ": Deletes the ingredient identified by the index number used in the displayed ingredient list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 

@@ -57,10 +57,10 @@ public class Inventory implements ReadOnlyInventory {
         setIngredients(newData.getIngredientList());
     }
 
-    //// person-level operations
+    //// ingredient-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a ingredient with the same identity as {@code ingredient} exists in the address book.
      */
     public boolean hasIngredient(Name ingredientName) {
         requireNonNull(ingredientName);
@@ -85,17 +85,17 @@ public class Inventory implements ReadOnlyInventory {
     }
 
     /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
+     * Adds a ingredient to the address book.
+     * The ingredient must not already exist in the address book.
      */
     public void addIngredient(Ingredient p) {
         ingredients.add(p);
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * Replaces the given ingredient {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * The ingredient identity of {@code editedPerson} must not be the same as another existing ingredient in the address book.
      */
     public void useIngredient(Name ingredientName, Quantity quantity) {
         requireAllNonNull(ingredientName, quantity);

@@ -63,7 +63,7 @@ public class IngredientTest {
         // different type -> returns false
         assertFalse(FLOUR.equals(5));
 
-        // different person -> returns false
+        // different ingredient -> returns false
         assertFalse(FLOUR.equals(BOB));
 
         // different name -> returns false

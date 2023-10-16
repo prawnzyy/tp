@@ -19,14 +19,14 @@ import seedu.address.model.tag.Tag;
 public class IngredientUtil {
 
     /**
-     * Returns an add command string for adding the {@code person}.
+     * Returns an add command string for adding the {@code ingredient}.
      */
     public static String getAddCommand(Ingredient ingredient) {
         return AddCommand.COMMAND_WORD + " " + getIngredientDetails(ingredient);
     }
 
     /**
-     * Returns the part of command string for the given {@code person}'s details.
+     * Returns the part of command string for the given {@code ingredient}'s details.
      */
     public static String getIngredientDetails(Ingredient ingredient) {
         StringBuilder sb = new StringBuilder();

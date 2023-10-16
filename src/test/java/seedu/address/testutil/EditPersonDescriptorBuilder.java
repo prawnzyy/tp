@@ -25,7 +25,7 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Returns an {@code EditPersonDescriptor} with fields containing {@code person}'s details
+     * Returns an {@code EditPersonDescriptor} with fields containing {@code ingredient}'s details
      */
     public EditPersonDescriptorBuilder(Ingredient ingredient) {
         descriptor = new EditPersonDescriptor();
