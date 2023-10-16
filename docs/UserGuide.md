@@ -110,7 +110,7 @@ Format: `stock [NAME]…​`
 
 Examples:
 * `stock Milk` returns `Milk: 100ml`
-* `find milk flour` returns `Milk: 100ml`, `Flour: 2000g`<br>
+* `stock milk flour` returns `Milk: 100ml`, `Flour: 2000g`<br>
 
 ### Clearing all entries : `clear`
 

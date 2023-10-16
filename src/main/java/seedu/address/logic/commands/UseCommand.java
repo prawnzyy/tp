@@ -52,14 +52,10 @@ public class UseCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         // check method used for when the entire ingredient is depleted
-        if ((model.getQuantityOf(toUse).getValue() - quantityUsed.getValue())<= 0) {
-            model.deleteIngredient(toUse);
-            return new CommandResult(String.format(MESSAGE_USED_UP, Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
-        } else {
-            model.useIngredient(toUse, quantityUsed);
-            return new CommandResult(String.format(MESSAGE_SUCCESS,
-                    Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
-        }
+        model.useIngredient(toUse, quantityUsed);
+        return new CommandResult(String.format(MESSAGE_SUCCESS,
+                Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
+
     }
 
     @Override
