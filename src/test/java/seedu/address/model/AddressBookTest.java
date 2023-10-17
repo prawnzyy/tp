@@ -58,20 +58,20 @@ public class AddressBookTest {
 
     @Test
     public void hasIngredient_ingredientNotInInventory_returnsFalse() {
-        assertFalse(inventory.hasIngredient(FLOUR));
+        assertFalse(inventory.hasIngredient(FLOUR.getName()));
     }
 
     @Test
     public void hasIngredient_ingredientInInventory_returnsTrue() {
         inventory.addIngredient(FLOUR);
-        assertTrue(inventory.hasIngredient(FLOUR));
+        assertTrue(inventory.hasIngredient(FLOUR.getName()));
     }
 
     @Test
     public void hasIngredient_ingredientWithSameIdentityFieldsInInventory_returnsTrue() {
         inventory.addIngredient(FLOUR);
         Ingredient editedAlice = new IngredientBuilder(FLOUR).build();
-        assertTrue(inventory.hasIngredient(editedAlice));
+        assertTrue(inventory.hasIngredient(editedAlice.getName()));
     }
 
     @Test

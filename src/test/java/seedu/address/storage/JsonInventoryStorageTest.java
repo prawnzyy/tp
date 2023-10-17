@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
-import static seedu.address.testutil.TypicalIngredients.HOON;
-import static seedu.address.testutil.TypicalIngredients.IDA;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 
 import java.io.IOException;
@@ -18,6 +16,10 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.Inventory;
 import seedu.address.model.ReadOnlyInventory;
+import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Name;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
 
 public class JsonInventoryStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonInventoryStorageTest");
@@ -71,8 +73,8 @@ public class JsonInventoryStorageTest {
         ReadOnlyInventory readBack = jsonInventoryStorage.readInventory(filePath).get();
         assertEquals(original, new Inventory(readBack));
 
-        // Modify data, overwrite exiting file, and read back
-        original.removeIngredient(FLOUR);
+        // Modify data, overwrite existing file, and read back
+        original.addIngredient(new Ingredient(new Name("Flour"), new Quantity(100, Unit.GRAM)));
         jsonInventoryStorage.saveInventory(original, filePath);
         readBack = jsonInventoryStorage.readInventory(filePath).get();
         assertEquals(original, new Inventory(readBack));
@@ -93,10 +95,10 @@ public class JsonInventoryStorageTest {
     /**
      * Saves {@code Inventory} at the specified {@code filePath}.
      */
-    private void saveInventory(ReadOnlyInventory Inventory, String filePath) {
+    private void saveInventory(ReadOnlyInventory inventory, String filePath) {
         try {
             new JsonInventoryStorage(Paths.get(filePath))
-                    .saveInventory(Inventory, addToTestDataPathIfNotNull(filePath));
+                    .saveInventory(inventory, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }

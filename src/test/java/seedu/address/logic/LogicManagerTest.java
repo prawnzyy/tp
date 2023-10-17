@@ -8,7 +8,6 @@ import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.AMY;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -25,11 +24,11 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyInventory;
 import seedu.address.model.UserPrefs;
 import seedu.address.storage.JsonInventoryStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
-import seedu.address.testutil.IngredientBuilder;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy IO exception");
@@ -149,11 +148,11 @@ public class LogicManagerTest {
 
         // Inject LogicManager with an AddressBookStorage that throws the IOException e when saving
         JsonInventoryStorage addressBookStorage = new JsonInventoryStorage(prefPath) {
-//            @Override
-//            public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath)
-//                    throws IOException {
-//                throw e;
-//            }
+            @Override
+            public void saveInventory(ReadOnlyInventory addressBook, Path filePath)
+                    throws IOException {
+                throw e;
+            }
         };
 
         JsonUserPrefsStorage userPrefsStorage =
@@ -165,9 +164,9 @@ public class LogicManagerTest {
         // Triggers the saveAddressBook method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY
                 + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
-//        Person expectedPerson = new IngredientBuilder(AMY).withTags().build();
+        // Person expectedPerson = new IngredientBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
-//        expectedModel.addPerson(expectedPerson);
+        // expectedModel.addPerson(expectedPerson);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }
 }

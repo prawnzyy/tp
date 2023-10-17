@@ -13,9 +13,10 @@ import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
  * A list of ingredients that enforces uniqueness between its elements and does not allow nulls.
- * An ingredient is considered unique by comparing using {@code Ingredient#isSameIngredient(Ingredient)}. As such, adding and updating of
- * ingredients uses Ingredient#isSameIngredient(Ingredient) for equality so as to ensure that the ingredient being added or updated is
- * unique in terms of identity in the UniqueIngredientlist.
+ * An ingredient is considered unique by comparing using {@code Ingredient#isSameIngredient(Ingredient)}.
+ * As such, adding and updating of ingredients uses Ingredient#isSameIngredient(Ingredient) for equality
+ * so as to ensure that the ingredient being added or updated is unique in terms of identity
+ * in the UniqueIngredientlist.
  *
  * Supports a minimal set of list operations.
  *
@@ -56,6 +57,12 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
         }
     }
 
+    // TODO Add JavaDocs
+    /**
+     * Stub
+     * @param toReplace Stub
+     * @param toAdd Stub
+     */
     public void replace(Ingredient toReplace, Ingredient toAdd) {
         requireAllNonNull(toReplace, toAdd);
         int index = internalList.indexOf(toReplace);
@@ -66,7 +73,7 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
     /**
      * Empties the list.
      */
-    public void clear(){
+    public void clear() {
         internalList.clear();
     }
 

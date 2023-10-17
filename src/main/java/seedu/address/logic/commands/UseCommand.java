@@ -1,14 +1,9 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
-
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -19,13 +14,14 @@ import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 
 /**
- * Adds a ingredient to the address book.
+ * Use an ingredient from the address book.
  */
 public class UseCommand extends Command {
 
     public static final String COMMAND_WORD = "use";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Depletes a specified amount of an ingredient from stock. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Depletes a specified amount of an ingredient from stock. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_QUANTITY + "QUANTITY "
@@ -41,6 +37,12 @@ public class UseCommand extends Command {
     private final Name toUse;
     private final Quantity quantityUsed;
 
+    // Todo Add JavaDocs
+    /**
+     * Stub
+     * @param ingredient Stub
+     * @param quantity Stub
+     */
     public UseCommand(Name ingredient, Quantity quantity) {
         requireNonNull(ingredient);
         toUse = ingredient;

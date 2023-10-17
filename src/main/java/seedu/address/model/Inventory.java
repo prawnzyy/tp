@@ -7,7 +7,11 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.ingredient.*;
+import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Name;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.UniqueIngredientList;
+import seedu.address.model.ingredient.Unit;
 import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
@@ -66,7 +70,7 @@ public class Inventory implements ReadOnlyInventory {
         requireNonNull(ingredientName);
 
         for (Ingredient ingredient : ingredients) {
-            if(ingredient.getName().equals(ingredientName)) {
+            if (ingredient.getName().equals(ingredientName)) {
                 return true;
             }
         }
@@ -76,7 +80,7 @@ public class Inventory implements ReadOnlyInventory {
     public Quantity getQuantityOf(Name ingredientName) {
         requireNonNull(ingredientName);
         for (Ingredient ingredient : ingredients) {
-            if(ingredient.getName().equals(ingredientName)) {
+            if (ingredient.getName().equals(ingredientName)) {
                 return ingredient.getQuantity();
             }
         }
@@ -90,14 +94,13 @@ public class Inventory implements ReadOnlyInventory {
      */
     public void addIngredient(Ingredient p) {
         if (ingredients.contains(p)) {
-            for(Ingredient ingredient : ingredients) {
-                if(ingredient.getName().equals(p.getName())) {
+            for (Ingredient ingredient : ingredients) {
+                if (ingredient.getName().equals(p.getName())) {
                     ingredients.replace(ingredient, ingredient.combineWith(p));
                     return;
                 }
             }
-        }
-        else {
+        } else {
             ingredients.add(p);
         }
     }
@@ -105,14 +108,15 @@ public class Inventory implements ReadOnlyInventory {
     /**
      * Replaces the given ingredient {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
-     * The ingredient identity of {@code editedPerson} must not be the same as another existing ingredient in the address book.
+     * The ingredient identity of {@code editedPerson} must not be the same as
+     * another existing ingredient in the address book.
      */
     public void useIngredient(Name ingredientName, Quantity quantity) {
         requireAllNonNull(ingredientName, quantity);
         for (Ingredient ingredient : ingredients) {
-            if(ingredient.getName().equals(ingredientName)) {
+            if (ingredient.getName().equals(ingredientName)) {
                 if (ingredient.getQuantity().isLessThan(quantity)) {
-                   ingredients.remove(ingredient);
+                    ingredients.remove(ingredient);
                 } else {
                     ingredients.replace(ingredient, ingredient.use(quantity));
                 }
@@ -128,7 +132,7 @@ public class Inventory implements ReadOnlyInventory {
      */
     public void removeIngredient(Name ingredientName) {
         for (Ingredient ingredient : ingredients) {
-            if(ingredient.getName().equals(ingredientName)) {
+            if (ingredient.getName().equals(ingredientName)) {
                 removeIngredient(ingredientName);
                 break;
             }
