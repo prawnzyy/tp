@@ -7,7 +7,7 @@ import java.util.Objects;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Ingredient in the inventory.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Ingredient {
@@ -71,7 +71,7 @@ public class Ingredient {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
+     * Returns true if both ingredients have the same identity and data fields.
      * This defines a stronger notion of equality between two ingredients.
      */
     @Override

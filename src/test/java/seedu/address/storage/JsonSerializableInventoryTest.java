@@ -18,10 +18,10 @@ public class JsonSerializableInventoryTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableInventoryTest");
     private static final Path TYPICAL_INVENTORY_FILE = TEST_DATA_FOLDER.resolve("typicalIngredientInventory.json");
     private static final Path INVALID_INVENTORY_FILE = TEST_DATA_FOLDER.resolve("invalidIngredientInventory.json");
-    //private static final Path DUPLICATE_PERSON_FILE = TEST_DATA_FOLDER.resolve("duplicatePersonAddressBook.json");
+    //private static final Path DUPLICATE_INGREDIENT_FILE = TEST_DATA_FOLDER.resolve("duplicateIngredientInventory.json");
 
     @Test
-    public void toModelType_typicalPersonsFile_success() throws Exception {
+    public void toModelType_typicalIngredientsFile_success() throws Exception {
         JsonSerializableInventory dataFromFile = JsonUtil.readJsonFile(TYPICAL_INVENTORY_FILE,
                 JsonSerializableInventory.class).get();
         Inventory inventoryFromFile = dataFromFile.toModelType();
@@ -30,7 +30,7 @@ public class JsonSerializableInventoryTest {
     }
 
     @Test
-    public void toModelType_invalidPersonFile_throwsUnitFormatException() throws Exception {
+    public void toModelType_invalidIngredientFile_throwsUnitFormatException() throws Exception {
         JsonSerializableInventory dataFromFile = JsonUtil.readJsonFile(INVALID_INVENTORY_FILE,
                 JsonSerializableInventory.class).get();
         assertThrows(UnitFormatException.class, dataFromFile::toModelType);

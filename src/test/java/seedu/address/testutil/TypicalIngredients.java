@@ -12,7 +12,7 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Unit;
 
 /**
- * A utility class containing a list of {@code Person} objects to be used in tests.
+ * A utility class containing a list of {@code Ingredient} objects to be used in tests.
  */
 public class TypicalIngredients {
 
@@ -30,7 +30,7 @@ public class TypicalIngredients {
     public static final Ingredient HOON = new IngredientBuilder().withName("Hoon Meier").build();
     public static final Ingredient IDA = new IngredientBuilder().withName("Ida Mueller").build();
 
-    // Manually added - Person's details found in {@code CommandTestUtil}
+    // Manually added - Ingredient's details found in {@code CommandTestUtil}
     public static final Ingredient AMY = new IngredientBuilder().withName(VALID_NAME_AMY).build();
     public static final Ingredient BOB = new IngredientBuilder().withName(VALID_NAME_BOB).build();
 
@@ -39,7 +39,7 @@ public class TypicalIngredients {
     private TypicalIngredients() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code Inventory} with all the typical ingredients.
      */
     public static Inventory getTypicalInventory() {
         Inventory ab = new Inventory();

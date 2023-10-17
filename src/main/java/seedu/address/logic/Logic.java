@@ -24,17 +24,17 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the Inventory.
      *
      * @see seedu.address.model.Model#getInventory()
      */
     ReadOnlyInventory getInventory();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
+    /** Returns an unmodifiable view of the filtered list of ingredients */
     ObservableList<Ingredient> getFilteredIngredientList();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' inventory file path.
      */
     Path getInventoryFilePath();
 

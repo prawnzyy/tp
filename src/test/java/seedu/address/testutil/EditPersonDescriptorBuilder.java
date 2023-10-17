@@ -4,43 +4,43 @@
 //import java.util.stream.Collectors;
 //import java.util.stream.Stream;
 //
-//import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+//import seedu.address.logic.commands.EditCommand.EditIngredientDescriptor;
 //import seedu.address.model.ingredient.Name;
 //import seedu.address.model.ingredient.Ingredient;
 //import seedu.address.model.tag.Tag;
 //
 ///**
-// * A utility class to help with building EditPersonDescriptor objects.
+// * A utility class to help with building EditIngredientDescriptor objects.
 // */
-//public class EditPersonDescriptorBuilder {
+//public class EditIngredientDescriptorBuilder {
 //
-//    private EditPersonDescriptor descriptor;
+//    private EditIngredientDescriptor descriptor;
 //
-//    public EditPersonDescriptorBuilder() {
-//        descriptor = new EditPersonDescriptor();
+//    public EditIngredientDescriptorBuilder() {
+//        descriptor = new EditIngredientDescriptor();
 //    }
 //
-//    public EditPersonDescriptorBuilder(EditPersonDescriptor descriptor) {
-//        this.descriptor = new EditPersonDescriptor(descriptor);
+//    public EditIngredientDescriptorBuilder(EditIngredientDescriptor descriptor) {
+//        this.descriptor = new EditIngredientDescriptor(descriptor);
 //    }
 //
 //    /**
-//     * Returns an {@code EditPersonDescriptor} with fields containing {@code ingredient}'s details
+//     * Returns an {@code EditIngredientDescriptor} with fields containing {@code ingredient}'s details
 //     */
-//    public EditPersonDescriptorBuilder(Ingredient ingredient) {
-//        descriptor = new EditPersonDescriptor();
+//    public EditIngredientDescriptorBuilder(Ingredient ingredient) {
+//        descriptor = new EditIngredientDescriptor();
 //        descriptor.setName(ingredient.getName());
 //    }
 //
 //    /**
-//     * Sets the {@code Name} of the {@code EditPersonDescriptor} that we are building.
+//     * Sets the {@code Name} of the {@code EditIngredientDescriptor} that we are building.
 //     */
-//    public EditPersonDescriptorBuilder withName(String name) {
+//    public EditIngredientDescriptorBuilder withName(String name) {
 //        descriptor.setName(new Name(name));
 //        return this;
 //    }
 //
-//    public EditPersonDescriptor build() {
+//    public EditIngredientDescriptor build() {
 //        return descriptor;
 //    }
 //}

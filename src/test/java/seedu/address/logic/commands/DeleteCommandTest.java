@@ -5,9 +5,9 @@
 //import static org.junit.jupiter.api.Assertions.assertTrue;
 ////import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 //import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-////import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-//import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-//import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+////import static seedu.address.logic.commands.CommandTestUtil.showIngredientAtIndex;
+//import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_INGREDIENT;
+//import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_INGREDIENT;
 //import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 //
 //import org.junit.jupiter.api.Test;
@@ -29,14 +29,14 @@
 //
 ////    @Test
 ////    public void execute_validIndexUnfilteredList_success() {
-////        Person personToDelete = model.getFilteredIngredientList().get(INDEX_FIRST_PERSON.getZeroBased());
-////        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+////        Ingredient ingredientToDelete = model.getFilteredIngredientList().get(INDEX_FIRST_INGREDIENT.getZeroBased());
+////        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_INGREDIENT);
 ////
-////        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
-////                Messages.format(personToDelete));
+////        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_INGREDIENT_SUCCESS,
+////                Messages.format(ingredientToDelete));
 ////
 ////        ModelManager expectedModel = new ModelManager(model.getInventory(), new UserPrefs());
-////        expectedModel.deletePerson(personToDelete);
+////        expectedModel.deleteIngredient(ingredientToDelete);
 ////
 ////        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
 ////    }
@@ -46,49 +46,49 @@
 ////        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredIngredientList().size() + 1);
 ////        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 ////
-////        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+////        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_INGREDIENT_DISPLAYED_INDEX);
 ////    }
 //
 ////    @Test
 ////    public void execute_validIndexFilteredList_success() {
-////        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+////        showIngredientAtIndex(model, INDEX_FIRST_INGREDIENT);
 ////
-////        Ingredient personToDelete = model.getFilteredIngredientList().get(INDEX_FIRST_PERSON.getZeroBased());
-////        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+////        Ingredient ingredientToDelete = model.getFilteredIngredientList().get(INDEX_FIRST_INGREDIENT.getZeroBased());
+////        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_INGREDIENT);
 ////
-////        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
-////                Messages.format(personToDelete));
+////        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_INGREDIENT_SUCCESS,
+////                Messages.format(ingredientToDelete));
 ////
 ////        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs());
-////        expectedModel.deleteIngredient(personToDelete);
-////        showNoPerson(expectedModel);
+////        expectedModel.deleteIngredient(ingredientToDelete);
+////        showNoIngredient(expectedModel);
 ////
 ////        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
 ////    }
 //
 ////    @Test
 ////    public void execute_invalidIndexFilteredList_throwsCommandException() {
-////        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+////        showIngredientAtIndex(model, INDEX_FIRST_INGREDIENT);
 ////
-////        Index outOfBoundIndex = INDEX_SECOND_PERSON;
+////        Index outOfBoundIndex = INDEX_SECOND_INGREDIENT;
 ////        // ensures that outOfBoundIndex is still in bounds of address book list
 ////        assertTrue(outOfBoundIndex.getZeroBased() < model.getInventory().getIngredientList().size());
 ////
 ////        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 ////
-////        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+////        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_INGREDIENT_DISPLAYED_INDEX);
 ////    }
 //
 //    @Test
 //    public void equals() {
-//        DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_PERSON);
-//        DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_PERSON);
+//        DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_INGREDIENT);
+//        DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_INGREDIENT);
 //
 //        // same object -> returns true
 //        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 //
 //        // same values -> returns true
-//        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST_PERSON);
+//        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST_INGREDIENT);
 //        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 //
 //        // different types -> returns false
@@ -112,7 +112,7 @@
 //    /**
 //     * Updates {@code model}'s filtered list to show no one.
 //     */
-//    private void showNoPerson(Model model) {
+//    private void showNoIngredient(Model model) {
 //        model.updateFilteredIngredientList(p -> false);
 //
 //        assertTrue(model.getFilteredIngredientList().isEmpty());

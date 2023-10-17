@@ -4,26 +4,26 @@ import seedu.address.model.Inventory;
 import seedu.address.model.ingredient.Ingredient;
 
 /**
- * A utility class to help with building Addressbook objects.
+ * A utility class to help with building Inventory objects.
  * Example usage: <br>
- *     {@code AddressBook ab = new AddressBookBuilder().withPerson("John", "Doe").build();}
+ *     {@code Inventory ab = new InventoryBuilder().withIngredient("John", "Doe").build();}
  */
-public class AddressBookBuilder {
+public class InventoryBuilder {
 
     private Inventory inventory;
 
-    public AddressBookBuilder() {
+    public InventoryBuilder() {
         inventory = new Inventory();
     }
 
-    public AddressBookBuilder(Inventory inventory) {
+    public InventoryBuilder(Inventory inventory) {
         this.inventory = inventory;
     }
 
     /**
-     * Adds a new {@code Person} to the {@code AddressBook} that we are building.
+     * Adds a new {@code Ingredient} to the {@code Inventory} that we are building.
      */
-    public AddressBookBuilder withPerson(Ingredient ingredient) {
+    public InventoryBuilder withIngredient(Ingredient ingredient) {
         inventory.addIngredient(ingredient);
         return this;
     }

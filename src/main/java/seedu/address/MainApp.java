@@ -48,7 +48,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing AddressBook ]===========================");
+        logger.info("=============================[ Initializing Inventory App ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -68,25 +68,25 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s inventory and {@code userPrefs}. <br>
+     * The data from the sample inventory will be used instead if {@code storage}'s inventory is not found,
+     * or an empty inventory will be used instead if errors occur when reading {@code storage}'s inventory.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getInventoryFilePath());
 
-        Optional<ReadOnlyInventory> addressBookOptional;
+        Optional<ReadOnlyInventory> inventoryOptional;
         ReadOnlyInventory initialData;
         try {
-            addressBookOptional = storage.readInventory();
-            if (!addressBookOptional.isPresent()) {
+            inventoryOptional = storage.readInventory();
+            if (!inventoryOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getInventoryFilePath()
-                        + " populated with a sample AddressBook.");
+                        + " populated with a sample Inventory.");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = inventoryOptional.orElseGet(SampleDataUtil::getSampleInventory);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getInventoryFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+                    + " Will be starting with an empty Inventory.");
             initialData = new Inventory();
         }
 
@@ -170,13 +170,13 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting Inventory App " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Address Book ] =============================");
+        logger.info("============================ [ Stopping Inventory App ] =============================");
         try {
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {

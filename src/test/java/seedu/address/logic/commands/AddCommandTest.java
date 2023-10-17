@@ -12,36 +12,36 @@
 //public class AddCommandTest {
 //
 //    @Test
-//    public void constructor_nullPerson_throwsNullPointerException() {
+//    public void constructor_nullIngredient_throwsNullPointerException() {
 //        assertThrows(NullPointerException.class, () -> new AddCommand(null));
 //    }
 //
 //    @Test
-//    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-//        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-//        Person validPerson = new IngredientBuilder().build();
+//    public void execute_ingredientAcceptedByModel_addSuccessful() throws Exception {
+//        ModelStubAcceptingIngredientAdded modelStub = new ModelStubAcceptingIngredientAdded();
+//        Ingredient validIngredient = new IngredientBuilder().build();
 //
-//        CommandResult commandResult = new AddCommand(validPerson).execute(modelStub);
+//        CommandResult commandResult = new AddCommand(validIngredient).execute(modelStub);
 //
-//        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validPerson)),
+//        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validIngredient)),
 //                commandResult.getFeedbackToUser());
-//        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
+//        assertEquals(Arrays.asList(validIngredient), modelStub.ingredientsAdded);
 //    }
 //
 //    @Test
-//    public void execute_duplicatePerson_throwsCommandException() {
-//        Person validPerson = new IngredientBuilder().build();
-//        AddCommand addCommand = new AddCommand(validPerson);
-//        ModelStub modelStub = new ModelStubWithPerson(validPerson);
+//    public void execute_duplicateIngredient_throwsCommandException() {
+//        Ingredient validIngredient = new IngredientBuilder().build();
+//        AddCommand addCommand = new AddCommand(validIngredient);
+//        ModelStub modelStub = new ModelStubWithIngredient(validIngredient);
 //
-//        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON,
+//        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_INGREDIENT,
 //          () -> addCommand.execute(modelStub));
 //    }
 //
 //    @Test
 //    public void equals() {
-//        Person alice = new IngredientBuilder().withName("Alice").build();
-//        Person bob = new IngredientBuilder().withName("Bob").build();
+//        Ingredient alice = new IngredientBuilder().withName("Alice").build();
+//        Ingredient bob = new IngredientBuilder().withName("Bob").build();
 //        AddCommand addAliceCommand = new AddCommand(alice);
 //        AddCommand addBobCommand = new AddCommand(bob);
 //
@@ -99,47 +99,47 @@
 //        }
 //
 //        @Override
-//        public void setInventoryFilePath(Path addressBookFilePath) {
+//        public void setInventoryFilePath(Path inventoryFilePath) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
 //        @Override
-//        public void addPerson(Person ingredient) {
+//        public void addIngredient(Ingredient ingredient) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
 //        @Override
-//        public void setAddressBook(ReadOnlyAddressBook newData) {
+//        public void setInventory(ReadOnlyInventory newData) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
 //        @Override
-//        public ReadOnlyAddressBook getInventory() {
+//        public ReadOnlyInventory getInventory() {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
 //        @Override
-//        public boolean hasPerson(Person ingredient) {
+//        public boolean hasIngredient(Ingredient ingredient) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
 //        @Override
-//        public void deletePerson(Person target) {
+//        public void deleteIngredient(Ingredient target) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
 //        @Override
-//        public void setPerson(Person target, Person editedPerson) {
+//        public void setIngredient(Ingredient target, Ingredient editedIngredient) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
 //        @Override
-//        public ObservableList<Person> getFilteredIngredientList() {
+//        public ObservableList<Ingredient> getFilteredIngredientList() {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
 //        @Override
-//        public void updateFilteredPersonList(Predicate<Person> predicate) {
+//        public void updateFilteredIngredientList(Predicate<Ingredient> predicate) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //    }
@@ -147,42 +147,42 @@
 //    /**
 //     * A Model stub that contains a single ingredient.
 //     */
-//    private class ModelStubWithPerson extends ModelStub {
-//        private final Person ingredient;
+//    private class ModelStubWithIngredient extends ModelStub {
+//        private final Ingredient ingredient;
 //
-//        ModelStubWithPerson(Person ingredient) {
+//        ModelStubWithIngredient(Ingredient ingredient) {
 //            requireNonNull(ingredient);
 //            this.ingredient = ingredient;
 //        }
 //
 //        @Override
-//        public boolean hasPerson(Person ingredient) {
+//        public boolean hasIngredient(Ingredient ingredient) {
 //            requireNonNull(ingredient);
-//            return this.ingredient.isSamePerson(ingredient);
+//            return this.ingredient.isSameIngredient(ingredient);
 //        }
 //    }
 //
 //    /**
 //     * A Model stub that always accept the ingredient being added.
 //     */
-//    private class ModelStubAcceptingPersonAdded extends ModelStub {
-//        final ArrayList<Person> personsAdded = new ArrayList<>();
+//    private class ModelStubAcceptingIngredientAdded extends ModelStub {
+//        final ArrayList<Ingredient> ingredientsAdded = new ArrayList<>();
 //
 //        @Override
-//        public boolean hasPerson(Person ingredient) {
+//        public boolean hasIngredient(Ingredient ingredient) {
 //            requireNonNull(ingredient);
-//            return personsAdded.stream().anyMatch(ingredient::isSamePerson);
+//            return ingredientsAdded.stream().anyMatch(ingredient::isSameIngredient);
 //        }
 //
 //        @Override
-//        public void addPerson(Person ingredient) {
+//        public void addIngredient(Ingredient ingredient) {
 //            requireNonNull(ingredient);
-//            personsAdded.add(ingredient);
+//            ingredientsAdded.add(ingredient);
 //        }
 //
 //        @Override
-//        public ReadOnlyAddressBook getInventory() {
-//            return new AddressBook();
+//        public ReadOnlyInventory getInventory() {
+//            return new Inventory();
 //        }
 //    }
 //

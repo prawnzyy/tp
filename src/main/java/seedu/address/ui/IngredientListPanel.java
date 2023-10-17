@@ -23,10 +23,10 @@ public class IngredientListPanel extends UiPart<Region> {
     /**
      * Creates a {@code IngredientListPanel} with the given {@code ObservableList}.
      */
-    public IngredientListPanel(ObservableList<Ingredient> personList) {
+    public IngredientListPanel(ObservableList<Ingredient> ingredientList) {
         super(FXML);
-        System.out.println(personList);
-        ingredientListView.setItems(personList);
+        System.out.println(ingredientList);
+        ingredientListView.setItems(ingredientList);
         ingredientListView.setCellFactory(listView -> new IngredientListViewCell());
     }
 
