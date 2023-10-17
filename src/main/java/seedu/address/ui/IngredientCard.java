@@ -41,6 +41,5 @@ public class IngredientCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(this.ingredient.getName().fullName);
         quantity.setText(this.ingredient.getQuantity().toString());
-
     }
 }
