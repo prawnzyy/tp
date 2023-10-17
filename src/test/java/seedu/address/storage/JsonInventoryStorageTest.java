@@ -18,6 +18,10 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.Inventory;
 import seedu.address.model.ReadOnlyInventory;
+import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Name;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
 
 public class JsonInventoryStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonInventoryStorageTest");
@@ -71,8 +75,8 @@ public class JsonInventoryStorageTest {
         ReadOnlyInventory readBack = jsonInventoryStorage.readInventory(filePath).get();
         assertEquals(original, new Inventory(readBack));
 
-        // Modify data, overwrite exiting file, and read back
-        original.removeIngredient(FLOUR.getName());
+        // Modify data, overwrite existing file, and read back
+        original.addIngredient(new Ingredient(new Name("Flour"), new Quantity(100, Unit.GRAM)));
         jsonInventoryStorage.saveInventory(original, filePath);
         readBack = jsonInventoryStorage.readInventory(filePath).get();
         assertEquals(original, new Inventory(readBack));
