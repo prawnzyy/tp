@@ -19,12 +19,12 @@ import seedu.address.model.ingredient.Ingredient;
 @JsonRootName(value = "inventory")
 class JsonSerializableInventory {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate ingredient(s).";
+    public static final String MESSAGE_DUPLICATE_INGREDIENT = "Ingredients list contains duplicate ingredient(s).";
 
     private final List<JsonAdaptedIngredient> ingredients = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableInventory} with the given persons.
+     * Constructs a {@code JsonSerializableInventory} with the given ingredients.
      */
     @JsonCreator
     public JsonSerializableInventory(@JsonProperty("ingredients") List<JsonAdaptedIngredient> ingredients) {
@@ -51,7 +51,7 @@ class JsonSerializableInventory {
         for (JsonAdaptedIngredient jsonAdaptedIngredient : ingredients) {
             Ingredient ingredient = jsonAdaptedIngredient.toModelType();
             if (inventory.hasIngredient(ingredient.getName())) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_INGREDIENT);
             }
             inventory.addIngredient(ingredient);
         }

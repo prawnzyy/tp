@@ -14,7 +14,7 @@ import seedu.address.model.ingredient.Quantity;
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Ingredient> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Ingredient> PREDICATE_SHOW_ALL_INGREDIENTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.

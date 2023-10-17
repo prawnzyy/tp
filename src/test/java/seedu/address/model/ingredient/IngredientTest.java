@@ -22,7 +22,7 @@ public class IngredientTest {
     */
 
     @Test
-    public void isSamePerson() {
+    public void isSameIngredient() {
         // same object -> returns true
         assertTrue(FLOUR.isSameIngredient(FLOUR));
 

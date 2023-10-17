@@ -6,7 +6,7 @@
 //import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 //import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 //import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-//import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+//import static seedu.address.model.Model.PREDICATE_SHOW_ALL_INGREDIENTS;
 //
 //import java.util.Collections;
 //import java.util.HashSet;
@@ -45,23 +45,23 @@
 //            + PREFIX_PHONE + "91234567 "
 //            + PREFIX_EMAIL + "johndoe@example.com";
 //
-//    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+//    public static final String MESSAGE_EDIT_INGREDIENT_SUCCESS = "Edited Ingredient: %1$s";
 //    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-//    public static final String MESSAGE_DUPLICATE_PERSON = "This ingredient already exists in the address book.";
+//    public static final String MESSAGE_DUPLICATE_INGREDIENT = "This ingredient already exists in the address book.";
 //
 //    private final Index index;
-//    private final EditPersonDescriptor editPersonDescriptor;
+//    private final EditIngredientDescriptor editIngredientDescriptor;
 //
 //    /**
 //     * @param index of the ingredient in the filtered ingredient list to edit
-//     * @param editPersonDescriptor details to edit the ingredient with
+//     * @param editIngredientDescriptor details to edit the ingredient with
 //     */
-//    public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
+//    public EditCommand(Index index, EditIngredientDescriptor editIngredientDescriptor) {
 //        requireNonNull(index);
-//        requireNonNull(editPersonDescriptor);
+//        requireNonNull(editIngredientDescriptor);
 //
 //        this.index = index;
-//        this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
+//        this.editIngredientDescriptor = new EditIngredientDescriptor(editIngredientDescriptor);
 //    }
 //
 //    @Override
@@ -70,33 +70,33 @@
 //        List<Ingredient> lastShownList = model.getFilteredIngredientList();
 //
 //        if (index.getZeroBased() >= lastShownList.size()) {
-//            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+//            throw new CommandException(Messages.MESSAGE_INVALID_INGREDIENT_DISPLAYED_INDEX);
 //        }
 //
-//        Ingredient personToEdit = lastShownList.get(index.getZeroBased());
-//        Ingredient editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+//        Ingredient ingredientToEdit = lastShownList.get(index.getZeroBased());
+//        Ingredient editedIngredient = createEditedIngredient(ingredientToEdit, editIngredientDescriptor);
 //
-//        if (!personToEdit.isSameIngredient(editedPerson) && model.hasIngredient(editedPerson)) {
-//            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+//        if (!ingredientToEdit.isSameIngredient(editedIngredient) && model.hasIngredient(editedIngredient)) {
+//            throw new CommandException(MESSAGE_DUPLICATE_INGREDIENT);
 //        }
 //
-//        model.useIngredient(personToEdit, null);
-//        model.updateFilteredIngredientList(PREDICATE_SHOW_ALL_PERSONS);
-//        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+//        model.useIngredient(ingredientToEdit, null);
+//        model.updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
+//        return new CommandResult(String.format(MESSAGE_EDIT_INGREDIENT_SUCCESS, Messages.format(editedIngredient)));
 //    }
 //
 //    /**
-//     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-//     * edited with {@code editPersonDescriptor}.
+//     * Creates and returns a {@code Ingredient} with the details of {@code ingredientToEdit}
+//     * edited with {@code editIngredientDescriptor}.
 //     */
-//    private static Ingredient createEditedPerson(Ingredient personToEdit, EditPersonDescriptor editPersonDescriptor) {
-//        assert personToEdit != null;
+//    private static Ingredient createEditedIngredient(Ingredient ingredientToEdit, EditIngredientDescriptor editIngredientDescriptor) {
+//        assert ingredientToEdit != null;
 //
-//        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-//        //Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-//        //Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-//        //Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-//        //Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+//        Name updatedName = editIngredientDescriptor.getName().orElse(ingredientToEdit.getName());
+//        //Phone updatedPhone = editIngredientDescriptor.getPhone().orElse(ingredientToEdit.getPhone());
+//        //Email updatedEmail = editIngredientDescriptor.getEmail().orElse(ingredientToEdit.getEmail());
+//        //Address updatedAddress = editIngredientDescriptor.getAddress().orElse(ingredientToEdit.getAddress());
+//        //Set<Tag> updatedTags = editIngredientDescriptor.getTags().orElse(ingredientToEdit.getTags());
 //
 //        return new Ingredient(updatedName, null);
 //    }
@@ -114,14 +114,14 @@
 //
 //        EditCommand otherEditCommand = (EditCommand) other;
 //        return index.equals(otherEditCommand.index)
-//                && editPersonDescriptor.equals(otherEditCommand.editPersonDescriptor);
+//                && editIngredientDescriptor.equals(otherEditCommand.editIngredientDescriptor);
 //    }
 //
 //    @Override
 //    public String toString() {
 //        return new ToStringBuilder(this)
 //                .add("index", index)
-//                .add("editPersonDescriptor", editPersonDescriptor)
+//                .add("editIngredientDescriptor", editIngredientDescriptor)
 //                .toString();
 //    }
 //
@@ -129,17 +129,17 @@
 //     * Stores the details to edit the ingredient with. Each non-empty field value will replace the
 //     * corresponding field value of the ingredient.
 //     */
-//    public static class EditPersonDescriptor {
+//    public static class EditIngredientDescriptor {
 //        private Name name;
 //        private Set<Tag> tags;
 //
-//        public EditPersonDescriptor() {}
+//        public EditIngredientDescriptor() {}
 //
 //        /**
 //         * Copy constructor.
 //         * A defensive copy of {@code tags} is used internally.
 //         */
-//        public EditPersonDescriptor(EditPersonDescriptor toCopy) {
+//        public EditIngredientDescriptor(EditIngredientDescriptor toCopy) {
 //            setName(toCopy.name);
 //            setTags(toCopy.tags);
 //        }
@@ -207,13 +207,13 @@
 //            }
 //
 //            // instanceof handles nulls
-//            if (!(other instanceof EditPersonDescriptor)) {
+//            if (!(other instanceof EditIngredientDescriptor)) {
 //                return false;
 //            }
 //
-//            EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
-//            return Objects.equals(name, otherEditPersonDescriptor.name)
-//                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+//            EditIngredientDescriptor otherEditIngredientDescriptor = (EditIngredientDescriptor) other;
+//            return Objects.equals(name, otherEditIngredientDescriptor.name)
+//                    && Objects.equals(tags, otherEditIngredientDescriptor.tags);
 //        }
 //
 //        @Override

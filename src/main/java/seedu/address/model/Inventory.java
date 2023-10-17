@@ -16,7 +16,7 @@ import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
  * Wraps all data at the address-book level
- * Duplicates are not allowed (by .isSamePerson comparison)
+ * Duplicates are not allowed (by .isSameIngredient comparison)
  */
 public class Inventory implements ReadOnlyInventory {
 
@@ -106,9 +106,9 @@ public class Inventory implements ReadOnlyInventory {
     }
 
     /**
-     * Replaces the given ingredient {@code target} in the list with {@code editedPerson}.
+     * Replaces the given ingredient {@code target} in the list with {@code editedIngredient}.
      * {@code target} must exist in the address book.
-     * The ingredient identity of {@code editedPerson} must not be the same as
+     * The ingredient identity of {@code editedIngredient} must not be the same as
      * another existing ingredient in the address book.
      */
     public void useIngredient(Name ingredientName, Quantity quantity) {
@@ -148,7 +148,7 @@ public class Inventory implements ReadOnlyInventory {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("persons", ingredients)
+                .add("ingredients", ingredients)
                 .toString();
     }
 

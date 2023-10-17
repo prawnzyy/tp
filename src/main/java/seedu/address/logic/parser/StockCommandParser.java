@@ -1,6 +1,6 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_INGREDIENTS;
 
 import java.util.Arrays;
 
@@ -23,7 +23,7 @@ public class StockCommandParser implements Parser<StockCommand> {
         String trimmedArgs = args.trim();
         // show the entire stock for when there are no arguments - check!
         if (trimmedArgs.isEmpty()) {
-            return new StockCommand(PREDICATE_SHOW_ALL_PERSONS);
+            return new StockCommand(PREDICATE_SHOW_ALL_INGREDIENTS);
         }
 
         String[] nameKeywords = trimmedArgs.split("\\s+");

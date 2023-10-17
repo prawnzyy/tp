@@ -53,12 +53,12 @@ public class JsonInventoryStorageTest {
     }
 
     @Test
-    public void readInventory_invalidPersonInventory_throwDataLoadingException() {
+    public void readInventory_invalidIngredientInventory_throwDataLoadingException() {
         assertThrows(DataLoadingException.class, () -> readInventory("invalidIngredientInventory.json"));
     }
 
     @Test
-    public void readInventory_invalidAndValidPersonInventory_throwDataLoadingException() {
+    public void readInventory_invalidAndValidIngredientInventory_throwDataLoadingException() {
         assertThrows(DataLoadingException.class, () -> readInventory("invalidAndValidIngredientInventory.json"));
     }
 

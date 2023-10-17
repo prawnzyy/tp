@@ -29,7 +29,7 @@ public class AddCommand extends Command {
             + PREFIX_UNIT + "ml ";
 
     public static final String MESSAGE_SUCCESS = "New ingredient added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This ingredient already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_INGREDIENT = "This ingredient already exists in the address book";
 
     private final Ingredient toAdd;
 

@@ -114,19 +114,20 @@ public class ModelManager implements Model {
     @Override
     public void addIngredient(Ingredient ingredient) {
         inventory.addIngredient(ingredient);
-        updateFilteredIngredientList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
     }
 
     @Override
     public void useIngredient(Name ingredientName, Quantity quantity) {
         requireAllNonNull(ingredientName, quantity);
         inventory.useIngredient(ingredientName, quantity);
+        updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Ingredient List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Ingredient} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override

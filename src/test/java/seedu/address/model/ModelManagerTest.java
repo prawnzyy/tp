@@ -3,7 +3,7 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_INGREDIENTS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIngredients.EGG;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
@@ -95,7 +95,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        Inventory addressBook = new AddressBookBuilder().withPerson(FLOUR).withPerson(EGG).build();
+        Inventory addressBook = new AddressBookBuilder().withIngredient(FLOUR).withIngredient(EGG).build();
         Inventory differentAddressBook = new Inventory();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -122,7 +122,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredIngredientList(PREDICATE_SHOW_ALL_PERSONS);
+        modelManager.updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

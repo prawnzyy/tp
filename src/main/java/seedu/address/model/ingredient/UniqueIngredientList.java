@@ -84,8 +84,8 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
     }
 
     /**
-     * Replaces the contents of this list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of this list with {@code ingredients}.
+     * {@code ingredients} must not contain duplicate ingredients.
      */
     public void setIngredients(List<Ingredient> ingredients) {
         requireAllNonNull(ingredients);
@@ -134,7 +134,7 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
     }
 
     /**
-     * Returns true if {@code persons} contains only unique persons.
+     * Returns true if {@code ingredients} contains only unique ingredients.
      */
     private boolean ingredientsAreUnique(List<Ingredient> ingredients) {
         for (int i = 0; i < ingredients.size() - 1; i++) {
