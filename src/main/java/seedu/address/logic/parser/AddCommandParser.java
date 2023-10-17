@@ -5,13 +5,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
 
-
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 
@@ -20,7 +19,7 @@ import seedu.address.model.ingredient.Unit;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
-     // change later to make the unit optional
+    // change later to make the unit optional
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.

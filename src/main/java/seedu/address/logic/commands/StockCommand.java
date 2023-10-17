@@ -1,63 +1,61 @@
 package seedu.address.logic.commands;
 
-import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
-
-import seedu.address.model.Model;
-
-import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
+import static java.util.Objects.requireNonNull;
 
 import java.util.function.Predicate;
 
-import static java.util.Objects.requireNonNull;
+import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.Messages;
+import seedu.address.model.Model;
+import seedu.address.model.ingredient.Ingredient;
 
+// TODO Add JavaDocs
+/**
+ * Stub JavaDocs
+ */
+public class StockCommand extends Command {
 
-    public class StockCommand extends Command {
+    public static final String COMMAND_WORD = "stock";
 
-        public static final String COMMAND_WORD = "stock";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all specified ingredients and their respective"
+            + "quantities. "
+            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
+            + "Example: " + COMMAND_WORD + " flour milk";
 
-        public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all specified ingredients and their respective"
-                + "quantities. "
-                + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-                + "Example: " + COMMAND_WORD + " flour milk";
+    private final Predicate<Ingredient> predicate;
 
-        private final Predicate<Ingredient> predicate;
+    public StockCommand(Predicate<Ingredient> predicate) {
+        this.predicate = predicate;
+    }
 
-        public StockCommand(Predicate<Ingredient> predicate) {
-            this.predicate = predicate;
+    @Override
+    public CommandResult execute(Model model) {
+        requireNonNull(model);
+        model.updateFilteredIngredientList(predicate);
+        return new CommandResult(
+                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredIngredientList().size()));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
         }
 
-
-
-        @Override
-        public CommandResult execute(Model model) {
-            requireNonNull(model);
-            model.updateFilteredIngredientList(predicate);
-            return new CommandResult(
-                    String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredIngredientList().size()));
+        // instanceof handles nulls
+        if (!(other instanceof StockCommand)) {
+            return false;
         }
 
-        @Override
-        public boolean equals(Object other) {
-            if (other == this) {
-                return true;
-            }
+        StockCommand otherStockCommand = (StockCommand) other;
+        return predicate.equals(otherStockCommand.predicate);
+    }
 
-            // instanceof handles nulls
-            if (!(other instanceof StockCommand)) {
-                return false;
-            }
-
-            StockCommand otherStockCommand = (StockCommand) other;
-            return predicate.equals(otherStockCommand.predicate);
-        }
-
-        @Override
-        public String toString() {
-            return new ToStringBuilder(this)
-                    .add("predicate", predicate)
-                    .toString();
-        }
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("predicate", predicate)
+                .toString();
+    }
 
 }

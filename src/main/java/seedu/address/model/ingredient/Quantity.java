@@ -1,7 +1,9 @@
 package seedu.address.model.ingredient;
 
-import javax.lang.model.element.QualifiedNameable;
-
+// TODO Add JavaDocs
+/**
+ * Stub
+ */
 public class Quantity {
     private double value;
     private Unit unit;
@@ -58,6 +60,11 @@ public class Quantity {
         return value + " " + unit.toString();
     }
 
+    /**
+     * Parses the string argument as a Quantity.
+     * @param quantityString The string to be parsed.
+     * @return The parsed Quantity object.
+     */
     public static Quantity parseQuantity(String quantityString) {
         String[] splitStr = quantityString.split(" ");
 
@@ -67,6 +74,12 @@ public class Quantity {
         return new Quantity(val, unit);
     }
 
+    // TODO Add JavaDocs
+    /**
+     * Stub
+     * @param quantity Stub
+     * @return Stub
+     */
     public boolean isLessThan(Quantity quantity) {
         return value < quantity.convertToUnit(unit).value;
     }

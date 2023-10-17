@@ -48,6 +48,13 @@ public class ParserUtil {
         return new Name(trimmedName);
     }
 
+    // Todo Add JavaDocs
+    /**
+     * Stub
+     * @param amount Stub
+     * @return Stub
+     * @throws ParseException Stub
+     */
     public static double parseAmount(String amount) throws ParseException {
         requireNonNull(amount);
         try {
@@ -57,6 +64,14 @@ public class ParserUtil {
         }
     }
 
+    // Todo Add JavaDocs
+
+    /**
+     * Stub
+     * @param unit Stub
+     * @return Stub
+     * @throws ParseException Stub
+     */
     public static Unit parseUnitOfIngredient(String unit) throws ParseException {
         requireNonNull(unit);
         return Unit.parseUnit(unit);
