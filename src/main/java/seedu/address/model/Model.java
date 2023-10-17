@@ -37,21 +37,21 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' inventory file path.
      */
     Path getInventoryFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' inventory file path.
      */
     void setInventoryFilePath(Path inventoryFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces inventory data with the data in {@code inventory}.
      */
     void setInventory(ReadOnlyInventory inventory);
 
-    /** Returns the AddressBook */
+    /** Returns the Inventory */
     ReadOnlyInventory getInventory();
 
     boolean hasIngredient(Name ingredientName);
@@ -64,7 +64,7 @@ public interface Model {
 
     /**
      * Adds the given ingredient.
-     * {@code ingredient} must not already exist in the address book.
+     * {@code ingredient} must not already exist in the inventory.
      */
     void addIngredient(Ingredient ingredient);
 

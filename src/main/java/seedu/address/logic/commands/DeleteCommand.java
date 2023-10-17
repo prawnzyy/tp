@@ -12,7 +12,7 @@
 //import seedu.address.model.ingredient.Ingredient;
 //
 ///**
-// * Deletes a ingredient identified using it's displayed index from the address book.
+// * Deletes a ingredient identified using it's displayed index from the inventory.
 // */
 //public class DeleteCommand extends Command {
 //

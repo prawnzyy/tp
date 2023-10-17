@@ -16,9 +16,9 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-public class AddressBookParserTest {
+public class InventoryAppParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final InventoryAppParser parser = new InventoryAppParser();
     /*
     @Test
     public void parseCommand_add() throws Exception {

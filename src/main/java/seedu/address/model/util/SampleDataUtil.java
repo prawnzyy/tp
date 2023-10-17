@@ -13,7 +13,7 @@ import seedu.address.model.ingredient.Unit;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code Inventory} with sample data.
  */
 public class SampleDataUtil {
     public static Ingredient[] getSampleIngredients() {
@@ -26,7 +26,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyInventory getSampleAddressBook() {
+    public static ReadOnlyInventory getSampleInventory() {
         Inventory sampleAb = new Inventory();
         for (Ingredient sampleIngredient : getSampleIngredients()) {
             sampleAb.addIngredient(sampleIngredient);

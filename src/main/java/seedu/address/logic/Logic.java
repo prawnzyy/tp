@@ -24,7 +24,7 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the Inventory.
      *
      * @see seedu.address.model.Model#getInventory()
      */
@@ -34,7 +34,7 @@ public interface Logic {
     ObservableList<Ingredient> getFilteredIngredientList();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' inventory file path.
      */
     Path getInventoryFilePath();
 

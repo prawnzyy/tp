@@ -42,10 +42,10 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonInventoryStorage addressBookStorage =
-                new JsonInventoryStorage(temporaryFolder.resolve("addressBook.json"));
+        JsonInventoryStorage inventoryStorage =
+                new JsonInventoryStorage(temporaryFolder.resolve("inventory.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -146,10 +146,10 @@ public class LogicManagerTest {
     private void assertCommandFailureForExceptionFromStorage(IOException e, String expectedMessage) {
         Path prefPath = temporaryFolder.resolve("ExceptionUserPrefs.json");
 
-        // Inject LogicManager with an AddressBookStorage that throws the IOException e when saving
-        JsonInventoryStorage addressBookStorage = new JsonInventoryStorage(prefPath) {
+        // Inject LogicManager with an InventoryStorage that throws the IOException e when saving
+        JsonInventoryStorage inventoryStorage = new JsonInventoryStorage(prefPath) {
             @Override
-            public void saveInventory(ReadOnlyInventory addressBook, Path filePath)
+            public void saveInventory(ReadOnlyInventory inventory, Path filePath)
                     throws IOException {
                 throw e;
             }
@@ -157,11 +157,11 @@ public class LogicManagerTest {
 
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage);
 
         logic = new LogicManager(model, storage);
 
-        // Triggers the saveAddressBook method by executing an add command
+        // Triggers the saveInventory method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY
                 + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
         // Ingredient expectedIngredient = new IngredientBuilder(AMY).withTags().build();

@@ -12,7 +12,7 @@ import seedu.address.model.UserPrefs;
 public class ClearCommandTest {
 
     @Test
-    public void execute_emptyAddressBook_success() {
+    public void execute_emptyInventory_success() {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 
@@ -20,10 +20,10 @@ public class ClearCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyAddressBook_success() {
+    public void execute_nonEmptyInventory_success() {
         Model model = new ModelManager(getTypicalInventory(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalInventory(), new UserPrefs());
-        //expectedModel.setInventory(new AddressBook());
+        //expectedModel.setInventory(new Inventory());
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
     }

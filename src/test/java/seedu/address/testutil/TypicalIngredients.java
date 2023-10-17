@@ -39,7 +39,7 @@ public class TypicalIngredients {
     private TypicalIngredients() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical ingredients.
+     * Returns an {@code Inventory} with all the typical ingredients.
      */
     public static Inventory getTypicalInventory() {
         Inventory ab = new Inventory();

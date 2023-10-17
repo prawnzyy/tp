@@ -51,8 +51,8 @@ public class StorageManagerTest {
     public void inventoryReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonAddressBookStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
+         * {@link JsonInventoryStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonInventoryStorageTest} class.
          */
         Inventory original = getTypicalInventory();
         storageManager.saveInventory(original);
@@ -61,7 +61,7 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void getAddressBookFilePath() {
+    public void getInventoryFilePath() {
         assertNotNull(storageManager.getInventoryFilePath());
     }
 

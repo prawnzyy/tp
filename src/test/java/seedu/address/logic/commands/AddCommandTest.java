@@ -99,7 +99,7 @@
 //        }
 //
 //        @Override
-//        public void setInventoryFilePath(Path addressBookFilePath) {
+//        public void setInventoryFilePath(Path inventoryFilePath) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
@@ -109,12 +109,12 @@
 //        }
 //
 //        @Override
-//        public void setAddressBook(ReadOnlyAddressBook newData) {
+//        public void setInventory(ReadOnlyInventory newData) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
 //        @Override
-//        public ReadOnlyAddressBook getInventory() {
+//        public ReadOnlyInventory getInventory() {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //
@@ -181,8 +181,8 @@
 //        }
 //
 //        @Override
-//        public ReadOnlyAddressBook getInventory() {
-//            return new AddressBook();
+//        public ReadOnlyInventory getInventory() {
+//            return new Inventory();
 //        }
 //    }
 //

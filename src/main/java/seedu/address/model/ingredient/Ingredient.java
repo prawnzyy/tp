@@ -7,7 +7,7 @@ import java.util.Objects;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Represents a Ingredient in the address book.
+ * Represents a Ingredient in the inventory.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Ingredient {

@@ -15,7 +15,7 @@ import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 
 /**
- * Use an ingredient from the address book.
+ * Use an ingredient from the inventory.
  */
 public class UseCommand extends Command {
 

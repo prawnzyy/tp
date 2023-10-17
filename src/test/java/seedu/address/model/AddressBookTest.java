@@ -20,7 +20,7 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.exceptions.DuplicateIngredientException;
 import seedu.address.testutil.IngredientBuilder;
 
-public class AddressBookTest {
+public class InventoryTest {
 
     private final Inventory inventory = new Inventory();
 
@@ -46,7 +46,7 @@ public class AddressBookTest {
         // Two ingredients with the same identity fields
         Ingredient editedAlice = new IngredientBuilder(FLOUR).build();
         List<Ingredient> newIngredients = Arrays.asList(FLOUR, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newIngredients);
+        InventoryStub newData = new InventoryStub(newIngredients);
 
         assertThrows(DuplicateIngredientException.class, () -> inventory.resetData(newData));
     }
@@ -86,12 +86,12 @@ public class AddressBookTest {
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose ingredients list can violate interface constraints.
+     * A stub ReadOnlyInventory whose ingredients list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyInventory {
+    private static class InventoryStub implements ReadOnlyInventory {
         private final ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Ingredient> ingredients) {
+        InventoryStub(Collection<Ingredient> ingredients) {
             this.ingredients.setAll(ingredients);
         }
 

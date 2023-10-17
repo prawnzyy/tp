@@ -42,7 +42,7 @@ class JsonSerializableInventory {
     }
 
     /**
-     * Converts this address book into the model's {@code Inventory} object.
+     * Converts this inventory into the model's {@code Inventory} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
