@@ -1,5 +1,7 @@
 package seedu.address.model.ingredient;
 
+import javax.lang.model.element.QualifiedNameable;
+
 public class Quantity {
     private double value;
     private Unit unit;
@@ -21,16 +23,16 @@ public class Quantity {
      * Adds a quantity to this quantity.
      * @param otherQuantity
      */
-    protected void add(Quantity otherQuantity) {
-        value += otherQuantity.convertToUnit(unit).value;
+    protected Quantity add(Quantity otherQuantity) {
+        return new Quantity(value + otherQuantity.convertToUnit(unit).value, unit);
     }
 
     /**
      * Subtracts a quantity from this quantity.
      * @param quantity
      */
-    protected void subtract(Quantity quantity) {
-        value -= quantity.convertToUnit(unit).value;
+    protected Quantity subtract(Quantity quantity) {
+        return new Quantity(value - quantity.convertToUnit(unit).value, unit);
     }
 
     /**
@@ -63,5 +65,9 @@ public class Quantity {
         Unit unit = Unit.parseUnit(splitStr[1]);
 
         return new Quantity(val, unit);
+    }
+
+    public boolean isLessThan(Quantity quantity) {
+        return value < quantity.convertToUnit(unit).value;
     }
 }

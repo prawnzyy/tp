@@ -52,9 +52,9 @@ public class Ingredient {
      * Combines another ingredient of the same type with this ingredient, combining their quantities .
      * @param otherIngredient
      */
-    protected void combineWith(Ingredient otherIngredient) {
+    public Ingredient combineWith(Ingredient otherIngredient) {
         //otherIngredient is guaranteed to be of the same type as this ingredient.
-        this.quantity.add(otherIngredient.quantity);
+        return new Ingredient(name, this.quantity.add(otherIngredient.quantity));
     }
 
     /**
@@ -102,7 +102,7 @@ public class Ingredient {
                 .toString();
     }
 
-    public void use(Quantity quantity) {
-        this.quantity.subtract(quantity);
+    public Ingredient use(Quantity quantity) {
+        return new Ingredient(name, this.quantity.subtract(quantity));
     }
 }

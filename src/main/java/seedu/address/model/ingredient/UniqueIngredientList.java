@@ -42,9 +42,6 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
      */
     public void add(Ingredient toAdd) {
         requireNonNull(toAdd);
-        if (contains(toAdd)) {
-            internalList.get(internalList.indexOf(toAdd)).combineWith(toAdd);
-        }
         internalList.add(toAdd);
     }
 
@@ -57,6 +54,13 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
         if (!internalList.remove(toRemove)) {
             throw new IngredientNotFoundException();
         }
+    }
+
+    public void replace(Ingredient toReplace, Ingredient toAdd) {
+        requireAllNonNull(toReplace, toAdd);
+        int index = internalList.indexOf(toReplace);
+        internalList.remove(toReplace);
+        internalList.add(index, toAdd);
     }
 
     /**
