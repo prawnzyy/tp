@@ -89,7 +89,17 @@ public class Inventory implements ReadOnlyInventory {
      * The ingredient must not already exist in the address book.
      */
     public void addIngredient(Ingredient p) {
-        ingredients.add(p);
+        if (ingredients.contains(p)) {
+            for(Ingredient ingredient : ingredients) {
+                if(ingredient.getName().equals(p.getName())) {
+                    ingredients.replace(ingredient, ingredient.combineWith(p));
+                    return;
+                }
+            }
+        }
+        else {
+            ingredients.add(p);
+        }
     }
 
     /**
@@ -101,7 +111,11 @@ public class Inventory implements ReadOnlyInventory {
         requireAllNonNull(ingredientName, quantity);
         for (Ingredient ingredient : ingredients) {
             if(ingredient.getName().equals(ingredientName)) {
-                ingredient.use(quantity);
+                if (ingredient.getQuantity().isLessThan(quantity)) {
+                   ingredients.remove(ingredient);
+                } else {
+                    ingredients.replace(ingredient, ingredient.use(quantity));
+                }
                 return;
             }
         }

@@ -15,6 +15,8 @@ public enum Unit {
     //May need to update this to 3-dimensional matrix for different ingredient conversions.
     private static final Map<Unit, Map<Unit, Double>> conversionMatrix = new HashMap<>();
 
+    private static final Map<String, Unit> unitAliases = new HashMap<>();
+
     //Set the values of the conversion matrix.
     static {
         for(int i = 0; i < Unit.values().length; i++) {
@@ -22,6 +24,12 @@ public enum Unit {
             addConversionRatio(Unit.values()[i], Unit.values()[i], 1);
         }
         addConversionRatio(KILOGRAM, GRAM, 1000);
+    }
+
+    static {
+        addUnitAliases(new String[]{"g", "gram", "GRAM"}, GRAM);
+        addUnitAliases(new String[]{"kg", "kilogram", "KILOGRAM"}, KILOGRAM);
+        addUnitAliases(new String[]{"pc", "pcs", "piece", "pieces", "PIECE", "PIECES"}, PIECE);
     }
 
     /**
@@ -39,6 +47,12 @@ public enum Unit {
         conversionMatrix.get(to).put(from, 1 / ratio);
     }
 
+    private static void addUnitAliases(String[] aliases, Unit unit) {
+        for (String alias : aliases) {
+            unitAliases.put(alias, unit);
+        }
+    }
+
     /**
      * Get the conversion ratio between two units.
      * @param from The unit to convert from.
@@ -49,21 +63,17 @@ public enum Unit {
         return conversionMatrix.get(from).get(to);
     }
 
+
     @Override
     public String toString() {
         return name();
     }
 
     public static Unit parseUnit(String str) {
-        if (str.equals(Unit.KILOGRAM.name())) {
-            return Unit.KILOGRAM;
-        } else if (str.equals(Unit.GRAM.name())) {
-            return Unit.GRAM;
-        } else if (str.equals(Unit.PIECE.name())) {
-            return Unit.PIECE;
+        if (unitAliases.containsKey(str)) {
+            return unitAliases.get(str);
         } else {
-            throw new UnitFormatException(str);
+            throw  new UnitFormatException(str);
         }
     }
-
 }
