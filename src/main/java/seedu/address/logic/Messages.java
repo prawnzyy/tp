@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
-import seedu.address.model.Inventory;
 import seedu.address.model.ingredient.Ingredient;
 
 /**
@@ -38,7 +37,7 @@ public class Messages {
     public static String format(Ingredient ingredient) {
         final StringBuilder builder = new StringBuilder();
         builder.append(ingredient.getName());
-                /*
+        /*
                 .append("; Phone: ")
                 .append(ingredient.getPhone())
                 .append("; Email: ")
@@ -46,7 +45,8 @@ public class Messages {
                 .append("; Address: ")
                 .append(ingredient.getAddress())
                 .append("; Tags: ");
-        ingredient.getTags().forEach(builder::append); */
+        ingredient.getTags().forEach(builder::append);
+        */
         return builder.toString();
     }
 

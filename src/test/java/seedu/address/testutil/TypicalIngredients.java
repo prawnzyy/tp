@@ -16,8 +16,10 @@ import seedu.address.model.ingredient.Unit;
  */
 public class TypicalIngredients {
 
-    public static final Ingredient FLOUR = new IngredientBuilder().withName("Flour").withQuantity(1.0, Unit.GRAM).build();
-    public static final Ingredient EGG = new IngredientBuilder().withName("Egg").withQuantity(1.0, Unit.PIECE).build();
+    public static final Ingredient FLOUR = new IngredientBuilder()
+            .withName("Flour").withQuantity(1.0, Unit.GRAM).build();
+    public static final Ingredient EGG = new IngredientBuilder()
+            .withName("Egg").withQuantity(1.0, Unit.PIECE).build();
     public static final Ingredient CARL = new IngredientBuilder().withName("Carl Kurz").build();
     public static final Ingredient DANIEL = new IngredientBuilder().withName("Daniel Meier").build();
     public static final Ingredient ELLE = new IngredientBuilder().withName("Elle Meyer").build();

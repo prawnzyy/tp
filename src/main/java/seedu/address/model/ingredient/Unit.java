@@ -1,11 +1,14 @@
 package seedu.address.model.ingredient;
 
-
-import seedu.address.model.ingredient.exceptions.UnitFormatException;
-
 import java.util.HashMap;
 import java.util.Map;
 
+import seedu.address.model.ingredient.exceptions.UnitFormatException;
+
+// TODO Add JavaDocs
+/**
+ * Stub
+ */
 public enum Unit {
     GRAM,
     KILOGRAM,
@@ -14,12 +17,11 @@ public enum Unit {
     public static final String MESSAGE_CONSTRAINTS = "Unit should be GRAM, KILOGRAM or PIECE";
     //May need to update this to 3-dimensional matrix for different ingredient conversions.
     private static final Map<Unit, Map<Unit, Double>> conversionMatrix = new HashMap<>();
-
     private static final Map<String, Unit> unitAliases = new HashMap<>();
 
     //Set the values of the conversion matrix.
     static {
-        for(int i = 0; i < Unit.values().length; i++) {
+        for (int i = 0; i < Unit.values().length; i++) {
             //Set the diagonal of the conversion matrix to 1.
             addConversionRatio(Unit.values()[i], Unit.values()[i], 1);
         }
@@ -69,11 +71,16 @@ public enum Unit {
         return name();
     }
 
+    /**
+     * Parses the string argument as a Unit.
+     * @param str The string argument to be parsed.
+     * @return The parsed Unit.
+     */
     public static Unit parseUnit(String str) {
         if (unitAliases.containsKey(str)) {
             return unitAliases.get(str);
         } else {
-            throw  new UnitFormatException(str);
+            throw new UnitFormatException(str);
         }
     }
 }

@@ -35,13 +35,4 @@ public class JsonSerializableInventoryTest {
                 JsonSerializableInventory.class).get();
         assertThrows(UnitFormatException.class, dataFromFile::toModelType);
     }
-
-//    @Test
-//    public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
-//        JsonSerializableInventory dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PERSON_FILE,
-//                JsonSerializableInventory.class).get();
-//        assertThrows(IllegalValueException.class, JsonSerializableInventory.MESSAGE_DUPLICATE_PERSON,
-//                dataFromFile::toModelType);
-//    }
-
 }
