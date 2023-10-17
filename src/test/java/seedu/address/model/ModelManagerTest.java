@@ -79,13 +79,13 @@ public class ModelManagerTest {
 
     @Test
     public void hasIngredient_ingredientNotInInventory_returnsFalse() {
-        assertFalse(modelManager.hasIngredient(FLOUR));
+        assertFalse(modelManager.hasIngredient(FLOUR.getName()));
     }
 
     @Test
     public void hasIngredient_ingredientInInventory_returnsTrue() {
         modelManager.addIngredient(FLOUR);
-        assertTrue(modelManager.hasIngredient(FLOUR));
+        assertTrue(modelManager.hasIngredient(FLOUR.getName()));
     }
 
     @Test

@@ -72,7 +72,7 @@ public class JsonInventoryStorageTest {
         assertEquals(original, new Inventory(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.removeIngredient(FLOUR);
+        original.removeIngredient(FLOUR.getName());
         jsonInventoryStorage.saveInventory(original, filePath);
         readBack = jsonInventoryStorage.readInventory(filePath).get();
         assertEquals(original, new Inventory(readBack));
