@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalIngredients.EGG;
+import static seedu.address.testutil.TypicalIngredients.FLOUR;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
-import static seedu.address.testutil.TypicalIngredients.HOON;
-import static seedu.address.testutil.TypicalIngredients.IDA;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 
 import java.io.IOException;
@@ -97,10 +95,10 @@ public class JsonInventoryStorageTest {
     /**
      * Saves {@code Inventory} at the specified {@code filePath}.
      */
-    private void saveInventory(ReadOnlyInventory Inventory, String filePath) {
+    private void saveInventory(ReadOnlyInventory inventory, String filePath) {
         try {
             new JsonInventoryStorage(Paths.get(filePath))
-                    .saveInventory(Inventory, addToTestDataPathIfNotNull(filePath));
+                    .saveInventory(inventory, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }

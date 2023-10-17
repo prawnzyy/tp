@@ -1,14 +1,9 @@
 package seedu.address.testutil;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.util.SampleDataUtil;
 
 /**
  * A utility class to help with building Person objects.
@@ -34,18 +29,28 @@ public class IngredientBuilder {
     }
 
     /**
-     * Sets the {@code Name} of the {@code Person} that we are building.
+     * Sets the {@code Name} of the {@code Ingredient} that we are building.
      */
     public IngredientBuilder withName(String name) {
         this.name = new Name(name);
         return this;
     }
 
+    /**
+     * Sets the {@code Quantity} of the {@code Ingredient} that we are building
+     * @param val The value of the quantity
+     * @param unit The unit of th quantity
+     */
     public IngredientBuilder withQuantity(double val, Unit unit) {
         this.quantity = new Quantity(val, unit);
         return this;
     }
 
+    // TODO Add JavaDocs
+    /**
+     * Stub
+     * @return Stub
+     */
     public Ingredient build() {
         return new Ingredient(name, quantity);
     }
