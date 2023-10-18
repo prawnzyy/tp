@@ -6,7 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
 //import static seedu.address.testutil.Assert.assertThrows;
 //
 //import java.util.ArrayList;
@@ -22,6 +24,21 @@ import seedu.address.model.Model;
  * Contains helper methods for testing commands.
  */
 public class CommandTestUtil {
+
+    public static final String VALID_NAME_FLOUR = "Flour";
+    public static final String VALID_NAME_EGG = "Egg";
+    public static final String VALID_AMOUNT_FLOUR = "100";
+    public static final String VALID_AMOUNT_EGG = "100";
+    public static final String VALID_UNIT_EGG = "GRAM";
+    public static final String VALID_UNIT_FLOUR = "GRAM";
+
+    public static final String NAME_DESC_FLOUR = " " + PREFIX_NAME + VALID_NAME_FLOUR;
+    public static final String NAME_DESC_EGG = " " + PREFIX_NAME + VALID_NAME_EGG;
+    public static final String QUANTITY_DESC_FLOUR = " " + PREFIX_QUANTITY + VALID_AMOUNT_FLOUR;
+    public static final String QUANTITY_DESC_EGG = " " + PREFIX_QUANTITY + VALID_AMOUNT_EGG;
+    public static final String UNIT_DESC_FLOUR = " " + PREFIX_UNIT + VALID_UNIT_FLOUR;
+    public static final String UNIT_DESC_EGG = " " + PREFIX_UNIT + VALID_UNIT_EGG;
+
 
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
@@ -46,6 +63,7 @@ public class CommandTestUtil {
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
+    public static final String INVALID_QUANTITY_DESC = " " + PREFIX_QUANTITY + "hundred";
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
