@@ -92,4 +92,18 @@ public class Quantity {
     public boolean isLessThanOrEqualsTo(Quantity quantity) {
         return value <= quantity.convertToUnit(unit).value;
     }
+
+    @Override
+    public boolean equals(Object otherQuantity) {
+        if (otherQuantity == this) {
+            return true;
+        }
+        if (otherQuantity instanceof Quantity) {
+            Quantity other = (Quantity) otherQuantity;
+            if (this.value == other.value && this.unit == other.unit) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

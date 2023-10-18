@@ -16,9 +16,9 @@ import seedu.address.model.ingredient.Unit;
 public class TypicalIngredients {
 
     public static final Ingredient FLOUR = new IngredientBuilder()
-            .withName("Flour").withQuantity(1.0, Unit.GRAM).build();
+            .withName("Flour").withQuantity(100.0, Unit.GRAM).build();
     public static final Ingredient EGG = new IngredientBuilder()
-            .withName("Egg").withQuantity(1.0, Unit.PIECE).build();
+            .withName("Egg").withQuantity(100.0, Unit.PIECE).build();
 
     // Manually added - Ingredient's details found in {@code CommandTestUtil}
     public static final Ingredient BUTTER = new IngredientBuilder().withName(VALID_NAME_BUTTER).build();
