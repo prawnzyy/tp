@@ -29,7 +29,7 @@
 //
 ////    @Test
 ////    public void execute_validIndexUnfilteredList_success() {
-////        Ingredient ingredientToDelete = model.getFilteredIngredientList().get(INDEX_FIRST_INGREDIENT.getZeroBased());
+//        Ingredient ingredientToDelete = model.getFilteredIngredientList().get(INDEX_FIRST_INGREDIENT.getZeroBased());
 ////        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_INGREDIENT);
 ////
 ////        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_INGREDIENT_SUCCESS,
@@ -53,7 +53,7 @@
 ////    public void execute_validIndexFilteredList_success() {
 ////        showIngredientAtIndex(model, INDEX_FIRST_INGREDIENT);
 ////
-////        Ingredient ingredientToDelete = model.getFilteredIngredientList().get(INDEX_FIRST_INGREDIENT.getZeroBased());
+//        Ingredient ingredientToDelete = model.getFilteredIngredientList().get(INDEX_FIRST_INGREDIENT.getZeroBased());
 ////        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_INGREDIENT);
 ////
 ////        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_INGREDIENT_SUCCESS,

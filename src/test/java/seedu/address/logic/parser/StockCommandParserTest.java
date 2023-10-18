@@ -2,12 +2,12 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.StockCommand;
 import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
-
-import java.util.Arrays;
 
 public class StockCommandParserTest {
 

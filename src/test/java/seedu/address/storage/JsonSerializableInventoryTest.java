@@ -18,7 +18,8 @@ public class JsonSerializableInventoryTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableInventoryTest");
     private static final Path TYPICAL_INVENTORY_FILE = TEST_DATA_FOLDER.resolve("typicalIngredientInventory.json");
     private static final Path INVALID_INVENTORY_FILE = TEST_DATA_FOLDER.resolve("invalidIngredientInventory.json");
-    //private static final Path DUPLICATE_INGREDIENT_FILE = TEST_DATA_FOLDER.resolve("duplicateIngredientInventory.json");
+    private static final Path DUPLICATE_INGREDIENT_FILE =
+        TEST_DATA_FOLDER.resolve("duplicateIngredientInventory.json");
 
     @Test
     public void toModelType_typicalIngredientsFile_success() throws Exception {

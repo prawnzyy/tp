@@ -18,14 +18,12 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailur
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
 
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Name;
-import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.testutil.IngredientBuilder;
 
@@ -55,7 +53,7 @@ public class AddCommandParserTest {
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_QUANTITY));
 
         // multiple units
-        assertParseFailure(parser,  UNIT_DESC_FLOUR + validExpectedIngredientString,
+        assertParseFailure(parser, UNIT_DESC_FLOUR + validExpectedIngredientString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UNIT));
 
         // multiple fields repeated
@@ -100,7 +98,7 @@ public class AddCommandParserTest {
                 expectedMessage);
 
         // missing email prefix
-        assertParseFailure(parser, NAME_DESC_FLOUR +  QUANTITY_DESC_FLOUR + VALID_UNIT_FLOUR,
+        assertParseFailure(parser, NAME_DESC_FLOUR + QUANTITY_DESC_FLOUR + VALID_UNIT_FLOUR,
                 expectedMessage);
 
 
