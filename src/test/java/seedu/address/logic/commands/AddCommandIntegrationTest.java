@@ -1,8 +1,6 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -39,11 +37,13 @@ public class AddCommandIntegrationTest {
                 expectedModel);
     }
 
-//    @Test
-//    public void execute_duplicateIngredient_throwsCommandException() {
-//        Ingredient ingredientInList = model.getInventory().getIngredientList().get(0);
-//        assertCommandFailure(new AddCommand(ingredientInList), model,
-//                AddCommand.MESSAGE_DUPLICATE_INGREDIENT);
-//    }
+    /*
+    @Test
+    public void execute_duplicateIngredient_throwsCommandException() {
+        Ingredient ingredientInList = model.getInventory().getIngredientList().get(0);
+        assertCommandFailure(new AddCommand(ingredientInList), model,
+                AddCommand.MESSAGE_DUPLICATE_INGREDIENT);
+    }
+    */
 
 }
