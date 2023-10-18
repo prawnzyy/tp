@@ -10,7 +10,6 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
-import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code Inventory} with sample data.
@@ -34,13 +33,13 @@ public class SampleDataUtil {
         return sampleAb;
     }
 
-    /**
-     * Returns a tag set containing the list of strings given.
-     */
-    public static Set<Tag> getTagSet(String... strings) {
-        return Arrays.stream(strings)
-                .map(Tag::new)
-                .collect(Collectors.toSet());
-    }
+//    /**
+//     * Returns a tag set containing the list of strings given.
+//     */
+//    public static Set<Tag> getTagSet(String... strings) {
+//        return Arrays.stream(strings)
+//                .map(Tag::new)
+//                .collect(Collectors.toSet());
+//    }
 
 }
