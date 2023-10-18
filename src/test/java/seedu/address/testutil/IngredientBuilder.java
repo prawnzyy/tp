@@ -10,7 +10,7 @@ import seedu.address.model.ingredient.Unit;
  */
 public class IngredientBuilder {
 
-    public static final String DEFAULT_NAME = "Amy Bee";
+    public static final String DEFAULT_NAME = "Flour";
     private Name name;
     private Quantity quantity;
 

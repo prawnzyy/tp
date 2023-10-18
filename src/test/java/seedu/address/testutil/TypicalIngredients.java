@@ -1,7 +1,6 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BUTTER;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +21,7 @@ public class TypicalIngredients {
             .withName("Egg").withQuantity(1.0, Unit.PIECE).build();
 
     // Manually added - Ingredient's details found in {@code CommandTestUtil}
-    public static final Ingredient BOB = new IngredientBuilder().withName(VALID_NAME_BOB).build();
+    public static final Ingredient BUTTER = new IngredientBuilder().withName(VALID_NAME_BUTTER).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

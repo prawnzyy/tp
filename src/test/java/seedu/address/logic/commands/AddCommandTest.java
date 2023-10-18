@@ -1,5 +1,19 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIngredients.FLOUR;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Predicate;
+
+import org.junit.jupiter.api.Test;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
@@ -11,20 +25,6 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.testutil.IngredientBuilder;
-
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Predicate;
-
-import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.FLOUR;
-
-import org.junit.jupiter.api.Test;
 
 public class AddCommandTest {
 
@@ -136,10 +136,10 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-//        @Override
-//        public void setIngredient(Ingredient target, Ingredient editedIngredient) {
-//            throw new AssertionError("This method should not be called.");
-//        }
+        //  @Override
+        //  public void setIngredient(Ingredient target, Ingredient editedIngredient) {
+        //      throw new AssertionError("This method should not be called.");
+        //  }
 
         @Override
         public ObservableList<Ingredient> getFilteredIngredientList() {
@@ -152,7 +152,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public Quantity getQuantityOf(Name Ingredient) {
+        public Quantity getQuantityOf(Name ingredient) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -195,7 +195,7 @@ public class AddCommandTest {
         public boolean hasIngredient(Name ingredient) {
             requireNonNull(ingredient);
             return true;
-//          ingredientsAdded.stream().anyMatch(ingredient::isSameIngredient);
+            // ingredientsAdded.stream().anyMatch(ingredient::isSameIngredient);
         }
 
         @Override
@@ -204,7 +204,7 @@ public class AddCommandTest {
             ingredientsAdded.add(ingredient);
         }
 
-       //check this
+        // check this
         @Override
         public ReadOnlyInventory getInventory() {
             return new Inventory();

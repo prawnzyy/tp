@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INGREDIENTS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_INGREDIENTS;
-import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalIngredients.EGG;
+import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 
 import java.util.Arrays;
@@ -71,7 +71,7 @@ public class StockCommandTest {
     }
 
     @Test
-    public void execute_zeroKeywords_IngredientFound() {
+    public void execute_zeroKeywords_ingredientFound() {
         String expectedMessage = String.format(MESSAGE_INGREDIENTS_LISTED_OVERVIEW, 2);
         StockCommand command = new StockCommand(PREDICATE_SHOW_ALL_INGREDIENTS);
         expectedModel.updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
