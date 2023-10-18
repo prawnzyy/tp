@@ -89,7 +89,8 @@
 //     * Creates and returns a {@code Ingredient} with the details of {@code ingredientToEdit}
 //     * edited with {@code editIngredientDescriptor}.
 //     */
-//    private static Ingredient createEditedIngredient(Ingredient ingredientToEdit, EditIngredientDescriptor editIngredientDescriptor) {
+//    private static Ingredient createEditedIngredient(Ingredient ingredientToEdit,
+//    EditIngredientDescriptor editIngredientDescriptor) {
 //        assert ingredientToEdit != null;
 //
 //        Name updatedName = editIngredientDescriptor.getName().orElse(ingredientToEdit.getName());

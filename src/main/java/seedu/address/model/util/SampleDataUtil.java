@@ -18,11 +18,11 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Ingredient[] getSampleIngredients() {
         return new Ingredient[] {
-                new Ingredient(new Name("Flour"), new Quantity(3, Unit.KILOGRAM)),
-                new Ingredient(new Name("Butter"), new Quantity(50, Unit.GRAM)),
-                new Ingredient(new Name("Baking Soda"), new Quantity(50, Unit.GRAM)),
-                new Ingredient(new Name("Chocolate Chip"), new Quantity(300, Unit.GRAM)),
-                new Ingredient(new Name("Vanilla Extract"), new Quantity(100, Unit.GRAM)),
+            new Ingredient(new Name("Flour"), new Quantity(3, Unit.KILOGRAM)),
+            new Ingredient(new Name("Butter"), new Quantity(50, Unit.GRAM)),
+            new Ingredient(new Name("Baking Soda"), new Quantity(50, Unit.GRAM)),
+            new Ingredient(new Name("Chocolate Chip"), new Quantity(300, Unit.GRAM)),
+            new Ingredient(new Name("Vanilla Extract"), new Quantity(100, Unit.GRAM)),
         };
     }
 

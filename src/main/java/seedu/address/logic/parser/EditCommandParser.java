@@ -56,7 +56,8 @@
 ////            editIngredientDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
 ////        }
 ////        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-////            editIngredientDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
+////            editIngredientDescriptor
+//                  .setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
 ////        }
 //        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editIngredientDescriptor::setTags);
 //

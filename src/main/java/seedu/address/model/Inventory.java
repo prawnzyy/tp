@@ -115,7 +115,7 @@ public class Inventory implements ReadOnlyInventory {
         requireAllNonNull(ingredientName, quantity);
         for (Ingredient ingredient : ingredients) {
             if (ingredient.getName().equals(ingredientName)) {
-                if (ingredient.getQuantity().isLessThan(quantity)) {
+                if (ingredient.getQuantity().isLessThanOrEqualsTo(quantity)) {
                     ingredients.remove(ingredient);
                 } else {
                     ingredients.replace(ingredient, ingredient.use(quantity));
