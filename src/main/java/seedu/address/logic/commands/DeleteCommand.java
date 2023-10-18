@@ -42,7 +42,8 @@
 //
 //        Ingredient ingredientToDelete = lastShownList.get(targetIndex.getZeroBased());
 //        model.deleteIngredient(ingredientToDelete);
-//        return new CommandResult(String.format(MESSAGE_DELETE_INGREDIENT_SUCCESS, Messages.format(ingredientToDelete)));
+//        return new CommandResult(String.format(MESSAGE_DELETE_INGREDIENT_SUCCESS,
+//        Messages.format(ingredientToDelete)));
 //    }
 //
 //    @Override

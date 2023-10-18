@@ -83,4 +83,13 @@ public class Quantity {
     public boolean isLessThan(Quantity quantity) {
         return value < quantity.convertToUnit(unit).value;
     }
+
+    /**
+     * Returns whether the ingredient's quantity is less than or equal to the specified quantity
+     * @param quantity
+     * @return
+     */
+    public boolean isLessThanOrEqualsTo(Quantity quantity) {
+        return value <= quantity.convertToUnit(unit).value;
+    }
 }
