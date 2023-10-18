@@ -16,13 +16,13 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-public class AddressBookParserTest {
+public class InventoryAppParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final InventoryAppParser parser = new InventoryAppParser();
     /*
     @Test
     public void parseCommand_add() throws Exception {
-        Person ingredient = new IngredientBuilder().build();
+        Ingredient ingredient = new IngredientBuilder().build();
         AddCommand command = (AddCommand) parser.parseCommand(IngredientUtil.getAddCommand(ingredient));
         assertEquals(new AddCommand(ingredient), command);
     }*/
@@ -35,12 +35,12 @@ public class AddressBookParserTest {
     /*
     @Test
     public void parseCommand_edit() throws Exception {
-        Person ingredient = new IngredientBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(ingredient).build();
+        Ingredient ingredient = new IngredientBuilder().build();
+        EditIngredientDescriptor descriptor = new EditIngredientDescriptorBuilder(ingredient).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " +
+                + INDEX_FIRST_INGREDIENT.getOneBased() + " " +
                 IngredientUtil.getEditIngredientDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+        assertEquals(new EditCommand(INDEX_FIRST_INGREDIENT, descriptor), command);
     }*/
 
     @Test

@@ -16,7 +16,7 @@ import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
  * Wraps all data at the address-book level
- * Duplicates are not allowed (by .isSamePerson comparison)
+ * Duplicates are not allowed (by .isSameIngredient comparison)
  */
 public class Inventory implements ReadOnlyInventory {
 
@@ -64,7 +64,7 @@ public class Inventory implements ReadOnlyInventory {
     //// ingredient-level operations
 
     /**
-     * Returns true if a ingredient with the same identity as {@code ingredient} exists in the address book.
+     * Returns true if a ingredient with the same identity as {@code ingredient} exists in the inventory.
      */
     public boolean hasIngredient(Name ingredientName) {
         requireNonNull(ingredientName);
@@ -89,8 +89,8 @@ public class Inventory implements ReadOnlyInventory {
     }
 
     /**
-     * Adds a ingredient to the address book.
-     * The ingredient must not already exist in the address book.
+     * Adds a ingredient to the inventory.
+     * The ingredient must not already exist in the inventory.
      */
     public void addIngredient(Ingredient p) {
         if (ingredients.contains(p)) {
@@ -106,16 +106,16 @@ public class Inventory implements ReadOnlyInventory {
     }
 
     /**
-     * Replaces the given ingredient {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The ingredient identity of {@code editedPerson} must not be the same as
-     * another existing ingredient in the address book.
+     * Replaces the given ingredient {@code target} in the list with {@code editedIngredient}.
+     * {@code target} must exist in the inventory.
+     * The ingredient identity of {@code editedIngredient} must not be the same as
+     * another existing ingredient in the inventory.
      */
     public void useIngredient(Name ingredientName, Quantity quantity) {
         requireAllNonNull(ingredientName, quantity);
         for (Ingredient ingredient : ingredients) {
             if (ingredient.getName().equals(ingredientName)) {
-                if (ingredient.getQuantity().isLessThan(quantity)) {
+                if (ingredient.getQuantity().isLessThanOrEqualsTo(quantity)) {
                     ingredients.remove(ingredient);
                 } else {
                     ingredients.replace(ingredient, ingredient.use(quantity));
@@ -128,7 +128,7 @@ public class Inventory implements ReadOnlyInventory {
 
     /**
      * Removes {@code key} from this {@code Inventory}.
-     * {@code key} must exist in the address book.
+     * {@code key} must exist in the inventory.
      */
     public void removeIngredient(Name ingredientName) {
         for (Ingredient ingredient : ingredients) {
@@ -148,7 +148,7 @@ public class Inventory implements ReadOnlyInventory {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("persons", ingredients)
+                .add("ingredients", ingredients)
                 .toString();
     }
 

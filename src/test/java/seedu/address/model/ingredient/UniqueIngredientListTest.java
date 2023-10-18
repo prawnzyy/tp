@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.BOB;
+import static seedu.address.testutil.TypicalIngredients.BUTTER;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
 
 import java.util.Arrays;
@@ -50,13 +50,13 @@ public class UniqueIngredientListTest {
         assertThrows(NullPointerException.class, () -> uniqueIngredientList.add(null));
     }
 
+    /* No longer in use as add just adds on
     @Test
     public void add_duplicateIngredient_throwsDuplicateIngredientException() {
         uniqueIngredientList.add(FLOUR);
         assertThrows(DuplicateIngredientException.class, () -> uniqueIngredientList.add(FLOUR));
     }
 
-    /*
     @Test
     public void setIngredient_nullTargetIngredient_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueIngredientList.setIngredient(null, ALICE));
@@ -95,21 +95,19 @@ public class UniqueIngredientListTest {
     @Test
     public void setIngredient_editedIngredientHasDifferentIdentity_success() {
         uniqueIngredientList.add(ALICE);
-        uniqueIngredientList.setIngredient(ALICE, BOB);
+        uniqueIngredientList.setIngredient(ALICE, BUTTER);
         UniqueIngredientList expecteduniqueIngredientList = new UniqueIngredientList();
-        expecteduniqueIngredientList.add(BOB);
+        expecteduniqueIngredientList.add(BUTTER);
         assertEquals(expecteduniqueIngredientList, uniqueIngredientList);
     }
 
     @Test
     public void setIngredient_editedIngredientHasNonUniqueIdentity_throwsDuplicateIngredientException() {
         uniqueIngredientList.add(ALICE);
-        uniqueIngredientList.add(BOB);
-        assertThrows(DuplicateIngredientException.class, () -> uniqueIngredientList.setIngredient(ALICE, BOB));
+        uniqueIngredientList.add(BUTTER);
+        assertThrows(DuplicateIngredientException.class, () -> uniqueIngredientList.setIngredient(ALICE, BUTTER));
     }
-
     */
-
     @Test
     public void remove_existingIngredient_removesIngredient() {
         uniqueIngredientList.add(FLOUR);
@@ -128,7 +126,7 @@ public class UniqueIngredientListTest {
     public void setIngredients_uniqueIngredientList_replacesOwnListWithProvideduniqueIngredientList() {
         uniqueIngredientList.add(FLOUR);
         UniqueIngredientList expecteduniqueIngredientList = new UniqueIngredientList();
-        expecteduniqueIngredientList.add(BOB);
+        expecteduniqueIngredientList.add(BUTTER);
         uniqueIngredientList.setIngredients(expecteduniqueIngredientList);
         assertEquals(expecteduniqueIngredientList, uniqueIngredientList);
     }
@@ -141,10 +139,10 @@ public class UniqueIngredientListTest {
     @Test
     public void setIngredients_list_replacesOwnListWithProvidedList() {
         uniqueIngredientList.add(FLOUR);
-        List<Ingredient> ingredientList = Collections.singletonList(BOB);
+        List<Ingredient> ingredientList = Collections.singletonList(BUTTER);
         uniqueIngredientList.setIngredients(ingredientList);
         UniqueIngredientList expecteduniqueIngredientList = new UniqueIngredientList();
-        expecteduniqueIngredientList.add(BOB);
+        expecteduniqueIngredientList.add(BUTTER);
         assertEquals(expecteduniqueIngredientList, uniqueIngredientList);
     }
 

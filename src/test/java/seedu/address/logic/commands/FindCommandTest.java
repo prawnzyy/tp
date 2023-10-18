@@ -3,7 +3,7 @@
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 //import static org.junit.jupiter.api.Assertions.assertFalse;
 //import static org.junit.jupiter.api.Assertions.assertTrue;
-//import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
+//import static seedu.address.logic.Messages.MESSAGE_INGREDIENTS_LISTED_OVERVIEW;
 //import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 //import static seedu.address.testutil.TypicalIngredients.CARL;
 //import static seedu.address.testutil.TypicalIngredients.ELLE;
@@ -54,8 +54,8 @@
 //    }
 //
 //    @Test
-//    public void execute_zeroKeywords_noPersonFound() {
-//        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+//    public void execute_zeroKeywords_noIngredientFound() {
+//        String expectedMessage = String.format(MESSAGE_INGREDIENTS_LISTED_OVERVIEW, 0);
 //        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
 //        FindCommand command = new FindCommand(predicate);
 //        expectedModel.updateFilteredIngredientList(predicate);
@@ -64,8 +64,8 @@
 //    }
 //
 //    @Test
-//    public void execute_multipleKeywords_multiplePersonsFound() {
-//        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
+//    public void execute_multipleKeywords_multipleIngredientsFound() {
+//        String expectedMessage = String.format(MESSAGE_INGREDIENTS_LISTED_OVERVIEW, 3);
 //        NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
 //        FindCommand command = new FindCommand(predicate);
 //        expectedModel.updateFilteredIngredientList(predicate);

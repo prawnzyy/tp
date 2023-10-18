@@ -6,7 +6,7 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.ingredient.Ingredient;
 
 /**
- * A utility class for Person.
+ * A utility class for Ingredient.
  */
 public class IngredientUtil {
 
@@ -27,10 +27,10 @@ public class IngredientUtil {
     }
 
     // /**
-    // * Returns the part of command string for the given {@code EditPersonDescriptor}'s details.
+    // * Returns the part of command string for the given {@code EditIngredientDescriptor}'s details.
     // */
     /*
-    public static String getEditIngredientDescriptorDetails(EditPersonDescriptor descriptor) {
+    public static String getEditIngredientDescriptorDetails(EditIngredientDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         return sb.toString();

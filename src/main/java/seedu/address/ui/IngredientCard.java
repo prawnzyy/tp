@@ -7,7 +7,7 @@ import javafx.scene.layout.Region;
 import seedu.address.model.ingredient.Ingredient;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays information of a {@code Ingredient}.
  */
 public class IngredientCard extends UiPart<Region> {
 
@@ -41,6 +41,5 @@ public class IngredientCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(this.ingredient.getName().fullName);
         quantity.setText(this.ingredient.getQuantity().toString());
-
     }
 }

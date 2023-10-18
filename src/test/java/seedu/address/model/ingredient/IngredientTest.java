@@ -2,9 +2,10 @@ package seedu.address.model.ingredient;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.testutil.TypicalIngredients.BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_EGG;
+import static seedu.address.testutil.TypicalIngredients.BUTTER;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
 
 import org.junit.jupiter.api.Test;
@@ -22,29 +23,29 @@ public class IngredientTest {
     */
 
     @Test
-    public void isSamePerson() {
+    public void isSameIngredient() {
         // same object -> returns true
         assertTrue(FLOUR.isSameIngredient(FLOUR));
 
-        // null -> returns false
-        assertFalse(FLOUR.isSameIngredient(null));
+        // null -> throws NullPointerException
+        assertThrows(NullPointerException.class, () -> FLOUR.isSameIngredient(null));
 
         // same name, all other attributes different -> returns true
         Ingredient editedAlice = new IngredientBuilder(FLOUR).build();
         assertTrue(FLOUR.isSameIngredient(editedAlice));
 
         // different name, all other attributes same -> returns false
-        editedAlice = new IngredientBuilder(FLOUR).withName(VALID_NAME_BOB).build();
+        editedAlice = new IngredientBuilder(FLOUR).withName(VALID_NAME_EGG).build();
         assertFalse(FLOUR.isSameIngredient(editedAlice));
 
         // name differs in case, all other attributes same -> returns false
-        Ingredient editedBob = new IngredientBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
-        assertFalse(BOB.isSameIngredient(editedBob));
+        Ingredient editedBob = new IngredientBuilder(BUTTER).withName(VALID_NAME_EGG.toLowerCase()).build();
+        assertFalse(BUTTER.isSameIngredient(editedBob));
 
         // name has trailing spaces, all other attributes same -> returns false
-        String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
-        editedBob = new IngredientBuilder(BOB).withName(nameWithTrailingSpaces).build();
-        assertFalse(BOB.isSameIngredient(editedBob));
+        String nameWithTrailingSpaces = VALID_NAME_EGG + " ";
+        editedBob = new IngredientBuilder(BUTTER).withName(nameWithTrailingSpaces).build();
+        assertFalse(BUTTER.isSameIngredient(editedBob));
     }
 
     @Test
@@ -63,16 +64,17 @@ public class IngredientTest {
         assertFalse(FLOUR.equals(5));
 
         // different ingredient -> returns false
-        assertFalse(FLOUR.equals(BOB));
+        assertFalse(FLOUR.equals(BUTTER));
 
         // different name -> returns false
-        Ingredient editedAlice = new IngredientBuilder(FLOUR).withName(VALID_NAME_BOB).build();
+        Ingredient editedAlice = new IngredientBuilder(FLOUR).withName(VALID_NAME_EGG).build();
         assertFalse(FLOUR.equals(editedAlice));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = Ingredient.class.getCanonicalName() + "{name=" + FLOUR.getName() + "}";
+        String expected = Ingredient.class.getCanonicalName()
+                + "{name=" + FLOUR.getName() + ", quantity=" + FLOUR.getQuantity() + "}";
         assertEquals(expected, FLOUR.toString());
     }
 }

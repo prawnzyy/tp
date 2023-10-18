@@ -16,7 +16,7 @@ import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the inventory data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -26,12 +26,12 @@ public class ModelManager implements Model {
     private final FilteredList<Ingredient> filteredIngredients;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given inventory and userPrefs.
      */
     public ModelManager(ReadOnlyInventory inventory, ReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(inventory, userPrefs);
 
-        logger.fine("Initializing with address book: " + inventory + " and user prefs " + userPrefs);
+        logger.fine("Initializing with inventory: " + inventory + " and user prefs " + userPrefs);
 
         this.inventory = new Inventory(inventory);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -72,9 +72,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setInventoryFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setInventoryFilePath(addressBookFilePath);
+    public void setInventoryFilePath(Path inventoryFilePath) {
+        requireNonNull(inventoryFilePath);
+        userPrefs.setInventoryFilePath(inventoryFilePath);
     }
 
     //=========== StockBook ================================================================================
@@ -114,20 +114,21 @@ public class ModelManager implements Model {
     @Override
     public void addIngredient(Ingredient ingredient) {
         inventory.addIngredient(ingredient);
-        updateFilteredIngredientList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
     }
 
     @Override
     public void useIngredient(Name ingredientName, Quantity quantity) {
         requireAllNonNull(ingredientName, quantity);
         inventory.useIngredient(ingredientName, quantity);
+        updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Ingredient List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Ingredient} backed by the internal list of
+     * {@code versionedInventory}
      */
     @Override
     public ObservableList<Ingredient> getFilteredIngredientList() {

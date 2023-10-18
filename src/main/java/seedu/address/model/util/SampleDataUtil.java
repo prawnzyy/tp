@@ -13,24 +13,20 @@ import seedu.address.model.ingredient.Unit;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code Inventory} with sample data.
  */
 public class SampleDataUtil {
     public static Ingredient[] getSampleIngredients() {
         return new Ingredient[] {
-            new Ingredient(new Name("Alex Yeoh"), new Quantity(100, Unit.GRAM))
-            /*
-            new Ingredient(new Name("Bernice Yu"), null),
-            new Ingredient(new Name("Charlotte Oliveiro"), null),
-            new Ingredient(new Name("David Li"), null),
-            new Ingredient(new Name("Irfan Ibrahim"), null),
-            new Ingredient(new Name("Roy Balakrishnan"), null)
-            */
-
+            new Ingredient(new Name("Flour"), new Quantity(3, Unit.KILOGRAM)),
+            new Ingredient(new Name("Butter"), new Quantity(50, Unit.GRAM)),
+            new Ingredient(new Name("Baking Soda"), new Quantity(50, Unit.GRAM)),
+            new Ingredient(new Name("Chocolate Chip"), new Quantity(300, Unit.GRAM)),
+            new Ingredient(new Name("Vanilla Extract"), new Quantity(100, Unit.GRAM)),
         };
     }
 
-    public static ReadOnlyInventory getSampleAddressBook() {
+    public static ReadOnlyInventory getSampleInventory() {
         Inventory sampleAb = new Inventory();
         for (Ingredient sampleIngredient : getSampleIngredients()) {
             sampleAb.addIngredient(sampleIngredient);

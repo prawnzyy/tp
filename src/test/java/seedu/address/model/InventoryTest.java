@@ -20,7 +20,7 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.exceptions.DuplicateIngredientException;
 import seedu.address.testutil.IngredientBuilder;
 
-public class AddressBookTest {
+public class InventoryTest {
 
     private final Inventory inventory = new Inventory();
 
@@ -43,10 +43,10 @@ public class AddressBookTest {
 
     @Test
     public void resetData_withDuplicateIngredients_throwsDuplicateIngredientException() {
-        // Two persons with the same identity fields
+        // Two ingredients with the same identity fields
         Ingredient editedAlice = new IngredientBuilder(FLOUR).build();
         List<Ingredient> newIngredients = Arrays.asList(FLOUR, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newIngredients);
+        InventoryStub newData = new InventoryStub(newIngredients);
 
         assertThrows(DuplicateIngredientException.class, () -> inventory.resetData(newData));
     }
@@ -81,18 +81,18 @@ public class AddressBookTest {
 
     @Test
     public void toStringMethod() {
-        String expected = Inventory.class.getCanonicalName() + "{persons=" + inventory.getIngredientList() + "}";
+        String expected = Inventory.class.getCanonicalName() + "{ingredients=" + inventory.getIngredientList() + "}";
         assertEquals(expected, inventory.toString());
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyInventory whose ingredients list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyInventory {
+    private static class InventoryStub implements ReadOnlyInventory {
         private final ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Ingredient> persons) {
-            this.ingredients.setAll(persons);
+        InventoryStub(Collection<Ingredient> ingredients) {
+            this.ingredients.setAll(ingredients);
         }
 
         @Override

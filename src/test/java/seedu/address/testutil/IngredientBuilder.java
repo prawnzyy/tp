@@ -6,23 +6,23 @@ import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 
 /**
- * A utility class to help with building Person objects.
+ * A utility class to help with building Ingredient objects.
  */
 public class IngredientBuilder {
 
-    public static final String DEFAULT_NAME = "Amy Bee";
+    public static final String DEFAULT_NAME = "Flour";
     private Name name;
     private Quantity quantity;
 
     /**
-     * Creates a {@code PersonBuilder} with the default details.
+     * Creates a {@code IngredientBuilder} with the default details.
      */
     public IngredientBuilder() {
         name = new Name(DEFAULT_NAME);
     }
 
     /**
-     * Initializes the PersonBuilder with the data of {@code personToCopy}.
+     * Initializes the IngredientBuilder with the data of {@code ingredientToCopy}.
      */
     public IngredientBuilder(Ingredient ingredientToCopy) {
         name = ingredientToCopy.getName();

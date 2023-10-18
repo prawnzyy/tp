@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.UseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.Model;
 import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
@@ -18,8 +17,6 @@ import seedu.address.model.ingredient.Unit;
  * Parses input arguments and creates a new AddCommand object
  */
 public class UseCommandParser implements Parser<UseCommand> {
-    private Model model;
-
     /**
      * Parses the given {@code String} of arguments in the context of the UseCommand
      * and returns an UseCommand object for execution.
@@ -40,8 +37,7 @@ public class UseCommandParser implements Parser<UseCommand> {
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
 
         if (!arePrefixesPresent(argMultimap, PREFIX_QUANTITY, PREFIX_UNIT)) {
-            // Todo change logic, model was never assigned to an object instance
-            return new UseCommand(name, model.getQuantityOf(name));
+            return new UseCommand(name, null);
         }
 
         double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());

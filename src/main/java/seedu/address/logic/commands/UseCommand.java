@@ -14,7 +14,7 @@ import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 
 /**
- * Use an ingredient from the address book.
+ * Use an ingredient from the inventory.
  */
 public class UseCommand extends Command {
 
@@ -53,7 +53,12 @@ public class UseCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        // check method used for when the entire ingredient is depleted
+
+        if (quantityUsed == null) {
+            model.useIngredient(toUse, model.getQuantityOf(toUse));
+            return new CommandResult(String.format(MESSAGE_SUCCESS,
+                    Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
+        }
         model.useIngredient(toUse, quantityUsed);
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
