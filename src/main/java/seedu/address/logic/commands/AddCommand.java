@@ -45,7 +45,8 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.addIngredient(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        Ingredient editedIngredient = new Ingredient(toAdd.getName(), model.getQuantityOf(toAdd.getName()));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(editedIngredient)));
     }
 
     @Override

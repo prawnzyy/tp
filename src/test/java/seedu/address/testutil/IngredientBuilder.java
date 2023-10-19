@@ -19,6 +19,7 @@ public class IngredientBuilder {
      */
     public IngredientBuilder() {
         name = new Name(DEFAULT_NAME);
+        quantity = new Quantity(50, Unit.GRAM);
     }
 
     /**

@@ -21,7 +21,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
 
 /**
- * Contains integration tests (interaction with the Model) for {@code FindCommand}.
+ * Contains integration tests (interaction with the Model) for {@code StockCommand}.
  */
 public class StockCommandTest {
     private Model model = new ModelManager(getTypicalInventory(), new UserPrefs());

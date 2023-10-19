@@ -2,9 +2,7 @@ package seedu.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_FLOUR;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.FLOUR;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -14,7 +12,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -68,7 +65,7 @@ public class LogicManagerTest {
         assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
     }
 
-    /*
+
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         assertCommandFailureForExceptionFromStorage(DUMMY_IO_EXCEPTION, String.format(
@@ -80,7 +77,7 @@ public class LogicManagerTest {
         assertCommandFailureForExceptionFromStorage(DUMMY_AD_EXCEPTION, String.format(
                 LogicManager.FILE_OPS_PERMISSION_ERROR_FORMAT, DUMMY_AD_EXCEPTION.getMessage()));
     }
-    */
+
 
     @Test
     public void getFilteredIngredientList_modifyList_throwsUnsupportedOperationException() {
@@ -165,8 +162,8 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Triggers the saveInventory method by executing an add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_FLOUR;
-        Ingredient expectedIngredient = new IngredientBuilder(FLOUR).build();
+        String addCommand = "add n/flour q/100 u/g";
+        Ingredient expectedIngredient = new IngredientBuilder().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addIngredient(expectedIngredient);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);

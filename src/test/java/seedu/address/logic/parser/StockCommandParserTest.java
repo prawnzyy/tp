@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_INGREDIENTS;
 
 import java.util.Arrays;
 
@@ -23,6 +24,12 @@ public class StockCommandParserTest {
 
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " \n Flour \n \t Egg  \t", expectedStockCommand);
+    }
+
+    @Test
+    public void parse_noArgs_returnsStockCommand() {
+        StockCommand expectedStockCommand = new StockCommand(PREDICATE_SHOW_ALL_INGREDIENTS);
+        assertParseSuccess(parser, " ", expectedStockCommand);
     }
 
 }
