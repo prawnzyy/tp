@@ -24,6 +24,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
 import seedu.address.testutil.IngredientBuilder;
 
 public class AddCommandTest {
@@ -202,6 +203,18 @@ public class AddCommandTest {
         public void addIngredient(Ingredient ingredient) {
             requireNonNull(ingredient);
             ingredientsAdded.add(ingredient);
+        }
+
+        @Override
+        public Quantity getQuantityOf(Name ingredientName) {
+            requireNonNull(ingredientName);
+            for (Ingredient ingredient : ingredientsAdded) {
+                if (ingredient.getName().equals(ingredientName)) {
+                    return ingredient.getQuantity();
+                }
+            }
+            //If ingredient can't be found, then return 0 quantity
+            return new Quantity(0, Unit.GRAM);
         }
 
         // check this

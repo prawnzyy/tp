@@ -36,17 +36,12 @@ public class Messages {
      */
     public static String format(Ingredient ingredient) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(ingredient.getName());
-        /*
-                .append("; Phone: ")
-                .append(ingredient.getPhone())
-                .append("; Email: ")
-                .append(ingredient.getEmail())
-                .append("; Address: ")
-                .append(ingredient.getAddress())
-                .append("; Tags: ");
-        ingredient.getTags().forEach(builder::append);
-        */
+        builder.append(ingredient.getName())
+                .append("; \nQuantity Left: ")
+                .append(ingredient.getQuantity().toString());
+        if (ingredient.getQuantity().getValue() == 0) {
+            builder.append("\nIngredient Removed");
+        }
         return builder.toString();
     }
 

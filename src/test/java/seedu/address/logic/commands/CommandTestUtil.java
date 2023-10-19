@@ -25,6 +25,7 @@ import seedu.address.model.Inventory;
 import seedu.address.model.Model;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
+import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
  * Contains helper methods for testing commands.
@@ -102,7 +103,7 @@ public class CommandTestUtil {
      * Executes the given {@code command}, confirms that <br>
      * - a {@code CommandException} is thrown <br>
      * - the CommandException message matches {@code expectedMessage} <br>
-     * - the address book, filtered ingredient list and selected ingredient in {@code actualModel} remain unchanged
+     * - the inventory, filtered ingredient list and selected ingredient in {@code actualModel} remain unchanged
      */
 
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
@@ -112,6 +113,23 @@ public class CommandTestUtil {
         List<Ingredient> expectedFilteredList = new ArrayList<>(actualModel.getFilteredIngredientList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
+        assertEquals(expectedInventory, actualModel.getInventory());
+        assertEquals(expectedFilteredList, actualModel.getFilteredIngredientList());
+    }
+
+    /**
+     * Executes the given {@code command}, confirms that <br>
+     * - a {@code CommandException} is thrown <br>
+     * - the IngredientNotFound message matches {@code expectedMessage} <br>
+     * - the inventory, filtered ingredient list and selected ingredient in {@code actualModel} remain unchanged
+     */
+    public static void assertIngredientFailure(Command command, Model actualModel, String expectedMessage) {
+        // we are unable to defensively copy the model for comparison later, so we can
+        // only do so by copying its components.
+        Inventory expectedInventory = new Inventory(actualModel.getInventory());
+        List<Ingredient> expectedFilteredList = new ArrayList<>(actualModel.getFilteredIngredientList());
+
+        assertThrows(IngredientNotFoundException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedInventory, actualModel.getInventory());
         assertEquals(expectedFilteredList, actualModel.getFilteredIngredientList());
     }
