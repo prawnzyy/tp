@@ -24,12 +24,6 @@ public class Ingredient {
         requireAllNonNull(name);
         this.name = name;
         this.quantity = quantity;
-        /*
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
-        */
     }
 
     /**

@@ -11,6 +11,9 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Name;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
 import seedu.address.testutil.IngredientBuilder;
 
 /**
@@ -28,22 +31,12 @@ public class AddCommandIntegrationTest {
     @Test
     public void execute_newIngredient_success() {
         Ingredient validIngredient = new IngredientBuilder().build();
+        Ingredient expectedIngredient = new Ingredient(new Name("Flour"), new Quantity(150.0, Unit.GRAM));
 
         Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs());
         expectedModel.addIngredient(validIngredient);
-
         assertCommandSuccess(new AddCommand(validIngredient), model,
-                String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validIngredient)),
+                String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(expectedIngredient)),
                 expectedModel);
     }
-
-    /*
-    @Test
-    public void execute_duplicateIngredient_throwsCommandException() {
-        Ingredient ingredientInList = model.getInventory().getIngredientList().get(0);
-        assertCommandFailure(new AddCommand(ingredientInList), model,
-                AddCommand.MESSAGE_DUPLICATE_INGREDIENT);
-    }
-    */
-
 }
