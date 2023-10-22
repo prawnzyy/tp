@@ -2,12 +2,15 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
@@ -33,6 +36,8 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private IngredientListPanel ingredientListPanel;
+
+    private UiPart<Region> recipeListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -44,6 +49,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane ingredientListPanelPlaceholder;
+
+    @FXML
+    private StackPane recipeListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -113,6 +121,17 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         ingredientListPanel = new IngredientListPanel(logic.getFilteredIngredientList());
         ingredientListPanelPlaceholder.getChildren().add(ingredientListPanel.getRoot());
+        // Check the length of the filtered recipe
+        // If it is 1, then display full recipe
+        // Else show only name and ingredients
+        if (2 == 1) {
+            // Change this portion to logic.getFilteredRecipeList() once its up!!
+            // The thing below is just for temporary testing
+            recipeListPanel = new FullRecipeListPanel(new FilteredList<>(FXCollections.observableArrayList("hello")));
+        } else {
+            recipeListPanel = new RecipeListPanel(new FilteredList<>(FXCollections.observableArrayList("Full")));
+        }
+        recipeListPanelPlaceholder.getChildren().add(recipeListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
