@@ -1,5 +1,8 @@
 package seedu.address.model.recipe;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 /**
  * An abstraction class for a recipe step.
  * Wraps a step number and a string instruction
@@ -10,11 +13,13 @@ public class RecipeStep {
 
     /** Creates a new recipe step with the specified {@code stepNumber} and {@code instruction}. */
     public RecipeStep(String instruction, int stepNumber) {
+        requireAllNonNull(instruction, stepNumber);
         this.instruction = instruction;
         this.stepNumber = stepNumber;
     }
 
     public RecipeStep modifyStep(String newInstruction) {
+        requireNonNull(newInstruction);
         return new RecipeStep(newInstruction, this.stepNumber);
     }
 
