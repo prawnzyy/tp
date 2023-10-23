@@ -42,7 +42,14 @@ public class Recipe {
     public Recipe modifyRecipeStep(int stepNumber, String newStep) {
         List<RecipeStep> stepCopy = new ArrayList<>();
         stepCopy.addAll(this.recipeSteps);
-        stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStep, stepNumber));
+        stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStep));
+        return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
+    }
+
+    public Recipe modifyRecipeStep(int stepNumber, int newStepNumber) {
+        List<RecipeStep> stepCopy = new ArrayList<>();
+        stepCopy.addAll(this.recipeSteps);
+        stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStepNumber));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
 

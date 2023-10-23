@@ -9,16 +9,12 @@ public class RecipeStep {
         this.stepNumber = stepNumber;
     }
 
-    public RecipeStep modifyInstruction(String newInstruction) {
+    public RecipeStep modifyStep(String newInstruction) {
         return new RecipeStep(newInstruction, this.stepNumber);
     }
 
-    public RecipeStep modifyStepNumber(int newStepNumber) {
+    public RecipeStep modifyStep(int newStepNumber) {
         return new RecipeStep(this.instruction, newStepNumber);
-    }
-
-    public RecipeStep modifyStep(String newInstruction, int newStepNumber) {
-        return new RecipeStep(newInstruction, newStepNumber);
     }
 
     @Override
