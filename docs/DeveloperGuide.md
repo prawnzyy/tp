@@ -95,6 +95,20 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 2a. The specified recipe does not exist
   - RecipeBook shows an error message
 
+#### Use case: View all recipes
+#### MSS
+1. User requests to list all possible recipes
+2. RecipeBook lists out all possible recipes
+
+    Use case ends.
+
+#### Extensions
+- 2a. There is only one recipe
+  - The recipe will be displayed in full, inclusive of steps
+- 2b. There are multiple recipes
+  - The recipes will only have their name and required ingredients listed
+- 2c. There are currently no recipes stored
+  - No updates will be made to the screen
 
 ### Non-Functional Requirements
 
