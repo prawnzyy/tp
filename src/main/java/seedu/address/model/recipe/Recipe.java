@@ -53,8 +53,7 @@ public class Recipe {
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
 
-    @Override
-    public String toString() {
+    public String getFullRecipe() {
         StringBuilder ingredients = new StringBuilder();
         for (Ingredient ingredient : ingredientList) {
             ingredients.append(ingredient).append("\n");
@@ -64,6 +63,11 @@ public class Recipe {
             steps.append(recipeStep).append("\n");
         }
         return this.name + "\n" + ingredients + steps;
+    }
+
+    @Override
+    public String toString() {
+        return this.name.toString();
     }
 
 }
