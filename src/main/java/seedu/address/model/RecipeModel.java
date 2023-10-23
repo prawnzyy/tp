@@ -13,16 +13,18 @@ public interface RecipeModel {
     /**
      * Replaces recipe data with the data in {@code recipe}.
      */
-    void setRecipeBook(ReadOnlyRecipeBook inventory);
+    void setRecipeBook(ReadOnlyRecipeBook recipeBook);
 
     /** Returns the RecipeBook */
     ReadOnlyRecipeBook getRecipeBook();
 
-    boolean hasRecipe(Name ingredientName);
+    boolean hasRecipe(Name recipeName);
 
-    void deleteRecipe(UniqueId recipeId);
+    void deleteRecipe(int recipeId);
 
     void addRecipe(Recipe recipe);
+
+    String getFullRecipe(int recipeId);
 
     /** Returns an unmodifiable view of the filtered recipe list */
     ObservableList<Recipe> getFilteredRecipeList();
@@ -31,6 +33,6 @@ public interface RecipeModel {
      * Updates the filter of the filtered recipe list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredRecipeList(Predicate<Ingredient> predicate);
+    void updateFilteredRecipeList(Predicate<Recipe> predicate);
 
 }

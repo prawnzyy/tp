@@ -62,6 +62,11 @@ public class RecipeList implements Iterable<Recipe> {
         internalList.setAll(recipeList);
     }
 
+    public String getFullRecipe(int recipeId) {
+        return this.internalList.stream().filter(x -> x.getId() == recipeId).findFirst()
+                .orElseThrow(RecipeNotFoundException::new).getFullRecipe();
+    }
+
     @Override
     public Iterator<Recipe> iterator() {
         return internalList.iterator();

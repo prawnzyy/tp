@@ -11,7 +11,6 @@ import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 import java.util.List;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 public class RecipeBook implements ReadOnlyRecipeBook {
     private final RecipeList recipeList;
@@ -71,6 +70,10 @@ public class RecipeBook implements ReadOnlyRecipeBook {
 
     public void clear() {
         this.recipeList.clear();
+    }
+
+    public String getFullRecipe(int recipeId) {
+        return this.recipeList.getFullRecipe(recipeId);
     }
 
     @Override
