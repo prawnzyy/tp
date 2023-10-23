@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
+import seedu.address.model.Name;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.testutil.IngredientBuilder;
 

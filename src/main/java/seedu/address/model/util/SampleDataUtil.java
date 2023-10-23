@@ -3,7 +3,7 @@ package seedu.address.model.util;
 import seedu.address.model.Inventory;
 import seedu.address.model.ReadOnlyInventory;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
+import seedu.address.model.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 

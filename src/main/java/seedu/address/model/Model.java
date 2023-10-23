@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 
 /**

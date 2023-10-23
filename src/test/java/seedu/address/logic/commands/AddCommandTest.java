@@ -22,7 +22,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyInventory;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
+import seedu.address.model.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.testutil.IngredientBuilder;
