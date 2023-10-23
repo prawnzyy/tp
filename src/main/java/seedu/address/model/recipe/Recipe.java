@@ -58,6 +58,10 @@ public class Recipe {
      * Changes the specified recipe step with the new instructions.
      */
     public Recipe modifyRecipeStep(int stepNumber, String newStep) {
+        requireNonNull(newStep);
+        if (stepNumber > recipeSteps.size()) {
+            throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
+        }
         List<RecipeStep> stepCopy = new ArrayList<>();
         stepCopy.addAll(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStep));
@@ -68,6 +72,9 @@ public class Recipe {
      * Changes the specified recipe step with a new step number.
      */
     public Recipe modifyRecipeStep(int stepNumber, int newStepNumber) {
+        if (stepNumber > recipeSteps.size()) {
+            throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
+        }
         List<RecipeStep> stepCopy = new ArrayList<>();
         stepCopy.addAll(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStepNumber));
@@ -80,13 +87,13 @@ public class Recipe {
     public String getFullRecipe() {
         StringBuilder ingredients = new StringBuilder();
         for (Ingredient ingredient : ingredientList) {
-            ingredients.append(ingredient).append("\n");
+            ingredients.append(ingredient.getName()).append(" ").append(ingredient.getQuantity()).append("\n");
         }
         StringBuilder steps = new StringBuilder();
         for (RecipeStep recipeStep : recipeSteps) {
-            steps.append(recipeStep).append("\n");
+            steps.append(recipeStep.toString()).append("\n");
         }
-        return this.name + "\n" + ingredients + steps;
+        return String.format("%d. %s\n%s%s", this.getId(), this.name, ingredients, steps.toString().stripTrailing());
     }
 
     @Override
