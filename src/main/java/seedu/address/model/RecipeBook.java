@@ -1,17 +1,18 @@
 package seedu.address.model;
 
-import javafx.collections.ObservableList;
-import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.recipe.Recipe;
-import seedu.address.model.recipe.RecipeList;
-import seedu.address.model.recipe.UniqueId;
-import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
+import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
+import javafx.collections.ObservableList;
+import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.RecipeList;
+import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 
+/**
+ * Wraps all recipe data at the recipe book level
+ */
 public class RecipeBook implements ReadOnlyRecipeBook {
     private final RecipeList recipeList;
 
@@ -23,6 +24,9 @@ public class RecipeBook implements ReadOnlyRecipeBook {
 
     }
 
+    /**
+     * Creates a new recipe book with the specified {@code recipeBook}
+     */
     public RecipeBook(ReadOnlyRecipeBook recipeBook) {
         this();
         resetData(recipeBook);
@@ -44,6 +48,9 @@ public class RecipeBook implements ReadOnlyRecipeBook {
         setRecipes(newData.getRecipeList());
     }
 
+    /**
+     * Checks if the recipe name exists in the recipe book.
+     */
     public boolean hasRecipe(Name recipeName) {
         requireNonNull(recipeName);
         for (Recipe recipe : this.recipeList) {
@@ -54,10 +61,16 @@ public class RecipeBook implements ReadOnlyRecipeBook {
         return false;
     }
 
+    /**
+     * Adds a new {@code recipe} to the recipe book.
+     */
     public void addRecipe(Recipe toAdd) {
         recipeList.add(toAdd);
     }
 
+    /**
+     * Removes a recipe from the recipe book with its {@code recipeId}
+     */
     public void removeRecipe(int recipeId) {
         for (Recipe recipe : this.recipeList) {
             if (recipe.getId() == recipeId) {
@@ -68,10 +81,16 @@ public class RecipeBook implements ReadOnlyRecipeBook {
         throw new RecipeNotFoundException();
     }
 
+    /**
+     * Clears the recipe list
+     */
     public void clear() {
         this.recipeList.clear();
     }
 
+    /**
+     * Gets the full recipe of the specified {@code recipeId}
+     */
     public String getFullRecipe(int recipeId) {
         return this.recipeList.getFullRecipe(recipeId);
     }

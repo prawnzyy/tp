@@ -8,33 +8,28 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.UniqueIngredientList;
-import seedu.address.model.ingredient.exceptions.DuplicateIngredientException;
 import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 
+/**
+ * A list of recipe that does not allow nulls.
+ */
 public class RecipeList implements Iterable<Recipe> {
     private final ObservableList<Recipe> internalList = FXCollections.observableArrayList();
     private final ObservableList<Recipe> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
+    /** Adds a new {@code Recipe} to the list. */
     public void add(Recipe toAdd) {
         requireNonNull(toAdd);
         internalList.add(toAdd);
     }
 
+    /** Removes a {@code Recipe} from the list. */
     public void remove(Recipe toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
             throw new RecipeNotFoundException();
         }
-    }
-
-    public void replace(Recipe toReplace, Recipe toAdd) {
-        requireAllNonNull(toReplace, toAdd);
-        int index = internalList.indexOf(toReplace);
-        internalList.remove(toReplace);
-        internalList.add(index, toAdd);
     }
 
     /**
@@ -44,10 +39,12 @@ public class RecipeList implements Iterable<Recipe> {
         internalList.clear();
     }
 
+    /** Returns an immutable list for JavaFX. */
     public ObservableList<Recipe> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
 
+    /** Replaces the current recipe list with the {@code replacement} list. */
     public void setRecipes(RecipeList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
@@ -62,6 +59,10 @@ public class RecipeList implements Iterable<Recipe> {
         internalList.setAll(recipeList);
     }
 
+    /**
+     * Returns the full recipe representation of the specified {@code recipeId}.
+     * @throws RecipeNotFoundException if recipe does not exist.
+     */
     public String getFullRecipe(int recipeId) {
         return this.internalList.stream().filter(x -> x.getId() == recipeId).findFirst()
                 .orElseThrow(RecipeNotFoundException::new).getFullRecipe();

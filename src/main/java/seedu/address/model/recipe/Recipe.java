@@ -1,11 +1,18 @@
 package seedu.address.model.recipe;
 
-import seedu.address.model.Name;
-import seedu.address.model.ingredient.Ingredient;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import seedu.address.model.Name;
+import seedu.address.model.ingredient.Ingredient;
+
+/**
+ * Represents a recipe in the recipe book.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Recipe {
 
     private final UniqueId uuid;
@@ -13,14 +20,20 @@ public class Recipe {
     private final List<Ingredient> ingredientList;
     private final List<RecipeStep> recipeSteps;
 
+    /**
+     * Creates a new Recipe.
+     */
     public Recipe(Name name, List<Ingredient> ingredientList, List<RecipeStep> recipeSteps) {
+        requireAllNonNull(name, ingredientList, recipeSteps);
         this.uuid = new UniqueId();
         this.name = name;
         this.ingredientList = ingredientList;
         this.recipeSteps = recipeSteps;
     }
 
+    /** Creates a new Recipe with the specified {@code id}. */
     public Recipe(int id, Name name, List<Ingredient> ingredientList, List<RecipeStep> recipeSteps) {
+        requireAllNonNull(id, name, ingredientList, recipeSteps);
         this.uuid = new UniqueId(id);
         this.name = name;
         this.ingredientList = ingredientList;
@@ -35,10 +48,15 @@ public class Recipe {
         return this.uuid.getId();
     }
 
-    public boolean containsIngredient(Ingredient otherIngredient) {
-        return ingredientList.contains(otherIngredient);
+    /** Check if the current recipe contains the specified ingredient name. */
+    public boolean containsIngredient(Name ingredientName) {
+        requireNonNull(ingredientName);
+        return ingredientList.stream().anyMatch(x -> x.getName().equals(ingredientName));
     }
 
+    /**
+     * Changes the specified recipe step with the new instructions.
+     */
     public Recipe modifyRecipeStep(int stepNumber, String newStep) {
         List<RecipeStep> stepCopy = new ArrayList<>();
         stepCopy.addAll(this.recipeSteps);
@@ -46,6 +64,9 @@ public class Recipe {
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
 
+    /**
+     * Changes the specified recipe step with a new step number.
+     */
     public Recipe modifyRecipeStep(int stepNumber, int newStepNumber) {
         List<RecipeStep> stepCopy = new ArrayList<>();
         stepCopy.addAll(this.recipeSteps);
@@ -53,6 +74,9 @@ public class Recipe {
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
 
+    /**
+     * Returns the full recipe.
+     */
     public String getFullRecipe() {
         StringBuilder ingredients = new StringBuilder();
         for (Ingredient ingredient : ingredientList) {
