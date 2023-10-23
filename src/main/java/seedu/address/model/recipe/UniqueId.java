@@ -9,7 +9,7 @@ public class UniqueId {
 
     public UniqueId(int id) {
         this.id = id;
-        lastId = lastId >= id ? lastId : id;
+        lastId = Math.max(lastId, id);
     }
 
     public int getId() {
