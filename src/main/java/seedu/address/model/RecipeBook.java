@@ -75,7 +75,7 @@ public class RecipeBook implements ReadOnlyRecipeBook {
         for (Recipe recipe : this.recipeList) {
             if (recipe.getId() == recipeId) {
                 this.recipeList.remove(recipe);
-                break;
+                return;
             }
         }
         throw new RecipeNotFoundException();
@@ -114,7 +114,7 @@ public class RecipeBook implements ReadOnlyRecipeBook {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Inventory)) {
+        if (!(other instanceof RecipeBook)) {
             return false;
         }
 
