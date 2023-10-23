@@ -89,10 +89,10 @@ Examples:
 
 Depletes a specified amount of an ingredient from stock.
 
-Format: `use n/NAME [q/QUANTITY] [u/UNIT]` [Optional coming in V1.3]
+Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
-* If no quantity is provided, the entire stock of the specified ingredient will be depleted. [Coming in V1.3]
-* If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative. [Coming in V1.3]
+* If no quantity and unit is provided, the entire stock of the specified ingredient will be depleted.
+* If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
 
 Examples:
 *  `use n/Milk q/600 u/ml` Depletes the current quantity of milk by 600 ml.
@@ -126,9 +126,13 @@ Exits the program.
 
 Format: `exit`
 
-### Deleting Ingredients `[coming in v1.3]`
+### Viewing Specific Recipes `[coming in v1.3]`
 
-### Viewing Recipes `[coming in v1.3]`
+### Listing all Recipes : `list`
+
+Lists out all recipes that is currently stored in the recipebook.
+
+Format: `list`
 
 ### Adding Recipes `[coming in v1.3]`
 
@@ -171,3 +175,4 @@ If your changes to the data file makes its format invalid, Inventory will discar
 | **Use**   | `use n/NAME [q/QUANTITY] [u/UNIT]`<br> e.g., `use n/milk q/200 u/ml`  |
 | **Stock** | `stock [NAME]…​`<br> e.g., `stock milk egg`                           |
 | **Help**  | `help`                                                                |
+| **List**  | `list`                                                                |
