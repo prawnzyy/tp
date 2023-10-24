@@ -3,6 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
+import static seedu.address.testutil.TypicalRecipe.getTypicalRecipeBook;
 
 import java.nio.file.Path;
 
@@ -11,9 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.Inventory;
-import seedu.address.model.ReadOnlyInventory;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.*;
 
 public class StorageManagerTest {
 
@@ -64,6 +63,23 @@ public class StorageManagerTest {
     @Test
     public void getInventoryFilePath() {
         assertNotNull(storageManager.getInventoryFilePath());
+    }
+
+    @Test
+    public void recipeBookReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies that StorageManager is properly wired to the
+         * {@Link JsonRecipeBookStorage} class.
+         */
+        RecipeBook original = getTypicalRecipeBook();
+        storageManager.saveRecipeBook(original);
+        ReadOnlyRecipeBook retrieved = storageManager.readRecipeBook().get();
+        assertEquals(original, new RecipeBook(retrieved));
+    }
+
+    @Test
+    public void getRecipeBookFilePath() {
+        assertNotNull(storageManager.getRecipeBookFilePath());
     }
 
 }
