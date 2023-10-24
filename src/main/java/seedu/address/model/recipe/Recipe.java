@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
@@ -46,6 +47,14 @@ public class Recipe {
 
     public int getId() {
         return this.uuid.getId();
+    }
+
+    public List<Ingredient> getIngredients() {
+        return this.ingredientList;
+    }
+
+    public List<String> getRecipeSteps() {
+        return this.recipeSteps.stream().map(RecipeStep::toString).collect(Collectors.toList());
     }
 
     /** Check if the current recipe contains the specified ingredient name. */

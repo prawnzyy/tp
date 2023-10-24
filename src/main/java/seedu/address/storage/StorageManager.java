@@ -93,7 +93,7 @@ public class StorageManager implements Storage {
 
     @Override
     public Optional<ReadOnlyRecipeBook> readRecipeBook(Path filePath) throws DataLoadingException {
-        logger.fine("Attempting to read data from file: " + filePath);
+        logger.fine("Attempting to read recipe data from file: " + filePath);
         return recipeBookStorage.readRecipeBook(filePath);
     }
 
@@ -104,7 +104,7 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveRecipeBook(ReadOnlyRecipeBook recipeBook, Path filePath) throws IOException {
-        logger.fine("Attempting to write to data file: " + filePath);
+        logger.fine("Attempting to write to recipe data file: " + filePath);
         recipeBookStorage.saveRecipeBook(recipeBook, filePath);
     }
 }

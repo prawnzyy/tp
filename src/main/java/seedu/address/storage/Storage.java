@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyInventory;
+import seedu.address.model.ReadOnlyRecipeBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
@@ -28,5 +29,14 @@ public interface Storage extends InventoryStorage, UserPrefsStorage, RecipeBookS
 
     @Override
     void saveInventory(ReadOnlyInventory inventory) throws IOException;
+
+    @Override
+    Path getRecipeBookFilePath();
+
+    @Override
+    Optional<ReadOnlyRecipeBook> readRecipeBook() throws DataLoadingException;
+
+    @Override
+    void saveRecipeBook(ReadOnlyRecipeBook recipeBook) throws IOException;
 
 }

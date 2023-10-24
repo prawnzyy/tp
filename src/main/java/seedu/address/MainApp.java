@@ -22,12 +22,7 @@ import seedu.address.model.ReadOnlyInventory;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.InventoryStorage;
-import seedu.address.storage.JsonInventoryStorage;
-import seedu.address.storage.JsonUserPrefsStorage;
-import seedu.address.storage.Storage;
-import seedu.address.storage.StorageManager;
-import seedu.address.storage.UserPrefsStorage;
+import seedu.address.storage.*;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
 
@@ -58,7 +53,8 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         InventoryStorage inventoryStorage = new JsonInventoryStorage(userPrefs.getInventoryFilePath());
-        storage = new StorageManager(inventoryStorage, userPrefsStorage);
+        RecipeBookStorage recipeBookStorage = new JsonRecipeBookStorage(userPrefs.getRecipeBookFilePath());
+        storage = new StorageManager(inventoryStorage, userPrefsStorage, recipeBookStorage);
 
         model = initModelManager(storage, userPrefs);
 
