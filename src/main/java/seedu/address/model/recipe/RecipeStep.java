@@ -1,16 +1,16 @@
 package seedu.address.model.recipe;
 
-import seedu.address.model.recipe.exceptions.RecipeStepFormatException;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import seedu.address.model.recipe.exceptions.RecipeStepFormatException;
 
 /**
  * An abstraction class for a recipe step.
- * Wraps a step number and a string instruction
+ * Wraps a step number and a string instruction.
  */
 public class RecipeStep {
     private static final Pattern recipeStepPattern =
@@ -25,7 +25,7 @@ public class RecipeStep {
         this.stepNumber = stepNumber;
     }
 
-    /** Modifies the current recipe step with the specified {@code newInstruction} */
+    /** Modifies the current recipe step with the specified {@code newInstruction}. */
     public RecipeStep modifyStep(String newInstruction) {
         requireNonNull(newInstruction);
         return new RecipeStep(newInstruction, this.stepNumber);
@@ -36,6 +36,7 @@ public class RecipeStep {
         return new RecipeStep(this.instruction, newStepNumber);
     }
 
+    /** Parses the {@code str} as a {@code RecipeStep}. */
     public static RecipeStep parseRecipeStep(String str) {
         Matcher matcher = recipeStepPattern.matcher(str);
         if (matcher.find()) {

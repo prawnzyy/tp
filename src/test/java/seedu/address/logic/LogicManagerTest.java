@@ -16,9 +16,16 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.*;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyInventory;
+import seedu.address.model.RecipeBook;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.storage.*;
+import seedu.address.storage.JsonInventoryStorage;
+import seedu.address.storage.JsonRecipeBookStorage;
+import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.StorageManager;
 import seedu.address.testutil.IngredientBuilder;
 
 public class LogicManagerTest {
@@ -36,7 +43,8 @@ public class LogicManagerTest {
         JsonInventoryStorage inventoryStorage =
                 new JsonInventoryStorage(temporaryFolder.resolve("inventory.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        JsonRecipeBookStorage recipeBookStorage = new JsonRecipeBookStorage((temporaryFolder.resolve("recipeBook.json")));
+        JsonRecipeBookStorage recipeBookStorage =
+                new JsonRecipeBookStorage((temporaryFolder.resolve("recipeBook.json")));
         StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage, recipeBookStorage);
         logic = new LogicManager(model, storage);
     }

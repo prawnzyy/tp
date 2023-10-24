@@ -5,7 +5,11 @@ import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.*;
+import seedu.address.model.Inventory;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.RecipeBook;
+import seedu.address.model.UserPrefs;
 
 public class ClearCommandTest {
 

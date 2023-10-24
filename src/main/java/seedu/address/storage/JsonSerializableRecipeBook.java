@@ -1,19 +1,20 @@
 package seedu.address.storage;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.Inventory;
-import seedu.address.model.ReadOnlyInventory;
-import seedu.address.model.ReadOnlyRecipeBook;
-import seedu.address.model.RecipeBook;
-import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.recipe.Recipe;
-
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.ReadOnlyRecipeBook;
+import seedu.address.model.RecipeBook;
+import seedu.address.model.recipe.Recipe;
+
+/**
+ * An Immutable RecipeBook that is serializable to JSON format.
+ */
 public class JsonSerializableRecipeBook {
 
     public static final String MESSAGE_DUPLICATE_RECIPE = "Recipes list contains duplicate recipe(s).";
@@ -28,9 +29,9 @@ public class JsonSerializableRecipeBook {
     }
 
     /**
-     * Converts a given {@code ReadOnlyInventory} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyRecipeBook} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableInventory}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableRecipeBook}.
      */
     public JsonSerializableRecipeBook(ReadOnlyRecipeBook source) {
         recipes.addAll(source.getRecipeList().stream()
@@ -38,7 +39,7 @@ public class JsonSerializableRecipeBook {
     }
 
     /**
-     * Converts this inventory into the model's {@code Inventory} object.
+     * Converts this inventory into the model's {@code RecipeBook} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */

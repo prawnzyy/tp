@@ -7,7 +7,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
-import seedu.address.model.*;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.Name;
+import seedu.address.model.RecipeBook;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
