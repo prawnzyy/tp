@@ -13,32 +13,36 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.recipe.Recipe;
 
 /**
  * Represents the in-memory model of the inventory data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
-
     private final Inventory inventory;
     private final UserPrefs userPrefs;
+    private final RecipeBook recipeBook;
     private final FilteredList<Ingredient> filteredIngredients;
+    private final FilteredList<Recipe> filteredRecipe;
 
     /**
      * Initializes a ModelManager with the given inventory and userPrefs.
      */
-    public ModelManager(ReadOnlyInventory inventory, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(inventory, userPrefs);
+    public ModelManager(ReadOnlyInventory inventory, ReadOnlyUserPrefs userPrefs, ReadOnlyRecipeBook recipeBook) {
+        requireAllNonNull(inventory, userPrefs, recipeBook);
 
         logger.fine("Initializing with inventory: " + inventory + " and user prefs " + userPrefs);
 
         this.inventory = new Inventory(inventory);
         this.userPrefs = new UserPrefs(userPrefs);
+        this.recipeBook = new RecipeBook(recipeBook);
         filteredIngredients = new FilteredList<>(this.inventory.getIngredientList());
+        filteredRecipe = new FilteredList<>(this.recipeBook.getRecipeList());
     }
 
     public ModelManager() {
-        this(new Inventory(), new UserPrefs());
+        this(new Inventory(), new UserPrefs(), new RecipeBook());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -123,6 +127,41 @@ public class ModelManager implements Model {
         updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
     }
 
+    //=========== RecipeBook =============================================================
+
+    @Override
+    public void setRecipeBook(ReadOnlyRecipeBook recipeBook) {
+        requireNonNull(recipeBook);
+        this.recipeBook.resetData(recipeBook);
+    }
+
+    @Override
+    public ReadOnlyRecipeBook getRecipeBook() {
+        return this.recipeBook;
+    }
+
+    @Override
+    public boolean hasRecipe(Name recipeName) {
+        requireNonNull(recipeName);
+        return this.recipeBook.hasRecipe(recipeName);
+    }
+
+    @Override
+    public void deleteRecipe(int recipeId) {
+        this.recipeBook.removeRecipe(recipeId);
+    }
+
+    @Override
+    public void addRecipe(Recipe recipe) {
+        requireNonNull(recipe);
+        this.recipeBook.addRecipe(recipe);
+    }
+
+    @Override
+    public String getFullRecipe(int recipeId) {
+        return this.recipeBook.getFullRecipe(recipeId);
+    }
+
     //=========== Filtered Ingredient List Accessors =============================================================
 
     /**
@@ -141,6 +180,17 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Recipe> getFilteredRecipeList() {
+        return filteredRecipe;
+    }
+
+    @Override
+    public void updateFilteredRecipeList(Predicate<Recipe> predicate) {
+        requireNonNull(predicate);
+        this.filteredRecipe.setPredicate(predicate);
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
@@ -154,7 +204,9 @@ public class ModelManager implements Model {
         ModelManager otherModelManager = (ModelManager) other;
         return inventory.equals(otherModelManager.inventory)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredIngredients.equals(otherModelManager.filteredIngredients);
+                && recipeBook.equals(otherModelManager.recipeBook)
+                && filteredIngredients.equals(otherModelManager.filteredIngredients)
+                && filteredRecipe.equals(otherModelManager.filteredRecipe);
     }
 
 }

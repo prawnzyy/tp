@@ -15,12 +15,7 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
-import seedu.address.model.Inventory;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyInventory;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.*;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.*;
 import seedu.address.ui.Ui;
@@ -73,6 +68,8 @@ public class MainApp extends Application {
 
         Optional<ReadOnlyInventory> inventoryOptional;
         ReadOnlyInventory initialData;
+        Optional<ReadOnlyRecipeBook> recipeBookOptional;
+        ReadOnlyRecipeBook initialRecipeData;
         try {
             inventoryOptional = storage.readInventory();
             if (!inventoryOptional.isPresent()) {
@@ -80,13 +77,26 @@ public class MainApp extends Application {
                         + " populated with a sample Inventory.");
             }
             initialData = inventoryOptional.orElseGet(SampleDataUtil::getSampleInventory);
+
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getInventoryFilePath() + " could not be loaded."
                     + " Will be starting with an empty Inventory.");
             initialData = new Inventory();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        try {
+            recipeBookOptional = storage.readRecipeBook();
+            if (!recipeBookOptional.isPresent()) {
+                logger.info("Creating an empty recipe data file " + storage.getRecipeBookFilePath());
+            }
+            initialRecipeData = recipeBookOptional.orElseGet(RecipeBook::new);
+        } catch (DataLoadingException e) {
+            logger.warning("Recipe data file at " + storage.getRecipeBookFilePath() + " could not be loaded."
+                    + " Will be starting with an empty Recipe Book.");
+            initialRecipeData = new RecipeBook();
+        }
+
+        return new ModelManager(initialData, userPrefs, initialRecipeData);
     }
 
     private void initLogging(Config config) {

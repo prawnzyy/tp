@@ -28,6 +28,7 @@ public interface RecipeBookStorage {
 
     /**
      * Saves the given {@link ReadOnlyRecipeBook} to the storage.
+     *
      * @param recipeBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */

@@ -23,5 +23,4 @@ public class RecipeBookBuilder {
     public RecipeBook build() {
         return this.recipeBook;
     }
-
 }
