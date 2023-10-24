@@ -16,6 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyInventory;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.recipe.Recipe;
 import seedu.address.storage.Storage;
 
 /**
@@ -84,5 +85,10 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public ObservableList<Recipe> getRecipeList() {
+        return model.getFilteredRecipeList();
     }
 }

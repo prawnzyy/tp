@@ -9,9 +9,10 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.Name;
+import seedu.address.model.RecipeBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.testutil.IngredientBuilder;
@@ -25,7 +26,7 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalInventory(), new UserPrefs());
+        model = new ModelManager(getTypicalInventory(), new UserPrefs(), new RecipeBook());
     }
 
     @Test
@@ -33,7 +34,7 @@ public class AddCommandIntegrationTest {
         Ingredient validIngredient = new IngredientBuilder().build();
         Ingredient expectedIngredient = new Ingredient(new Name("Flour"), new Quantity(150.0, Unit.GRAM));
 
-        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs(), new RecipeBook());
         expectedModel.addIngredient(validIngredient);
         assertCommandSuccess(new AddCommand(validIngredient), model,
                 String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(expectedIngredient)),
