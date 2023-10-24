@@ -1,13 +1,20 @@
 package seedu.address.model;
 
-import javafx.collections.ObservableList;
-import org.junit.jupiter.api.Test;
-import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.TypicalRecipe.COOKIES;
+import static seedu.address.testutil.TypicalRecipe.COOKIES_STRING;
+import static seedu.address.testutil.TypicalRecipe.SPONGECAKE;
+import static seedu.address.testutil.TypicalRecipe.getTypicalRecipeBook;
 
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.testutil.TypicalRecipe.*;
+import org.junit.jupiter.api.Test;
+
+import javafx.collections.ObservableList;
+import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 
 public class RecipeBookTest {
 

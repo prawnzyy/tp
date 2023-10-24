@@ -1,15 +1,16 @@
 package seedu.address.model.recipe;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
-
-import java.util.Collections;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalRecipe.COOKIES;
 import static seedu.address.testutil.TypicalRecipe.SPONGECAKE;
+
+import java.util.Collections;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 
 public class RecipeListTest {
     private final RecipeList recipeList = new RecipeList();
@@ -54,7 +55,7 @@ public class RecipeListTest {
     }
 
     @Test
-    public void setRecipe_nullListOfRecipe_throws_NullPointerException() {
+    public void setRecipe_nullListOfRecipe_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> recipeList.setRecipes((List<Recipe>) null));
     }
 

@@ -18,11 +18,13 @@ public class RecipeStep {
         this.stepNumber = stepNumber;
     }
 
+    /** Modifies the current recipe step with the specified {@code newInstruction} */
     public RecipeStep modifyStep(String newInstruction) {
         requireNonNull(newInstruction);
         return new RecipeStep(newInstruction, this.stepNumber);
     }
 
+    /** Modifies the current recipe step with the specified {@code newStepNumber} */
     public RecipeStep modifyStep(int newStepNumber) {
         return new RecipeStep(this.instruction, newStepNumber);
     }

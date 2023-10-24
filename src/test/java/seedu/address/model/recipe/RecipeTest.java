@@ -1,12 +1,20 @@
 package seedu.address.model.recipe;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.model.Name;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.TypicalRecipe.COOKIES;
+import static seedu.address.testutil.TypicalRecipe.COOKIES_STRING;
+import static seedu.address.testutil.TypicalRecipe.SPONGECAKE;
+import static seedu.address.testutil.TypicalRecipe.SPONGECAKE_STRING;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.testutil.TypicalRecipe.*;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.Name;
 
 public class RecipeTest {
     @Test
@@ -18,20 +26,20 @@ public class RecipeTest {
 
     @Test
     public void recipe_nullName_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-                () -> new Recipe(null, new ArrayList<>(), new ArrayList<>()));
+        assertThrows(NullPointerException.class, () ->
+                new Recipe(null, new ArrayList<>(), new ArrayList<>()));
     }
 
     @Test
     public void recipe_nullIngredientList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-                () -> new Recipe(new Name("Test"), null, new ArrayList<>()));
+        assertThrows(NullPointerException.class, () ->
+                new Recipe(new Name("Test"), null, new ArrayList<>()));
     }
 
     @Test
     public void recipe_nullStepsList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-                () -> new Recipe(new Name("Test"), new ArrayList<>(), null));
+        assertThrows(NullPointerException.class, () ->
+                new Recipe(new Name("Test"), new ArrayList<>(), null));
     }
 
     @Test
@@ -106,9 +114,9 @@ public class RecipeTest {
 
     @Test
     public void getFullString_recipeHasCorrectModifiedRepresentation_success() {
-        String modifiedCookieString = "1. Cookies\nFlour 200.0 GRAM\nMilk 100.0 GRAM\n" +
-                "Chocolate Chips 50.0 GRAM\n1. Mix flour with milk\n2. Put chocolate chips in mixture\n" +
-                "3. Shape dough into cookie shape\n4. New step";
+        String modifiedCookieString = "1. Cookies\nFlour 200.0 GRAM\nMilk 100.0 GRAM\n"
+                + "Chocolate Chips 50.0 GRAM\n1. Mix flour with milk\n2. Put chocolate chips in mixture\n"
+                + "3. Shape dough into cookie shape\n4. New step";
         Recipe modifiedCookie = COOKIES.modifyRecipeStep(4, "New step");
         assertEquals(modifiedCookieString, modifiedCookie.getFullRecipe());
     }

@@ -1,5 +1,9 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import seedu.address.model.Name;
 import seedu.address.model.RecipeBook;
 import seedu.address.model.ingredient.Ingredient;
@@ -7,10 +11,9 @@ import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.model.recipe.Recipe;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+/**
+ * A utility class containing a list of {@code Recipe} to be used in tests.
+ */
 public class TypicalRecipe {
 
     public static final Recipe COOKIES = new RecipeBuilder().withName("Cookies")
@@ -39,14 +42,14 @@ public class TypicalRecipe {
             .withId(2)
             .build();
 
-    public static final String COOKIES_STRING = "1. Cookies\nFlour 200.0 GRAM\nMilk 100.0 GRAM\n" +
-            "Chocolate Chips 50.0 GRAM\n1. Mix flour with milk\n2. Put chocolate chips in mixture\n" +
-            "3. Shape dough into cookie shape\n4. Bake in oven at 180C for 20 minutes";
+    public static final String COOKIES_STRING = "1. Cookies\nFlour 200.0 GRAM\nMilk 100.0 GRAM\n"
+            + "Chocolate Chips 50.0 GRAM\n1. Mix flour with milk\n2. Put chocolate chips in mixture\n"
+            + "3. Shape dough into cookie shape\n4. Bake in oven at 180C for 20 minutes";
 
-    public static final String SPONGECAKE_STRING = "2. Spongecake\nFlour 500.0 GRAM\nButter 250.0 GRAM\n" +
-            "Eggs 4.0 PIECE\nYeast 5.0 GRAM\nBaking Soda 10.0 GRAM\n1. Mix flour with butter\n" +
-            "2. Mix eggs into dough\n3. Put yeast in warm water and mix it in dough\n" +
-            "4. Put baking soda in dough\n5. Let dough rest for 30 minutes\n6. Bake in oven at 220C for 25 minutes";
+    public static final String SPONGECAKE_STRING = "2. Spongecake\nFlour 500.0 GRAM\nButter 250.0 GRAM\n"
+            + "Eggs 4.0 PIECE\nYeast 5.0 GRAM\nBaking Soda 10.0 GRAM\n1. Mix flour with butter\n"
+            + "2. Mix eggs into dough\n3. Put yeast in warm water and mix it in dough\n"
+            + "4. Put baking soda in dough\n5. Let dough rest for 30 minutes\n6. Bake in oven at 220C for 25 minutes";
 
     private TypicalRecipe() {}
 
