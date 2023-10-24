@@ -5,7 +5,7 @@
 //import java.util.stream.Stream;
 //
 //import seedu.address.logic.commands.EditCommand.EditIngredientDescriptor;
-//import seedu.address.model.ingredient.Name;
+//import seedu.address.model.Name;
 //import seedu.address.model.ingredient.Ingredient;
 //import seedu.address.model.tag.Tag;
 //
