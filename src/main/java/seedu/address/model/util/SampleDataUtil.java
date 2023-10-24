@@ -1,6 +1,5 @@
 package seedu.address.model.util;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import seedu.address.model.Inventory;
@@ -40,11 +39,11 @@ public class SampleDataUtil {
         // Recipe 1
         Ingredient flour = new Ingredient(new Name("Flour"), new Quantity(200, Unit.GRAM));
         Ingredient milk = new Ingredient(new Name("Milk"), new Quantity(100, Unit.GRAM));
-        Ingredient chocolate_chips = new Ingredient(new Name("Chocolate Chip"), new Quantity(50, Unit.GRAM));
+        Ingredient chocolateChips = new Ingredient(new Name("Chocolate Chip"), new Quantity(50, Unit.GRAM));
         ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
         ingredientList.add(flour);
         ingredientList.add(milk);
-        ingredientList.add(chocolate_chips);
+        ingredientList.add(chocolateChips);
 
         RecipeStep first = new RecipeStep("Mix flour with Milk", 1);
         RecipeStep second = new RecipeStep("Add Chocolate Chips", 2);
@@ -71,8 +70,8 @@ public class SampleDataUtil {
         recipeSteps.add(cakeSecond);
         recipeSteps.add(cakeThird);
         return new Recipe[] {
-                new Recipe(new Name("Cookie"), ingredientList, recipeSteps),
-                new Recipe(new Name("Cake"), ingredientListCake, cakeRecipeSteps),
+            new Recipe(new Name("Cookie"), ingredientList, recipeSteps),
+            new Recipe(new Name("Cake"), ingredientListCake, cakeRecipeSteps),
         };
     }
 
