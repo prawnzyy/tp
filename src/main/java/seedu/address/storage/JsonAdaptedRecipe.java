@@ -17,26 +17,26 @@ public class JsonAdaptedRecipe {
 
     private final int id;
     private final String name;
-    private final List<JsonAdaptedIngredient> ingredientsList;
-    private final List<String> recipeSteps;
+    private final List<JsonAdaptedIngredient> ingredients;
+    private final List<String> steps;
 
     public JsonAdaptedRecipe(@JsonProperty("id") int id, @JsonProperty("name") String name,
-                             @JsonProperty("ingredients") List<Ingredient> ingredients,
+                             @JsonProperty("ingredients") List<JsonAdaptedIngredient> ingredients,
                              @JsonProperty("steps") List<String> steps) {
 
         requireAllNonNull(id, name, ingredients, steps);
         this.id = id;
         this.name = name;
-        this.ingredientsList = ingredients.stream().map(JsonAdaptedIngredient::new).collect(Collectors.toList());
-        this.recipeSteps = steps;
+        this.ingredients = ingredients;
+        this.steps = steps;
     }
 
     public JsonAdaptedRecipe(Recipe recipe) {
         this.id = recipe.getId();
         this.name = recipe.getName().fullName;
-        this.ingredientsList = recipe.getIngredients().stream().map(JsonAdaptedIngredient::new)
+        this.ingredients = recipe.getIngredients().stream().map(JsonAdaptedIngredient::new)
                 .collect(Collectors.toList());
-        this.recipeSteps = recipe.getRecipeSteps();
+        this.steps = recipe.getRecipeSteps();
     }
 
     public Recipe toModelType() throws IllegalValueException {
@@ -47,7 +47,7 @@ public class JsonAdaptedRecipe {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
         final Name modelName = new Name(name);
-        final List<Ingredient> modelIngredients = ingredientsList.stream().map(x -> {
+        final List<Ingredient> modelIngredients = ingredients.stream().map(x -> {
             try {
                 return x.toModelType();
             } catch (IllegalValueException e) {
@@ -55,7 +55,7 @@ public class JsonAdaptedRecipe {
             }
         }).collect(Collectors.toList());
 
-        final List<RecipeStep> modelSteps = recipeSteps.stream().map(RecipeStep::parseRecipeStep)
+        final List<RecipeStep> modelSteps = steps.stream().map(RecipeStep::parseRecipeStep)
                 .collect(Collectors.toList());
 
         return new Recipe(id, modelName, modelIngredients, modelSteps);

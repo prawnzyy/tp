@@ -42,6 +42,12 @@ public class TypicalRecipe {
             .withId(2)
             .build();
 
+    public static final Recipe DUMMY_RECIPE = new RecipeBuilder().withName("Dummy")
+            .withIngredient(new Ingredient(new Name("Flour"), new Quantity(500, Unit.GRAM)))
+            .withSteps("Mix flour with air", 1)
+            .withId(3)
+            .build();
+
     public static final String COOKIES_STRING = "1. Cookies\nFlour 200.0 GRAM\nMilk 100.0 GRAM\n"
             + "Chocolate Chips 50.0 GRAM\n1. Mix flour with milk\n2. Put chocolate chips in mixture\n"
             + "3. Shape dough into cookie shape\n4. Bake in oven at 180C for 20 minutes";

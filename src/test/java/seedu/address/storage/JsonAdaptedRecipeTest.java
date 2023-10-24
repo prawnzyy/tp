@@ -7,6 +7,7 @@ import static seedu.address.testutil.TypicalRecipe.COOKIES;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -39,7 +40,8 @@ public class JsonAdaptedRecipeTest {
         List<String> stepsList = new ArrayList<>();
         stepsList.add("Not a valid step");
 
-        JsonAdaptedRecipe invalidRecipe = new JsonAdaptedRecipe(1, VALID_NAME, ingredientList, stepsList);
+        JsonAdaptedRecipe invalidRecipe = new JsonAdaptedRecipe(1, VALID_NAME,
+                ingredientList.stream().map(JsonAdaptedIngredient::new).collect(Collectors.toList()), stepsList);
         assertThrows(RecipeStepFormatException.class, () -> invalidRecipe.toModelType());
     }
 
