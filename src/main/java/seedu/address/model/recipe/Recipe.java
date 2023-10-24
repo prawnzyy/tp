@@ -110,4 +110,21 @@ public class Recipe {
         return this.name.toString();
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Recipe)) {
+            return false;
+        }
+
+        Recipe otherRecipe = (Recipe) other;
+        return this.uuid.getId() == otherRecipe.uuid.getId()
+                && this.name.equals(otherRecipe.name)
+                && this.ingredientList.equals(otherRecipe.ingredientList)
+                && this.recipeSteps.equals(otherRecipe.recipeSteps);
+    }
+
 }

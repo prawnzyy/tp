@@ -52,4 +52,19 @@ public class RecipeStep {
         return String.format("%d. %s", this.stepNumber, this.instruction);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof RecipeStep)) {
+            return false;
+        }
+
+        RecipeStep otherRecipeStep = (RecipeStep) other;
+        return this.stepNumber == otherRecipeStep.stepNumber
+                && this.instruction.equals(otherRecipeStep.instruction);
+    }
+
 }

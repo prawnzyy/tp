@@ -54,6 +54,7 @@ public class JsonAdaptedRecipe {
                 return null;
             }
         }).collect(Collectors.toList());
+
         final List<RecipeStep> modelSteps = recipeSteps.stream().map(RecipeStep::parseRecipeStep)
                 .collect(Collectors.toList());
 
