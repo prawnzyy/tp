@@ -8,6 +8,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.recipe.Recipe;
 
 /**
  * Panel containing the list of recipes.
@@ -18,12 +19,12 @@ public class RecipeListPanel extends UiPart<Region> {
 
     // To be updated
     @FXML
-    private ListView<String> recipeListView;
+    private ListView<Recipe> recipeListView;
 
     /**
      * Creates a {@code IngredientListPanel} with the given {@code ObservableList}.
      */
-    public RecipeListPanel(ObservableList<String> recipeList) {
+    public RecipeListPanel(ObservableList<Recipe> recipeList) {
         super(FXML);
         System.out.println(recipeList);
         recipeListView.setItems(recipeList);
@@ -33,16 +34,16 @@ public class RecipeListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Recipe} using an {@code RecipeCard}.
      */
-    class RecipeListViewCell extends ListCell<String> { // To be updated
+    class RecipeListViewCell extends ListCell<Recipe> { // To be updated
         @Override
-        protected void updateItem(String string, boolean empty) {
-            super.updateItem(string, empty);
+        protected void updateItem(Recipe recipe, boolean empty) {
+            super.updateItem(recipe, empty);
 
-            if (empty || string == null) {
+            if (empty || recipe == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new RecipeCard(string, getIndex() + 1).getRoot());
+                setGraphic(new RecipeCard(recipe, getIndex() + 1).getRoot());
             }
         }
     }
