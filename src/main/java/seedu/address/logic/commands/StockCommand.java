@@ -25,6 +25,7 @@ public class StockCommand extends Command {
     private final Predicate<Ingredient> predicate;
 
     public StockCommand(Predicate<Ingredient> predicate) {
+        //todo does this need a require non null?
         this.predicate = predicate;
     }
 
