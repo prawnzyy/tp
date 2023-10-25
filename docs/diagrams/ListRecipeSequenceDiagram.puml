@@ -52,5 +52,4 @@ deactivate ListCommand
 
 [<--LogicManager
 deactivate LogicManager
-
 @enduml
