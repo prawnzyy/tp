@@ -24,6 +24,10 @@ public class StockCommand extends Command {
 
     private final Predicate<Ingredient> predicate;
 
+    /**
+     * Constructor with for stock command with an ingredient predicate
+     * @param predicate
+     */
     public StockCommand(Predicate<Ingredient> predicate) {
         //todo does this need a require non null?
         this.predicate = predicate;

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.recipe.Recipe;
 
 /**
@@ -28,6 +29,8 @@ public class RecipeListCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label id;
+    @FXML
+    private Label ingredient;
 
     /**
      * Creates a {@code IngredientCode} with the given {@code Ingredient} and index to display.
@@ -37,5 +40,12 @@ public class RecipeListCard extends UiPart<Region> {
         this.recipe = recipe;
         id.setText(String.valueOf(displayedIndex));
         name.setText(recipe.getName().toString());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            stringBuilder.append("Name: " + ingredient.getName() + " Quantity: " + ingredient.getQuantity());
+            stringBuilder.append("\n");
+        }
+        String ingredients = stringBuilder.toString();
+        ingredient.setText(ingredients);
     }
 }
