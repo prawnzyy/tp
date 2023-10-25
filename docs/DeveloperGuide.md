@@ -1,3 +1,47 @@
+## Implementation
+This section describes some noteworthy details on how certain features are implemented.
+
+### View recipe feature
+#### Implementation
+The view recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
+
+Given below is an example usage scenario and how the view recipe mechanism behaves at each step. The application is
+assumed to be initialised with at least one recipe loaded in the `ModelManager`.
+
+Step 1. The user keys in `view 1` into the UI command box. `LogicManager` takes this string command and executes it.
+
+Step 2. `InventoryAppParser` is then called to parse the `view 1` command. 
+
+Step 3. By Polymorphism, `RecipeViewCommandParser` is called on to handle the parsing. The `parse(String args)` function
+is called with the argument of `"1"`
+
+Step 4. A `RecipeUuidMatchesPredicate` predicate object is created which returns true for any recipe tested on the 
+predicate with the same uuid of `"1"`.
+
+Step 5. The `RecipeViewCommand` then filters the recipe list in `ModelManager` according to the predicate. The recipe
+list should only have at most 1 item after filtration.
+
+Step 6. The `MainWindow` in `ui` detects that there is one item in the recipe list, and proceeds to display the full
+recipe.
+
+`RecipeViewCommand` calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
+recipe list in `ModelManager` according to the predicate set.
+
+The following sequence diagram shows how the view recipe operation works:
+
+<img src="images/UML/viewrecipesequencediagram.png" width="800px">
+
+#### Alternatives considered:
+An alternative implementation of the recipe view command would be to find the first recipe with uuid that matches
+instead of filtering through the whole recipe list. Each recipe has a unique id, and hence the first instance of a
+recipe with match uuid should be the only recipe with that uuid. This could lead to faster search times to view
+a specific recipe.
+
+However, we do not expect a user to have so many recipes that performance would become an issue. We do not expect
+users to be frequently using this command either, since baking something requires much time and effort. Filtering
+through the whole list also confers an advantage of being able to assert that there is at most one such recipe
+with that particular uuid. 
+
 ## **Appendix: Requirements**
 
 ### Product Scope

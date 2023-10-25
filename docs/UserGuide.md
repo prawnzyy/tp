@@ -126,7 +126,17 @@ Exits the program.
 
 Format: `exit`
 
-### Viewing Specific Recipes `[coming in v1.3]`
+### Viewing Specific Recipes
+Views a specific recipe in the recipe list.
+
+Format: `view [uuid]`
+* `uuid` must be an integer greater than or equal to 1
+* `uuid` integer value cannot exceed the total number of recipes loaded into the recipe book.
+* to toggle back to listing all recipes, use the `list` command
+
+Examples:
+* `view 1` views the recipe with `uuid` of 1
+* `view 21` views the recipe with `uuid` of 21
 
 ### Listing all Recipes : `list`
 
@@ -176,3 +186,4 @@ If your changes to the data file makes its format invalid, Inventory will discar
 | **Stock** | `stock [NAME]…​`<br> e.g., `stock milk egg`                           |
 | **Help**  | `help`                                                                |
 | **List**  | `list`                                                                |
+| **View**  | `view [uuid]`                                                         |
