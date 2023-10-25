@@ -96,7 +96,7 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
 Examples:
 *  `use n/Milk q/600 u/ml` Depletes the current quantity of milk by 600 ml.
-*  `use n/Egg` Depletes the current quantity of egg by the default amount. [Coming in V1.3]
+*  `use n/Egg` Fully depletes the current quantity of egg.
 
 ### Finding the quantity of an ingredient by name: `stock`
 

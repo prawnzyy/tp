@@ -55,15 +55,15 @@ public class SampleDataUtil {
 
         // Recipe 2
         Ingredient cakeFlour = new Ingredient(new Name("Flour"), new Quantity(200, Unit.GRAM));
-        Ingredient egg = new Ingredient(new Name("Milk"), new Quantity(2, Unit.PIECE));
-        Ingredient cream = new Ingredient(new Name("Chocolate Chip"), new Quantity(50, Unit.GRAM));
+        Ingredient egg = new Ingredient(new Name("Egg"), new Quantity(2, Unit.PIECE));
+        Ingredient cream = new Ingredient(new Name("Cream"), new Quantity(50, Unit.GRAM));
         ArrayList<Ingredient> ingredientListCake = new ArrayList<Ingredient>();
         ingredientListCake.add(cakeFlour);
         ingredientListCake.add(egg);
         ingredientListCake.add(cream);
 
-        RecipeStep cakeFirst = new RecipeStep("Mix flour with Milk", 1);
-        RecipeStep cakeSecond = new RecipeStep("Add Chocolate Chips", 2);
+        RecipeStep cakeFirst = new RecipeStep("Mix flour with Egg", 1);
+        RecipeStep cakeSecond = new RecipeStep("Add Cream", 2);
         RecipeStep cakeThird = new RecipeStep("Bake at 180C for 20 minutes", 3);
         ArrayList<RecipeStep> cakeRecipeSteps = new ArrayList<RecipeStep>();
         recipeSteps.add(cakeFirst);
