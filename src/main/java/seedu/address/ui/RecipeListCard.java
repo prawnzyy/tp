@@ -4,12 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.model.recipe.Recipe;
 
 /**
  * An UI component that displays information of a {@code Recipe}.
  */
-public class FullRecipeCard extends UiPart<Region> {
-    private static final String FXML = "FullRecipeListCard.fxml";
+public class RecipeListCard extends UiPart<Region> {
+    private static final String FXML = "RecipeListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -19,7 +20,7 @@ public class FullRecipeCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final String recipe;
+    public final Recipe recipe;
 
     @FXML
     private HBox cardPane;
@@ -31,11 +32,10 @@ public class FullRecipeCard extends UiPart<Region> {
     /**
      * Creates a {@code IngredientCode} with the given {@code Ingredient} and index to display.
      */
-    public FullRecipeCard(String string, int displayedIndex) { // To be updated
+    public RecipeListCard(Recipe recipe, int displayedIndex) { // To be updated
         super(FXML);
-        this.recipe = string;
-        id.setText(displayedIndex + ". ");
-        name.setText(string);
+        this.recipe = recipe;
+        id.setText(String.valueOf(displayedIndex));
+        name.setText(recipe.getName().toString());
     }
 }
-

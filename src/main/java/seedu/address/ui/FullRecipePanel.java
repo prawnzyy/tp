@@ -1,16 +1,23 @@
 package seedu.address.ui;
 
+import java.util.logging.Logger;
+
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.recipe.Recipe;
 
 /**
- * An UI component that displays information of a {@code Recipe}.
+ * Panel containing the list of recipes.
  */
-public class RecipeCard extends UiPart<Region> {
-    private static final String FXML = "RecipeListCard.fxml";
+public class FullRecipePanel extends UiPart<Region> {
+    private static final String FXML = "FullRecipePanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(RecipeListPanel.class);
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -26,16 +33,13 @@ public class RecipeCard extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label name;
-    @FXML
-    private Label id;
 
     /**
      * Creates a {@code IngredientCode} with the given {@code Ingredient} and index to display.
      */
-    public RecipeCard(Recipe recipe, int displayedIndex) { // To be updated
+    public FullRecipePanel(Recipe recipe) { // To be updated
         super(FXML);
         this.recipe = recipe;
-        id.setText(displayedIndex + ". ");
         name.setText(recipe.getName().toString());
     }
 }

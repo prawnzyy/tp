@@ -93,6 +93,12 @@
     -fx-background-color: #fffaf2;
 }
 
+#listHeader {
+    -fx-background-color: #9c634f;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: black;
+}
+
 .list-cell {
     -fx-label-padding: 0 0 0 0;
     -fx-graphic-text-gap : 0;
@@ -119,13 +125,13 @@
 
 .cell_big_label {
     -fx-font-family: "Segoe UI Semibold";
-    -fx-font-size: 16px;
+    -fx-font-size: 14px;
     -fx-text-fill: black;
 }
 
 .cell_small_label {
     -fx-font-family: "Segoe UI";
-    -fx-font-size: 13px;
+    -fx-font-size: 14px;
     -fx-text-fill: black;
 }
 
@@ -141,6 +147,8 @@
 
 .status-bar {
     -fx-background-color: derive(#1d1d1d, 30%);
+    -fx-border-color: black;
+    -fx-border-width: 2px;
 }
 
 .result-display {
@@ -163,8 +171,8 @@
 
 .status-bar-with-border {
     -fx-background-color: derive(#1d1d1d, 30%);
-    -fx-border-color: derive(#1d1d1d, 25%);
-    -fx-border-width: 1px;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
 }
 
 .status-bar-with-border .label {

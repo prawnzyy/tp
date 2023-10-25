@@ -130,7 +130,7 @@ public class MainWindow extends UiPart<Stage> {
         if (recipeList.size() == 1) {
             // Change this portion to logic.getFilteredRecipeList() once its up!!
             // The thing below is just for temporary testing
-            recipeListPanel = new FullRecipeListPanel(new FilteredList<>(FXCollections.observableArrayList("hello")));
+            recipeListPanel = new FullRecipePanel(recipeList.get(0));
         } else {
             recipeListPanel = new RecipeListPanel(recipeList);
         }
