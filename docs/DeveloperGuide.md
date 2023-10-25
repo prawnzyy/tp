@@ -1,3 +1,83 @@
+## Implementation
+This section describes some noteworthy details on how certain features are implemented.
+
+### View recipe feature
+#### Implementation
+The view recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
+
+Given below is an example usage scenario and how the view recipe mechanism behaves at each step. The application is
+assumed to be initialised with at least one recipe loaded in the `ModelManager`.
+
+Step 1. The user keys in `view 1` into the UI command box. `LogicManager` takes this string command and executes it.
+
+Step 2. `InventoryAppParser` is then called to parse the `view 1` command.
+
+Step 3. By Polymorphism, `RecipeViewCommandParser` is called on to handle the parsing. The `parse(String args)` function
+is called with the argument of `"1"`
+
+Step 4. A `RecipeUuidMatchesPredicate` predicate object is created which returns true for any recipe tested on the
+predicate with the same uuid of `"1"`.
+
+Step 5. The `RecipeViewCommand` then filters the recipe list in `ModelManager` according to the predicate. The recipe
+list should only have at most 1 item after filtration.
+
+Step 6. The `MainWindow` in `ui` detects that there is one item in the recipe list, and proceeds to display the full
+recipe.
+
+`RecipeViewCommand` calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
+recipe list in `ModelManager` according to the predicate set.
+
+The following sequence diagram shows how the view recipe operation works:
+
+<img src="images/UML/viewrecipesequencediagram.png" width="800px">
+
+#### Alternatives considered:
+An alternative implementation of the recipe view command would be to find the first recipe with uuid that matches
+instead of filtering through the whole recipe list. Each recipe has a unique id, and hence the first instance of a
+recipe with match uuid should be the only recipe with that uuid. This could lead to faster search times to view
+a specific recipe.
+
+However, we do not expect a user to have so many recipes that performance would become an issue. We do not expect
+users to be frequently using this command either, since baking something requires much time and effort. Filtering
+through the whole list also confers an advantage of being able to assert that there is at most one such recipe
+with that particular uuid.
+
+### List recipe feature
+#### Implementation
+The List feature is implemented as a type of `Command`. It extends the abstract class `Command`.
+
+Given below is an example usage scenario and how the list feature behaves at each step. The recipe storage is assumed to
+be initialised with at least 2 recipes within `ModelManager`.
+
+Step 1. The user launches the application. All recipes will be shown as the current recipeList has not been filtered.
+
+Step 2. The user executes `view 1`. The `view` command will then update the recipeList to only contain the filtered
+recipe.
+
+Step 3. The user then executes `list`. The `list` command will be parsed using the `Inventory App Parser` within
+`LogicManager`.
+
+Step 4. This parsed command will be executed once again with `LogicManager`.
+
+Step 5. During execution, `ModelManager#updateFilteredRecipeList` will be called with the `PREDICATE_SHOW_ALL_RECIPES`
+to update the current recipeList with all the recipes.
+
+Step 6. After execution, the returned `CommandResult` will then be returned back to the `MainWindow` to be displayed.
+
+The following sequence diagram shows how the list recipe feature works:
+
+<img src="images/UML/listrecipesequencediagram.png" width="800px">
+
+### Design Considerations:
+**Aspect : How view executes:**
+- Alternative 1 (Current Choice): Gets the list from the "RecipeBook"
+  - Pro: Easy to implement
+  - Con: Need to constantly store current state
+- Alternative 2: Read the list from the storage
+  - Pro: No need to store current state after command
+  - Con: Need to access storage
+
+
 ## **Appendix: Requirements**
 
 ### Product Scope
@@ -14,7 +94,7 @@
 **Value Propositions**
 
 Home-bakers often struggle with managing their recipe book as well as checking if they have the ingredients needed for
-a particular recipe. This application is designed for home-bakers to search for the recipes that they want along with 
+a particular recipe. This application is designed for home-bakers to search for the recipes that they want along with
 the necessary ingredients required to make baking a more convenient and easy process.
 
 **User Stories**
@@ -24,11 +104,11 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 | Priority | As a... |                              I want to ... | So that I can ...                                |
 |:---------|:-------:|-------------------------------------------:|--------------------------------------------------|
 | `***`    |  baker  |                              view my stock | know what and the quantity of ingredients I have |
-| `***`    |  baker  |                add ingredients to my stock | update the stock I have                          |   
-| `***`    |  baker  | reduce ingredients' quantities in my stock | update the stock I have after I used the items   | 
+| `***`    |  baker  |                add ingredients to my stock | update the stock I have                          |
+| `***`    |  baker  | reduce ingredients' quantities in my stock | update the stock I have after I used the items   |
 | `***`    |  baker  |                             clear my stock | have an empty stock                              |
-| `***`    |  baker  |                       find recipes by name | find a specific recipe                           |     
-| `***`    |  baker  |                               view recipes | see the steps and ingredients involved           |   
+| `***`    |  baker  |                       find recipes by name | find a specific recipe                           |
+| `***`    |  baker  |                               view recipes | see the steps and ingredients involved           |
 | `***`    |  baker  |             add recipes to the recipe book | add new recipes in my recipe book                |
 | `**`     |  baker  |                             modify recipes | make changes to the recipes as required          |
 | `***`    |  baker  |   view the ingredients needed for a recipe | know if I have the necessary ingredients         |
@@ -43,12 +123,12 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 #### MSS
 1. User requests to add a specific ingredient to their stock
 2. RecipeBook adds that ingredient to the stock
-   
+
    Use case ends.
 
 #### Extensions
-- 2a. User does not specify the quantity of that ingredient 
-  - RecipeBook shows an error message 
+- 2a. User does not specify the quantity of that ingredient
+  - RecipeBook shows an error message
 - 2b. The name of the ingredient is not recognised
   - RecipeBook shows an error message
 - 2c. The specified unit is not recognised
@@ -74,14 +154,14 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 #### MSS
 1. User requests to view the stock of specific ingredients
 2. RecipeBook shows the ingredient and the quantity of the ingredient
-   
+
    Use case ends.
 
 
 #### Extensions
-- 2a. User does not specify what ingredients they would like to view 
-  - RecipeBook shows the entire stock of ingredients 
-- 2b. The specified ingredient(s) are not in the stock 
+- 2a. User does not specify what ingredients they would like to view
+  - RecipeBook shows the entire stock of ingredients
+- 2b. The specified ingredient(s) are not in the stock
   - RecipeBook shows an error message
 
 #### Use case: Find a specific recipe
@@ -95,6 +175,20 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 2a. The specified recipe does not exist
   - RecipeBook shows an error message
 
+#### Use case: View all recipes
+#### MSS
+1. User requests to list all possible recipes
+2. RecipeBook lists out all possible recipes
+
+    Use case ends.
+
+#### Extensions
+- 2a. There is only one recipe
+  - The recipe will be displayed in full, inclusive of steps
+- 2b. There are multiple recipes
+  - The recipes will only have their name and required ingredients listed
+- 2c. There are currently no recipes stored
+  - No updates will be made to the screen
 
 ### Non-Functional Requirements
 

@@ -103,7 +103,7 @@ public class MainApp extends Application {
             if (!recipeBookOptional.isPresent()) {
                 logger.info("Creating an empty recipe data file " + storage.getRecipeBookFilePath());
             }
-            initialRecipeData = recipeBookOptional.orElseGet(RecipeBook::new);
+            initialRecipeData = recipeBookOptional.orElseGet(SampleDataUtil::getSampleRecipeBook);
         } catch (DataLoadingException e) {
             logger.warning("Recipe data file at " + storage.getRecipeBookFilePath() + " could not be loaded."
                     + " Will be starting with an empty Recipe Book.");

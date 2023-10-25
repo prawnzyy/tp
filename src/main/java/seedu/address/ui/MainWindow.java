@@ -2,8 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.collections.FXCollections;
-import javafx.collections.transformation.FilteredList;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -20,6 +19,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
+import seedu.address.model.recipe.Recipe;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -124,15 +124,9 @@ public class MainWindow extends UiPart<Stage> {
         // Check the length of the filtered recipe
         // If it is 1, then display full recipe
         // Else show only name and ingredients
-        if (2 == 1) {
-            // Change this portion to logic.getFilteredRecipeList() once its up!!
-            // The thing below is just for temporary testing
-            recipeListPanel = new FullRecipeListPanel(new FilteredList<>(FXCollections.observableArrayList("hello")));
-        } else {
-            recipeListPanel = new RecipeListPanel(new FilteredList<>(FXCollections.observableArrayList("Full")));
-        }
+        ObservableList<Recipe> recipeList = logic.getRecipeList();
+        recipeListPanel = new RecipeListPanel(recipeList);
         recipeListPanelPlaceholder.getChildren().add(recipeListPanel.getRoot());
-
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
