@@ -105,6 +105,28 @@ public class Recipe {
         return String.format("%d. %s\n%s%s", this.getId(), this.name, ingredients, steps.toString().stripTrailing());
     }
 
+    /**
+     * Returns the ingredients needed in textual format.
+     */
+    public String getIngredientsText() {
+        StringBuilder ingredients = new StringBuilder();
+        for (Ingredient ingredient : ingredientList) {
+            ingredients.append(ingredient.getName()).append(" ").append(ingredient.getQuantity()).append("\n");
+        }
+        return ingredients.toString();
+    }
+
+    /**
+     * Returns the steps needed in textual format.
+     */
+    public String getStepsText() {
+        StringBuilder steps = new StringBuilder();
+        for (RecipeStep recipeStep : recipeSteps) {
+            steps.append(recipeStep.toString()).append("\n");
+        }
+        return steps.toString();
+    }
+
     @Override
     public String toString() {
         return this.name.toString();
