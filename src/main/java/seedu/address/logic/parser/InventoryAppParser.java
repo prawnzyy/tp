@@ -14,9 +14,9 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.RecipeViewCommand;
 import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.commands.UseCommand;
-import seedu.address.logic.commands.RecipeViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
