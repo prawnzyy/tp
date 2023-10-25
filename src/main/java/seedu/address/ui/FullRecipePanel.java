@@ -33,6 +33,10 @@ public class FullRecipePanel extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label name;
+    @FXML
+    private Label ingredients;
+    @FXML
+    private Label steps;
 
     /**
      * Creates a {@code IngredientCode} with the given {@code Ingredient} and index to display.
@@ -41,5 +45,7 @@ public class FullRecipePanel extends UiPart<Region> {
         super(FXML);
         this.recipe = recipe;
         name.setText(recipe.getName().toString());
+        ingredients.setText(recipe.getIngredientsText());
+        steps.setText(recipe.getStepsText());
     }
 }

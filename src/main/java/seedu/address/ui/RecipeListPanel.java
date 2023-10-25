@@ -26,7 +26,6 @@ public class RecipeListPanel extends UiPart<Region> {
      */
     public RecipeListPanel(ObservableList<Recipe> recipeList) {
         super(FXML);
-        System.out.println(recipeList);
         recipeListView.setItems(recipeList);
         recipeListView.setCellFactory(listView -> new RecipeListViewCell());
     }

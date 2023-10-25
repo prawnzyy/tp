@@ -127,15 +127,8 @@ public class MainWindow extends UiPart<Stage> {
         // If it is 1, then display full recipe
         // Else show only name and ingredients
         ObservableList<Recipe> recipeList = logic.getRecipeList();
-        if (recipeList.size() == 1) {
-            // Change this portion to logic.getFilteredRecipeList() once its up!!
-            // The thing below is just for temporary testing
-            recipeListPanel = new FullRecipePanel(recipeList.get(0));
-        } else {
-            recipeListPanel = new RecipeListPanel(recipeList);
-        }
+        recipeListPanel = new RecipeListPanel(recipeList);
         recipeListPanelPlaceholder.getChildren().add(recipeListPanel.getRoot());
-
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
