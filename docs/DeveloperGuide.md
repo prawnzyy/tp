@@ -10,12 +10,12 @@ assumed to be initialised with at least one recipe loaded in the `ModelManager`.
 
 Step 1. The user keys in `view 1` into the UI command box. `LogicManager` takes this string command and executes it.
 
-Step 2. `InventoryAppParser` is then called to parse the `view 1` command. 
+Step 2. `InventoryAppParser` is then called to parse the `view 1` command.
 
 Step 3. By Polymorphism, `RecipeViewCommandParser` is called on to handle the parsing. The `parse(String args)` function
 is called with the argument of `"1"`
 
-Step 4. A `RecipeUuidMatchesPredicate` predicate object is created which returns true for any recipe tested on the 
+Step 4. A `RecipeUuidMatchesPredicate` predicate object is created which returns true for any recipe tested on the
 predicate with the same uuid of `"1"`.
 
 Step 5. The `RecipeViewCommand` then filters the recipe list in `ModelManager` according to the predicate. The recipe
@@ -40,7 +40,7 @@ a specific recipe.
 However, we do not expect a user to have so many recipes that performance would become an issue. We do not expect
 users to be frequently using this command either, since baking something requires much time and effort. Filtering
 through the whole list also confers an advantage of being able to assert that there is at most one such recipe
-with that particular uuid. 
+with that particular uuid.
 
 ## **Appendix: Requirements**
 
@@ -58,7 +58,7 @@ with that particular uuid.
 **Value Propositions**
 
 Home-bakers often struggle with managing their recipe book as well as checking if they have the ingredients needed for
-a particular recipe. This application is designed for home-bakers to search for the recipes that they want along with 
+a particular recipe. This application is designed for home-bakers to search for the recipes that they want along with
 the necessary ingredients required to make baking a more convenient and easy process.
 
 **User Stories**
@@ -68,11 +68,11 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 | Priority | As a... |                              I want to ... | So that I can ...                                |
 |:---------|:-------:|-------------------------------------------:|--------------------------------------------------|
 | `***`    |  baker  |                              view my stock | know what and the quantity of ingredients I have |
-| `***`    |  baker  |                add ingredients to my stock | update the stock I have                          |   
-| `***`    |  baker  | reduce ingredients' quantities in my stock | update the stock I have after I used the items   | 
+| `***`    |  baker  |                add ingredients to my stock | update the stock I have                          |  
+| `***`    |  baker  | reduce ingredients' quantities in my stock | update the stock I have after I used the items   |
 | `***`    |  baker  |                             clear my stock | have an empty stock                              |
-| `***`    |  baker  |                       find recipes by name | find a specific recipe                           |     
-| `***`    |  baker  |                               view recipes | see the steps and ingredients involved           |   
+| `***`    |  baker  |                       find recipes by name | find a specific recipe                           |    
+| `***`    |  baker  |                               view recipes | see the steps and ingredients involved           |
 | `***`    |  baker  |             add recipes to the recipe book | add new recipes in my recipe book                |
 | `**`     |  baker  |                             modify recipes | make changes to the recipes as required          |
 | `***`    |  baker  |   view the ingredients needed for a recipe | know if I have the necessary ingredients         |
@@ -87,12 +87,12 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 #### MSS
 1. User requests to add a specific ingredient to their stock
 2. RecipeBook adds that ingredient to the stock
-   
+
    Use case ends.
 
 #### Extensions
-- 2a. User does not specify the quantity of that ingredient 
-  - RecipeBook shows an error message 
+- 2a. User does not specify the quantity of that ingredient
+  - RecipeBook shows an error message
 - 2b. The name of the ingredient is not recognised
   - RecipeBook shows an error message
 - 2c. The specified unit is not recognised
@@ -118,14 +118,14 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 #### MSS
 1. User requests to view the stock of specific ingredients
 2. RecipeBook shows the ingredient and the quantity of the ingredient
-   
+
    Use case ends.
 
 
 #### Extensions
-- 2a. User does not specify what ingredients they would like to view 
-  - RecipeBook shows the entire stock of ingredients 
-- 2b. The specified ingredient(s) are not in the stock 
+- 2a. User does not specify what ingredients they would like to view
+  - RecipeBook shows the entire stock of ingredients
+- 2b. The specified ingredient(s) are not in the stock
   - RecipeBook shows an error message
 
 #### Use case: Find a specific recipe

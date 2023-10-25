@@ -59,4 +59,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/dhruvir29.md)]
 
 * Role: Developer
-* Responsibilities: Logic 
+* Responsibilities: Logic
