@@ -2,11 +2,8 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
@@ -17,7 +14,6 @@ import seedu.address.model.recipe.Recipe;
  */
 public class FullRecipePanel extends UiPart<Region> {
     private static final String FXML = "FullRecipePanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(RecipeListPanel.class);
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -28,6 +24,8 @@ public class FullRecipePanel extends UiPart<Region> {
      */
 
     public final Recipe recipe;
+
+    private final Logger logger = LogsCenter.getLogger(RecipeListPanel.class);
 
     @FXML
     private HBox cardPane;
