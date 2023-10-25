@@ -42,6 +42,42 @@ users to be frequently using this command either, since baking something require
 through the whole list also confers an advantage of being able to assert that there is at most one such recipe
 with that particular uuid.
 
+### List recipe feature
+#### Implementation
+The List feature is implemented as a type of `Command`. It extends the abstract class `Command`.
+
+Given below is an example usage scenario and how the list feature behaves at each step. The recipe storage is assumed to
+be initialised with at least 2 recipes within `ModelManager`.
+
+Step 1. The user launches the application. All recipes will be shown as the current recipeList has not been filtered.
+
+Step 2. The user executes `view 1`. The `view` command will then update the recipeList to only contain the filtered
+recipe.
+
+Step 3. The user then executes `list`. The `list` command will be parsed using the `Inventory App Parser` within
+`LogicManager`.
+
+Step 4. This parsed command will be executed once again with `LogicManager`.
+
+Step 5. During execution, `ModelManager#updateFilteredRecipeList` will be called with the `PREDICATE_SHOW_ALL_RECIPES`
+to update the current recipeList with all the recipes.
+
+Step 6. After execution, the returned `CommandResult` will then be returned back to the `MainWindow` to be displayed.
+
+The following sequence diagram shows how the list recipe feature works:
+
+<img src="images/UML/listrecipesequencediagram.png" width="800px">
+
+### Design Considerations:
+**Aspect : How view executes:**
+- Alternative 1 (Current Choice): Gets the list from the "RecipeBook"
+  - Pro: Easy to implement
+  - Con: Need to constantly store current state
+- Alternative 2: Read the list from the storage
+  - Pro: No need to store current state after command
+  - Con: Need to access storage
+
+
 ## **Appendix: Requirements**
 
 ### Product Scope
