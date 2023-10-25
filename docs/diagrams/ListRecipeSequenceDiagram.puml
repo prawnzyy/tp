@@ -27,7 +27,6 @@ activate ListCommand
 ListCommand --> InventoryAppParser : l
 deactivate ListCommand
 
-'Hidden arrow to position the destroy marker below the end of the activation bar.
 InventoryAppParser --> LogicManager : l
 deactivate InventoryAppParser
 
