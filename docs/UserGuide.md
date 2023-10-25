@@ -96,7 +96,7 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
 Examples:
 *  `use n/Milk q/600 u/ml` Depletes the current quantity of milk by 600 ml.
-*  `use n/Egg` Depletes the current quantity of egg by the default amount. [Coming in V1.3]
+*  `use n/Egg` Fully depletes the current quantity of egg.
 
 ### Finding the quantity of an ingredient by name: `stock`
 
@@ -126,7 +126,17 @@ Exits the program.
 
 Format: `exit`
 
-### Viewing Specific Recipes `[coming in v1.3]`
+### Viewing Specific Recipes
+Views a specific recipe in the recipe list.
+
+Format: `view [uuid]`
+* `uuid` must be an integer greater than or equal to 1
+* `uuid` integer value cannot exceed the total number of recipes loaded into the recipe book.
+* to toggle back to listing all recipes, use the `list` command
+
+Examples:
+* `view 1` views the recipe with `uuid` of 1
+* `view 21` views the recipe with `uuid` of 21
 
 ### Listing all Recipes : `list`
 
@@ -176,3 +186,4 @@ If your changes to the data file makes its format invalid, Inventory will discar
 | **Stock** | `stock [NAME]…​`<br> e.g., `stock milk egg`                           |
 | **Help**  | `help`                                                                |
 | **List**  | `list`                                                                |
+| **View**  | `view [uuid]`                                                         |

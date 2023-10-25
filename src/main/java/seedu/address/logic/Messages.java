@@ -18,6 +18,7 @@ public class Messages {
     public static final String MESSAGE_INGREDIENTS_LISTED_OVERVIEW = "%1$d ingredients listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
+    public static final String MESSAGE_RECIPE_LISTED = "Recipe of uuid %1$d opened";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
