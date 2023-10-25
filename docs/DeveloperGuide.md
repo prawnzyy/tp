@@ -51,10 +51,10 @@ be initialised with at least 2 recipes within `ModelManager`.
 
 Step 1. The user launches the application. All recipes will be shown as the current recipeList has not been filtered.
 
-Step 2. The user executes `view 1`. The `view` command will then update the recipeList to only contain the filtered 
-recipe. 
+Step 2. The user executes `view 1`. The `view` command will then update the recipeList to only contain the filtered
+recipe.
 
-Step 3. The user then executes `list`. The `list` command will be parsed using the `Inventory App Parser` within 
+Step 3. The user then executes `list`. The `list` command will be parsed using the `Inventory App Parser` within
 `LogicManager`.
 
 Step 4. This parsed command will be executed once again with `LogicManager`.
