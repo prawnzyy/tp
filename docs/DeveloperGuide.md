@@ -68,10 +68,10 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 | Priority | As a... |                              I want to ... | So that I can ...                                |
 |:---------|:-------:|-------------------------------------------:|--------------------------------------------------|
 | `***`    |  baker  |                              view my stock | know what and the quantity of ingredients I have |
-| `***`    |  baker  |                add ingredients to my stock | update the stock I have                          |  
+| `***`    |  baker  |                add ingredients to my stock | update the stock I have                          |
 | `***`    |  baker  | reduce ingredients' quantities in my stock | update the stock I have after I used the items   |
 | `***`    |  baker  |                             clear my stock | have an empty stock                              |
-| `***`    |  baker  |                       find recipes by name | find a specific recipe                           |    
+| `***`    |  baker  |                       find recipes by name | find a specific recipe                           |
 | `***`    |  baker  |                               view recipes | see the steps and ingredients involved           |
 | `***`    |  baker  |             add recipes to the recipe book | add new recipes in my recipe book                |
 | `**`     |  baker  |                             modify recipes | make changes to the recipes as required          |
