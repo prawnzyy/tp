@@ -53,6 +53,7 @@ public class LogicManager implements Logic {
 
         try {
             storage.saveInventory(model.getInventory());
+            storage.saveRecipeBook(model.getRecipeBook());
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
         } catch (IOException ioe) {
