@@ -147,10 +147,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteRecipe(int recipeId) {
-        this.recipeBook.removeRecipe(recipeId);
+    public void deleteRecipe(Recipe recipe) {
+        this.recipeBook.removeRecipe(recipe);
     }
-
     @Override
     public void addRecipe(Recipe recipe) {
         requireNonNull(recipe);
