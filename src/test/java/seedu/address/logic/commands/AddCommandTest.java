@@ -185,7 +185,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deleteRecipe(int recipeId) {
+        public void deleteRecipe(Recipe recipe) {
             throw new AssertionError("This method should not be called.");
         }
 
