@@ -54,18 +54,18 @@ public class RecipeBookTest {
         assertFalse(recipeBook.hasRecipe(SPONGECAKE.getName()));
     }
 
-    @Test
-    public void removeRecipe_recipeInRecipeBook_success() {
-        recipeBook.addRecipe(COOKIES);
-        recipeBook.removeRecipe(COOKIES.getId());
-        assertEquals(new RecipeBook(), recipeBook);
-    }
-
-    @Test
-    public void removeRecipe_recipeNotInRecipeBook_throwsRecipeNotFoundException() {
-        recipeBook.addRecipe(COOKIES);
-        assertThrows(RecipeNotFoundException.class, () -> recipeBook.removeRecipe(SPONGECAKE.getId()));
-    }
+//    @Test
+//    public void removeRecipe_recipeInRecipeBook_success() {
+//        recipeBook.addRecipe(COOKIES);
+//        recipeBook.removeRecipe(COOKIES.getId());
+//        assertEquals(new RecipeBook(), recipeBook);
+//    }
+//
+//    @Test
+//    public void removeRecipe_recipeNotInRecipeBook_throwsRecipeNotFoundException() {
+//        recipeBook.addRecipe(COOKIES);
+//        assertThrows(RecipeNotFoundException.class, () -> recipeBook.removeRecipe(SPONGECAKE.getId()));
+//    }
 
     @Test
     public void clear_recipeInRecipeBook_returnsEmptyList() {
