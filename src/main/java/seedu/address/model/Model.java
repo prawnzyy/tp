@@ -92,7 +92,7 @@ public interface Model {
 
     boolean hasRecipe(Name recipeName);
 
-    void deleteRecipe(int recipeId);
+    void deleteRecipe(Recipe recipe);
 
     void addRecipe(Recipe recipe);
 

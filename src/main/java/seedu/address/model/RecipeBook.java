@@ -69,16 +69,14 @@ public class RecipeBook implements ReadOnlyRecipeBook {
     }
 
     /**
-     * Removes a recipe from the recipe book with its {@code recipeId}
+     * Removes a recipe from the recipe book
      */
-    public void removeRecipe(int recipeId) {
-        for (Recipe recipe : this.recipeList) {
-            if (recipe.getId() == recipeId) {
-                this.recipeList.remove(recipe);
-                return;
-            }
+    public void removeRecipe(Recipe recipe) {
+        try {
+            this.recipeList.remove(recipe);
+        } catch (RecipeNotFoundException e) {
+            throw new RecipeNotFoundException();
         }
-        throw new RecipeNotFoundException();
     }
 
     /**
