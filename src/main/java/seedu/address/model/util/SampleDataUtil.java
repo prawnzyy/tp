@@ -66,9 +66,9 @@ public class SampleDataUtil {
         RecipeStep cakeSecond = new RecipeStep("Add Cream", 2);
         RecipeStep cakeThird = new RecipeStep("Bake at 180C for 20 minutes", 3);
         ArrayList<RecipeStep> cakeRecipeSteps = new ArrayList<RecipeStep>();
-        recipeSteps.add(cakeFirst);
-        recipeSteps.add(cakeSecond);
-        recipeSteps.add(cakeThird);
+        cakeRecipeSteps.add(cakeFirst);
+        cakeRecipeSteps.add(cakeSecond);
+        cakeRecipeSteps.add(cakeThird);
         return new Recipe[] {
             new Recipe(new Name("Cookie"), ingredientList, recipeSteps),
             new Recipe(new Name("Cake"), ingredientListCake, cakeRecipeSteps),
