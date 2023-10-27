@@ -128,6 +128,37 @@ The following sequence diagram shows how the list recipe feature works:
   - Pro: No need to store current state after command
   - Con: Need to access storage
 
+### Delete recipe feature
+#### Implementation
+The delete recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
+
+Given below is an example usage scenario and how the delete recipe mechanism behaves at each step. The application is
+assumed to be initialised with at least one recipe loaded in the `ModelManager`.
+
+Step 1. The user keys in `delete 1` into the UI command box. `LogicManager` takes this string command and executes it.
+
+Step 2. `InventoryAppParser` is then called to parse the `delete 1` command.
+
+Step 3. By Polymorphism, `DeleteCommandParser` is called on to handle the parsing. The `parse(String args)` function is 
+called with the argument of "1" and the "1" is parsed as an `Index`.
+
+Step 4: This results in the creation of a `DeleteCommand` object with the index as a parameter.
+
+Step 5: This `DeleteCommand` object is then executed by the `LogicManager`.
+
+Step 6: During execution, the recipe whose uuid matches with the index passed in is retrieved from the list of 
+recipes and the `ModelManager#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be 
+deleted from the recipe list.
+
+**Note**: If the argument is an invalid index (less than 0 or more than the size of the current list), a 
+`CommandException` will be thrown and users will be informed that they inputted an invalid index.
+
+The following sequence diagram shows how the DeleteCommand works:
+
+<img src="images/UML/deletesequencediagram.png" width="800px">
+
+**Note**: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, 
+the lifeline reaches the end of diagram.
 
 ## **Appendix: Requirements**
 
@@ -161,6 +192,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 | `***`    |  baker  |                       find recipes by name | find a specific recipe                           |
 | `***`    |  baker  |                               view recipes | see the steps and ingredients involved           |
 | `***`    |  baker  |             add recipes to the recipe book | add new recipes in my recipe book                |
+| `***`    |  baker  |        delete recipes from the recipe book | delete recipes I no longer need                  |
 | `**`     |  baker  |                             modify recipes | make changes to the recipes as required          |
 | `***`    |  baker  |   view the ingredients needed for a recipe | know if I have the necessary ingredients         |
 | `***`    |  baker  |                           request for help | learn how to use the recipe book when I'm lost   |
@@ -231,7 +263,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 1. User requests to list all possible recipes
 2. RecipeBook lists out all possible recipes
 
-    Use case ends.
+   Use case ends.
 
 #### Extensions
 - 2a. There is only one recipe
@@ -240,6 +272,17 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
   - The recipes will only have their name and required ingredients listed
 - 2c. There are currently no recipes stored
   - No updates will be made to the screen
+
+#### Use case: Delete a recipe from the recipe list.
+##### MSS
+1. User requests to delete a specific recipe.
+2. RecipeBook deletes the corresponding recipe.
+
+   Use case ends.
+
+#### Extensions:
+- 2a. The specified recipe does not exist. 
+  - RecipeBook shows an error message.
 
 ### Non-Functional Requirements
 

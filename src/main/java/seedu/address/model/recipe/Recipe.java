@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
  * Represents a recipe in the recipe book.
@@ -88,6 +89,22 @@ public class Recipe {
         stepCopy.addAll(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStepNumber));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
+    }
+
+    /**
+     * Changes the specified ingredient with a new ingredient.
+     */
+    public Recipe modifyIngredients(String oldIngredient, Ingredient newIngredient) {
+        requireAllNonNull(oldIngredient, newIngredient);
+        for (Ingredient ingredient : ingredientList) {
+            if (ingredient.getName().fullName.equals(oldIngredient)) {
+                List<Ingredient> ingredientListCopy = new ArrayList<>(ingredientList);
+                ingredientListCopy.remove(ingredient);
+                ingredientListCopy.add(newIngredient);
+                return new Recipe(this.uuid.getId(), this.name, ingredientListCopy, this.recipeSteps);
+            }
+        }
+        throw new IngredientNotFoundException();
     }
 
     /**

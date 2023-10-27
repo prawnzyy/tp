@@ -157,7 +157,18 @@ Format: `addrecipe n/NAME`
 
 ### Modifying Recipes `[coming in v1.3]`
 
-### Deleting Recipes `[coming in v1.3`
+### Deleting Recipes 
+
+Deletes a specific recipe in the recipe list when you longer need it.
+
+Format: `delete [uuid]`
+
+* `uuid` must be an integer greater than or equal to 1
+* `uuid` integer value cannot exceed the total number of recipes loaded into the recipe book
+
+Examples:
+* `delete 1` deletes the recipe with uuid of 1
+* `delete 21` deletes the recipe with uuid of 21
 
 ### Saving the data
 
@@ -187,12 +198,13 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 ## Command summary
 
-| Action    | Format, Examples                                                      |
-|-----------|-----------------------------------------------------------------------|
+| Action    | Format, Examples                                                     |
+|-----------|----------------------------------------------------------------------|
 | **Add**   | `add n/NAME q/QUANTITY [u/UNIT]…​` <br> e.g., `add n/milk q/600 u/ml` |
-| **Clear** | `clear`                                                               |
-| **Use**   | `use n/NAME [q/QUANTITY] [u/UNIT]`<br> e.g., `use n/milk q/200 u/ml`  |
-| **Stock** | `stock [NAME]…​`<br> e.g., `stock milk egg`                           |
-| **Help**  | `help`                                                                |
-| **List**  | `list`                                                                |
-| **View**  | `view [uuid]`                                                         |
+| **Clear** | `clear`                                                              |
+| **Use**   | `use n/NAME [q/QUANTITY] [u/UNIT]`<br> e.g., `use n/milk q/200 u/ml` |
+| **Stock** | `stock [NAME]…​`<br> e.g., `stock milk egg`                          |
+| **Help**  | `help`                                                               |
+| **List**  | `list`                                                               |
+| **View**  | `view [uuid]`<br/>                                                   |
+| **Delete**| `delete [uuid]`                                                       |
