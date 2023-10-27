@@ -89,16 +89,25 @@ Step 1. The user keys in `delete 1` into the UI command box. `LogicManager` take
 Step 2. `InventoryAppParser` is then called to parse the `delete 1` command.
 
 Step 3. By Polymorphism, `DeleteCommandParser` is called on to handle the parsing. The `parse(String args)` function is 
-called with the argument of "1".
+called with the argument of "1" and the "1" is parsed as an `Index`.
 
-Step 4: This results in the creation of a `DeleteCommand` object.
+Step 4: This results in the creation of a `DeleteCommand` object with the index as a parameter.
 
 Step 5: This `DeleteCommand` object is then executed by the `LogicManager`.
 
-Step 6: During execution, the recipe whose uuid matches with the argument passed in is retrieved from the list of 
+Step 6: During execution, the recipe whose uuid matches with the index passed in is retrieved from the list of 
 recipes and the `ModelManager#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be 
 deleted from the recipe list.
 
+**Note**: If the argument is an invalid index (less than 0 or more than the size of the current list), a 
+`CommandException` will be thrown and users will be informed that they inputted an invalid index.
+
+The following sequence diagram shows how the DeleteCommand works:
+
+<img src="images/UML/deletesequencediagram.png" width="800px">
+
+**Note**: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, 
+the lifeline reaches the end of diagram.
 
 ## **Appendix: Requirements**
 
