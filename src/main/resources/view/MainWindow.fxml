@@ -54,11 +54,13 @@
           </StackPane>
 
           <HBox VBox.vgrow="ALWAYS" spacing="10">
-            <VBox fx:id="ingredientList" styleClass="pane-with-border" minWidth="292" prefWidth="288" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+            <VBox fx:id="ingredientList" styleClass="pane-with-border" minWidth="292" prefWidth="288"
+                  VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
               <StackPane fx:id="ingredientListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
             </VBox>
 
-            <VBox fx:id="recipeList" styleClass="pane-with-border" minWidth="402" prefWidth="402" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+            <VBox fx:id="recipeList" styleClass="pane-with-border" minWidth="402" prefWidth="402" VBox.vgrow="ALWAYS"
+                  HBox.hgrow="ALWAYS">
               <StackPane fx:id="recipeListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
             </VBox>
           </HBox>

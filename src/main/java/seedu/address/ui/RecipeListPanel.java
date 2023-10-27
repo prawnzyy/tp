@@ -42,7 +42,12 @@ public class RecipeListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new RecipeListCard(recipe, recipe.getId()).getRoot());
+                ObservableList<Recipe> recipeList = recipeListView.getItems();
+                if (recipeList.size() == 1) {
+                    setGraphic(new FullRecipePanel(recipe).getRoot());
+                } else {
+                    setGraphic(new RecipeListCard(recipe, recipe.getId()).getRoot());
+                }
             }
         }
     }
