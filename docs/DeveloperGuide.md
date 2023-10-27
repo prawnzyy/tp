@@ -1,5 +1,66 @@
+## Architecture
+
+### Model Component
+
+**API**: Model.java
+
+The `Model`
+
+- stores a `UserPref` object that represents the user's preferences.
+- stores the `Inventory` data.
+- stores the `Recipe Book` data.
+- exposes an unmodifiable `ObservableList<Ingredient>`, `ObservableList<Recipe>` that can be 'observed' by the UI.
+- does not depend on the other three components
+
+### Storage Component
+
+**API**: Storage.java, RecipeStorage.java
+
+The `Storage`
+
+- consists of an Inventory Storage and Recipe Book Storage sub-component.
+- saves the `UserPref` object in json format and read it back.
+- saves the `Inventory` object in json format and read it back.
+.- saves the `RecipeBook` object in json format and read it back.
+
 ## Implementation
 This section describes some noteworthy details on how certain features are implemented.
+
+### Search ingredient feature
+#### Implementation
+The search ingredient mechanism is implemented as a `Command`, extending from the `command` abstract class.
+
+Given below is an example usage scenario and how the search ingredient mechanism behaves at each step. The applicacation
+is assumed to be initialised with at least one ingredient loaded in the `ModelManager`.
+
+Step 1. The user keys in `stock Flour` into the UI command box. `LogicManager` takes this string command and executes it.
+
+Step 2. `InventoryAppParser` is then called to parse the `stock Flour` command.
+
+Step 3. `StockCommandParser` is then called to handle the parsing. The `parse(String args)` function is called with
+the argument `"Flour"`.
+
+Step 4. `NameContainsKeywordsPredicate` predicate object is created which returns true for any ingredients tested on
+the predicate with a name containing the phrase `"Flour"`. This step is case-insensitive.
+
+Step 5. The `StockCommand` then filters the inventory in `ModelManager` according to the predicate.
+
+Step 6. The `MainWindow` in the `ui` detects that there are some items in the filtered inventory, and proceeds to
+display ingredients satisfying the predicate
+
+`StockCommand` calls `Model#updateFilteredIngredientList(Predicate<Ingredient> predicate)`, filtering the
+ingredient list in `ModelManager` according to the predicate set.
+
+#### Alternatives considered:
+An alternative implementation of the stock command would be to find the ingredient that matches the query perfectly,
+resulting in either 0 or 1 ingredients are filtering. Each ingredient should have a unique name, hence an ingredient with
+any name can either only be stored in the inventory or not, and therefore the search result will be more specific, and
+potentially more convenient to use.
+
+However, we expect users to have multiple ingredients with a common word, as natural language tends to group items of a
+similar nature in the same group of phrases (eg. eggs and duck eggs). Hence, we have decided that searching for items
+whose name contains the phrase of the query is more suitable for home bakers, considering the number of repeated phrases
+and expressions commonly used in baking.
 
 ### Add recipe feature
 #### Implementation
@@ -50,7 +111,6 @@ However, modifying the recipe through commands may be more slow than typing ever
 used. Furthermore, when inputting a recipe, users are likely to copy and paste the ingredient list and steps from another source.
 As such, errors in input should be unlikely. It is also easy to see where an error may be in the input, since the format is
 very readable, with little tokens and command words.
-
 
 ### View recipe feature
 #### Implementation

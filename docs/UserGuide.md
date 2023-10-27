@@ -172,7 +172,7 @@ Examples:
 
 ### Saving the data
 
-Inventory data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+Inventory and Recipe data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
