@@ -18,6 +18,10 @@ public class UniqueId {
         lastId = Math.max(lastId, id);
     }
 
+    public static boolean isValidId(int id) {
+        return id >= 1 && id <= lastId;
+    }
+
     public int getId() {
         return this.id;
     }
