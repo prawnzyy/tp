@@ -26,9 +26,7 @@ public class RecipeListCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
-    @FXML
-    private Label id;
+    private Label nameAndId;
     @FXML
     private Label ingredient;
 
@@ -38,11 +36,10 @@ public class RecipeListCard extends UiPart<Region> {
     public RecipeListCard(Recipe recipe, int displayedIndex) { // To be updated
         super(FXML);
         this.recipe = recipe;
-        id.setText(String.valueOf(displayedIndex));
-        name.setText(recipe.getName().toString());
-        StringBuilder stringBuilder = new StringBuilder();
+        nameAndId.setText(recipe.getName().toString() + " (uuid: " + displayedIndex + ")");
+        StringBuilder stringBuilder = new StringBuilder("Ingredients: \n");
         for (Ingredient ingredient : recipe.getIngredients()) {
-            stringBuilder.append("Name: " + ingredient.getName() + " Quantity: " + ingredient.getQuantity());
+            stringBuilder.append(ingredient.getName() + " " + ingredient.getQuantity());
             stringBuilder.append("\n");
         }
         String ingredients = stringBuilder.toString();
