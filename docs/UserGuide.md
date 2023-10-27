@@ -146,6 +146,15 @@ Format: `list`
 
 ### Adding Recipes `[coming in v1.3]`
 
+Adds a new recipe to the recipe book. The new recipe will be put in view.
+
+Format: `addrecipe n/NAME`
+
+**Tip:** The added recipe will have an empty ingredient list and step list. These lists can be specified using the commands found in the **Modifying Recipes** section.
+
+<box type="tip" seamless>
+
+
 ### Modifying Recipes `[coming in v1.3]`
 
 ### Deleting Recipes 

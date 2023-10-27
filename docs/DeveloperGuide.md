@@ -62,6 +62,56 @@ similar nature in the same group of phrases (eg. eggs and duck eggs). Hence, we 
 whose name contains the phrase of the query is more suitable for home bakers, considering the number of repeated phrases
 and expressions commonly used in baking.
 
+### Add recipe feature
+#### Implementation
+The add recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
+
+Given below is an example usage scenario and how the add recipe mechanism behaves at each st ep.
+
+Step 1. The user keys in the following command structure. `LogicManager` takes this string command and executes it. 
+
+```
+addrecipe n/NAME
+ingredients start
+Flour 100g
+Water 50g
+ingredients end
+Steps start
+1. STEP 1
+2. STEP 2
+3. STEP 3
+Done
+```
+
+Step 2. `InventoryAppParser` is then called to parse the command.
+
+Step 3. By Polymorphism, `RecipeAddCommandParser` is called to handle the parsing. The parse(String args) function is 
+called.
+
+Step 4. The name of the recipe is parsed out.
+
+Step 5. The lines in the string body are grouped into a list of ingredient strings and step strings, by looking for the
+`ingredient start` and `ingredient end` lines, as well as the `steps start` and `done` lines.
+
+Step 6. The list of ingredient strings is parsed using the `parseRecipeIngredient()` method in the `Ingredient`.
+This parser is more rigid than the ingredient parser used in the `AddCommandParser`, but does not require the `n/`, `q/` and `u/` tokens.
+
+Step 7. The list of step strings is parsed into a `List<RecipeStep>` using the `parseRecipeStep()` method from the `RecipeStep` class.
+
+Step 8. A new `Recipe` instance is created using the `Name`, `List<Ingredient>` and `List<RecipeStep>`.
+
+Step 9. The `RecipeAddCommand` adds the new `Recipe` instance to the recipe list in `ModelManager`.
+
+#### Alternatives considered:
+
+An alternative implementation of the recipe add command would be to only specify the name, and add the ingredient and step lists 
+later using recipe modifying commands. This would reduce the size of the command, leading to lower chances of user input error.
+
+However, modifying the recipe through commands may be more slow than typing everything at once, since more command words need to be 
+used. Furthermore, when inputting a recipe, users are likely to copy and paste the ingredient list and steps from another source.
+As such, errors in input should be unlikely. It is also easy to see where an error may be in the input, since the format is
+very readable, with little tokens and command words.
+
 ### View recipe feature
 #### Implementation
 The view recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
