@@ -38,11 +38,6 @@ public class RecipeListCard extends UiPart<Region> {
         this.recipe = recipe;
         nameAndId.setText(recipe.getName().toString() + " (uuid: " + displayedIndex + ")");
         StringBuilder stringBuilder = new StringBuilder("Ingredients: \n");
-        for (Ingredient ingredient : recipe.getIngredients()) {
-            stringBuilder.append(ingredient.getName() + " " + ingredient.getQuantity());
-            stringBuilder.append("\n");
-        }
-        String ingredients = stringBuilder.toString();
-        ingredient.setText(ingredients);
+        ingredient.setText(recipe.getIngredientsText());
     }
 }

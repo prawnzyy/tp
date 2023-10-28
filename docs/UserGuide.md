@@ -4,9 +4,12 @@ title: "User Guide"
 pageNav: 3
 ---
 
-# RecipeBook User Guide
+# BAkingBRead User Guide
 
-RecipeBook is a **desktop app for managing recipes and ingredient inventory, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Recipe Book can get your ingredient and recipe management tasks done faster than traditional GUI apps.
+BAkingBRead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
+Command Line Interface**(CLI) while still having the benefits of a Graphical User Interface (GUI). BAkingBRead is targeted
+towards bakers like yourselves to aid you on your baking journey.
+If you can type fast, BAkingBRead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -17,7 +20,7 @@ RecipeBook is a **desktop app for managing recipes and ingredient inventory, opt
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-2. Download the latest `recipebook.jar` from [here](https://github.com/AY2324S1-CS2103T-F10-3/tp/releases).
+2. Download the latest `bakingbread.jar` from [here](https://github.com/AY2324S1-CS2103T-F10-3/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your Inventory App.
 
@@ -45,9 +48,6 @@ RecipeBook is a **desktop app for managing recipes and ingredient inventory, opt
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/Milk`.
 
-* Items in square brackets are optional [Coming in V1.3].<br>
-  e.g `n/NAME q/QUANTITY u/UNIT` can be used as `n/Milk q/1000 u/ml` or as `n/Milk q/1000`.
-
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[NAME]…​` can be used as ` ` (i.e. 0 times), `milk`, `milk flour` etc.
 
@@ -57,7 +57,7 @@ RecipeBook is a **desktop app for managing recipes and ingredient inventory, opt
 * Parameters are case-insensitive.
 * e.g. A parameter specified as `n/Milk` is functionally identical to `n/MILK` or `n/milk`.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `exit` and `clear`) will be ignored.<br>
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `exit` , `list` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
@@ -65,7 +65,7 @@ RecipeBook is a **desktop app for managing recipes and ingredient inventory, opt
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -120,14 +120,9 @@ Clears all entries from the ingredient stock.
 
 Format: `clear`
 
-### Exiting the program : `exit`
+### Viewing Specific Recipes : `view`
 
-Exits the program.
-
-Format: `exit`
-
-### Viewing Specific Recipes
-Views a specific recipe in the recipe list.
+Views a specific recipe in BAkingBRead.
 
 Format: `view [uuid]`
 * `uuid` must be an integer greater than or equal to 1
@@ -140,11 +135,14 @@ Examples:
 
 ### Listing all Recipes : `list`
 
-Lists out all recipes that is currently stored in the recipebook.
+Lists out all recipes that is currently stored in BAkingBRead.
 
 Format: `list`
 
-### Adding Recipes `[coming in v1.3]`
+Examples:
+* `list` lists out all recipes within BAkingBRead
+
+### Adding Recipes : `addrecipe`
 
 Adds a new recipe to the recipe book. The new recipe will be put in view.
 
@@ -157,9 +155,9 @@ Format: `addrecipe n/NAME`
 
 ### Modifying Recipes `[coming in v1.3]`
 
-### Deleting Recipes 
+### Deleting Recipes : `delete`
 
-Deletes a specific recipe in the recipe list when you longer need it.
+Deletes a specific recipe from BAkingBRead when you longer need it.
 
 Format: `delete [uuid]`
 
@@ -169,6 +167,12 @@ Format: `delete [uuid]`
 Examples:
 * `delete 1` deletes the recipe with uuid of 1
 * `delete 21` deletes the recipe with uuid of 21
+
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
 
 ### Saving the data
 
