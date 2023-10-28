@@ -6,8 +6,9 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 
 /**
  * The API of the Model component.
@@ -15,6 +16,7 @@ import seedu.address.model.ingredient.Quantity;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Ingredient> PREDICATE_SHOW_ALL_INGREDIENTS = unused -> true;
+    Predicate<Recipe> PREDICATE_SHOW_ALL_RECIPES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -79,4 +81,33 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredIngredientList(Predicate<Ingredient> predicate);
+
+    /**
+     * Replaces recipe data with the data in {@code recipeBook}.
+     */
+    void setRecipeBook(ReadOnlyRecipeBook recipeBook);
+
+    /** Returns the RecipeBook */
+    ReadOnlyRecipeBook getRecipeBook();
+
+    boolean hasRecipe(Name recipeName);
+
+    void deleteRecipe(Recipe recipe);
+
+    void addRecipe(Recipe recipe);
+
+    /**
+     * Gets the full Recipe based on the unique {@code recipeId} of the Recipe.
+     * @throws RecipeNotFoundException if {@code recipe} is not found.
+     */
+    String getFullRecipe(int recipeId);
+
+    /** Returns an unmodifiable view of the filtered recipe list */
+    ObservableList<Recipe> getFilteredRecipeList();
+
+    /**
+     * Updates the filter of the filtered recipe list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredRecipeList(Predicate<Recipe> predicate);
 }

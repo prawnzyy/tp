@@ -16,6 +16,7 @@
 //import seedu.address.logic.Messages;
 //import seedu.address.model.Model;
 //import seedu.address.model.ModelManager;
+//import seedu.address.model.RecipeBook;
 //import seedu.address.model.UserPrefs;
 //import seedu.address.model.ingredient.Ingredient;
 //
@@ -25,21 +26,21 @@
 // */
 //public class DeleteCommandTest {
 //
-//    private Model model = new ModelManager(getTypicalInventory(), new UserPrefs());
+//    private Model model = new ModelManager(getTypicalInventory(), new UserPrefs(), new RecipeBook());
 //
-////    @Test
-////    public void execute_validIndexUnfilteredList_success() {
+//    @Test
+//    public void execute_validIndexUnfilteredList_success() {
 //        Ingredient ingredientToDelete = model.getFilteredIngredientList().get(INDEX_FIRST_INGREDIENT.getZeroBased());
-////        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_INGREDIENT);
-////
-////        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_INGREDIENT_SUCCESS,
-////                Messages.format(ingredientToDelete));
-////
-////        ModelManager expectedModel = new ModelManager(model.getInventory(), new UserPrefs());
-////        expectedModel.deleteIngredient(ingredientToDelete);
-////
-////        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
-////    }
+//        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_INGREDIENT);
+//
+//        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_INGREDIENT_SUCCESS,
+//                Messages.format(ingredientToDelete));
+//
+//        ModelManager expectedModel = new ModelManager(model.getInventory(), new UserPrefs());
+//        expectedModel.deleteIngredient(ingredientToDelete);
+//
+//        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+//    }
 //
 ////    @Test
 ////    public void execute_invalidIndexUnfilteredList_throwsCommandException() {

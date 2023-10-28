@@ -19,12 +19,14 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.model.Inventory;
 import seedu.address.model.Model;
+import seedu.address.model.Name;
 import seedu.address.model.ReadOnlyInventory;
+import seedu.address.model.ReadOnlyRecipeBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
+import seedu.address.model.recipe.Recipe;
 import seedu.address.testutil.IngredientBuilder;
 
 public class AddCommandTest {
@@ -164,6 +166,46 @@ public class AddCommandTest {
 
         @Override
         public void useIngredient(Name name, Quantity quantity) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setRecipeBook(ReadOnlyRecipeBook recipeBook) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyRecipeBook getRecipeBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasRecipe(Name recipeName) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteRecipe(Recipe recipe) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addRecipe(Recipe recipe) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String getFullRecipe(int recipeId) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Recipe> getFilteredRecipeList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredRecipeList(Predicate<Recipe> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }

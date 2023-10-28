@@ -19,12 +19,16 @@ import seedu.address.model.Inventory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyInventory;
+import seedu.address.model.ReadOnlyRecipeBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.RecipeBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.InventoryStorage;
 import seedu.address.storage.JsonInventoryStorage;
+import seedu.address.storage.JsonRecipeBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.RecipeBookStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
@@ -36,7 +40,7 @@ import seedu.address.ui.UiManager;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(0, 2, 2, true);
+    public static final Version VERSION = new Version(1, 2, 1, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
@@ -58,7 +62,8 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         InventoryStorage inventoryStorage = new JsonInventoryStorage(userPrefs.getInventoryFilePath());
-        storage = new StorageManager(inventoryStorage, userPrefsStorage);
+        RecipeBookStorage recipeBookStorage = new JsonRecipeBookStorage(userPrefs.getRecipeBookFilePath());
+        storage = new StorageManager(inventoryStorage, userPrefsStorage, recipeBookStorage);
 
         model = initModelManager(storage, userPrefs);
 
@@ -77,6 +82,8 @@ public class MainApp extends Application {
 
         Optional<ReadOnlyInventory> inventoryOptional;
         ReadOnlyInventory initialData;
+        Optional<ReadOnlyRecipeBook> recipeBookOptional;
+        ReadOnlyRecipeBook initialRecipeData;
         try {
             inventoryOptional = storage.readInventory();
             if (!inventoryOptional.isPresent()) {
@@ -84,13 +91,26 @@ public class MainApp extends Application {
                         + " populated with a sample Inventory.");
             }
             initialData = inventoryOptional.orElseGet(SampleDataUtil::getSampleInventory);
+
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getInventoryFilePath() + " could not be loaded."
                     + " Will be starting with an empty Inventory.");
             initialData = new Inventory();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        try {
+            recipeBookOptional = storage.readRecipeBook();
+            if (!recipeBookOptional.isPresent()) {
+                logger.info("Creating an empty recipe data file " + storage.getRecipeBookFilePath());
+            }
+            initialRecipeData = recipeBookOptional.orElseGet(SampleDataUtil::getSampleRecipeBook);
+        } catch (DataLoadingException e) {
+            logger.warning("Recipe data file at " + storage.getRecipeBookFilePath() + " could not be loaded."
+                    + " Will be starting with an empty Recipe Book.");
+            initialRecipeData = new RecipeBook();
+        }
+
+        return new ModelManager(initialData, userPrefs, initialRecipeData);
     }
 
     private void initLogging(Config config) {

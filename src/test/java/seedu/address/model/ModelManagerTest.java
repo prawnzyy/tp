@@ -7,16 +7,22 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_INGREDIENTS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIngredients.EGG;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
+import static seedu.address.testutil.TypicalRecipe.COOKIES;
+import static seedu.address.testutil.TypicalRecipe.SPONGECAKE;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
+import seedu.address.model.recipe.Recipe;
 import seedu.address.testutil.InventoryBuilder;
+import seedu.address.testutil.RecipeBookBuilder;
 
 public class ModelManagerTest {
 
@@ -94,14 +100,50 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void hasRecipe_nullRecipe_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasRecipe(null));
+    }
+
+    @Test
+    public void hasRecipe_recipeNotInList_returnsFalse() {
+        assertFalse(modelManager.hasRecipe(COOKIES.getName()));
+    }
+
+    @Test
+    public void hasRecipe_recipeInList_returnTrue() {
+        modelManager.addRecipe(COOKIES);
+        assertTrue(modelManager.hasRecipe(COOKIES.getName()));
+    }
+
+    @Test
+    public void getFilteredRecipeList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredRecipeList().remove(0));
+    }
+
+    @Test
+    public void getFilteredRecipeList_recipeInList_success() {
+        modelManager.addRecipe(COOKIES);
+        modelManager.addRecipe(SPONGECAKE);
+        modelManager.updateFilteredRecipeList(x -> x.containsIngredient(new Name("Eggs")));
+        assertEquals(1, modelManager.getFilteredRecipeList().size());
+
+        List<Recipe> expectedList = new ArrayList<>();
+        expectedList.add(SPONGECAKE);
+
+        assertEquals(expectedList, new ArrayList<>(modelManager.getFilteredRecipeList()));
+    }
+
+    @Test
     public void equals() {
         Inventory inventory = new InventoryBuilder().withIngredient(FLOUR).withIngredient(EGG).build();
         Inventory differentInventory = new Inventory();
         UserPrefs userPrefs = new UserPrefs();
+        RecipeBook recipeBook = new RecipeBookBuilder().withRecipe(COOKIES).withRecipe(SPONGECAKE).build();
+        RecipeBook differentRecipeBook = new RecipeBook();
 
         // same values -> returns true
-        modelManager = new ModelManager(inventory, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(inventory, userPrefs);
+        modelManager = new ModelManager(inventory, userPrefs, recipeBook);
+        ModelManager modelManagerCopy = new ModelManager(inventory, userPrefs, recipeBook);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -114,12 +156,12 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different inventory -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentInventory, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(differentInventory, userPrefs, recipeBook)));
 
         // different filteredList -> returns false
         String[] keywords = FLOUR.getName().fullName.split("\\s+");
         modelManager.updateFilteredIngredientList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(inventory, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(inventory, userPrefs, recipeBook)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
@@ -127,6 +169,13 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setInventoryFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(inventory, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(inventory, differentUserPrefs, recipeBook)));
+
+        // different recipeBook -> returns false
+        assertFalse(modelManager.equals(new ModelManager(inventory, userPrefs, differentRecipeBook)));
+
+        // different filteredRecipeList -> returns false
+        modelManager.updateFilteredRecipeList(x -> x.containsIngredient(new Name("Eggs")));
+        assertFalse(modelManager.equals(new ModelManager(inventory, userPrefs, recipeBook)));
     }
 }
