@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.recipe.Recipe;
 
 /**
@@ -37,7 +36,6 @@ public class RecipeListCard extends UiPart<Region> {
         super(FXML);
         this.recipe = recipe;
         nameAndId.setText(recipe.getName().toString() + " (uuid: " + displayedIndex + ")");
-        StringBuilder stringBuilder = new StringBuilder("Ingredients: \n");
         ingredient.setText(recipe.getIngredientsText());
     }
 }
