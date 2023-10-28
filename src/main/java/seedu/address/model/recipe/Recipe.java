@@ -127,8 +127,14 @@ public class Recipe {
      */
     public String getIngredientsText() {
         StringBuilder ingredients = new StringBuilder();
+        int counter = 1;
         for (Ingredient ingredient : ingredientList) {
-            ingredients.append(ingredient.getName()).append(" ").append(ingredient.getQuantity()).append("\n");
+            //String str = String.valueOf(70 - ingredient.getName().toString().length());
+            // Should find a way to align in javafx as alignment in javafx and terminal is different
+            String str = "";
+            ingredients.append(String.format("%d. %s %" + str + "s\n",
+                    counter, ingredient.getName(), ingredient.getQuantity()));
+            counter++;
         }
         return ingredients.toString();
     }
