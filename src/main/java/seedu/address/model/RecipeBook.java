@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.recipe.Recipe;
 import seedu.address.model.recipe.RecipeList;
+import seedu.address.model.recipe.UniqueId;
 import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 
 /**
@@ -61,6 +62,17 @@ public class RecipeBook implements ReadOnlyRecipeBook {
         return false;
     }
 
+    public boolean hasRecipe(int index) {
+        for (Recipe recipe : this.recipeList) {
+            if (recipe.getId() == index)  {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
     /**
      * Adds a new {@code recipe} to the recipe book.
      */
@@ -103,6 +115,15 @@ public class RecipeBook implements ReadOnlyRecipeBook {
     @Override
     public ObservableList<Recipe> getRecipeList() {
         return recipeList.asUnmodifiableObservableList();
+    }
+
+    public Recipe getRecipe(int index) {
+        for (Recipe recipe : this.recipeList) {
+            if (recipe.getId() == index) {
+                 return recipe;
+            }
+        }
+        return null;
     }
 
     @Override

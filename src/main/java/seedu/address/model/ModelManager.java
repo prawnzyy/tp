@@ -14,6 +14,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Represents the in-memory model of the inventory data.
@@ -159,6 +160,15 @@ public class ModelManager implements Model {
     @Override
     public String getFullRecipe(int recipeId) {
         return this.recipeBook.getFullRecipe(recipeId);
+    }
+    @Override
+    public Recipe getRecipe(int recipeId) {
+         return this.recipeBook.getRecipe(recipeId);
+    }
+
+    @Override
+    public boolean hasRecipe(int index) {
+        return recipeBook.hasRecipe(index);
     }
 
     //=========== Filtered Ingredient List Accessors =============================================================

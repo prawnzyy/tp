@@ -8,8 +8,10 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Deletes a recipe identified using it's displayed index from the recipe book.
@@ -34,12 +36,15 @@ public class DeleteCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Recipe> lastShownList = model.getFilteredRecipeList();
-
-        if (targetIndex.getOneBased() > lastShownList.size() || targetIndex.getOneBased() <= 0) {
+        if (targetIndex.getOneBased() <= 0 ) {
             throw new CommandException(Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);
         }
-        Recipe deletedRecipe = lastShownList.get(targetIndex.getZeroBased());
+
+        if (!model.hasRecipe(targetIndex.getOneBased())) {
+            throw new CommandException(Messages.MESSAGE_RECIPE_DOES_NOT_EXIST);
+        }
+
+        Recipe deletedRecipe = model.getRecipe(targetIndex.getOneBased());
         model.deleteRecipe(deletedRecipe);
 
         return new CommandResult(String.format(MESSAGE_DELETE_RECIPE_SUCCESS,
