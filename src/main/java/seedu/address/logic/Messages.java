@@ -1,18 +1,11 @@
 package seedu.address.logic;
 
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
-import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.recipe.Recipe;
-import seedu.address.model.recipe.RecipeStep;
-import seedu.address.model.recipe.UniqueId;
-
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * Container for user visible messages.
@@ -26,8 +19,8 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_RECIPE_LISTED = "Recipe of uuid %1$d opened";
-    public static final String MESSAGE_RECIPE_DOES_NOT_EXIST = "There is no recipe with the recipe index provided in " +
-            "the recipe book ";
+    public static final String MESSAGE_RECIPE_DOES_NOT_EXIST = "There is no recipe with the recipe index provided in "
+            + "the recipe book ";
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
