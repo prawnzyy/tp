@@ -91,6 +91,8 @@ public interface Model {
     ReadOnlyRecipeBook getRecipeBook();
 
     boolean hasRecipe(Name recipeName);
+    boolean hasRecipe(int index);
+    public Recipe getRecipe(int recipeId);
 
     void deleteRecipe(Recipe recipe);
 
