@@ -1,11 +1,18 @@
 package seedu.address.logic;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.RecipeStep;
+import seedu.address.model.recipe.UniqueId;
+
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * Container for user visible messages.

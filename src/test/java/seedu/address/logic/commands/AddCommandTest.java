@@ -208,6 +208,15 @@ public class AddCommandTest {
         public void updateFilteredRecipeList(Predicate<Recipe> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public Recipe getRecipe(int index) {
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
+        public boolean hasRecipe(int index) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
