@@ -47,35 +47,36 @@ public class DeleteCommandTest {
 
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_RECIPE_DOES_NOT_EXIST);
     }
+    /*
+    @Test
+    public void execute_validIndexFilteredList_success() {
+        showRecipeAtIndex(model, INDEX_FIRST_RECIPE);
+        Recipe ingredientToDelete = model.getFilteredRecipeList().get(INDEX_FIRST_RECIPE.getOneBased());
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_RECIPE);
 
-//    @Test
-//    public void execute_validIndexFilteredList_success() {
-//        showRecipeAtIndex(model, INDEX_FIRST_RECIPE);
-//        Recipe ingredientToDelete = model.getFilteredRecipeList().get(INDEX_FIRST_RECIPE.getOneBased());
-//        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_RECIPE);
-//
-//        String expectedMessage = DeleteCommand.MESSAGE_DELETE_RECIPE_SUCCESS;
-//
-//
-//        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs(), model.getRecipeBook());
-//        expectedModel.deleteRecipe(ingredientToDelete);
-//        showNoRecipe(expectedModel);
-//
-//        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
-//    }
+        String expectedMessage = DeleteCommand.MESSAGE_DELETE_RECIPE_SUCCESS;
 
-//    @Test
-//    public void execute_invalidIndexFilteredList_throwsCommandException() {
-//        showRecipeAtIndex(model, INDEX_FIRST_RECIPE);
-//
-//        Index outOfBoundIndex = INDEX_SECOND_RECIPE;
-//        // ensures that outOfBoundIndex is still in bounds of address book list
-//        assertTrue(outOfBoundIndex.getOneBased() < model.getRecipeBook().getRecipeList().size());
-//
-//        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
-//
-//        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);
-//    }
+
+        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs(), model.getRecipeBook());
+        expectedModel.deleteRecipe(ingredientToDelete);
+        showNoRecipe(expectedModel);
+
+        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_invalidIndexFilteredList_throwsCommandException() {
+        showRecipeAtIndex(model, INDEX_FIRST_RECIPE);
+
+        Index outOfBoundIndex = INDEX_SECOND_RECIPE;
+        // ensures that outOfBoundIndex is still in bounds of address book list
+        assertTrue(outOfBoundIndex.getOneBased() < model.getRecipeBook().getRecipeList().size());
+
+        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
+
+        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);
+    }
+    */
 
     @Test
     public void equals() {
