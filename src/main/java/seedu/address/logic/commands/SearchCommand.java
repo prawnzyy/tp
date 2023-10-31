@@ -19,7 +19,7 @@ public class SearchCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Displays all recipes that uses the ingredient within the recipe book "
             + "Parameters: "
-            + "ingredient name"
+            + "ingredient name "
             + "Example: " + COMMAND_WORD + " flour";
 
     public static final String MESSAGE_SUCCESS = "%$s ingredients listed";

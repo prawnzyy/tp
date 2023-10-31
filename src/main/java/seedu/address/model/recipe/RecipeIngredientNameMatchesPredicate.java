@@ -38,7 +38,7 @@ public class RecipeIngredientNameMatchesPredicate implements Predicate<Recipe> {
 
         RecipeIngredientNameMatchesPredicate otherNameContainsKeywordsPredicate =
                 (RecipeIngredientNameMatchesPredicate) other;
-        return this.name == otherNameContainsKeywordsPredicate.name;
+        return this.name.equals(otherNameContainsKeywordsPredicate.name);
     }
 
     @Override
