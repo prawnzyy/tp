@@ -1,24 +1,22 @@
 package seedu.address.logic.commands;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.RecipeBook;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
-import seedu.address.model.recipe.Recipe;
-import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
-
-import java.util.Arrays;
-import java.util.Collections;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.Messages.MESSAGE_RECIPE_DOES_NOT_EXIST;
 import static seedu.address.logic.Messages.MESSAGE_RECIPE_LISTED;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 import static seedu.address.testutil.TypicalRecipe.getTypicalRecipeBook;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code RecipeViewCommand}.
@@ -75,7 +73,7 @@ public class RecipeViewCommandTest {
 
     @Test
     public void execute_invalidUuid_throwsInvalidUuidException() {
-        String expectedMessage = MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX;
+        String expectedMessage = MESSAGE_RECIPE_DOES_NOT_EXIST;
 
         // boundary value analysis, using uuid 0 and -1
         RecipeUuidMatchesPredicate predicate1 = new RecipeUuidMatchesPredicate(0);
@@ -98,9 +96,9 @@ public class RecipeViewCommandTest {
     */
     @Test
     public void execute_deletedUuidRecipe_throwsInvalidUuidException() {
-        String expectedMessage = MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX;
+        String expectedMessage = MESSAGE_RECIPE_DOES_NOT_EXIST;
 
-        Recipe deletedRecipe = model.getRecipe(0);
+        Recipe deletedRecipe = model.getRecipe(1);
         model.deleteRecipe(deletedRecipe);
 
         RecipeUuidMatchesPredicate predicate = new RecipeUuidMatchesPredicate(1);

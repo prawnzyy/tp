@@ -14,9 +14,13 @@ public class RecipeUuidMatchesPredicate implements Predicate<Recipe> {
         this.uuid = uuid;
     }
 
+    public int getId() {
+        return this.uuid;
+    }
+
     @Override
     public boolean test(Recipe recipe) {
-        return recipe.getId() == uuid;
+        return this.uuid == recipe.getId();
     }
 
     @Override
@@ -36,6 +40,6 @@ public class RecipeUuidMatchesPredicate implements Predicate<Recipe> {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("uuid", uuid).toString();
+        return new ToStringBuilder(this).add("uuid", this.uuid).toString();
     }
 }
