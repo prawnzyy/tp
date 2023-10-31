@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.RecipeViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
@@ -24,7 +23,7 @@ public class RecipeViewCommandParser implements Parser<RecipeViewCommand> {
             return new RecipeViewCommand(new RecipeUuidMatchesPredicate(uuid));
         } catch (NumberFormatException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecipeViewCommand.MESSAGE_USAGE), pe);
         }
     }
 }
