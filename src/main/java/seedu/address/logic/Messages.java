@@ -19,8 +19,10 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_RECIPE_LISTED = "Recipe of uuid %1$d opened";
-    public static final String MESSAGE_RECIPE_LISTED_OVERVIEW = "%1$d recipes listed!";
 
+    public static final String MESSAGE_RECIPE_LISTED_OVERVIEW = "%1$d recipes listed!";
+    public static final String MESSAGE_RECIPE_DOES_NOT_EXIST = "There is no recipe with the recipe index provided in "
+            + "the recipe book ";
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
