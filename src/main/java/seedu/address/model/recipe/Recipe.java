@@ -96,7 +96,7 @@ public class Recipe {
     public Recipe modifyIngredients(String oldIngredient, Ingredient newIngredient) {
         requireAllNonNull(oldIngredient, newIngredient);
         for (Ingredient ingredient : ingredientList) {
-            if (ingredient.getName().fullName.equals(oldIngredient)) {
+            if (ingredient.getName().equals(new Name(oldIngredient))) {
                 List<Ingredient> ingredientListCopy = new ArrayList<>(ingredientList);
                 ingredientListCopy.remove(ingredient);
                 ingredientListCopy.add(newIngredient);
