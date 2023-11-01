@@ -1,5 +1,12 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_MODIFY_RECIPE_SUCCESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_UUID;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -8,14 +15,9 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.recipe.Recipe;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
 
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_MODIFY_RECIPE_SUCCESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_UUID;
-
+/**
+ * Modifies an ingredient in a recipe.
+ */
 public class ModifyCommand extends Command {
     public static final String COMMAND_WORD = "modify";
 
@@ -35,7 +37,9 @@ public class ModifyCommand extends Command {
             + PREFIX_UNIT + "ml ";
     private int recipeUuid;
     private Ingredient editedIngredient;
-
+    /**
+     * Creates a ModifyCommand to modify the specified {@code Ingredient}
+     */
     public ModifyCommand(int uuid, Ingredient newIngredient) {
         requireNonNull(newIngredient);
         requireNonNull(uuid);
