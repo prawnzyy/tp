@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Quantity;
-import seedu.address.model.ingredient.Unit;
 import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
@@ -75,8 +73,7 @@ public class Recipe {
         if (stepNumber > recipeSteps.size()) {
             throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
         }
-        List<RecipeStep> stepCopy = new ArrayList<>();
-        stepCopy.addAll(this.recipeSteps);
+        List<RecipeStep> stepCopy = new ArrayList<>(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStep));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
@@ -88,8 +85,7 @@ public class Recipe {
         if (stepNumber > recipeSteps.size()) {
             throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
         }
-        List<RecipeStep> stepCopy = new ArrayList<>();
-        stepCopy.addAll(this.recipeSteps);
+        List<RecipeStep> stepCopy = new ArrayList<>(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStepNumber));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }

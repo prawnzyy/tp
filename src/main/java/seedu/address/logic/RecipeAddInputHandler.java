@@ -8,10 +8,9 @@ import seedu.address.logic.parser.RecipeAddCommandParser;
  * Handles input in the recipe adding sequence.
  */
 public class RecipeAddInputHandler {
-    private static final String MESSAGE_PROMPT_NAME =  "Input the name of the recipe.";
-
-    private static final String MESSAGE_PROMPT_INGREDIENT = "Input an ingredient and it's quantity." + "\n" +
-            "When you're done, type \"steps start\"";
+    private static final String MESSAGE_PROMPT_NAME = "Input the name of the recipe.";
+    private static final String MESSAGE_PROMPT_INGREDIENT = "Input an ingredient and it's quantity." + "\n"
+        + "When you're done, type \"steps start\"";
 
     private static final String MESSAGE_PROMPT_STEP = "Input the next step in the recipe." + "\n"
             + "When you're done, type \"complete recipe\"";
@@ -20,6 +19,9 @@ public class RecipeAddInputHandler {
 
     private RecipeAddInputStage stage;
 
+    /**
+     * Initialise the parser and stage
+     */
     public RecipeAddInputHandler() {
         recipeAddCommandParser = new RecipeAddCommandParser();
         stage = RecipeAddInputStage.COMPLETE;
@@ -42,18 +44,14 @@ public class RecipeAddInputHandler {
         String parseOutput = "";
         if (commandText.equals("addrecipe")) {
             stage = RecipeAddInputStage.NAME;
-        }
-        else if (stage == RecipeAddInputStage.NAME) {
+        } else if (stage == RecipeAddInputStage.NAME) {
             parseOutput = recipeAddCommandParser.addName(commandText);
             stage = RecipeAddInputStage.INGREDIENT;
-        }
-        else if (commandText.equals("steps start") || commandText.equals("step start")) {
+        } else if (commandText.equals("steps start") || commandText.equals("step start")) {
             stage = RecipeAddInputStage.STEPS;
-        }
-        else if (commandText.equals("complete recipe")) {
+        } else if (commandText.equals("complete recipe")) {
             stage = RecipeAddInputStage.COMPLETE;
-        }
-        else {
+        } else {
             switch (stage) {
             case INGREDIENT:
                 parseOutput = recipeAddCommandParser.addIngredient(commandText);
