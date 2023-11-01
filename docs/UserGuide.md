@@ -4,12 +4,12 @@ title: "User Guide"
 pageNav: 3
 ---
 
-# BAkingBRead User Guide
+# BAking BRead User Guide
 
-BAkingBRead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
-Command Line Interface**(CLI) while still having the benefits of a Graphical User Interface (GUI). BAkingBRead is targeted
+BAking BRead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
+Command Line Interface**(CLI) while still having the benefits of a Graphical User Interface (GUI). BAking BRead is targeted
 towards bakers like yourselves to aid you on your baking journey.
-If you can type fast, BAkingBRead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
+If you can type fast, BAking BRead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -148,10 +148,10 @@ Adds a new recipe to the recipe book. The new recipe will be put in view.
 
 Format: `addrecipe n/NAME`
 
-**Tip:** The added recipe will have an empty ingredient list and step list. These lists can be specified using the commands found in the **Modifying Recipes** section.
-
 <box type="tip" seamless>
 
+**Tip:** The added recipe will have an empty ingredient list and step list. These lists can be specified using the commands found in the **Modifying Recipes** section.
+</box>
 
 ### Modifying Recipes `[coming in v1.3]`
 
