@@ -4,8 +4,10 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.parser.RecipeAddCommandParser;
 
+/**
+ * Handles input in the recipe adding sequence.
+ */
 public class RecipeAddInputHandler {
-
     private static final String MESSAGE_PROMPT_NAME =  "Input the name of the recipe.";
 
     private static final String MESSAGE_PROMPT_INGREDIENT = "Input an ingredient and it's quantity." + "\n" +
