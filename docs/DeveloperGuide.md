@@ -318,7 +318,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 2a. The specified recipe does not exist
   - RecipeBook shows an error message
 
-#### Use case: View all recipes
+#### Use case: List all recipes
 #### MSS
 1. User requests to list all possible recipes
 2. RecipeBook lists out all possible recipes

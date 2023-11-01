@@ -57,38 +57,22 @@ public class SearchCommandTest {
     }
     @Test
     public void execute_searchDisplaysOneItem_success() {
-        String expectedMessage = String.format(MESSAGE_RECIPE_LISTED_OVERVIEW, 1);
-        RecipeIngredientNameMatchesPredicate predicate = new RecipeIngredientNameMatchesPredicate("Eggs");
-        expectedModel.updateFilteredRecipeList(predicate);
-        SearchCommand command = new SearchCommand(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertSearchItemsSuccess(1, "eggs");
     }
 
     @Test
     public void execute_searchDisplaysMultipleItems_success() {
-        String expectedMessage = String.format(MESSAGE_RECIPE_LISTED_OVERVIEW, 2);
-        RecipeIngredientNameMatchesPredicate predicate = new RecipeIngredientNameMatchesPredicate("Flour");
-        expectedModel.updateFilteredRecipeList(predicate);
-        SearchCommand command = new SearchCommand(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertSearchItemsSuccess(2, "flour");
     }
 
     @Test
     public void execute_searchDisplaysZeroItem_success() {
-        String expectedMessage = String.format(MESSAGE_RECIPE_LISTED_OVERVIEW, 0);
-        RecipeIngredientNameMatchesPredicate predicate = new RecipeIngredientNameMatchesPredicate("test");
-        expectedModel.updateFilteredRecipeList(predicate);
-        SearchCommand command = new SearchCommand(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertSearchItemsSuccess(0, "Test");
     }
 
     @Test
     public void execute_searchNameNotCaseSensitive_success() {
-        String expectedMessage = String.format(MESSAGE_RECIPE_LISTED_OVERVIEW, 2);
-        RecipeIngredientNameMatchesPredicate predicate = new RecipeIngredientNameMatchesPredicate("fLoUr");
-        expectedModel.updateFilteredRecipeList(predicate);
-        SearchCommand command = new SearchCommand(predicate);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertSearchItemsSuccess(2, "fLoUr");
     }
     @Test
     public void toStringMethod() {
@@ -96,5 +80,12 @@ public class SearchCommandTest {
         SearchCommand command = new SearchCommand(predicate);
         String expected = SearchCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, command.toString());
+    }
+    public void assertSearchItemsSuccess(int items, String name) {
+        String expectedMessage = String.format(MESSAGE_RECIPE_LISTED_OVERVIEW, items);
+        RecipeIngredientNameMatchesPredicate predicate = new RecipeIngredientNameMatchesPredicate(name);
+        expectedModel.updateFilteredRecipeList(predicate);
+        SearchCommand command = new SearchCommand(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
 }
