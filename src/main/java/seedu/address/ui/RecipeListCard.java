@@ -32,10 +32,10 @@ public class RecipeListCard extends UiPart<Region> {
     /**
      * Creates a {@code IngredientCode} with the given {@code Ingredient} and index to display.
      */
-    public RecipeListCard(Recipe recipe, int displayedIndex) { // To be updated
+    public RecipeListCard(Recipe recipe) { // To be updated
         super(FXML);
         this.recipe = recipe;
-        nameAndId.setText(recipe.getName().toString() + " (uuid: " + displayedIndex + ")");
+        nameAndId.setText(recipe.getName().toString() + " (uuid: " + recipe.getId() + ")");
         ingredient.setText(recipe.getIngredientsText());
     }
 }

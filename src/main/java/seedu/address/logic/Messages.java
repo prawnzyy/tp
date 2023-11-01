@@ -24,6 +24,9 @@ public class Messages {
     public static final String MESSAGE_RECIPE_LISTED_OVERVIEW = "%1$d recipes listed!";
     public static final String MESSAGE_RECIPE_DOES_NOT_EXIST = "There is no recipe with the recipe index provided in "
             + "the recipe book ";
+    public static final String MESSAGE_MODIFY_RECIPE_SUCCESS = "Recipe of uuid %1$d modified";
+    public static final String MESSAGE_NO_SUCH_INGREDIENT = "There is no such ingredient in this recipe. Please input"
+            + "an ingredient that is in the recipe";
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
