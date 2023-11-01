@@ -68,7 +68,7 @@ The add recipe mechanism is implemented as a `Command`, extending from the `comm
 
 Given below is an example usage scenario and how the add recipe mechanism behaves at each st ep.
 
-Step 1. The user keys in the following command structure. `LogicManager` takes this string command and executes it. 
+Step 1. The user keys in the following command structure. `LogicManager` takes this string command and executes it.
 
 ```
 addrecipe n/NAME
@@ -85,7 +85,7 @@ Done
 
 Step 2. `InventoryAppParser` is then called to parse the command.
 
-Step 3. By Polymorphism, `RecipeAddCommandParser` is called to handle the parsing. The parse(String args) function is 
+Step 3. By Polymorphism, `RecipeAddCommandParser` is called to handle the parsing. The parse(String args) function is
 called.
 
 Step 4. The name of the recipe is parsed out.
