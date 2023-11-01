@@ -58,6 +58,7 @@ public class Recipe {
         return this.recipeSteps.stream().map(RecipeStep::toString).collect(Collectors.toList());
     }
 
+
     /** Check if the current recipe contains the specified ingredient name. */
     public boolean containsIngredient(Name ingredientName) {
         requireNonNull(ingredientName);
@@ -72,8 +73,7 @@ public class Recipe {
         if (stepNumber > recipeSteps.size()) {
             throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
         }
-        List<RecipeStep> stepCopy = new ArrayList<>();
-        stepCopy.addAll(this.recipeSteps);
+        List<RecipeStep> stepCopy = new ArrayList<>(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStep));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
@@ -85,8 +85,7 @@ public class Recipe {
         if (stepNumber > recipeSteps.size()) {
             throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
         }
-        List<RecipeStep> stepCopy = new ArrayList<>();
-        stepCopy.addAll(this.recipeSteps);
+        List<RecipeStep> stepCopy = new ArrayList<>(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStepNumber));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
@@ -97,7 +96,7 @@ public class Recipe {
     public Recipe modifyIngredients(String oldIngredient, Ingredient newIngredient) {
         requireAllNonNull(oldIngredient, newIngredient);
         for (Ingredient ingredient : ingredientList) {
-            if (ingredient.getName().fullName.equals(oldIngredient)) {
+            if (ingredient.getName().equals(new Name(oldIngredient))) {
                 List<Ingredient> ingredientListCopy = new ArrayList<>(ingredientList);
                 ingredientListCopy.remove(ingredient);
                 ingredientListCopy.add(newIngredient);
@@ -127,8 +126,14 @@ public class Recipe {
      */
     public String getIngredientsText() {
         StringBuilder ingredients = new StringBuilder();
+        int counter = 1;
         for (Ingredient ingredient : ingredientList) {
-            ingredients.append(ingredient.getName()).append(" ").append(ingredient.getQuantity()).append("\n");
+            //String str = String.valueOf(70 - ingredient.getName().toString().length());
+            // Should find a way to align in javafx as alignment in javafx and terminal is different
+            String str = "";
+            ingredients.append(String.format("%d. %s %" + str + "s\n",
+                    counter, ingredient.getName(), ingredient.getQuantity()));
+            counter++;
         }
         return ingredients.toString();
     }

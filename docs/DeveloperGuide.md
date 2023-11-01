@@ -1,5 +1,117 @@
+## Architecture
+
+### Model Component
+
+**API**: Model.java
+
+The `Model`
+
+- stores a `UserPref` object that represents the user's preferences.
+- stores the `Inventory` data.
+- stores the `Recipe Book` data.
+- exposes an unmodifiable `ObservableList<Ingredient>`, `ObservableList<Recipe>` that can be 'observed' by the UI.
+- does not depend on the other three components
+
+### Storage Component
+
+**API**: Storage.java, RecipeStorage.java
+
+The `Storage`
+
+- consists of an Inventory Storage and Recipe Book Storage sub-component.
+- saves the `UserPref` object in json format and read it back.
+- saves the `Inventory` object in json format and read it back.
+.- saves the `RecipeBook` object in json format and read it back.
+
 ## Implementation
 This section describes some noteworthy details on how certain features are implemented.
+
+### Search ingredient feature
+#### Implementation
+The search ingredient mechanism is implemented as a `Command`, extending from the `command` abstract class.
+
+Given below is an example usage scenario and how the search ingredient mechanism behaves at each step. The applicacation
+is assumed to be initialised with at least one ingredient loaded in the `ModelManager`.
+
+Step 1. The user keys in `stock Flour` into the UI command box. `LogicManager` takes this string command and executes it.
+
+Step 2. `InventoryAppParser` is then called to parse the `stock Flour` command.
+
+Step 3. `StockCommandParser` is then called to handle the parsing. The `parse(String args)` function is called with
+the argument `"Flour"`.
+
+Step 4. `NameContainsKeywordsPredicate` predicate object is created which returns true for any ingredients tested on
+the predicate with a name containing the phrase `"Flour"`. This step is case-insensitive.
+
+Step 5. The `StockCommand` then filters the inventory in `ModelManager` according to the predicate.
+
+Step 6. The `MainWindow` in the `ui` detects that there are some items in the filtered inventory, and proceeds to
+display ingredients satisfying the predicate
+
+`StockCommand` calls `Model#updateFilteredIngredientList(Predicate<Ingredient> predicate)`, filtering the
+ingredient list in `ModelManager` according to the predicate set.
+
+#### Alternatives considered:
+An alternative implementation of the stock command would be to find the ingredient that matches the query perfectly,
+resulting in either 0 or 1 ingredients are filtering. Each ingredient should have a unique name, hence an ingredient with
+any name can either only be stored in the inventory or not, and therefore the search result will be more specific, and
+potentially more convenient to use.
+
+However, we expect users to have multiple ingredients with a common word, as natural language tends to group items of a
+similar nature in the same group of phrases (eg. eggs and duck eggs). Hence, we have decided that searching for items
+whose name contains the phrase of the query is more suitable for home bakers, considering the number of repeated phrases
+and expressions commonly used in baking.
+
+### Add recipe feature
+#### Implementation
+The add recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
+
+Given below is an example usage scenario and how the add recipe mechanism behaves at each st ep.
+
+Step 1. The user keys in the following command structure. `LogicManager` takes this string command and executes it.
+
+```
+addrecipe n/NAME
+ingredients start
+Flour 100g
+Water 50g
+⋮
+ingredients end
+steps start
+1. STEP 1
+2. STEP 2
+⋮
+steps end
+```
+
+Step 2. `InventoryAppParser` is then called to parse the command.
+
+Step 3. By Polymorphism, `RecipeAddCommandParser` is called to handle the parsing. The parse(String args) function is
+called.
+
+Step 4. The name of the recipe is parsed out.
+
+Step 5. The lines in the string body are grouped into a list of ingredient strings and step strings, by looking for the
+`ingredient start` and `ingredient end` lines, as well as the `steps start` and `done` lines.
+
+Step 6. The list of ingredient strings is parsed using the `parseRecipeIngredient()` method in the `Ingredient`.
+This parser is more rigid than the ingredient parser used in the `AddCommandParser`, but does not require the `n/`, `q/` and `u/` tokens.
+
+Step 7. The list of step strings is parsed into a `List<RecipeStep>` using the `parseRecipeStep()` method from the `RecipeStep` class.
+
+Step 8. A new `Recipe` instance is created using the `Name`, `List<Ingredient>` and `List<RecipeStep>`.
+
+Step 9. The `RecipeAddCommand` adds the new `Recipe` instance to the recipe list in `ModelManager`.
+
+#### Alternatives considered:
+
+An alternative implementation of the recipe add command would be to only specify the name, and add the ingredient and step lists 
+later using recipe modifying commands. This would reduce the size of the command, leading to lower chances of user input error.
+
+However, modifying the recipe through commands may be more slow than typing everything at once, since more command words need to be 
+used. Furthermore, when inputting a recipe, users are likely to copy and paste the ingredient list and steps from another source.
+As such, errors in input should be unlikely. It is also easy to see where an error may be in the input, since the format is
+very readable, with little tokens and command words.
 
 ### View recipe feature
 #### Implementation
@@ -77,6 +189,37 @@ The following sequence diagram shows how the list recipe feature works:
   - Pro: No need to store current state after command
   - Con: Need to access storage
 
+### Delete recipe feature
+#### Implementation
+The delete recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
+
+Given below is an example usage scenario and how the delete recipe mechanism behaves at each step. The application is
+assumed to be initialised with at least one recipe loaded in the `ModelManager`.
+
+Step 1. The user keys in `delete 1` into the UI command box. `LogicManager` takes this string command and executes it.
+
+Step 2. `InventoryAppParser` is then called to parse the `delete 1` command.
+
+Step 3. By Polymorphism, `DeleteCommandParser` is called on to handle the parsing. The `parse(String args)` function is 
+called with the argument of "1" and the "1" is parsed as an `Index`.
+
+Step 4: This results in the creation of a `DeleteCommand` object with the index as a parameter.
+
+Step 5: This `DeleteCommand` object is then executed by the `LogicManager`.
+
+Step 6: During execution, the recipe whose uuid matches with the index passed in is retrieved from the list of 
+recipes and the `ModelManager#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be 
+deleted from the recipe list.
+
+**Note**: If the argument is an invalid index (less than 0 or more than the size of the current list), a 
+`CommandException` will be thrown and users will be informed that they inputted an invalid index.
+
+The following sequence diagram shows how the DeleteCommand works:
+
+<img src="images/UML/deletesequencediagram.png" width="800px">
+
+**Note**: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, 
+the lifeline reaches the end of diagram.
 
 ## **Appendix: Requirements**
 
@@ -110,6 +253,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 | `***`    |  baker  |                       find recipes by name | find a specific recipe                           |
 | `***`    |  baker  |                               view recipes | see the steps and ingredients involved           |
 | `***`    |  baker  |             add recipes to the recipe book | add new recipes in my recipe book                |
+| `***`    |  baker  |        delete recipes from the recipe book | delete recipes I no longer need                  |
 | `**`     |  baker  |                             modify recipes | make changes to the recipes as required          |
 | `***`    |  baker  |   view the ingredients needed for a recipe | know if I have the necessary ingredients         |
 | `***`    |  baker  |                           request for help | learn how to use the recipe book when I'm lost   |
@@ -175,12 +319,12 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 2a. The specified recipe does not exist
   - RecipeBook shows an error message
 
-#### Use case: View all recipes
+#### Use case: List all recipes
 #### MSS
 1. User requests to list all possible recipes
 2. RecipeBook lists out all possible recipes
 
-    Use case ends.
+   Use case ends.
 
 #### Extensions
 - 2a. There is only one recipe
@@ -189,6 +333,17 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
   - The recipes will only have their name and required ingredients listed
 - 2c. There are currently no recipes stored
   - No updates will be made to the screen
+
+#### Use case: Delete a recipe from the recipe list.
+##### MSS
+1. User requests to delete a specific recipe.
+2. RecipeBook deletes the corresponding recipe.
+
+   Use case ends.
+
+#### Extensions:
+- 2a. The specified recipe does not exist. 
+  - RecipeBook shows an error message.
 
 ### Non-Functional Requirements
 

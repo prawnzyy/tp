@@ -14,9 +14,12 @@
         <padding>
           <Insets top="4" right="8" bottom="4" left="8" />
         </padding>
-        <Label fx:id="name" alignment="CENTER_LEFT" minWidth="120" styleClass="cell_small_label" text="\$first" />
-        <Label fx:id="quantity" alignment="CENTER_RIGHT" minWidth="60" styleClass="cell_small_label" text="\$quantity" textAlignment="RIGHT" />
-        <Label fx:id="unit" alignment="CENTER_RIGHT" minWidth="60" styleClass="cell_small_label" text="\$unit" textAlignment="RIGHT" />
+        <Label fx:id="name" alignment="CENTER_LEFT" minWidth="120" maxWidth="120" styleClass="cell_small_label"
+               text="\$first" />
+        <Label fx:id="quantity" alignment="CENTER_RIGHT" minWidth="60" maxWidth="60" styleClass="cell_small_label"
+               text="\$quantity" textAlignment="RIGHT" />
+        <Label fx:id="unit" alignment="CENTER_RIGHT" minWidth="60" maxWidth="60" styleClass="cell_small_label"
+               text="\$unit" textAlignment="RIGHT" />
       </HBox>
     </VBox>
       <rowConstraints>

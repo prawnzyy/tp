@@ -185,6 +185,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasRecipe(int index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deleteRecipe(Recipe recipe) {
             throw new AssertionError("This method should not be called.");
         }
@@ -206,6 +211,11 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredRecipeList(Predicate<Recipe> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Recipe getRecipe(int index) {
             throw new AssertionError("This method should not be called.");
         }
     }

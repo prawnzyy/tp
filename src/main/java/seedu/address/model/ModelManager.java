@@ -145,6 +145,10 @@ public class ModelManager implements Model {
         requireNonNull(recipeName);
         return this.recipeBook.hasRecipe(recipeName);
     }
+    @Override
+    public boolean hasRecipe(int index) {
+        return recipeBook.hasRecipe(index);
+    }
 
     @Override
     public void deleteRecipe(Recipe recipe) {
@@ -159,6 +163,10 @@ public class ModelManager implements Model {
     @Override
     public String getFullRecipe(int recipeId) {
         return this.recipeBook.getFullRecipe(recipeId);
+    }
+    @Override
+    public Recipe getRecipe(int recipeId) {
+        return this.recipeBook.getRecipe(recipeId);
     }
 
     //=========== Filtered Ingredient List Accessors =============================================================
