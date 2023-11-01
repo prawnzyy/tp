@@ -32,6 +32,8 @@ public class FullRecipePanel extends UiPart<Region> {
     @FXML
     private Label name;
     @FXML
+    private Label id;
+    @FXML
     private Label ingredients;
     @FXML
     private Label steps;
@@ -43,6 +45,7 @@ public class FullRecipePanel extends UiPart<Region> {
         super(FXML);
         this.recipe = recipe;
         name.setText(recipe.getName().toString());
+        id.setText(" (uuid: " + recipe.getId() + ")");
         ingredients.setText(recipe.getIngredientsText());
         steps.setText(recipe.getStepsText());
     }
