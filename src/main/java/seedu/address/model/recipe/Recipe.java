@@ -58,6 +58,7 @@ public class Recipe {
         return this.recipeSteps.stream().map(RecipeStep::toString).collect(Collectors.toList());
     }
 
+
     /** Check if the current recipe contains the specified ingredient name. */
     public boolean containsIngredient(Name ingredientName) {
         requireNonNull(ingredientName);
@@ -72,8 +73,7 @@ public class Recipe {
         if (stepNumber > recipeSteps.size()) {
             throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
         }
-        List<RecipeStep> stepCopy = new ArrayList<>();
-        stepCopy.addAll(this.recipeSteps);
+        List<RecipeStep> stepCopy = new ArrayList<>(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStep));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
@@ -85,8 +85,7 @@ public class Recipe {
         if (stepNumber > recipeSteps.size()) {
             throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
         }
-        List<RecipeStep> stepCopy = new ArrayList<>();
-        stepCopy.addAll(this.recipeSteps);
+        List<RecipeStep> stepCopy = new ArrayList<>(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStepNumber));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }

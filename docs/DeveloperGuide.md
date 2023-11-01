@@ -75,12 +75,13 @@ addrecipe n/NAME
 ingredients start
 Flour 100g
 Water 50g
+⋮
 ingredients end
-Steps start
+steps start
 1. STEP 1
 2. STEP 2
-3. STEP 3
-Done
+⋮
+steps end
 ```
 
 Step 2. `InventoryAppParser` is then called to parse the command.

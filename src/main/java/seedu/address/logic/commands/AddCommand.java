@@ -31,7 +31,7 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New ingredient added: %1$s";
     public static final String MESSAGE_DUPLICATE_INGREDIENT = "This ingredient already exists in the inventory";
 
-    private final Ingredient toAdd;
+    final Ingredient toAdd;
 
     /**
      * Creates an AddCommand to add the specified {@code Ingredient}
