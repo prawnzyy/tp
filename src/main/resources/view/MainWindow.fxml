@@ -54,7 +54,7 @@
           </StackPane>
 
           <HBox VBox.vgrow="ALWAYS" spacing="10">
-            <VBox fx:id="ingredientList" styleClass="pane-with-border" minWidth="292" prefWidth="288"
+            <VBox fx:id="ingredientList" styleClass="pane-with-border" minWidth="292" maxWidth="292"
                   VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
               <StackPane fx:id="ingredientListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
             </VBox>
