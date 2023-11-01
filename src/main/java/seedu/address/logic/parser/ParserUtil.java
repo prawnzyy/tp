@@ -1,12 +1,18 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.commands.RecipeAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Name;
+import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
+import seedu.address.model.ingredient.exceptions.UnitFormatException;
+import seedu.address.model.recipe.RecipeStep;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -61,6 +67,31 @@ public class ParserUtil {
 
     // Todo Add JavaDocs
 
+    /* Parse the lightweight recipe ingredient string into an ingredient */
+    public static Ingredient parseRecipeIngredient(String ingredientString) throws ParseException {
+            int whitespaceIndex = ingredientString.lastIndexOf(" ");
+            if(whitespaceIndex == 0) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecipeAddCommand.MESSAGE_INGREDIENT_USAGE));
+            }
+            String ingredientName = ingredientString.substring(0, whitespaceIndex);
+            String ingredientQuantity = ingredientString.substring(whitespaceIndex + 1);
+
+            int unitIndex = ingredientQuantity.indexOf(ingredientQuantity.chars().filter(Character::isLetter).findFirst().orElse(-1));
+            String quantityValue = ingredientQuantity.substring(0, unitIndex);
+            String quantityUnit = ingredientQuantity.substring(unitIndex);
+
+            if(unitIndex == -1) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecipeAddCommand.MESSAGE_INGREDIENT_USAGE));
+            }
+
+        try{
+            Quantity quantity = new Quantity(Double.valueOf(quantityValue), Unit.parseUnit(quantityUnit));
+            return new Ingredient(new Name(ingredientName), quantity);
+        } catch (IllegalArgumentException fe) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecipeAddCommand.MESSAGE_INGREDIENT_USAGE));
+        }
+    }
+
     /**
      * Stub
      * @param unit Stub
@@ -70,6 +101,10 @@ public class ParserUtil {
     public static Unit parseUnitOfIngredient(String unit) throws ParseException {
         requireNonNull(unit);
         return Unit.parseUnit(unit);
+    }
+
+    public static RecipeStep parseRecipeStep(String recipeStepString) throws ParseException {
+        return RecipeStep.parseRecipeStep(recipeStepString);
     }
 
     //    /**

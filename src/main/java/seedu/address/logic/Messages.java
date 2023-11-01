@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.RecipeStep;
 
 /**
  * Container for user visible messages.
@@ -47,6 +49,13 @@ public class Messages {
             builder.append("\nIngredient Removed");
         }
         return builder.toString();
+    }
+
+    /**
+     * Formats the {@code recipe} for display to the user.
+     */
+    public static String format(Recipe recipe) {
+        return recipe.getName().fullName;
     }
 
 }

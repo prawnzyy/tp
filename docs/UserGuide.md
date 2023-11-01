@@ -139,14 +139,23 @@ Examples:
 
 ### Adding Recipes : `addrecipe`
 
-Adds a new recipe to the recipe book. The new recipe will be put in view.
+Adds a new recipe to the recipe book. Each line in this command should be entered one by one.
 
-Format: `addrecipe n/NAME`
-
-<box type="tip" seamless>
-
-**Tip:** The added recipe will have an empty ingredient list and step list. These lists can be specified using the commands found in the **Modifying Recipes** section.
-</box>
+<<<<<<< HEAD
+Format: 
+```
+addrecipe 
+NAME
+INGREDIENT_NAME INGREDIENT_QUANTITY
+Water 100g
+Flour 1kg
+⋮
+steps start
+1. STEP 1
+2. STEP 2
+⋮
+recipe complete
+```
 
 ### Modifying Recipes `[coming in v1.3]`
 

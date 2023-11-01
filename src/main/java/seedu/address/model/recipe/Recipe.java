@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
 import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 /**
@@ -57,6 +59,7 @@ public class Recipe {
     public List<String> getRecipeSteps() {
         return this.recipeSteps.stream().map(RecipeStep::toString).collect(Collectors.toList());
     }
+
 
     /** Check if the current recipe contains the specified ingredient name. */
     public boolean containsIngredient(Name ingredientName) {

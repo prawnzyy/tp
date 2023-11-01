@@ -12,6 +12,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.InventoryAppParser;
+import seedu.address.logic.parser.RecipeAddCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyInventory;
@@ -34,6 +35,8 @@ public class LogicManager implements Logic {
     private final Storage storage;
     private final InventoryAppParser inventoryAppParser;
 
+    private final RecipeAddInputHandler recipeAddInputHandler;
+
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
@@ -41,15 +44,26 @@ public class LogicManager implements Logic {
         this.model = model;
         this.storage = storage;
         inventoryAppParser = new InventoryAppParser();
+        recipeAddInputHandler = new RecipeAddInputHandler();
     }
 
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
+        Command command;
         CommandResult commandResult;
-        Command command = inventoryAppParser.parseCommand(commandText);
-        commandResult = command.execute(model);
+        if (!recipeAddInputHandler.check(commandText)) {
+            System.out.println(commandText);
+            command = inventoryAppParser.parseCommand(commandText);
+            commandResult = command.execute(model);
+        } else {
+            commandResult = recipeAddInputHandler.handle(commandText);
+            if (recipeAddInputHandler.isComplete()) {
+                command = recipeAddInputHandler.getCommand();
+                commandResult = command.execute(model);
+            }
+        }
 
         try {
             storage.saveInventory(model.getInventory());

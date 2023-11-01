@@ -8,6 +8,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
+<<<<<<< HEAD
+import seedu.address.logic.commands.*;
+=======
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
@@ -19,6 +22,7 @@ import seedu.address.logic.commands.RecipeViewCommand;
 import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.commands.UseCommand;
+>>>>>>> d58acd94e88c44835f28634d8b5980a077795867
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -54,7 +58,6 @@ public class InventoryAppParser {
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
-
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
