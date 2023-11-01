@@ -7,7 +7,6 @@ import java.util.stream.Stream;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.recipe.Recipe;
-import seedu.address.model.recipe.RecipeStep;
 
 /**
  * Container for user visible messages.

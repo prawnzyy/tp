@@ -2,21 +2,19 @@ package seedu.address.logic;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.RecipeAddCommand;
 import seedu.address.logic.parser.RecipeAddCommandParser;
-import seedu.address.logic.parser.exceptions.ParseException;
 
 public class RecipeAddInputHandler {
 
-    private static String MESSAGE_PROMPT_NAME=  "Input the name of the recipe.";
+    private static final String MESSAGE_PROMPT_NAME =  "Input the name of the recipe.";
 
-    private static String MESSAGE_PROMPT_INGREDIENT = "Input an ingredient and it's quantity." + "\n" +
+    private static final String MESSAGE_PROMPT_INGREDIENT = "Input an ingredient and it's quantity." + "\n" +
             "When you're done, type \"steps start\"";
 
-    private static String MESSAGE_PROMPT_STEP = "Input the next step in the recipe." + "\n" +
-            "When you're done, type \"complete recipe\"";
+    private static final String MESSAGE_PROMPT_STEP = "Input the next step in the recipe." + "\n"
+            + "When you're done, type \"complete recipe\"";
 
-    private RecipeAddCommandParser recipeAddCommandParser;
+    private final RecipeAddCommandParser recipeAddCommandParser;
 
     private RecipeAddInputStage stage;
 
@@ -25,17 +23,19 @@ public class RecipeAddInputHandler {
         stage = RecipeAddInputStage.COMPLETE;
     }
 
+    /**
+     * Checks if the command is part of the adding recipe command sequence.
+     * @param commandText The command to check
+     */
     public boolean check(String commandText) {
-        if (stage != RecipeAddInputStage.COMPLETE) {
-            return true;
-        }
-        else if (commandText.equals("addrecipe")) {
-            return true;
-        } else {
-            return false;
-        }
+        return (stage != RecipeAddInputStage.COMPLETE || commandText.equals("addrecipe"));
     }
 
+    /**
+     * Handles a command in the adding recipe sequence.
+     * @param commandText The next command in the sequence
+     * @return A command result
+     */
     public CommandResult handle(String commandText) {
         String parseOutput = "";
         if (commandText.equals("addrecipe")) {
@@ -59,6 +59,8 @@ public class RecipeAddInputHandler {
             case STEPS:
                 parseOutput = recipeAddCommandParser.addStep(commandText);
                 break;
+            default:
+                break;
             }
         }
 
@@ -74,10 +76,16 @@ public class RecipeAddInputHandler {
         }
     }
 
+    /**
+     * Checks if the adding recipe command sequence is complete
+     */
     public boolean isComplete() {
         return stage == RecipeAddInputStage.COMPLETE;
     }
 
+    /**
+     * Returns the completed RecipeAddCommand instance
+     */
     public Command getCommand() {
         return recipeAddCommandParser.generateCommand();
     }
