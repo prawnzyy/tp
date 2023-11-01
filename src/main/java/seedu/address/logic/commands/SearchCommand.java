@@ -22,8 +22,6 @@ public class SearchCommand extends Command {
             + "ingredient name "
             + "Example: " + COMMAND_WORD + " flour";
 
-    public static final String MESSAGE_SUCCESS = "%$s ingredients listed";
-
     private final Predicate<Recipe> predicate;
 
     /**
