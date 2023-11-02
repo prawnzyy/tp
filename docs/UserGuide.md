@@ -154,7 +154,7 @@ steps start
 1. STEP 1
 2. STEP 2
 ⋮
-recipe complete
+complete recipe
 ```
 
 ### Modifying Recipes `[coming in v1.3]`

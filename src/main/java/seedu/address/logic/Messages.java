@@ -27,6 +27,7 @@ public class Messages {
     public static final String MESSAGE_MODIFY_RECIPE_SUCCESS = "Recipe of uuid %1$d modified";
     public static final String MESSAGE_NO_SUCH_INGREDIENT = "There is no such ingredient in this recipe. Please input"
             + "an ingredient that is in the recipe";
+    
     /**
      * Returns an error message indicating the duplicate prefixes.
      */

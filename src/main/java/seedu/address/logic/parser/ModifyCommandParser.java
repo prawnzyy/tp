@@ -41,6 +41,7 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
         } catch (NumberFormatException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE), pe);
         }
+
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
         Unit unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());

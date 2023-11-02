@@ -22,7 +22,7 @@ public class DeleteCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_RECIPE_SUCCESS = "Deleted Recipe: ";
+    public static final String MESSAGE_DELETE_RECIPE_SUCCESS = "Deleted Recipe: %1$s";
 
     private final Index targetIndex;
 
@@ -40,13 +40,12 @@ public class DeleteCommand extends Command {
         if (!model.hasRecipe(targetIndex.getOneBased())) {
             throw new CommandException(Messages.MESSAGE_RECIPE_DOES_NOT_EXIST);
         }
-
+        assert targetIndex.getOneBased() > 0;
         Recipe deletedRecipe = model.getRecipe(targetIndex.getOneBased());
         model.deleteRecipe(deletedRecipe);
 
         return new CommandResult(String.format(MESSAGE_DELETE_RECIPE_SUCCESS,
         targetIndex.getOneBased()));
-
 
     }
 
