@@ -1,4 +1,83 @@
+--------------------------------------------------------------------------------------------------------------------
+
+## **Acknowledgements**
+
+_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Setting up, getting started**
+
+Refer to the guide [_Setting up and getting started_](SettingUp.md).
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Architecture
+
+<puml src="diagrams/ArchitectureDiagram.puml" width="280" />
+
+The ***Architecture Diagram*** given above explains the high-level design of the App.
+
+Given below is a quick overview of main components and how they interact with each other.
+
+**Main components of the architecture**
+
+**`Main`** (consisting of classes 
+[`Main`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/Main.java) and 
+[`MainApp`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in 
+charge of the app launch and shut down.
+* At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
+* At shut down, it shuts down the other components and invokes cleanup methods where necessary.
+
+The bulk of the app's work is done by the following four components:
+
+* [**`UI`**](#ui-component): The UI of the App.
+* [**`Logic`**](#logic-component): The command executor.
+* [**`Model`**](#model-component): Holds the data of the App in memory.
+* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+
+[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+
+**How the architecture components interact with each other**
+
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+
+<puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
+
+Each of the four main components (also shown in the diagram above),
+
+* defines its *API* in an `interface` with the same name as the Component.
+* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+
+For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
+
+<puml src="diagrams/ComponentManagers.puml" width="300" />
+
+The sections below give more details of each component.
+
+### UI component
+
+The **API** of this component is specified in 
+[`Ui.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
+
+<puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/> 
+
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `IngredientListPanel`, 
+`RecipeListPanel` `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class 
+which captures the commonalities between classes that represent parts of the visible GUI.
+
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that
+are in the `src/main/resources/view` folder. For example, the layout of the 
+[`MainWindow`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) 
+is specified in 
+[`MainWindow.fxml`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
+
+The `UI` component,
+
+* executes user commands using the `Logic` component.
+* listens for changes to `Model` data so that the UI can be updated with the modified data.
+* keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
+* depends on some classes in the `Model` component, as it displays `Inventory` object residing in the `Model`.
 
 ### Model Component
 
@@ -221,6 +300,18 @@ The following sequence diagram shows how the DeleteCommand works:
 **Note**: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, 
 the lifeline reaches the end of diagram.
 
+--------------------------------------------------------------------------------------------------------------------
+
+## **Documentation, logging, testing, configuration, dev-ops**
+
+* [Documentation guide](Documentation.md)
+* [Testing guide](Testing.md)
+* [Logging guide](Logging.md)
+* [Configuration guide](Configuration.md)
+* [DevOps guide](DevOps.md)
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Appendix: Requirements**
 
 ### Product Scope
@@ -357,3 +448,58 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 ### Glossary
 - Mainstream OS: Windows, Linux, OS-X
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Instructions for manual testing**
+
+Given below are instructions to test the app manually.
+
+<box type="info" seamless>
+
+**Note:** These instructions only provide a starting point for testers to work on;
+testers are expected to do more *exploratory* testing.
+
+</box>
+
+### Launch and shutdown
+
+1. Initial launch
+
+    1. Download the jar file and copy into an empty folder
+
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+
+1. Saving window preferences
+
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+
+    1. Re-launch the app by double-clicking the jar file.<br>
+       Expected: The most recent window size and location is retained.
+
+1. _{ more test cases …​ }_
+
+### Deleting a recipe
+
+1. Deleting a recipe while all recipes are being shown
+
+    1. Prerequisites: List all recipes using the `list` command. Multiple recipes in the list.
+
+    1. Test case: `delete 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `delete 0`<br>
+       Expected: No recipe is deleted. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+1. _{ more test cases …​ }_
+
+### Saving data
+
+1. Dealing with missing/corrupted data files
+
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+
+1. _{ more test cases …​ }_
