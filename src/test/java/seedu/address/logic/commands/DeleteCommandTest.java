@@ -32,7 +32,8 @@ public class DeleteCommandTest {
         Recipe recipeToDelete = model.getRecipe(INDEX_FIRST_RECIPE.getOneBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_RECIPE);
 
-        String expectedMessage = DeleteCommand.MESSAGE_DELETE_RECIPE_SUCCESS;
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_RECIPE_SUCCESS,
+                INDEX_FIRST_RECIPE.getOneBased());
 
         ModelManager expectedModel = new ModelManager(model.getInventory(), new UserPrefs(), model.getRecipeBook());
         expectedModel.deleteRecipe(recipeToDelete);

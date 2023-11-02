@@ -107,6 +107,17 @@ public class Recipe {
     }
 
     /**
+     * Adds ingredient to ingredient list in a recipe
+     * @param ingredient ingredient that will be added
+     * @return the edited Recipe with the added ingredient
+     */
+    public Recipe addIngredient(Ingredient ingredient) {
+        List<Ingredient> ingredientListCopy = new ArrayList<>(ingredientList);
+        ingredientListCopy.add(ingredient);
+        return new Recipe(this.uuid.getId(), this.name, ingredientListCopy, this.recipeSteps);
+    }
+
+    /**
      * Returns the full recipe.
      */
     public String getFullRecipe() {

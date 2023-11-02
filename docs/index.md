@@ -3,17 +3,17 @@
   title: ""
 ---
 
-# AddressBook Level-3
+# [Ba]king [Br]ead
 
-[![CI Status](https://github.com/se-edu/inventory-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
-[![codecov](https://codecov.io/gh/se-edu/inventory-level3/branch/master/graph/badge.svg)](https://codecov.io/gh/se-edu/addressbook-level3)
+![CI Status](https://github.com/AY2324S1-CS2103T-F10-3/tp/actions/workflows/gradle.yml/badge.svg)
+[![codecov](https://codecov.io/gh/AY2324S1-CS2103T-F10-3/tp/graph/badge.svg?token=VOTP39W8U3)](https://codecov.io/gh/AY2324S1-CS2103T-F10-3/tp)
 
 ![Ui](images/Ui.png)
 
-**AddressBook is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
+**[Ba]king [Br]ead is a desktop application for managing your ingredients and recipes.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
-* If you are interested in using AddressBook, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing AddressBook, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+* If you are interested in using [Ba]king [Br]ead, head over to the [_Quick Start_ section of the **User Guide**](https://ay2324s1-cs2103t-f10-3.github.io/tp/UserGuide.html#quick-start).
+* If you are interested about developing [Ba]king [Br]ead, the [**Developer Guide**](https://ay2324s1-cs2103t-f10-3.github.io/tp/DeveloperGuide.html) is a good place to start.
 
 
 **Acknowledgements**
