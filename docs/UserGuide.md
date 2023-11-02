@@ -158,6 +158,23 @@ steps start
 complete recipe
 ```
 
+Example:
+```
+addrecipe
+Bread
+Water 100g
+Flour 1kg
+steps start
+1. Mix Water and Flour
+2. Bake at 180C
+complete recipe
+```
+
+<box type="tip" seamless>
+
+**Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
+</box>
+
 ### Modifying Recipes `[coming in v1.3]`
 
 Modifies the ingredients in a recipe.
@@ -209,6 +226,8 @@ Format: `exit`
 
 Inventory and Recipe data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
+**Tip**: When the application loads for the first time and no command is run, no inventory or recipe data will be saved
+
 ### Editing the data file
 
 Inventory data are saved automatically as a JSON file `[JAR file location]/data/inventory.json`. Advanced users are welcome to update data directly by editing that data file.
@@ -233,15 +252,19 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 ## Command summary
 
-| Action     | Format, Examples                                                     |
-|------------|----------------------------------------------------------------------|
-| **Add**    | `add n/NAME q/QUANTITY u/UNIT` <br> e.g., `add n/milk q/600 u/ml`    |
-| **Clear**  | `clear`                                                              |
-| **Use**    | `use n/NAME [q/QUANTITY] [u/UNIT]`<br> e.g., `use n/milk q/200 u/ml` |
-| **Stock**  | `stock [NAME]…​`<br> e.g., `stock milk egg`                          |
-| **List**   | `list`                                                               |
-| **View**   | `view UUID`<br/> e.g., `view 1`                                      |
-| **Delete** | `delete UUID`<br/> e.g., `delete 1`                                  |
-| **Search** | `search NAME`<br/> e.g., `search flour`                              |
-| **Help**   | `help`                                                               |
-| **Exit**   | `exit`                                                               |
+**Note**: For `AddRecipe`, each command is to be run line and line
+
+| Action        | Format, Examples                                                                                                                                                                    |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**       | `add n/NAME q/QUANTITY u/UNIT` <br> e.g., `add n/milk q/600 u/ml`                                                                                                                   |
+| **Clear**     | `clear`                                                                                                                                                                             |
+| **Use**       | `use n/NAME [q/QUANTITY] [u/UNIT]`<br> e.g., `use n/milk q/200 u/ml`                                                                                                                |
+| **Stock**     | `stock [NAME]…​`<br> e.g., `stock milk egg`                                                                                                                                         |
+| **List**      | `list`                                                                                                                                                                              |
+| **View**      | `view UUID`<br/> e.g., `view 1`                                                                                                                                                     |
+| **AddRecipe** | `addrecipe` `NAME QUANTITY…​` `steps start` `1. STEP 1` `complete recipe`<br/> e.g., `addrecipe` `Water 100g` `Flour 1kg` `steps start` `1. Mix Water with Flour` `complete recipe` |
+| **Delete**    | `delete UUID`<br/> e.g., `delete 1`                                                                                                                                                 |
+| **Search**    | `search NAME`<br/> e.g., `search flour`                                                                                                                                             |
+| **Modify**    | `modify i/UUID n/NAME q/QUANTITY u/UNIT`<br/> e.g., `modify i/1 n/Flour q/100 u/g`                                                                                                  |
+| **Help**      | `help`                                                                                                                                                                              |
+| **Exit**      | `exit`                                                                                                                                                                              |

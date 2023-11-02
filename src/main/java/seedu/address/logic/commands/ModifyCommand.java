@@ -22,7 +22,7 @@ public class ModifyCommand extends Command {
     public static final String COMMAND_WORD = "modify";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Modifies the ingredients used in the "
-            + "recipe"
+            + "recipe "
             + "by the uuid used in the displayed recipe list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: "
