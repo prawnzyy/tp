@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.TypicalIngredients.EGG;
+import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalRecipe.COOKIES;
 import static seedu.address.testutil.TypicalRecipe.COOKIES_STRING;
 import static seedu.address.testutil.TypicalRecipe.SPONGECAKE;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Name;
+import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 
 public class RecipeTest {
     @Test
@@ -102,7 +105,32 @@ public class RecipeTest {
 
     @Test
     public void modifyRecipe_indexGreaterThanAvailableSteps_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> COOKIES.modifyRecipeStep(7, "Hello"));
+        assertThrows(IllegalArgumentException.class, () ->
+                COOKIES.modifyRecipeStep(7, "Hello"));
+    }
+
+    @Test
+    public void modifyRecipeIngredients_nullIngredient_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () ->
+                COOKIES.modifyIngredients("Flour", null));
+    }
+
+    @Test
+    public void modifyRecipeIngredients_ingredientNotInList_throwsIngredientNotFoundException() {
+        assertThrows(IngredientNotFoundException.class, () ->
+                COOKIES.modifyIngredients("Eggs", FLOUR));
+    }
+
+    @Test
+    public void modifyRecipeIngredients_ingredientsInList_success() {
+        Recipe modifiedCookies = COOKIES.modifyIngredients("Flour", EGG);
+        assertTrue(modifiedCookies.getIngredients().contains(EGG));
+    }
+
+    @Test
+    public void modifyRecipeIngredients_notCaseSensitive_success() {
+        Recipe modifiedCookies = COOKIES.modifyIngredients("flour", EGG);
+        assertTrue(modifiedCookies.getIngredients().contains(EGG));
     }
 
     @Test

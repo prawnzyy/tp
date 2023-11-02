@@ -2,9 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -127,15 +125,8 @@ public class MainWindow extends UiPart<Stage> {
         // If it is 1, then display full recipe
         // Else show only name and ingredients
         ObservableList<Recipe> recipeList = logic.getRecipeList();
-        if (recipeList.size() == 1) {
-            // Change this portion to logic.getFilteredRecipeList() once its up!!
-            // The thing below is just for temporary testing
-            recipeListPanel = new FullRecipeListPanel(new FilteredList<>(FXCollections.observableArrayList("hello")));
-        } else {
-            recipeListPanel = new RecipeListPanel(recipeList);
-        }
+        recipeListPanel = new RecipeListPanel(recipeList);
         recipeListPanelPlaceholder.getChildren().add(recipeListPanel.getRoot());
-
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 

@@ -11,10 +11,13 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.commands.RecipeViewCommand;
+import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.StockCommand;
 import seedu.address.logic.commands.UseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -52,7 +55,6 @@ public class InventoryAppParser {
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
-
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
@@ -76,6 +78,15 @@ public class InventoryAppParser {
 
         case RecipeViewCommand.COMMAND_WORD:
             return new RecipeViewCommandParser().parse(arguments);
+
+        case DeleteCommand.COMMAND_WORD:
+            return new DeleteCommandParser().parse(arguments);
+
+        case ModifyCommand.COMMAND_WORD:
+            return new ModifyCommandParser().parse(arguments);
+
+        case SearchCommand.COMMAND_WORD:
+            return new SearchCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

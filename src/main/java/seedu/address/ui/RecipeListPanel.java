@@ -26,7 +26,6 @@ public class RecipeListPanel extends UiPart<Region> {
      */
     public RecipeListPanel(ObservableList<Recipe> recipeList) {
         super(FXML);
-        System.out.println(recipeList);
         recipeListView.setItems(recipeList);
         recipeListView.setCellFactory(listView -> new RecipeListViewCell());
     }
@@ -43,7 +42,12 @@ public class RecipeListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new RecipeCard(recipe, getIndex() + 1).getRoot());
+                ObservableList<Recipe> recipeList = recipeListView.getItems();
+                if (recipeList.size() == 1) {
+                    setGraphic(new FullRecipePanel(recipe).getRoot());
+                } else {
+                    setGraphic(new RecipeListCard(recipe).getRoot());
+                }
             }
         }
     }

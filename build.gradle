@@ -66,7 +66,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = 'recipebook.jar'
+    archiveFileName = 'bakingbread.jar'
 }
 
 run {

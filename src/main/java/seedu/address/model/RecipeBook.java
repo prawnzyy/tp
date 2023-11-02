@@ -62,6 +62,20 @@ public class RecipeBook implements ReadOnlyRecipeBook {
     }
 
     /**
+     * Checks if the recipe exists in the recipe book.
+     */
+    public boolean hasRecipe(int index) {
+        for (Recipe recipe : this.recipeList) {
+            if (recipe.getId() == index) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    /**
      * Adds a new {@code recipe} to the recipe book.
      */
     public void addRecipe(Recipe toAdd) {
@@ -69,16 +83,14 @@ public class RecipeBook implements ReadOnlyRecipeBook {
     }
 
     /**
-     * Removes a recipe from the recipe book with its {@code recipeId}
+     * Removes a recipe from the recipe book
      */
-    public void removeRecipe(int recipeId) {
-        for (Recipe recipe : this.recipeList) {
-            if (recipe.getId() == recipeId) {
-                this.recipeList.remove(recipe);
-                return;
-            }
+    public void removeRecipe(Recipe recipe) {
+        try {
+            this.recipeList.remove(recipe);
+        } catch (RecipeNotFoundException e) {
+            throw new RecipeNotFoundException();
         }
-        throw new RecipeNotFoundException();
     }
 
     /**
@@ -105,6 +117,15 @@ public class RecipeBook implements ReadOnlyRecipeBook {
     @Override
     public ObservableList<Recipe> getRecipeList() {
         return recipeList.asUnmodifiableObservableList();
+    }
+
+    public Recipe getRecipe(int index) {
+        for (Recipe recipe : this.recipeList) {
+            if (recipe.getId() == index) {
+                return recipe;
+            }
+        }
+        return null;
     }
 
     @Override
