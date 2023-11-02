@@ -49,7 +49,7 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
         Unit unit;
         try {
             unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
-        } catch(UnitFormatException e) {
+        } catch (UnitFormatException e) {
             throw new ParseException("This is not a valid unit!");
         }
 
