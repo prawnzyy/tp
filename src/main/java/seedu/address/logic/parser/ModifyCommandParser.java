@@ -14,6 +14,7 @@ import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
+import seedu.address.model.ingredient.exceptions.UnitFormatException;
 
 /**
  * Parses input arguments and creates a new ModifyCommand object
@@ -41,9 +42,17 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
         } catch (NumberFormatException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE), pe);
         }
+
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
-        Unit unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
+
+        Unit unit;
+        try {
+            unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
+        } catch (UnitFormatException e) {
+            throw new ParseException("This is not a valid unit!");
+        }
+
         Quantity quantity = new Quantity(amount, unit);
 
         Ingredient newIngredient = new Ingredient(name, quantity);

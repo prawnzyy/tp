@@ -9,11 +9,11 @@ import seedu.address.logic.parser.RecipeAddCommandParser;
  */
 public class RecipeAddInputHandler {
     private static final String MESSAGE_PROMPT_NAME = "Input the name of the recipe.";
-    private static final String MESSAGE_PROMPT_INGREDIENT = "Input an ingredient and it's quantity." + "\n"
-        + "When you're done, type \"steps start\"";
+    private static final String MESSAGE_PROMPT_INGREDIENT = "Input an ingredient and it's quantity. Eg. Milk 100g"
+            + "\n" + "When you're done, type \"steps start\"";
 
-    private static final String MESSAGE_PROMPT_STEP = "Input the next step in the recipe." + "\n"
-            + "When you're done, type \"complete recipe\"";
+    private static final String MESSAGE_PROMPT_STEP = "Input the next step in the recipe. Eg. 1. Preheat the oven."
+            + "\n" + "When you're done, type \"complete recipe\"";
 
     private final RecipeAddCommandParser recipeAddCommandParser;
 

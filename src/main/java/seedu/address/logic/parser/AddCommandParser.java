@@ -13,6 +13,7 @@ import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
+import seedu.address.model.ingredient.exceptions.UnitFormatException;
 
 
 /**
@@ -37,7 +38,14 @@ public class AddCommandParser implements Parser<AddCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
-        Unit unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
+
+        Unit unit;
+        try {
+            unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
+        } catch (UnitFormatException e) {
+            throw new ParseException("This is not a valid unit!");
+        }
+
         Quantity quantity = new Quantity(amount, unit);
         Ingredient ingredient = new Ingredient(name, quantity);
 
