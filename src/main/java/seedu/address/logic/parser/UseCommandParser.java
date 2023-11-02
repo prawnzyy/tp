@@ -12,6 +12,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
+import seedu.address.model.ingredient.exceptions.UnitFormatException;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -41,7 +42,13 @@ public class UseCommandParser implements Parser<UseCommand> {
         }
 
         double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
-        Unit unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
+        Unit unit;
+        try {
+            unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
+        } catch(UnitFormatException e) {
+            throw new ParseException("This is not a valid unit!");
+        }
+
         Quantity quantity = new Quantity(amount, unit);
         return new UseCommand(name, quantity);
     }

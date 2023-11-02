@@ -77,9 +77,12 @@ Adds an ingredient to stock.
 
 Format: `add n/NAME q/QUANTITY u/UNIT`
 
+* If the ingredient already exists in the stock, using this command will add to the quantity specified for that 
+  ingredient.
+
 Examples:
-* `add n/Flour q/1 u/kg`
-* `add n/Milk q/600 u/ml`
+* `add n/Flour q/1 u/kg` adds 1kg of Flour to the stock
+* `add n/Milk q/600 u/ml` adds 600ml of Milk to the stock
 
 ### Using up ingredients : `use`
 
@@ -123,15 +126,14 @@ Format: `list`
 
 Examples:
 * `list` lists out all recipes within [BA]king [BR]ead
-* 
+
 ### Viewing Specific Recipes : `view`
 
 Views a specific recipe in [BA]king [BR]ead.
 
 Format: `view UUID`
 * `UUID` must be an integer greater than or equal to 1
-* `UUID` integer value cannot exceed the total number of recipes loaded into the recipe book.
-* to toggle back to listing all recipes, use the `list` command
+* To toggle back to listing all recipes, use the `list` command
 
 Examples:
 * `view 1` views the recipe with `UUID` of 1
@@ -141,7 +143,6 @@ Examples:
 
 Adds a new recipe to the recipe book. Each line in this command should be entered one by one.
 
-<<<<<<< HEAD
 Format: 
 ```
 addrecipe 
@@ -159,6 +160,19 @@ complete recipe
 
 ### Modifying Recipes `[coming in v1.3]`
 
+Modifies the ingredients in a recipe.
+
+Format: `modify i/UUID n/NAME q/QUANTITY u/UNIT`
+
+* `UUID` must be an integer greater than or equal to 1
+
+Example:
+* Assuming flour is used in the recipe, `modify i/1 n/Flour q/100 u/g` modifies the quantity of the `Flour` ingredient 
+  in the recipe.
+* Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
+  and unit to the recipe
+
+
 ### Deleting Recipes : `delete`
 
 Deletes a specific recipe from [BA]king [BR]ead when you longer need it.
@@ -166,7 +180,6 @@ Deletes a specific recipe from [BA]king [BR]ead when you longer need it.
 Format: `delete UUID`
 
 * `UUID` must be an integer greater than or equal to 1
-* `UUID` integer value cannot exceed the total number of recipes loaded into the recipe book
 
 Examples:
 * `delete 1` deletes the recipe with `UUID` of 1
