@@ -1,13 +1,10 @@
 package seedu.address.model.recipe;
 
-import java.util.HashSet;
-
 /**
  * A wrapper for a unique immutable id.
  */
 public class UniqueId {
     private static int lastId = 0;
-    private static HashSet<Integer> set;
     private final int id;
 
     /** Creates a new unique ID which is 1 increment of the previous id, starts from 1 */
