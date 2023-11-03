@@ -8,6 +8,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.UniqueId;
 import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 
 /**
@@ -90,13 +91,15 @@ public interface Model {
     /** Returns the RecipeBook */
     ReadOnlyRecipeBook getRecipeBook();
 
-    boolean hasRecipe(Name recipeName);
-    boolean hasRecipe(int index);
-    public Recipe getRecipe(int recipeId);
+    //boolean hasRecipe(Name recipeName);
+
+    boolean hasRecipe(UniqueId uuid);
 
     void deleteRecipe(Recipe recipe);
 
     void addRecipe(Recipe recipe);
+
+    Recipe getRecipe(UniqueId uuid);
 
     /**
      * Gets the full Recipe based on the unique {@code recipeId} of the Recipe.

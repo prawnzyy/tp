@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.RecipeViewCommand;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
+import seedu.address.model.recipe.UniqueId;
 
 public class RecipeViewCommandParserTest {
 
@@ -15,9 +16,10 @@ public class RecipeViewCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsRecipeViewCommand() {
+        UniqueId uuid = new UniqueId(1);
         // no leading and trailing whitespaces
         RecipeViewCommand expectedRecipeViewCommand =
-                new RecipeViewCommand(new RecipeUuidMatchesPredicate(1));
+                new RecipeViewCommand(new RecipeUuidMatchesPredicate(uuid));
         assertParseSuccess(parser, "1", expectedRecipeViewCommand);
 
         // multiple whitespaces between keywords

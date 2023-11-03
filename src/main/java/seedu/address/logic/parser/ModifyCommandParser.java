@@ -15,6 +15,7 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.model.ingredient.exceptions.UnitFormatException;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Parses input arguments and creates a new ModifyCommand object
@@ -26,7 +27,7 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public ModifyCommand parse(String args) throws ParseException {
-        int uuid;
+        int id;
         ArgumentMultimap argMultimap =
                     ArgumentTokenizer.tokenize(args, PREFIX_UUID, PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
 
@@ -38,7 +39,7 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_UUID, PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
 
         try {
-            uuid = Integer.parseInt(argMultimap.getValue(PREFIX_UUID).get());
+            id = Integer.parseInt(argMultimap.getValue(PREFIX_UUID).get());
         } catch (NumberFormatException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE), pe);
         }
@@ -57,7 +58,7 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
 
         Ingredient newIngredient = new Ingredient(name, quantity);
 
-        return new ModifyCommand(uuid, newIngredient);
+        return new ModifyCommand(new UniqueId(id), newIngredient);
 
     }
     /**

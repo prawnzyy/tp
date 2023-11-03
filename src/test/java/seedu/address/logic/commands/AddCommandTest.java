@@ -27,6 +27,7 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.UniqueId;
 import seedu.address.testutil.IngredientBuilder;
 
 public class AddCommandTest {
@@ -180,12 +181,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasRecipe(Name recipeName) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean hasRecipe(int index) {
+        public boolean hasRecipe(UniqueId uuid) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -215,7 +211,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public Recipe getRecipe(int index) {
+        public Recipe getRecipe(UniqueId uuid) {
             throw new AssertionError("This method should not be called.");
         }
     }

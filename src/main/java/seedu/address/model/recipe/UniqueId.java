@@ -21,4 +21,24 @@ public class UniqueId {
     public int getId() {
         return this.id;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof UniqueId)) {
+            return false;
+        }
+
+        UniqueId otherUuid = (UniqueId) other;
+        return this.id == otherUuid.id;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id);
+    }
 }

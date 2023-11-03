@@ -50,6 +50,10 @@ public class Recipe {
         return this.uuid.getId();
     }
 
+    public UniqueId getUuid() {
+        return this.uuid;
+    }
+
     public List<Ingredient> getIngredients() {
         return this.ingredientList;
     }
