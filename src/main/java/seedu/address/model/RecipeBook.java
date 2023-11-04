@@ -62,6 +62,20 @@ public class RecipeBook implements ReadOnlyRecipeBook {
     }
 
     /**
+     * Checks if the recipe exists in the recipe book.
+     */
+    public boolean hasRecipe(int index) {
+        for (Recipe recipe : this.recipeList) {
+            if (recipe.getId() == index) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    /**
      * Adds a new {@code recipe} to the recipe book.
      */
     public void addRecipe(Recipe toAdd) {
@@ -103,6 +117,15 @@ public class RecipeBook implements ReadOnlyRecipeBook {
     @Override
     public ObservableList<Recipe> getRecipeList() {
         return recipeList.asUnmodifiableObservableList();
+    }
+
+    public Recipe getRecipe(int index) {
+        for (Recipe recipe : this.recipeList) {
+            if (recipe.getId() == index) {
+                return recipe;
+            }
+        }
+        return null;
     }
 
     @Override

@@ -128,6 +128,12 @@ public class RecipeTest {
     }
 
     @Test
+    public void modifyRecipeIngredients_notCaseSensitive_success() {
+        Recipe modifiedCookies = COOKIES.modifyIngredients("flour", EGG);
+        assertTrue(modifiedCookies.getIngredients().contains(EGG));
+    }
+
+    @Test
     public void getFullString_sameAsStringRepresentation_success() {
         assertEquals(COOKIES.getFullRecipe(), COOKIES_STRING);
 
