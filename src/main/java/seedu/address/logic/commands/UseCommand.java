@@ -12,6 +12,7 @@ import seedu.address.model.Model;
 import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.exceptions.UnitConversionException;
 
 /**
  * Use an ingredient from the inventory.
@@ -39,9 +40,7 @@ public class UseCommand extends Command {
 
     // Todo Add JavaDocs
     /**
-     * Stub
-     * @param ingredient Stub
-     * @param quantity Stub
+     * Creates a UseCommand to use the specified {@code Ingredient}
      */
     public UseCommand(Name ingredient, Quantity quantity) {
         requireNonNull(ingredient);
@@ -59,7 +58,12 @@ public class UseCommand extends Command {
             return new CommandResult(String.format(MESSAGE_SUCCESS,
                     Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
         }
-        model.useIngredient(toUse, quantityUsed);
+        try {
+            model.useIngredient(toUse, quantityUsed);
+        } catch (UnitConversionException uce) {
+            throw new CommandException(uce.getMessage());
+        }
+
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
 
