@@ -80,9 +80,20 @@ Format: `add n/NAME q/QUANTITY u/UNIT`
 * If the ingredient already exists in the stock, using this command will add to the quantity specified for that 
   ingredient.
 
+Restrictions:
+* Units used must be supported
+* Quantity must be positive
+
 Examples:
 * `add n/Flour q/1 u/kg` adds 1kg of Flour to the stock
 * `add n/Milk q/600 u/g` adds 600ml of Milk to the stock
+
+Supported Units:
+| Unit     | Alias                                 |
+|----------|---------------------------------------|
+| GRAM     | g, gram, GRAM                         |
+| KILOGRAM | kg, kilogram, KILOGRAM                |
+| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
 
 ### Using up ingredients : `use`
 
@@ -90,7 +101,7 @@ Depletes a specified amount of an ingredient from stock.
 
 Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
-* If no quantity and unit is provided, the entire stock of the specified ingredient will be depleted.
+* If no quantity or unit is provided, the entire stock of the specified ingredient will be depleted.
 * If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
 
 Examples:
