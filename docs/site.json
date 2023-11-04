@@ -2,7 +2,7 @@
   "baseUrl": "",
   "titlePrefix": "",
   "titleSuffix": "[Ba]king [Br]ead",
-  "faviconPath": "images/Ui.png",
+  "faviconPath": "images/bread.png",
   "style": {
     "codeTheme": "light"
   },
