@@ -55,7 +55,7 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
   e.g. if the command specifies `n/NAME q/QUANTITY`, `q/QUANTITY n/NAME` is also acceptable.
 
 * Parameters are case-insensitive.
-* e.g. A parameter specified as `n/Milk` is functionally identical to `n/MILK` or `n/milk`.
+  e.g. A parameter specified as `n/Milk` is functionally identical to `n/MILK` or `n/milk`.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `exit` , `list` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -82,7 +82,7 @@ Format: `add n/NAME q/QUANTITY u/UNIT`
 
 Examples:
 * `add n/Flour q/1 u/kg` adds 1kg of Flour to the stock
-* `add n/Milk q/600 u/ml` adds 600ml of Milk to the stock
+* `add n/Milk q/600 u/g` adds 600ml of Milk to the stock
 
 ### Using up ingredients : `use`
 
@@ -94,8 +94,8 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 * If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
 
 Examples:
-*  `use n/Milk q/600 u/ml` Depletes the current quantity of milk by 600 ml.
-*  `use n/Egg` Fully depletes the current quantity of egg.
+*  `use n/Milk q/600 u/g` Depletes the current quantity of milk by 600g
+*  `use n/Egg` Fully depletes the current quantity of egg
 
 ### Finding the quantity of an ingredient by name: `stock`
 
@@ -103,14 +103,14 @@ Lists the quantity of the specified ingredients.
 
 Format: `stock [NAME]…​`
 
-* Multiple ingredients can be specified e.g. `stock Flour Butter` will return the quantities of both ingredients
-* If no ingredients are specified, the quantity of all ingredients will be returned
-* Only full words will be matched e.g. `Flou` will not match `Flour`
-* For ingredients with names comprising multiple words, the first word must be matched e.g. `Bay` will match `Bay Leaves` but `Leaves` will not
+* Multiple ingredients can be specified e.g. `stock Flour Butter` will return the quantities of both ingredients.
+* If no ingredients are specified, the quantity of all ingredients will be returned.
+* Only full words will be matched e.g. `Flou` will not match `Flour`.
+* For ingredients with names comprising multiple words, the first word must be matched e.g. `Bay` will match `Bay Leaves` but `Leaves` will not.
 
 Examples:
-* `stock Milk` returns `Milk: 100ml`
-* `stock milk flour` returns `Milk: 100ml`, `Flour: 2000g`<br>
+* `stock Butter` returns `Butter: 50g`
+* `stock Butter flour` returns `Butter: 100g`, `Flour: 2000g`<br>
 
 ### Clearing all entries : `clear`
 
@@ -175,17 +175,17 @@ complete recipe
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
-### Modifying Recipes `[coming in v1.3]`
+### Modifying Recipes
 
 Modifies the ingredients in a recipe.
 
 Format: `modify i/UUID n/NAME q/QUANTITY u/UNIT`
 
-* `UUID` must be an integer greater than or equal to 1
+* `UUID` must be an integer greater than or equal to 1.
 
 Example:
 * Assuming flour is used in the recipe, `modify i/1 n/Flour q/100 u/g` modifies the quantity of the `Flour` ingredient 
-  in the recipe.
+  in the recipe
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
   and unit to the recipe
 
@@ -196,7 +196,7 @@ Deletes a specific recipe from [BA]king [BR]ead when you longer need it.
 
 Format: `delete UUID`
 
-* `UUID` must be an integer greater than or equal to 1
+* `UUID` must be an integer greater than or equal to 1.
 
 Examples:
 * `delete 1` deletes the recipe with `UUID` of 1
@@ -208,8 +208,8 @@ Searches for recipes that include a specific ingredient in the recipe.
 
 Format: `search NAME`
 
-* `NAME` cannot be empty
-* `NAME` is not case-sensitive
+* `NAME` cannot be empty.
+* `NAME` is not case-sensitive.
 *  If none of the recipes contain that ingredient, an empty recipe list will be displayed instead.
 
 Examples:
@@ -226,7 +226,7 @@ Format: `exit`
 
 Inventory and Recipe data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-**Tip**: When the application loads for the first time and no command is run, no inventory or recipe data will be saved
+**Tip**: When the application loads for the first time and no command is run, no inventory or recipe data will be saved.
 
 ### Editing the data file
 
@@ -243,7 +243,7 @@ If your changes to the data file makes its format invalid, Inventory will discar
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous [Br]eaking [Br]ead home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous [Ba]king [Br]ead home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -252,7 +252,7 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 ## Command summary
 
-**Note**: For `AddRecipe`, each command is to be run line and line
+**Note**: For `AddRecipe`, each command is to be run line and line.
 
 | Action        | Format, Examples                                                                                                                                                                    |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
