@@ -70,7 +70,10 @@
     {
       "src": "DeveloperGuide.md",
       "headings": {
+        "acknowledgements": "Acknowledgements",
+        "setting-up-getting-started": "Setting up, getting started",
         "architecture": "Architecture",
+        "ui-component": "UI component",
         "model-component": "Model Component",
         "storage-component": "Storage Component",
         "implementation": "Implementation",
@@ -80,11 +83,16 @@
         "list-recipe-feature": "List recipe feature",
         "design-considerations": "Design Considerations:",
         "delete-recipe-feature": "Delete recipe feature",
+        "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product Scope",
         "use-cases": "Use Cases",
         "non-functional-requirements": "Non-Functional Requirements",
-        "glossary": "Glossary"
+        "glossary": "Glossary",
+        "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
+        "launch-and-shutdown": "Launch and shutdown",
+        "deleting-a-recipe": "Deleting a recipe",
+        "saving-data": "Saving data"
       },
       "headingKeywords": {}
     },
@@ -152,7 +160,7 @@
       "src": "UserGuide.md",
       "title": "User Guide",
       "headings": {
-        "bakingbread-user-guide": "BAkingBRead User Guide",
+        "ba-king-br-ead-user-guide": "[BA]king [BR]ead User Guide",
         "quick-start": "Quick start",
         "features": "Features",
         "viewing-help-help": "Viewing help : help",
@@ -160,11 +168,12 @@
         "using-up-ingredients-use": "Using up ingredients : use",
         "finding-the-quantity-of-an-ingredient-by-name-stock": "Finding the quantity of an ingredient by name: stock",
         "clearing-all-entries-clear": "Clearing all entries : clear",
-        "viewing-specific-recipes-view": "Viewing Specific Recipes : view",
         "listing-all-recipes-list": "Listing all Recipes : list",
+        "viewing-specific-recipes-view": "Viewing Specific Recipes : view",
         "adding-recipes-addrecipe": "Adding Recipes : addrecipe",
         "modifying-recipes-coming-in-v1-3": "Modifying Recipes [coming in v1.3]",
         "deleting-recipes-delete": "Deleting Recipes : delete",
+        "searching-recipes-search": "Searching Recipes : search",
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
         "editing-the-data-file": "Editing the data file",
@@ -178,7 +187,7 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "ba-king-br-ead": "[Ba]king [Br]ead"
       },
       "headingKeywords": {}
     },
