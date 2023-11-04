@@ -106,7 +106,8 @@ Format: `stock [NAME]…​`
 * Multiple ingredients can be specified e.g. `stock Flour Butter` will return the quantities of both ingredients.
 * If no ingredients are specified, the quantity of all ingredients will be returned.
 * Only full words will be matched e.g. `Flou` will not match `Flour`.
-* For ingredients with names comprising multiple words, the first word must be matched e.g. `Bay` will match `Bay Leaves` but `Leaves` will not.
+* For ingredients with names comprising multiple words, any ingredient that contains the keyword will also be displayed 
+   <br/> e.g. `stock butter` will display both `butter` and `butter stick`
 
 Examples:
 * `stock Butter` returns `Butter: 50g`
