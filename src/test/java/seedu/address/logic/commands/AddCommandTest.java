@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
 
@@ -19,6 +20,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.model.Inventory;
 import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
 import seedu.address.model.Name;
 import seedu.address.model.ReadOnlyInventory;
 import seedu.address.model.ReadOnlyRecipeBook;
@@ -48,6 +50,14 @@ public class AddCommandTest {
         assertEquals(Arrays.asList(validIngredient), modelStub.ingredientsAdded);
     }
 
+    @Test
+    public void execute_invalidQuantityConversion_throwsCommandException() {
+        Model model = new ModelManager();
+        AddCommand command = new AddCommand(new Ingredient(new Name("Flour"), new Quantity(1.0, Unit.PIECE)));
+        model.addIngredient(new IngredientBuilder().build());
+        String expectedMessage = "Unit PIECE cannot be converted to GRAM!";
+        assertCommandFailure(command, model, expectedMessage);
+    }
 
     @Test
     public void equals() {
