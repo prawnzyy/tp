@@ -103,6 +103,7 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
 * If no quantity or unit is provided, the entire stock of the specified ingredient will be depleted.
 * If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
+* The quantity provided must be more than or equal to 0.
 
 Examples:
 *  `use n/Milk q/600 u/g` Depletes the current quantity of milk by 600g

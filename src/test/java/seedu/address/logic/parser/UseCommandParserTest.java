@@ -37,4 +37,16 @@ public class UseCommandParserTest {
         UseCommand command = new UseCommand(new Name("Flour"), new Quantity(100.0, Unit.GRAM));
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR, command);
     }
+
+    @Test
+    public void parse_negativeQuantity_throwsParseException() {
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR + " q/-100 " + UNIT_DESC_FLOUR,
+                "Quantity cannot be negative");
+    }
+
+    @Test
+    public void parse_nonNumericQuantity_throwsParseException() {
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR + " q/onehundred " + UNIT_DESC_FLOUR,
+                "Invalid quantity: onehundred");
+    }
 }

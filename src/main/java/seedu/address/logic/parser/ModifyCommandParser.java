@@ -45,7 +45,6 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
 
         Unit unit;
         try {
@@ -54,8 +53,7 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
             throw new ParseException("This is not a valid unit!");
         }
 
-        Quantity quantity = new Quantity(amount, unit);
-
+        Quantity quantity = ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY).get(), unit);
         Ingredient newIngredient = new Ingredient(name, quantity);
 
         return new ModifyCommand(new UniqueId(id), newIngredient);
