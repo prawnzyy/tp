@@ -36,7 +36,7 @@ public class Recipe {
     /** Creates a new Recipe with the specified {@code id}. */
     public Recipe(int id, Name name, List<Ingredient> ingredientList, List<RecipeStep> recipeSteps) {
         requireAllNonNull(id, name, ingredientList, recipeSteps);
-        this.uuid = new UniqueId(id);
+        this.uuid = UniqueId.importUniqueId(id);
         this.name = name;
         this.ingredientList = ingredientList;
         this.recipeSteps = recipeSteps;
@@ -48,6 +48,10 @@ public class Recipe {
 
     public int getId() {
         return this.uuid.getId();
+    }
+
+    public UniqueId getUuid() {
+        return this.uuid;
     }
 
     public List<Ingredient> getIngredients() {

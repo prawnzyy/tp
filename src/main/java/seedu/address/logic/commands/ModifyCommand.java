@@ -14,6 +14,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.recipe.Recipe;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Modifies an ingredient in a recipe.
@@ -35,12 +36,12 @@ public class ModifyCommand extends Command {
             + PREFIX_NAME + "milk "
             + PREFIX_QUANTITY + "600 "
             + PREFIX_UNIT + "ml ";
-    private int recipeUuid;
+    private UniqueId recipeUuid;
     private Ingredient editedIngredient;
     /**
      * Creates a ModifyCommand to modify the specified {@code Ingredient}
      */
-    public ModifyCommand(int uuid, Ingredient newIngredient) {
+    public ModifyCommand(UniqueId uuid, Ingredient newIngredient) {
         requireNonNull(newIngredient);
         requireNonNull(uuid);
         editedIngredient = newIngredient;
@@ -55,7 +56,7 @@ public class ModifyCommand extends Command {
             throw new CommandException(Messages.MESSAGE_RECIPE_DOES_NOT_EXIST);
         }
 
-        assert recipeUuid > 0;
+        assert recipeUuid.getId() > 0;
         Recipe newRecipe;
         Recipe oldRecipe = model.getRecipe(recipeUuid);
 

@@ -27,6 +27,7 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
 import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Contains helper methods for testing commands.
@@ -156,14 +157,9 @@ public class CommandTestUtil {
      * {@code model}'s recipe book.
      */
 
-    public static void showRecipeAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getOneBased() < model.getFilteredRecipeList().size());
-
-        model.updateFilteredRecipeList(new RecipeUuidMatchesPredicate(targetIndex.getOneBased()));
+    public static void showRecipeAtIndex(Model model, UniqueId uuid) {
+        model.updateFilteredRecipeList(new RecipeUuidMatchesPredicate(uuid));
 
         assertEquals(1, model.getFilteredIngredientList().size());
     }
-
-
-
 }
