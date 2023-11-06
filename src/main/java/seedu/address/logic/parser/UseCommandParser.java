@@ -41,7 +41,6 @@ public class UseCommandParser implements Parser<UseCommand> {
             return new UseCommand(name, null);
         }
 
-        double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
         Unit unit;
         try {
             unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
@@ -49,7 +48,8 @@ public class UseCommandParser implements Parser<UseCommand> {
             throw new ParseException("This is not a valid unit!");
         }
 
-        Quantity quantity = new Quantity(amount, unit);
+        Quantity quantity = ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY).get(), unit);
+
         return new UseCommand(name, quantity);
     }
 
