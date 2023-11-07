@@ -1,19 +1,11 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-//import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
 import static seedu.address.testutil.Assert.assertThrows;
-//import static seedu.address.testutil.Assert.assertThrows;
-//
-//import java.util.ArrayList;
-//import java.util.Arrays;
-//import java.util.List;
-//
-//import seedu.address.commons.core.index.Index;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,20 +51,6 @@ public class CommandTestUtil {
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
-
-    // public static final EditCommand.EditIngredientDescriptor DESC_AMY;
-    // public static final EditCommand.EditIngredientDescriptor DESC_BOB;
-
-    /*
-    static {
-        DESC_AMY = new EditIngredientDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).build();
-        DESC_BOB = new EditIngredientDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
-    }
-     */
 
     /**
      * Executes the given {@code command}, confirms that <br>
@@ -153,7 +131,7 @@ public class CommandTestUtil {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show only the recipe at the given {@code targetIndex} in the
+     * Updates {@code model}'s filtered list to show only the recipe with the given {@code uuid} in the
      * {@code model}'s recipe book.
      */
 
