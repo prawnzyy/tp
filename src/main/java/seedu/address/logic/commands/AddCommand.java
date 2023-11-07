@@ -13,7 +13,7 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.exceptions.UnitConversionException;
 
 /**
- * Adds a ingredient to the inventory.
+ * Adds an ingredient to the inventory.
  */
 public class AddCommand extends Command {
 

@@ -44,7 +44,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         } catch (UnitFormatException e) {
             throw new ParseException("This is not a valid unit!");
         }
-
         Quantity quantity = ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY).get(), unit);
         Ingredient ingredient = new Ingredient(name, quantity);
 

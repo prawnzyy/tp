@@ -33,6 +33,13 @@ public class UseCommandParser implements Parser<UseCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UseCommand.MESSAGE_USAGE));
         }
 
+        if ((!arePrefixesPresent(argMultimap, PREFIX_QUANTITY) && arePrefixesPresent(argMultimap, PREFIX_UNIT))
+                || (!arePrefixesPresent(argMultimap, PREFIX_UNIT)
+                && arePrefixesPresent(argMultimap, PREFIX_QUANTITY))) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UseCommand.MESSAGE_USAGE));
+        }
+
+
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());

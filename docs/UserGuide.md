@@ -15,6 +15,25 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
+## Table of Contents
+* [Quick Start](#quick-start)
+* [Features](#features)
+  * [Help](#viewing-help--help)
+  * [Add ingredient](#adding-an-ingredient-add)
+  * [Use ingredient](#using-up-ingredients--use)
+  * [Find quantity of ingredient](#finding-the-quantity-of-an-ingredient-by-name-stock)
+  * [Clear ingredient list](#clearing-all-entries--clear)
+  * [View list of recipes](#listing-all-recipes--list)
+  * [View a recipe](#viewing-specific-recipes--view)
+  * [Add a recipe](#adding-recipes--addrecipe)
+  * [Modify a recipe](#modifying-recipes)
+  * [Search for recipes that have an ingredient](#searching-recipes--search)
+  * [Exit the program](#exiting-the-program--exit)
+  * [Save the data](#saving-the-data)
+  * [Edit the data file](#editing-the-data-file)
+* [FAQ](#faq)
+* [Known Issues](#known-issues-will-be-edited)
+* [Command Summary](#command-summary)
 
 ## Quick start
 
@@ -83,10 +102,12 @@ Format: `add n/NAME q/QUANTITY u/UNIT`
 Restrictions:
 * Units used must be supported
 * Quantity must be positive
+* If adding quantity to an ingredient that already exists, quantity conversions must be taken into account. If the unit 
+  of the ingredient which is already in the stock is in GRAM/KILOGRAM, it cannot be converted to PIECE and vice versa.
 
 Examples:
 * `add n/Flour q/1 u/kg` adds 1kg of Flour to the stock
-* `add n/Milk q/600 u/g` adds 600ml of Milk to the stock
+* `add n/Milk q/600 u/g` adds 600g of Milk to the stock
 
 Supported Units:
 | Unit     | Alias                                 |
@@ -101,13 +122,30 @@ Depletes a specified amount of an ingredient from stock.
 
 Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
-* If no quantity or unit is provided, the entire stock of the specified ingredient will be depleted.
+* If no quantity and unit is provided, the entire stock of the specified ingredient will be depleted.
 * If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
-* The quantity provided must be more than or equal to 0.
+* The quantity provided must be more than 0.
+
+Restrictions:
+* Units used must be supported
+* When depleting the quantity of the ingredient, quantity conversions must be taken into account. If the unit
+  of the ingredient that is in the stock is in GRAM/KILOGRAM, the use command cannot be inputted with the unit PIECE for that 
+  specific ingredient and vice versa. For example, if the ingredient in the stock is 100g of Flour, `use n/flour q/50 u/pcs`
+  would throw an error.
+* When using up an ingredient, an error will be shown if the user inputs either the quantity or the unit. It is only 
+  possible for both the unit and quantity to be stated or neither.
 
 Examples:
 *  `use n/Milk q/600 u/g` Depletes the current quantity of milk by 600g
 *  `use n/Egg` Fully depletes the current quantity of egg
+
+Supported Units:
+| Unit     | Alias                                 |
+|----------|---------------------------------------|
+| GRAM     | g, gram, GRAM                         |
+| KILOGRAM | kg, kilogram, KILOGRAM                |
+| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
+
 
 ### Finding the quantity of an ingredient by name: `stock`
 
@@ -195,10 +233,11 @@ Modifies the ingredients in a recipe.
 Format: `modify i/UUID n/NAME q/QUANTITY u/UNIT`
 
 * `UUID` must be an integer greater than or equal to 1.
+* The quantity provided must be more than 0.
 
 Example:
-* Assuming flour is used in the recipe, `modify i/1 n/Flour q/100 u/g` modifies the quantity of the `Flour` ingredient 
-  in the recipe
+* Assuming flour is used in the recipe, `modify i/1 n/Flour q/100 u/g` modifies the quantity and unit of the `Flour`     
+  ingredient in the recipe
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
   and unit to the recipe
 
@@ -260,7 +299,8 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Known issues
+## Known issues [will be edited]
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary

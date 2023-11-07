@@ -29,7 +29,7 @@ public class UseCommandParserTest {
     public void parse_nonValidArgs_throwsIllegalArgumentException() {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + "y/test", "Invalid command format! \n"
                 + "use: Depletes a specified amount of an ingredient from stock. "
-                + "Parameters: n/NAME q/QUANTITY u/UNIT Example: use n/milk q/600 u/ml ");
+                + "Parameters: n/NAME [q/QUANTITY] [u/UNIT] Example: use n/milk q/600 u/ml ");
     }
 
     @Test
@@ -41,7 +41,7 @@ public class UseCommandParserTest {
     @Test
     public void parse_negativeQuantity_throwsParseException() {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR + " q/-100 " + UNIT_DESC_FLOUR,
-                "Quantity cannot be negative");
+                "Quantity has to be positive");
     }
 
     @Test

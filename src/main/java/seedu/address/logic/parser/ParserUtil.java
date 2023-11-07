@@ -63,8 +63,8 @@ public class ParserUtil {
         } catch (NumberFormatException e) {
             throw new ParseException("Invalid quantity: " + quantStr);
         }
-        if (amount < 0) {
-            throw new ParseException("Quantity cannot be negative");
+        if (amount <= 0) {
+            throw new ParseException("Quantity has to be positive");
         }
         return new Quantity(amount, unit);
     }
