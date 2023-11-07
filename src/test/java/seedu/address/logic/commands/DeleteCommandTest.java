@@ -67,7 +67,7 @@ public class DeleteCommandTest {
     }
 
     @Test
-    public void execute_invalidIndexFilteredList_throwsCommandException() {;
+    public void execute_invalidIndexFilteredList_throwsCommandException() {
         UniqueId outOfBoundUuid = new UniqueId(3);
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundUuid);
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_RECIPE_DOES_NOT_EXIST);
