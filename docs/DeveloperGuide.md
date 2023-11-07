@@ -2,6 +2,8 @@
 
 ## **Acknowledgements**
 
+[AddressBook 3](https://se-education.org/addressbook-level3/)
+
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
 
 --------------------------------------------------------------------------------------------------------------------
@@ -57,8 +59,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in 
-[`Ui.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
+**API:** [`Ui.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/> 
 
@@ -194,7 +195,7 @@ very readable, with little tokens and command words.
 
 ### View recipe feature
 #### Implementation
-The view recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
+The view recipe mechanism is implemented as a `Command`, extending from the `Command` abstract class.
 
 Given below is an example usage scenario and how the view recipe mechanism behaves at each step. The application is
 assumed to be initialised with at least one recipe loaded in the `ModelManager`.
@@ -207,7 +208,7 @@ Step 3. By Polymorphism, `RecipeViewCommandParser` is called on to handle the pa
 is called with the argument of `"1"`
 
 Step 4. A `RecipeUuidMatchesPredicate` predicate object is created which returns true for any recipe tested on the
-predicate with the same uuid of `"1"`.
+predicate with the same uuid of `1`.
 
 Step 5. The `RecipeViewCommand` then filters the recipe list in `ModelManager` according to the predicate. The recipe
 list should only have at most 1 item after filtration.
@@ -223,10 +224,9 @@ The following sequence diagram shows how the view recipe operation works:
 <img src="images/UML/viewrecipesequencediagram.png" width="800px">
 
 #### Alternatives considered:
-An alternative implementation of the recipe view command would be to find the first recipe with uuid that matches
-instead of filtering through the whole recipe list. Each recipe has a unique id, and hence the first instance of a
-recipe with match uuid should be the only recipe with that uuid. This could lead to faster search times to view
-a specific recipe.
+An alternative implementation considered is to find the first recipe with uuid that matches instead of filtering through
+the whole recipe list. Each recipe has a unique id, and hence the first instance of a recipe with match uuid should be 
+the only recipe with that uuid. This could lead to faster search times to view a specific recipe.
 
 However, we do not expect a user to have so many recipes that performance would become an issue. We do not expect
 users to be frequently using this command either, since baking something requires much time and effort. Filtering
