@@ -14,6 +14,7 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 
 public class RecipeBookTest {
 
@@ -67,5 +68,18 @@ public class RecipeBookTest {
     public void getFullRecipeMethod() {
         recipeBook.addRecipe(COOKIES);
         assertEquals(COOKIES_STRING, recipeBook.getFullRecipe(COOKIES.getId()));
+    }
+
+    @Test
+    public void removeRecipe_recipeInRecipeBook_success() {
+        recipeBook.addRecipe(COOKIES);
+        recipeBook.removeRecipe(COOKIES);
+        assertEquals(new RecipeBook(), recipeBook);
+    }
+
+    @Test
+    public void removeRecipe_recipeNotInRecipeBook_throwsRecipeNotFoundException() {
+        recipeBook.addRecipe(COOKIES);
+        assertThrows(RecipeNotFoundException.class, () -> recipeBook.removeRecipe(SPONGECAKE));
     }
 }
