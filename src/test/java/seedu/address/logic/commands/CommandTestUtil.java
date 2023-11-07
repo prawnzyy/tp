@@ -157,9 +157,9 @@ public class CommandTestUtil {
      * {@code model}'s recipe book.
      */
 
-    public static void showRecipeAtIndex(Model model, UniqueId uuid) {
+    public static void showRecipeAtUuid(Model model, UniqueId uuid) {
         model.updateFilteredRecipeList(new RecipeUuidMatchesPredicate(uuid));
 
-        assertEquals(1, model.getFilteredIngredientList().size());
+        assertEquals(1, model.getFilteredRecipeList().size());
     }
 }
