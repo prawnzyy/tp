@@ -33,8 +33,9 @@ public class UseCommandParser implements Parser<UseCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UseCommand.MESSAGE_USAGE));
         }
 
-        if ((!arePrefixesPresent(argMultimap, PREFIX_QUANTITY) && arePrefixesPresent(argMultimap, PREFIX_UNIT)) ||
-                (!arePrefixesPresent(argMultimap, PREFIX_UNIT) && arePrefixesPresent(argMultimap, PREFIX_QUANTITY))) {
+        if ((!arePrefixesPresent(argMultimap, PREFIX_QUANTITY) && arePrefixesPresent(argMultimap, PREFIX_UNIT))
+                || (!arePrefixesPresent(argMultimap, PREFIX_UNIT)
+                && arePrefixesPresent(argMultimap, PREFIX_QUANTITY))) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UseCommand.MESSAGE_USAGE));
         }
 
