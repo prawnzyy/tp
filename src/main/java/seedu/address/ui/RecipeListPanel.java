@@ -46,7 +46,7 @@ public class RecipeListPanel extends UiPart<Region> {
                 if (recipeList.size() == 1) {
                     setGraphic(new FullRecipePanel(recipe).getRoot());
                 } else {
-                    setGraphic(new RecipeListCard(recipe, recipe.getId()).getRoot());
+                    setGraphic(new RecipeListCard(recipe).getRoot());
                 }
             }
         }

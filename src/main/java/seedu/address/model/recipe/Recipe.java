@@ -36,7 +36,7 @@ public class Recipe {
     /** Creates a new Recipe with the specified {@code id}. */
     public Recipe(int id, Name name, List<Ingredient> ingredientList, List<RecipeStep> recipeSteps) {
         requireAllNonNull(id, name, ingredientList, recipeSteps);
-        this.uuid = new UniqueId(id);
+        this.uuid = UniqueId.importUniqueId(id);
         this.name = name;
         this.ingredientList = ingredientList;
         this.recipeSteps = recipeSteps;
@@ -48,6 +48,10 @@ public class Recipe {
 
     public int getId() {
         return this.uuid.getId();
+    }
+
+    public UniqueId getUuid() {
+        return this.uuid;
     }
 
     public List<Ingredient> getIngredients() {
@@ -72,8 +76,7 @@ public class Recipe {
         if (stepNumber > recipeSteps.size()) {
             throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
         }
-        List<RecipeStep> stepCopy = new ArrayList<>();
-        stepCopy.addAll(this.recipeSteps);
+        List<RecipeStep> stepCopy = new ArrayList<>(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStep));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
@@ -85,8 +88,7 @@ public class Recipe {
         if (stepNumber > recipeSteps.size()) {
             throw new IllegalArgumentException("Specified step number cannot exceed the current steps of recipe");
         }
-        List<RecipeStep> stepCopy = new ArrayList<>();
-        stepCopy.addAll(this.recipeSteps);
+        List<RecipeStep> stepCopy = new ArrayList<>(this.recipeSteps);
         stepCopy.set(stepNumber - 1, stepCopy.get(stepNumber - 1).modifyStep(newStepNumber));
         return new Recipe(this.uuid.getId(), this.name, this.ingredientList, stepCopy);
     }
@@ -97,7 +99,7 @@ public class Recipe {
     public Recipe modifyIngredients(String oldIngredient, Ingredient newIngredient) {
         requireAllNonNull(oldIngredient, newIngredient);
         for (Ingredient ingredient : ingredientList) {
-            if (ingredient.getName().fullName.equals(oldIngredient)) {
+            if (ingredient.getName().equals(new Name(oldIngredient))) {
                 List<Ingredient> ingredientListCopy = new ArrayList<>(ingredientList);
                 ingredientListCopy.remove(ingredient);
                 ingredientListCopy.add(newIngredient);
@@ -105,6 +107,17 @@ public class Recipe {
             }
         }
         throw new IngredientNotFoundException();
+    }
+
+    /**
+     * Adds ingredient to ingredient list in a recipe
+     * @param ingredient ingredient that will be added
+     * @return the edited Recipe with the added ingredient
+     */
+    public Recipe addIngredient(Ingredient ingredient) {
+        List<Ingredient> ingredientListCopy = new ArrayList<>(ingredientList);
+        ingredientListCopy.add(ingredient);
+        return new Recipe(this.uuid.getId(), this.name, ingredientListCopy, this.recipeSteps);
     }
 
     /**

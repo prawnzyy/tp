@@ -128,10 +128,57 @@ public class RecipeTest {
     }
 
     @Test
+    public void modifyRecipeIngredients_notCaseSensitive_success() {
+        Recipe modifiedCookies = COOKIES.modifyIngredients("flour", EGG);
+        assertTrue(modifiedCookies.getIngredients().contains(EGG));
+    }
+
+    @Test
+    public void modifyRecipeStep_stepNumberOutOfBounds_throwsIllegalArgumentException() {
+        int steps = COOKIES.getRecipeSteps().size();
+        assertThrows(IllegalArgumentException.class, () -> COOKIES.modifyRecipeStep(steps + 1, "test"));
+    }
+
+    @Test
     public void getFullString_sameAsStringRepresentation_success() {
         assertEquals(COOKIES.getFullRecipe(), COOKIES_STRING);
 
         assertEquals(SPONGECAKE.getFullRecipe(), SPONGECAKE_STRING);
+    }
+
+    @Test
+    public void getIngredientsText_sameAsIngredientsListRepresentation_success() {
+        // ingredients text representation should be the same as the full string representation
+        String[] strArr = COOKIES_STRING.split("\\R");
+
+        // no. of ingredients
+        int size = COOKIES.getIngredients().size();
+
+        String expectedCookieIngredients = "";
+        //loop starts at one since first line is recipe title
+        for (int i = 1; i < size + 1; i++) {
+            expectedCookieIngredients += i + ". " + strArr[i] + "\n";
+        }
+        assertEquals(expectedCookieIngredients, COOKIES.getIngredientsText());
+    }
+
+    @Test
+    public void getRecipeStepsText_sameAsFullStringRepresentation_success() {
+        // recipe steps text representation should be the same as the full string representation
+        String[] strArr = COOKIES_STRING.split("\\R");
+
+        // no. of ingredients
+        int ingredientSize = COOKIES.getIngredients().size();
+
+        // no. of recipe steps
+        int recipeSize = COOKIES.getRecipeSteps().size();
+
+        String expectedCookieRecipeSteps = "";
+        //loop starts at one since first line is recipe title
+        for (int i = 1 + ingredientSize; i < 1 + ingredientSize + recipeSize; i++) {
+            expectedCookieRecipeSteps += strArr[i] + "\n";
+        }
+        assertEquals(expectedCookieRecipeSteps, COOKIES.getStepsText());
     }
 
     @Test

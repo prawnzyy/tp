@@ -8,19 +8,19 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code Ingredient}'s {@code Name} matches any of the keywords given.
  */
 public class RecipeUuidMatchesPredicate implements Predicate<Recipe> {
-    private final int uuid;
+    private final UniqueId uuid;
 
-    public RecipeUuidMatchesPredicate(int uuid) {
+    public RecipeUuidMatchesPredicate(UniqueId uuid) {
         this.uuid = uuid;
     }
 
-    public int getId() {
+    public UniqueId getUuid() {
         return this.uuid;
     }
 
     @Override
     public boolean test(Recipe recipe) {
-        return this.uuid == recipe.getId();
+        return this.uuid.equals(recipe.getUuid());
     }
 
     @Override
@@ -35,7 +35,7 @@ public class RecipeUuidMatchesPredicate implements Predicate<Recipe> {
         }
 
         RecipeUuidMatchesPredicate otherNameContainsKeywordsPredicate = (RecipeUuidMatchesPredicate) other;
-        return this.uuid == otherNameContainsKeywordsPredicate.uuid;
+        return this.uuid.equals(otherNameContainsKeywordsPredicate.uuid);
     }
 
     @Override

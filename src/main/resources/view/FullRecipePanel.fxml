@@ -9,6 +9,8 @@
         <Insets bottom="4" left="8" right="8" top="4" />
     </padding>
     <Label fx:id="name" alignment="CENTER" styleClass="label-header" text="\$first" textAlignment="CENTER" />
+    <Label fx:id="id" alignment="CENTER" styleClass="cell_small_label" textAlignment="CENTER" />
+    <Label></Label>
     <Label alignment="CENTER" styleClass="label" text="Ingredients:" textAlignment="CENTER" />
     <Label fx:id="ingredients" alignment="CENTER" styleClass="cell_small_label" text="\$ingredients"
            textAlignment="CENTER" />

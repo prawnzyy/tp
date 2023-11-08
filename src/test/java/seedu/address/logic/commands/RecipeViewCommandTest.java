@@ -17,6 +17,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.recipe.Recipe;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code RecipeViewCommand}.
@@ -27,8 +28,11 @@ public class RecipeViewCommandTest {
 
     @Test
     public void equals() {
-        RecipeUuidMatchesPredicate firstPredicate = new RecipeUuidMatchesPredicate(1);
-        RecipeUuidMatchesPredicate secondPredicate = new RecipeUuidMatchesPredicate(2);
+        UniqueId uuid1 = new UniqueId(1);
+        UniqueId uuid2 = new UniqueId(2);
+
+        RecipeUuidMatchesPredicate firstPredicate = new RecipeUuidMatchesPredicate(uuid1);
+        RecipeUuidMatchesPredicate secondPredicate = new RecipeUuidMatchesPredicate(uuid2);
 
         RecipeViewCommand recipeViewFirstCommand = new RecipeViewCommand(firstPredicate);
         RecipeViewCommand recipeViewSecondCommand = new RecipeViewCommand(secondPredicate);
@@ -53,12 +57,15 @@ public class RecipeViewCommandTest {
     //TODO may not be the correct way to test groups of inputs might need to change test
     @Test
     public void execute_validUuid_recipeFound() {
-        String expectedMessage1 = String.format(MESSAGE_RECIPE_LISTED, 1);
-        String expectedMessage2 = String.format(MESSAGE_RECIPE_LISTED, 2);
+        UniqueId uuid1 = new UniqueId(1);
+        UniqueId uuid2 = new UniqueId(2);
+
+        String expectedMessage1 = String.format(MESSAGE_RECIPE_LISTED, uuid1);
+        String expectedMessage2 = String.format(MESSAGE_RECIPE_LISTED, uuid2);
 
         // boundary value analysis, using uuid 1 and 2
-        RecipeUuidMatchesPredicate predicate1 = new RecipeUuidMatchesPredicate(1);
-        RecipeUuidMatchesPredicate predicate2 = new RecipeUuidMatchesPredicate(2);
+        RecipeUuidMatchesPredicate predicate1 = new RecipeUuidMatchesPredicate(uuid1);
+        RecipeUuidMatchesPredicate predicate2 = new RecipeUuidMatchesPredicate(uuid2);
         RecipeViewCommand command1 = new RecipeViewCommand(predicate1);
         RecipeViewCommand command2 = new RecipeViewCommand(predicate2);
 
@@ -75,9 +82,12 @@ public class RecipeViewCommandTest {
     public void execute_invalidUuid_throwsInvalidUuidException() {
         String expectedMessage = MESSAGE_RECIPE_DOES_NOT_EXIST;
 
+        UniqueId uuid1 = new UniqueId(0);
+        UniqueId uuid2 = new UniqueId(-1);
+
         // boundary value analysis, using uuid 0 and -1
-        RecipeUuidMatchesPredicate predicate1 = new RecipeUuidMatchesPredicate(0);
-        RecipeUuidMatchesPredicate predicate2 = new RecipeUuidMatchesPredicate(-1);
+        RecipeUuidMatchesPredicate predicate1 = new RecipeUuidMatchesPredicate(uuid1);
+        RecipeUuidMatchesPredicate predicate2 = new RecipeUuidMatchesPredicate(uuid2);
         RecipeViewCommand command1 = new RecipeViewCommand(predicate1);
         RecipeViewCommand command2 = new RecipeViewCommand(predicate2);
 
@@ -98,17 +108,20 @@ public class RecipeViewCommandTest {
     public void execute_deletedUuidRecipe_throwsInvalidUuidException() {
         String expectedMessage = MESSAGE_RECIPE_DOES_NOT_EXIST;
 
-        Recipe deletedRecipe = model.getRecipe(1);
+        UniqueId uuid1 = new UniqueId(1);
+
+        Recipe deletedRecipe = model.getRecipe(uuid1);
         model.deleteRecipe(deletedRecipe);
 
-        RecipeUuidMatchesPredicate predicate = new RecipeUuidMatchesPredicate(1);
+        RecipeUuidMatchesPredicate predicate = new RecipeUuidMatchesPredicate(uuid1);
         RecipeViewCommand command = new RecipeViewCommand(predicate);
         assertCommandFailure(command, model, expectedMessage);
     }
 
     @Test
     public void toStringMethod() {
-        RecipeUuidMatchesPredicate predicate = new RecipeUuidMatchesPredicate(1);
+        UniqueId uuid1 = new UniqueId(1);
+        RecipeUuidMatchesPredicate predicate = new RecipeUuidMatchesPredicate(uuid1);
         RecipeViewCommand recipeViewCommand = new RecipeViewCommand(predicate);
         String expected = RecipeViewCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, recipeViewCommand.toString());

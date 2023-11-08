@@ -15,6 +15,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.commands.RecipeViewCommand;
 import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.StockCommand;
@@ -54,7 +55,6 @@ public class InventoryAppParser {
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
-
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
@@ -81,6 +81,9 @@ public class InventoryAppParser {
 
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
+
+        case ModifyCommand.COMMAND_WORD:
+            return new ModifyCommandParser().parse(arguments);
 
         case SearchCommand.COMMAND_WORD:
             return new SearchCommandParser().parse(arguments);
