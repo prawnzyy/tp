@@ -1,10 +1,12 @@
 package seedu.address.model.recipe;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.testutil.RecipeBuilder;
-
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class RecipeUuidMatchesPredicateTest {
     @Test
