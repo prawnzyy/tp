@@ -5,6 +5,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import seedu.address.logic.commands.RecipeViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Parser for the RecipeViewCommand, returns a RecipeViewCommand
@@ -17,14 +18,14 @@ public class RecipeViewCommandParser implements Parser<RecipeViewCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public RecipeViewCommand parse(String args) throws ParseException {
-        int uuid;
+        int id;
         String trimmedArgs = args.trim();
         try {
-            uuid = Integer.parseInt(trimmedArgs);
+            id = Integer.parseInt(trimmedArgs);
         } catch (NumberFormatException pe) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecipeViewCommand.MESSAGE_USAGE), pe);
         }
-        return new RecipeViewCommand(new RecipeUuidMatchesPredicate(uuid));
+        return new RecipeViewCommand(new RecipeUuidMatchesPredicate(new UniqueId(id)));
     }
 }

@@ -51,17 +51,22 @@ public class ParserUtil {
     // Todo Add JavaDocs
     /**
      * Stub
-     * @param amount Stub
+     * @param quantStr Stub
      * @return Stub
      * @throws ParseException Stub
      */
-    public static double parseAmount(String amount) throws ParseException {
-        requireNonNull(amount);
+    public static Quantity parseQuantity(String quantStr, Unit unit) throws ParseException {
+        requireNonNull(quantStr);
+        double amount;
         try {
-            return Double.parseDouble(amount);
+            amount = Double.parseDouble(quantStr);
         } catch (NumberFormatException e) {
-            throw new ParseException("Invalid amount format: " + amount);
+            throw new ParseException("Invalid quantity: " + quantStr);
         }
+        if (amount <= 0) {
+            throw new ParseException("Quantity has to be positive");
+        }
+        return new Quantity(amount, unit);
     }
 
 

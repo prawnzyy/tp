@@ -9,6 +9,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.recipe.Recipe;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Views a specific recipe in the recipe list.
@@ -22,7 +23,7 @@ public class RecipeViewCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     private final RecipeUuidMatchesPredicate predicate;
-    private final int uuid;
+    private final UniqueId uuid;
 
     /**
      * Creates an RecipeViewCommand to view the specified {@code Recipe}
@@ -30,7 +31,7 @@ public class RecipeViewCommand extends Command {
     public RecipeViewCommand(RecipeUuidMatchesPredicate predicate) {
         requireNonNull(predicate);
         this.predicate = predicate;
-        this.uuid = predicate.getId();
+        this.uuid = predicate.getUuid();
     }
 
     @Override

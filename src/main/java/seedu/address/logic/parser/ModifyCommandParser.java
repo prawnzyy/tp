@@ -14,6 +14,8 @@ import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
+import seedu.address.model.ingredient.exceptions.UnitFormatException;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Parses input arguments and creates a new ModifyCommand object
@@ -25,7 +27,7 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public ModifyCommand parse(String args) throws ParseException {
-        int uuid;
+        int id;
         ArgumentMultimap argMultimap =
                     ArgumentTokenizer.tokenize(args, PREFIX_UUID, PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
 
@@ -37,18 +39,24 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_UUID, PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
 
         try {
-            uuid = Integer.parseInt(argMultimap.getValue(PREFIX_UUID).get());
+            id = Integer.parseInt(argMultimap.getValue(PREFIX_UUID).get());
         } catch (NumberFormatException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE), pe);
         }
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
-        Unit unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
-        Quantity quantity = new Quantity(amount, unit);
 
+        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+
+        Unit unit;
+        try {
+            unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
+        } catch (UnitFormatException e) {
+            throw new ParseException("This is not a valid unit!");
+        }
+
+        Quantity quantity = ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY).get(), unit);
         Ingredient newIngredient = new Ingredient(name, quantity);
 
-        return new ModifyCommand(uuid, newIngredient);
+        return new ModifyCommand(new UniqueId(id), newIngredient);
 
     }
     /**

@@ -10,9 +10,10 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.exceptions.UnitConversionException;
 
 /**
- * Adds a ingredient to the inventory.
+ * Adds an ingredient to the inventory.
  */
 public class AddCommand extends Command {
 
@@ -44,7 +45,11 @@ public class AddCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.addIngredient(toAdd);
+        try {
+            model.addIngredient(toAdd);
+        } catch (UnitConversionException uce) {
+            throw new CommandException(uce.getMessage());
+        }
         Ingredient editedIngredient = new Ingredient(toAdd.getName(), model.getQuantityOf(toAdd.getName()));
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(editedIngredient)));
     }

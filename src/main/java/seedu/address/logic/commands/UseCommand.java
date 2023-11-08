@@ -12,6 +12,7 @@ import seedu.address.model.Model;
 import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.exceptions.UnitConversionException;
 
 /**
  * Use an ingredient from the inventory.
@@ -24,31 +25,25 @@ public class UseCommand extends Command {
             + ": Depletes a specified amount of an ingredient from stock. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
-            + PREFIX_QUANTITY + "QUANTITY "
-            + PREFIX_UNIT + "UNIT "
+            + "[" + PREFIX_QUANTITY + "QUANTITY] "
+            + "[" + PREFIX_UNIT + "UNIT] "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "milk "
             + PREFIX_QUANTITY + "600 "
             + PREFIX_UNIT + "ml ";
 
     public static final String MESSAGE_SUCCESS = "Ingredient used: %1$s";
-    public static final String MESSAGE_USED_UP = "Ingredient used up: %1$s";
 
     private final Name toUse;
     private final Quantity quantityUsed;
-
-    // Todo Add JavaDocs
     /**
-     * Stub
-     * @param ingredient Stub
-     * @param quantity Stub
+     * Creates a UseCommand to use the specified {@code Ingredient}
      */
     public UseCommand(Name ingredient, Quantity quantity) {
         requireNonNull(ingredient);
         toUse = ingredient;
         quantityUsed = quantity;
     }
-
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -59,7 +54,12 @@ public class UseCommand extends Command {
             return new CommandResult(String.format(MESSAGE_SUCCESS,
                     Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
         }
-        model.useIngredient(toUse, quantityUsed);
+        try {
+            model.useIngredient(toUse, quantityUsed);
+        } catch (UnitConversionException uce) {
+            throw new CommandException(uce.getMessage());
+        }
+
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(new Ingredient(toUse, model.getQuantityOf(toUse)))));
 

@@ -2,12 +2,29 @@ Seah Zi Xiang's Project Portfolio Page
 
 Project: [Ba]king [Br]ead
 
-[TO BE ADDED]
+[Ba]king [Br]ead is a desktop inventory and recipe book application that allows its users to add ingredients and view the 
+recipes. The user interacts with it using a CLI, and it has a GUI using JavaFX. It is written in Java.
 
 Given below are my contributions to the project.
 
-- New Feature: [TO BE ADDED]
-- Code Contribution: [TO BE ADDED]
-- Enhancement Implemented: [TO BE ADDED]
-- Contribution to UG: [TO BE ADDED]
-- Contribution to DG: [TO BE ADDED]
+- **New Feature:** Search for recipes using a specific ingredient
+  - What it does: Allows the user to look for all recipes that require that specific ingredient to make.
+  - Justification: This feature improves the product significantly because a user can search for recipes that make use of a 
+  specific ingredient that they want to use instead of having to scroll through the whole recipe list.
+- **New Feature:** List out all recipes
+  - What it does : Displays all the recipes currently stored within the application.
+- **Enhancement Implemented:** Adding a second window for recipe list
+  - Justification: As users, we would like to be able to view both the ingredients and the recipe at the same time. Dividing 
+    the screen into two separate windows allows us to view them separately.
+- Code Contribution: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=prawnzyy&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&since=2023-09-22&timeframe=commit&mergegroup=&groupSelect=groupByRepos)
+- Contribution to team task:
+  - Managing of jar releases
+  - Updating of README and INDEX
+- Contribution to UG:
+  - Addition of search feature write up
+  - Addition of list feature write up
+  - Updating of Command Summary Table
+  - Standardisation of names and formatting
+- Contribution to DG:
+  - Implementation of the list command
+  - Also added ListRecipeSequenceDiagram.puml

@@ -14,6 +14,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.recipe.Recipe;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Modifies an ingredient in a recipe.
@@ -21,8 +22,8 @@ import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
 public class ModifyCommand extends Command {
     public static final String COMMAND_WORD = "modify";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Modifies the details of the ingredients used in the "
-            + "recipe"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Modifies the ingredients used in the "
+            + "recipe "
             + "by the uuid used in the displayed recipe list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: "
@@ -35,12 +36,12 @@ public class ModifyCommand extends Command {
             + PREFIX_NAME + "milk "
             + PREFIX_QUANTITY + "600 "
             + PREFIX_UNIT + "ml ";
-    private int recipeUuid;
+    private UniqueId recipeUuid;
     private Ingredient editedIngredient;
     /**
      * Creates a ModifyCommand to modify the specified {@code Ingredient}
      */
-    public ModifyCommand(int uuid, Ingredient newIngredient) {
+    public ModifyCommand(UniqueId uuid, Ingredient newIngredient) {
         requireNonNull(newIngredient);
         requireNonNull(uuid);
         editedIngredient = newIngredient;
@@ -55,14 +56,18 @@ public class ModifyCommand extends Command {
             throw new CommandException(Messages.MESSAGE_RECIPE_DOES_NOT_EXIST);
         }
 
+        assert recipeUuid.getId() > 0;
+        Recipe newRecipe;
         Recipe oldRecipe = model.getRecipe(recipeUuid);
+
         if (!oldRecipe.containsIngredient(editedIngredient.getName())) {
-            throw new CommandException(Messages.MESSAGE_NO_SUCH_INGREDIENT);
+            newRecipe = oldRecipe.addIngredient(editedIngredient);
+        } else {
+            newRecipe = oldRecipe.modifyIngredients(editedIngredient.getName().fullName, editedIngredient);
         }
 
-        Recipe newRec = oldRecipe.modifyIngredients(editedIngredient.getName().fullName, editedIngredient);
         model.deleteRecipe(oldRecipe);
-        model.addRecipe(newRec);
+        model.addRecipe(newRecipe);
         model.updateFilteredRecipeList(new RecipeUuidMatchesPredicate(recipeUuid));
         return new CommandResult(String.format(MESSAGE_MODIFY_RECIPE_SUCCESS,
                 recipeUuid));

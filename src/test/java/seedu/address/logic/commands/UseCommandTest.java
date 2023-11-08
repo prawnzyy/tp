@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.assertIngredientFailure;
 
@@ -66,6 +67,15 @@ public class UseCommandTest {
         expectedModel.addIngredient(new IngredientBuilder().build());
         expectedModel.useIngredient(new Name("Flour"), new Quantity(50.0, Unit.GRAM));
         assertCommandSuccess(command, model, message, expectedModel);
+    }
+
+    @Test
+    public void execute_invalidQuantityConversion_throwsCommandException() {
+        Model model = new ModelManager();
+        UseCommand command = new UseCommand(new Name("Flour"), new Quantity(1.0, Unit.PIECE));
+        model.addIngredient(new IngredientBuilder().build());
+        String expectedMessage = "Unit PIECE cannot be converted to GRAM!";
+        assertCommandFailure(command, model, expectedMessage);
     }
 
     @Test

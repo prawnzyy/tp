@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.recipe.Recipe;
 import seedu.address.model.recipe.RecipeList;
+import seedu.address.model.recipe.UniqueId;
 import seedu.address.model.recipe.exceptions.RecipeNotFoundException;
 
 /**
@@ -49,31 +50,17 @@ public class RecipeBook implements ReadOnlyRecipeBook {
     }
 
     /**
-     * Checks if the recipe name exists in the recipe book.
-     */
-    public boolean hasRecipe(Name recipeName) {
-        requireNonNull(recipeName);
-        for (Recipe recipe : this.recipeList) {
-            if (recipe.getName().equals(recipeName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Checks if the recipe exists in the recipe book.
      */
-    public boolean hasRecipe(int index) {
+    public boolean hasRecipe(UniqueId uuid) {
+        requireNonNull(uuid);
         for (Recipe recipe : this.recipeList) {
-            if (recipe.getId() == index) {
+            if (recipe.getUuid().equals(uuid)) {
                 return true;
             }
         }
         return false;
     }
-
-
 
     /**
      * Adds a new {@code recipe} to the recipe book.
@@ -119,9 +106,9 @@ public class RecipeBook implements ReadOnlyRecipeBook {
         return recipeList.asUnmodifiableObservableList();
     }
 
-    public Recipe getRecipe(int index) {
+    public Recipe getRecipe(UniqueId uuid) {
         for (Recipe recipe : this.recipeList) {
-            if (recipe.getId() == index) {
+            if (recipe.getUuid().equals(uuid)) {
                 return recipe;
             }
         }
@@ -147,5 +134,4 @@ public class RecipeBook implements ReadOnlyRecipeBook {
     public int hashCode() {
         return recipeList.hashCode();
     }
-
 }
