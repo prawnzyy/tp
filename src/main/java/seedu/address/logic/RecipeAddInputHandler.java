@@ -43,6 +43,7 @@ public class RecipeAddInputHandler {
     public CommandResult handle(String commandText) {
         String parseOutput = "";
         if (commandText.equals("addrecipe")) {
+            recipeAddCommandParser.reset();
             stage = RecipeAddInputStage.NAME;
         } else if (stage == RecipeAddInputStage.NAME) {
             parseOutput = recipeAddCommandParser.addName(commandText);
