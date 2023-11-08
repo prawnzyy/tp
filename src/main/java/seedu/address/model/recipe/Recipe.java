@@ -62,11 +62,6 @@ public class Recipe {
         return this.recipeSteps.stream().map(RecipeStep::toString).collect(Collectors.toList());
     }
 
-    public List<RecipeStep> getRecipeStep() {
-        return this.recipeSteps;
-    }
-
-
     /** Check if the current recipe contains the specified ingredient name. */
     public boolean containsIngredient(Name ingredientName) {
         requireNonNull(ingredientName);
