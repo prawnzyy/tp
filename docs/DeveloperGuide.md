@@ -108,7 +108,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Search ingredient feature
 #### Implementation
-The search ingredient mechanism is implemented as a `Command`, extending from the `command` abstract class.
+The search ingredient mechanism is implemented as a `Command`, extending from the `Command` abstract class.
 
 Given below is an example usage scenario and how the search ingredient mechanism behaves at each step. The applicacation
 is assumed to be initialised with at least one ingredient loaded in the `ModelManager`.
@@ -144,7 +144,7 @@ and expressions commonly used in baking.
 
 ### Add recipe feature
 #### Implementation
-The add recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
+The add recipe mechanism is implemented as a `Command`, extending from the `Command` abstract class.
 
 Given below is an example usage scenario and how the add recipe mechanism behaves at each st ep.
 
@@ -268,9 +268,39 @@ The following sequence diagram shows how the list recipe feature works:
   - Pro: No need to store current state after command
   - Con: Need to access storage
 
+
+### Search recipe feature
+#### Implementation
+The search recipe mechanism is implemented as a `Command`, extending from the `Command` abstract class.
+
+Given below is an example usage scenario and how the search feature behaves at each step. For this scenario, it is assumed
+that at least one recipe is loaded into `ModelManager`
+
+Step 1. The user launches the application. All recipes will be shown as the current recipeList has not been filtered.
+
+Step 2. The user executes `search flour`. The `search` command will be parsed using the `Inventory App Parser` within
+`LogicManager`.
+
+Step 3. By Polymorphism, `SearchCommandParser` is called on to handle the parsing. The `parse(String args)` function
+is called with the argument of `"flour"`.
+
+Step 4. A `RecipeIngredientNameMatchesPredicate` will be with the argument `"flour"` as its parameter.
+
+Step 5. The `SearchCommand` then filters the recipe list in `ModelManager` according to the predicate. The recipe
+list will display all recipes that require `"flour"`.
+
+Step 6. After execution, the returned `CommandResult` will then be returned back to the `MainWindow` to be displayed.
+
+`SearchCommand` calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
+recipe list in `ModelManager` according to the predicate set.
+
+The following sequence diagram shows how the list recipe feature works:
+
+<img src="images/UML/searchrecipesequencediagram.png" width="800px">
+
 ### Delete recipe feature
 #### Implementation
-The delete recipe mechanism is implemented as a `Command`, extending from the `command` abstract class.
+The delete recipe mechanism is implemented as a `Command`, extending from the `Command` abstract class.
 
 Given below is an example usage scenario and how the delete recipe mechanism behaves at each step. The application is
 assumed to be initialised with at least one recipe loaded in the `ModelManager`.
@@ -349,30 +379,28 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 | `***`    |  baker  |   view the ingredients needed for a recipe | know if I have the necessary ingredients         |
 | `***`    |  baker  |                           request for help | learn how to use the recipe book when I'm lost   |
 
-{More to be added}
-
 ### Use Cases
 (For all use cases below, the System is the RecipeBook and the Actor is the user, unless specified otherwise)
 
 #### Use case: Add an ingredient to the stock
 #### MSS
 1. User requests to add a specific ingredient to their stock
-2. RecipeBook adds that ingredient to the stock
+2. [Ba]king [Br]ead adds that ingredient to the stock
 
    Use case ends.
 
 #### Extensions
 - 2a. User does not specify the quantity of that ingredient
-  - RecipeBook shows an error message
+  - [Ba]king [Br]ead shows an error message
 - 2b. The name of the ingredient is not recognised
-  - RecipeBook shows an error message
+  - [Ba]king [Br]ead shows an error message
 - 2c. The specified unit is not recognised
-  - RecipeBook shows an error message
+  - [Ba]king [Br]ead shows an error message
 
 #### Use case: Reduce items' quantities in the stock
 #### MSS
 1. User requests to use up specific quantities of an ingredient
-2. RecipeBook reduces the quantity of that ingredient in the stock
+2. [Ba]king [Br]ead reduces the quantity of that ingredient in the stock
 
    Use case ends.
 
@@ -388,32 +416,32 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 #### Use case: View the stock of ingredients
 #### MSS
 1. User requests to view the stock of specific ingredients
-2. RecipeBook shows the ingredient and the quantity of the ingredient
+2. [Ba]king [Br]ead shows the ingredient and the quantity of the ingredient
 
    Use case ends.
 
 
 #### Extensions
 - 2a. User does not specify what ingredients they would like to view
-  - RecipeBook shows the entire stock of ingredients
+  - [Ba]king [Br]ead shows the entire stock of ingredients
 - 2b. The specified ingredient(s) are not in the stock
-  - RecipeBook shows an error message
+  - [Ba]king [Br]ead shows an error message
 
 #### Use case: Find a specific recipe
 #### MSS
 1. User requests to view a specific recipe
-2. RecipeBook shows the corresponding recipe
+2. [Ba]king [Br]ead shows the corresponding recipe
 
    Use case ends.
 
 #### Extensions
 - 2a. The specified recipe does not exist
-  - RecipeBook shows an error message
+  - [Ba]king [Br]ead shows an error message
 
 #### Use case: List all recipes
 #### MSS
 1. User requests to list all possible recipes
-2. RecipeBook lists out all possible recipes
+2. [Ba]king [Br]ead lists out all possible recipes
 
    Use case ends.
 
@@ -425,16 +453,33 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 2c. There are currently no recipes stored
   - No updates will be made to the screen
 
+#### Use case: Search for a recipe with a specific ingredient
+#### MSS
+1. User requests to search for recipes with a specific ingredient
+2. [Ba]king [Br]ead displays all recipes that uses that specific ingredient
+
+    Use case ends
+
+#### Extensions:
+- 1a. User does not input an ingredient
+  - [Ba]king [Br]ead will show an error message
+- 2a. No recipe contains that ingredient
+  - No recipes will be displayed
+- 2b. One recipe contains that ingredient
+  - That one recipe will be shown in full, inclusive of steps
+- 2c. Multiple recipes contain that ingredient
+  - All recipes will be displayed without the steps
+
 #### Use case: Delete a recipe from the recipe list.
-##### MSS
-1. User requests to delete a specific recipe.
-2. RecipeBook deletes the corresponding recipe.
+#### MSS
+1. User requests to delete a specific recipe
+2. [Ba]king [Br]ead deletes the corresponding recipe
 
    Use case ends.
 
 #### Extensions:
-- 2a. The specified recipe does not exist. 
-  - RecipeBook shows an error message.
+- 2a. The specified recipe does not exist
+  - [Ba]king [Br]ead shows an error message
 
 ### Non-Functional Requirements
 
