@@ -28,9 +28,9 @@ public class IngredientCard extends UiPart<Region> {
     @FXML
     private Label name;
     @FXML
-    private Label id;
-    @FXML
     private Label quantity;
+    @FXML
+    private Label unit;
 
     /**
      * Creates a {@code IngredientCode} with the given {@code Ingredient} and index to display.
@@ -38,8 +38,12 @@ public class IngredientCard extends UiPart<Region> {
     public IngredientCard(Ingredient ingredient, int displayedIndex) {
         super(FXML);
         this.ingredient = ingredient;
-        id.setText(displayedIndex + ". ");
-        name.setText(this.ingredient.getName().fullName);
-        quantity.setText(this.ingredient.getQuantity().toString());
+        name.setText(this.ingredient.getName().fullName.toUpperCase());
+        //todo un-elegant code
+        String[] quantityAndUnit = this.ingredient.getQuantity().toString().split(" ");
+        String quantityStr = quantityAndUnit[0];
+        String unitStr = quantityAndUnit[1];
+        quantity.setText(quantityStr);
+        unit.setText(unitStr);
     }
 }

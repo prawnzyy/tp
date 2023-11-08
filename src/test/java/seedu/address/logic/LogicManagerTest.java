@@ -19,9 +19,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyInventory;
+import seedu.address.model.RecipeBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.storage.JsonInventoryStorage;
+import seedu.address.storage.JsonRecipeBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.IngredientBuilder;
@@ -41,7 +43,9 @@ public class LogicManagerTest {
         JsonInventoryStorage inventoryStorage =
                 new JsonInventoryStorage(temporaryFolder.resolve("inventory.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage);
+        JsonRecipeBookStorage recipeBookStorage =
+                new JsonRecipeBookStorage((temporaryFolder.resolve("recipeBook.json")));
+        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage, recipeBookStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -120,7 +124,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs(), new RecipeBook());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -157,7 +161,9 @@ public class LogicManagerTest {
 
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage);
+        JsonRecipeBookStorage recipeBookStorage =
+                new JsonRecipeBookStorage(temporaryFolder.resolve("recipeBook.json"));
+        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage, recipeBookStorage);
 
         logic = new LogicManager(model, storage);
 

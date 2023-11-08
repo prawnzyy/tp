@@ -8,7 +8,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_INGREDIENT;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ingredient.Name;
+import seedu.address.model.Name;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.model.ingredient.exceptions.UnitFormatException;
 
@@ -79,12 +79,12 @@ public class ParserUtilTest {
 
     @Test
     public void parseAmount_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseAmount((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseQuantity((String) null, Unit.GRAM));
     }
 
     @Test
     public void parseAmount_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAmount(INVALID_AMOUNT));
+        assertThrows(ParseException.class, () -> ParserUtil.parseQuantity(INVALID_AMOUNT, Unit.GRAM));
     }
 
 

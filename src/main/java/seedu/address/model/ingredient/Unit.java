@@ -3,6 +3,7 @@ package seedu.address.model.ingredient;
 import java.util.HashMap;
 import java.util.Map;
 
+import seedu.address.model.ingredient.exceptions.UnitConversionException;
 import seedu.address.model.ingredient.exceptions.UnitFormatException;
 
 // TODO Add JavaDocs
@@ -62,6 +63,9 @@ public enum Unit {
      * @return The conversion ratio.
      */
     protected static double getConversionRatio(Unit from, Unit to) {
+        if (!conversionMatrix.get(from).containsKey(to)) {
+            throw new UnitConversionException(from, to);
+        }
         return conversionMatrix.get(from).get(to);
     }
 

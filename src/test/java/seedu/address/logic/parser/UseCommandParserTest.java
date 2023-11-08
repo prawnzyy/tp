@@ -10,7 +10,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.UseCommand;
-import seedu.address.model.ingredient.Name;
+import seedu.address.model.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 
@@ -29,12 +29,24 @@ public class UseCommandParserTest {
     public void parse_nonValidArgs_throwsIllegalArgumentException() {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + "y/test", "Invalid command format! \n"
                 + "use: Depletes a specified amount of an ingredient from stock. "
-                + "Parameters: n/NAME q/QUANTITY u/UNIT Example: use n/milk q/600 u/ml ");
+                + "Parameters: n/NAME [q/QUANTITY] [u/UNIT] Example: use n/milk q/600 u/ml ");
     }
 
     @Test
     public void parse_noQuantityAndUnit_returnsUseCommand() {
         UseCommand command = new UseCommand(new Name("Flour"), new Quantity(100.0, Unit.GRAM));
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR, command);
+    }
+
+    @Test
+    public void parse_negativeQuantity_throwsParseException() {
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR + " q/-100 " + UNIT_DESC_FLOUR,
+                "Quantity has to be positive");
+    }
+
+    @Test
+    public void parse_nonNumericQuantity_throwsParseException() {
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR + " q/onehundred " + UNIT_DESC_FLOUR,
+                "Invalid quantity: onehundred");
     }
 }
