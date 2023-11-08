@@ -12,6 +12,7 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.model.recipe.RecipeStep;
+import seedu.address.model.recipe.exceptions.RecipeStepFormatException;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -78,7 +79,7 @@ public class ParserUtil {
      */
     public static Ingredient parseRecipeIngredient(String ingredientString) throws ParseException {
         int whitespaceIndex = ingredientString.lastIndexOf(" ");
-        if (whitespaceIndex == 0) {
+        if (whitespaceIndex == -1) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 RecipeAddCommand.MESSAGE_INGREDIENT_USAGE));
         }
@@ -87,6 +88,10 @@ public class ParserUtil {
 
         int unitIndex = ingredientQuantity.indexOf(ingredientQuantity.chars().filter(Character::isLetter)
             .findFirst().orElse(-1));
+        if (unitIndex == -1) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                RecipeAddCommand.MESSAGE_INGREDIENT_USAGE));
+        }
         String quantityValue = ingredientQuantity.substring(0, unitIndex);
         String quantityUnit = ingredientQuantity.substring(unitIndex);
 
@@ -95,7 +100,7 @@ public class ParserUtil {
             return new Ingredient(new Name(ingredientName), quantity);
         } catch (IllegalArgumentException fe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                RecipeAddCommand.MESSAGE_INGREDIENT_USAGE));
+                RecipeAddCommand.MESSAGE_STEP_USAGE));
         }
     }
 
@@ -109,8 +114,20 @@ public class ParserUtil {
         return Unit.parseUnit(unit);
     }
 
+    /**
+     * Parse a recipeStep for the RecipeAddCommand.
+     * @param recipeStepString
+     * @return The recipeStep instance
+     * @throws ParseException When step is incorrectly formatted
+     */
     public static RecipeStep parseRecipeStep(String recipeStepString) throws ParseException {
-        return RecipeStep.parseRecipeStep(recipeStepString);
+        try {
+            return RecipeStep.parseRecipeStep(recipeStepString);
+        } catch (RecipeStepFormatException rsfe) {
+
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                RecipeAddCommand.MESSAGE_INGREDIENT_USAGE));
+        }
     }
 
     //    /**
