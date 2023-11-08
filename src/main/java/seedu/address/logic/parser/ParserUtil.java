@@ -114,6 +114,12 @@ public class ParserUtil {
         return Unit.parseUnit(unit);
     }
 
+    /**
+     * Parse a recipeStep for the RecipeAddCommand.
+     * @param recipeStepString
+     * @return The recipeStep instance
+     * @throws ParseException When step is incorrectly formatted
+     */
     public static RecipeStep parseRecipeStep(String recipeStepString) throws ParseException {
         try {
             return RecipeStep.parseRecipeStep(recipeStepString);
