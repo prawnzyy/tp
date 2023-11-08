@@ -1,0 +1,24 @@
+Nov 02, 2023 12:54:40 PM seedu.address.Main main
+WARNING: The warning about Unsupported JavaFX configuration below can be ignored.
+Nov 02, 2023 12:54:40 PM seedu.address.MainApp init
+INFO: =============================[ Initializing Inventory App ]===========================
+Nov 02, 2023 12:54:40 PM seedu.address.MainApp initConfig
+INFO: Using config file : misc\config.json
+Nov 02, 2023 12:54:40 PM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file misc\config.json found.
+Nov 02, 2023 12:54:40 PM seedu.address.commons.core.LogsCenter init
+INFO: Log level will be set as: INFO
+Nov 02, 2023 12:54:40 PM seedu.address.MainApp initPrefs
+INFO: Using preference file : preferences.json
+Nov 02, 2023 12:54:40 PM seedu.address.MainApp initPrefs
+INFO: Creating new preference file preferences.json
+Nov 02, 2023 12:54:40 PM seedu.address.MainApp initModelManager
+INFO: Using data file : data\inventory.json
+Nov 02, 2023 12:54:40 PM seedu.address.MainApp initModelManager
+INFO: Creating a new data file data\inventory.json populated with a sample Inventory.
+Nov 02, 2023 12:54:40 PM seedu.address.commons.util.JsonUtil readJsonFile
+INFO: JSON file data\recipeBook.json found.
+Nov 02, 2023 12:54:40 PM seedu.address.MainApp start
+INFO: Starting Inventory App V1.2.1ea
+Nov 02, 2023 12:54:40 PM seedu.address.ui.UiManager start
+INFO: Starting UI...
