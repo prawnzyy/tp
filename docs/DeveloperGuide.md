@@ -13,8 +13,9 @@ _{ list here sources of all reused/adapted ideas, code, documentation, and third
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
+## **Design**
 
-## Architecture
+### Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
 
