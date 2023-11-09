@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.Messages.MESSAGE_MODIFY_RECIPE_SUCCESS;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalIngredients.EGG;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 import static seedu.address.testutil.TypicalRecipe.getTypicalRecipeBook;
 
