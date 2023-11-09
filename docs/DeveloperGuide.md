@@ -208,12 +208,12 @@ Step 3. By Polymorphism, `RecipeViewCommandParser` is called on to handle the pa
 is called with the argument of `"1"`
 
 Step 4. A `RecipeUuidMatchesPredicate` object is created which returns true for any recipe tested on the
-predicate with the same unique identifier (uuid) of `1`.
+predicate with the same unique identifier (UUID) of `1`.
 
 Step 5. The `RecipeViewCommand` then filters the recipe list in `ModelManager` according to the predicate. The recipe
 list should only have at most 1 item after filtration.
 
-Step 6. If there is a recipe with the same uuid inputted by the user in the recipe book, the `MainWindow` in `ui` will
+Step 6. If there is a recipe with the same UUID inputted by the user in the recipe book, the `MainWindow` in `ui` will
 detect that there is one item in the recipe list, and proceed to display the full recipe.
 
 `RecipeViewCommand` calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
@@ -224,14 +224,14 @@ The following sequence diagram shows how the view recipe operation works:
 <img src="images/UML/viewrecipesequencediagram.png" width="800px">
 
 #### Alternatives considered:
-An alternative implementation considered is to find the first recipe with uuid that matches instead of filtering through
-the whole recipe list. Each recipe has a unique id, and hence the first instance of a recipe with match uuid should be 
-the only recipe with that uuid. This could lead to faster search times to view a specific recipe.
+An alternative implementation considered is to find the first recipe with UUID that matches instead of filtering through
+the whole recipe list. Each recipe has a unique id, and hence the first instance of a recipe with match UUID should be 
+the only recipe with that UUID. This could lead to faster search times to view a specific recipe.
 
 However, we do not expect a user to have so many recipes that performance would become an issue. We do not expect
 users to be frequently using this command either, since baking something requires much time and effort. Filtering
 through the whole list also confers an advantage of being able to assert that there is at most one such recipe
-with that particular uuid.
+with that particular UUID.
 
 ### List recipe feature
 #### Implementation
@@ -316,7 +316,7 @@ Step 4: This results in the creation of a `DeleteCommand` object with the index 
 
 Step 5: This `DeleteCommand` object is then executed by the `LogicManager`.
 
-Step 6: During execution, the recipe whose uuid matches with the index passed in is retrieved from the list of 
+Step 6: During execution, the recipe whose UUID matches with the index passed in is retrieved from the list of 
 recipes and the `ModelManager#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be 
 deleted from the recipe list.
 
@@ -493,8 +493,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 ### Glossary
 - **Mainstream OS:** Windows, Linux, OS-X
-- **Unique identifier (uuid):** An identifier that is unique to all other identifiers, in this project, each recipe's 
-uuid is unique.
+- **Unique identifier (UUID):** An identifier that is unique to all other identifiers, in this project, each recipe's 
+UUID is unique.
 
 --------------------------------------------------------------------------------------------------------------------
 
