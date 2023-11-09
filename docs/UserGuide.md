@@ -7,7 +7,7 @@ pageNav: 3
 # [BA]king [BR]ead User Guide
 
 [BA]king [BR]ead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
-Command Line Interface**(CLI) while still having the benefits of a Graphical User Interface (GUI). [BA]king [BR]ead is targeted
+Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). [BA]king [BR]ead is targeted
 towards bakers like yourselves to aid you on your baking journey.
 If you can type fast, [BA]king [BR]ead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
 

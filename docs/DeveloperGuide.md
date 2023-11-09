@@ -1,8 +1,8 @@
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
-
-[AddressBook 3](https://se-education.org/addressbook-level3/)
+This project is based on the [AddressBook-Level3](https://se-education.org/addressbook-level3/) project created by the 
+[SE-EDU initiative](se-education.org).
 
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
 
@@ -207,14 +207,14 @@ Step 2. `InventoryAppParser` is then called to parse the `view 1` command.
 Step 3. By Polymorphism, `RecipeViewCommandParser` is called on to handle the parsing. The `parse(String args)` function
 is called with the argument of `"1"`
 
-Step 4. A `RecipeUuidMatchesPredicate` predicate object is created which returns true for any recipe tested on the
-predicate with the same uuid of `1`.
+Step 4. A `RecipeUuidMatchesPredicate` object is created which returns true for any recipe tested on the
+predicate with the same unique identifier (uuid) of `1`.
 
 Step 5. The `RecipeViewCommand` then filters the recipe list in `ModelManager` according to the predicate. The recipe
 list should only have at most 1 item after filtration.
 
-Step 6. The `MainWindow` in `ui` detects that there is one item in the recipe list, and proceeds to display the full
-recipe.
+Step 6. If there is a recipe with the same uuid inputted by the user in the recipe book, the `MainWindow` in `ui` will
+detect that there is one item in the recipe list, and proceed to display the full recipe.
 
 `RecipeViewCommand` calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
 recipe list in `ModelManager` according to the predicate set.
@@ -492,7 +492,9 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 7. The system should be backwards-compatible with data from older versions.
 
 ### Glossary
-- Mainstream OS: Windows, Linux, OS-X
+- **Mainstream OS:** Windows, Linux, OS-X
+- **Unique identifier (uuid):** An identifier that is unique to all other identifiers, in this project, each recipe's 
+uuid is unique.
 
 --------------------------------------------------------------------------------------------------------------------
 

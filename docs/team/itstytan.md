@@ -1,7 +1,4 @@
----
-layout: default.md
-title: "Tan Tze Young's Project Portfolio Page"
----
+## Tan Tze Young's Project Portfolio Page
 
 ### Project: [Ba]king [Br]ead
 
@@ -10,7 +7,6 @@ recipes. The user interacts with it using a CLI, and it has a GUI using JavaFX. 
 
 Given below are my contributions to the project.
 
-#### Enhancements Implemented:
 * **New Feature:** Added the ability to view specific recipes.
   * What it does: Allows the user to view a specific recipe by using the recipe's unique identifier.
   * Justification: This feature is critical to the working of the product as a user needs to be able to view the steps 
