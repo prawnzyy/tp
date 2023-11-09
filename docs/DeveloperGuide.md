@@ -1,8 +1,8 @@
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
-
-[AddressBook 3](https://se-education.org/addressbook-level3/)
+This project is based on the [AddressBook-Level3](https://se-education.org/addressbook-level3/) project created by the 
+[SE-EDU initiative](se-education.org).
 
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
 
@@ -207,14 +207,14 @@ Step 2. `InventoryAppParser` is then called to parse the `view 1` command.
 Step 3. By Polymorphism, `RecipeViewCommandParser` is called on to handle the parsing. The `parse(String args)` function
 is called with the argument of `"1"`
 
-Step 4. A `RecipeUuidMatchesPredicate` predicate object is created which returns true for any recipe tested on the
-predicate with the same uuid of `1`.
+Step 4. A `RecipeUuidMatchesPredicate` object is created which returns true for any recipe tested on the
+predicate with the same unique identifier (UUID) of `1`.
 
 Step 5. The `RecipeViewCommand` then filters the recipe list in `ModelManager` according to the predicate. The recipe
 list should only have at most 1 item after filtration.
 
-Step 6. The `MainWindow` in `ui` detects that there is one item in the recipe list, and proceeds to display the full
-recipe.
+Step 6. If there is a recipe with the same UUID inputted by the user in the recipe book, the `MainWindow` in `ui` will
+detect that there is one item in the recipe list, and proceed to display the full recipe.
 
 `RecipeViewCommand` calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
 recipe list in `ModelManager` according to the predicate set.
@@ -224,14 +224,14 @@ The following sequence diagram shows how the view recipe operation works:
 <img src="images/UML/viewrecipesequencediagram.png" width="800px">
 
 #### Alternatives considered:
-An alternative implementation considered is to find the first recipe with uuid that matches instead of filtering through
-the whole recipe list. Each recipe has a unique id, and hence the first instance of a recipe with match uuid should be 
-the only recipe with that uuid. This could lead to faster search times to view a specific recipe.
+An alternative implementation considered is to find the first recipe with UUID that matches instead of filtering through
+the whole recipe list. Each recipe has a unique id, and hence the first instance of a recipe with match UUID should be 
+the only recipe with that UUID. This could lead to faster search times to view a specific recipe.
 
 However, we do not expect a user to have so many recipes that performance would become an issue. We do not expect
 users to be frequently using this command either, since baking something requires much time and effort. Filtering
 through the whole list also confers an advantage of being able to assert that there is at most one such recipe
-with that particular uuid.
+with that particular UUID.
 
 ### List recipe feature
 #### Implementation
@@ -316,7 +316,7 @@ Step 4: This results in the creation of a `DeleteCommand` object with the index 
 
 Step 5: This `DeleteCommand` object is then executed by the `LogicManager`.
 
-Step 6: During execution, the recipe whose uuid matches with the index passed in is retrieved from the list of 
+Step 6: During execution, the recipe whose UUID matches with the index passed in is retrieved from the list of 
 recipes and the `ModelManager#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be 
 deleted from the recipe list.
 
@@ -492,7 +492,9 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 7. The system should be backwards-compatible with data from older versions.
 
 ### Glossary
-- Mainstream OS: Windows, Linux, OS-X
+- **Mainstream OS:** Windows, Linux, OS-X
+- **Unique identifier (UUID):** An identifier that is unique to all other identifiers, in this project, each recipe's 
+UUID is unique.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -548,3 +550,23 @@ testers are expected to do more *exploratory* testing.
     1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enhancements**
+1. Currently, the UUIDs for the recipes are unique across deleted and non deleted recipes. As such, when deleting a recipe, the corresponding UUID will no longer
+   be available. For example, if there are recipes with the UUIDs 1, 2 and 3 and recipe with UUID 2 gets deleted, then the 
+   next recipe added will have a UUID of 4 instead of 2 as 2 is no longer in use. We plan to make it such that when a recipe
+   gets deleted, the next recipe added will take on this UUID to ensure that the UUID does not end up getting too large.
+
+2. When inputting the ingredients during the addrecipe commands, users are able to entirely skip this portion by just typing
+   steps start. This however is unrealistic as no recipe would require no ingredients to make. We plan to add a sanity check
+   to ensure that at least one ingredient is inserted into the recipe.
+
+3. As a continuation from enhancement 2, addrecipe is also able to execute successfully without inputting any steps. We plan to make it such that
+   users have to input at least one step.
+
+4. When adding ingredients to a recipe during the addrecipe command, there is no check to ensure that only one ingredient is
+   being inputted at any point in time. As such, inputs such as `flour 100g milk 100g` would be parsed as `name: flour 100g milk`,
+   `quantity: 100` `unit: g`. We plan to add a check that would ensure only one ingredient can be inputted at one time.
+   So `flour 100g` would work but `flour 100g milk 100g` would return an error message.
