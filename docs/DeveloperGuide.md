@@ -310,25 +310,78 @@ Step 1. The user keys in `delete 1` into the UI command box. `LogicManager` take
 Step 2. `InventoryAppParser` is then called to parse the `delete 1` command.
 
 Step 3. By Polymorphism, `DeleteCommandParser` is called on to handle the parsing. The `parse(String args)` function is 
-called with the argument of "1" and the "1" is parsed as an `Index`.
+called with the argument of "1" and the "1" is parsed as an `Integer`. It is then wrapped in a `UniqueId` constructor.
 
-Step 4: This results in the creation of a `DeleteCommand` object with the index as a parameter.
+Step 4: This results in the creation of a `DeleteCommand` object with the `UniqueId` created passed in as a parameter.
 
 Step 5: This `DeleteCommand` object is then executed by the `LogicManager`.
 
-Step 6: During execution, the recipe whose UUID matches with the index passed in is retrieved from the list of 
-recipes and the `ModelManager#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be 
-deleted from the recipe list.
+Step 6: During execution, the recipe whose UUID matches with the UniqueId passed in is retrieved from the model and the 
+`Model#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be deleted from the 
+recipe list.
 
-**Note**: If the argument is an invalid index (less than 0 or more than the size of the current list), a 
-`CommandException` will be thrown and users will be informed that they inputted an invalid index.
+**Note**: If the argument is an invalid uuid (less than or equals to 0), a 
+`ParseException` will be thrown and users will be informed that there is no recipe with that uuid.
 
-The following sequence diagram shows how the DeleteCommand works:
+**Note**: If the recipe with that uuid does not exist in the app, a `CommandException` will be thrown and users will be 
+informed that there is no recipe with that uuid.
 
-<img src="images/UML/deletesequencediagram.png" width="800px">
+The following sequence diagram shows how the DeleteCommand works: (TO BE ADDED)
 
 **Note**: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, 
 the lifeline reaches the end of diagram.
+
+
+### Modify recipe feature
+#### Implementation
+The modify recipe mechanism is implemented as a `Command`, extending from the `Command` abstract class.
+
+Given below is an example usage scenario, assuming that the ingredient is already present in the recipe, and how the 
+modify recipe mechanism behaves at each step. The application is assumed to be initialised with at least one recipe 
+loaded in the `ModelManager`.
+
+Step 1. The user keys in `modify i/1 n/Milk q/100 u/g` into the UI command box. `LogicManager` takes this string command 
+and executes it.
+
+Step 2. `InventoryAppParser` is then called to parse the `modify i/1 n/Milk q/100 u/g` command.
+
+Step 3. By Polymorphism, `ModifyCommandParser` is called on to handle the parsing. The `parse(String args)` function is
+called with the argument of "i/1 n/Milk q/100 u/g" and this is then tokenized into the uuid of the recipe that will be modified, 
+the modified ingredient's name, amount and unit. An `Ingredient` is created with this name and quantity (which consists 
+of the amount and unit) specified. 
+
+Step 4: This results in the creation of a `ModifyCommand` object with two parameters passed in - the uuid specified 
+earlier wrapped in a `UniqueId` constructor as well as the `Ingredient`created earlier.
+
+Step 5: This `ModifyCommand` object is then executed by the `LogicManager`.  
+
+Step 6: During execution, there are 2 possibilities. 
+
+If the recipe already contains the ingredient that was specified,
+the `Recipe#modifyIngredients(String oldIngredient, Ingredient newIngredient)` will be called with the String of 
+name of the ingredient that is to be modified as well as the `Ingredient` that was passed into `ModifyCommand` such that 
+the amount and unit of the ingredient can be modified. 
+
+If the recipe does not already contain the ingredient that was specified, the `Recipe#addIngredient(Ingredient ingredient)` 
+will be called with the `Ingredient` that was passed into `ModifyCommand` such that the ingredient is added to the 
+ingredient list of that recipe. A new recipe will be created with this modified ingredient list.
+
+Step 7: Then the `Model#deleteRecipe(Recipe recipe)` is called on the old recipe that had the ingredient list before 
+it was modified. 
+
+Step 8: Then the `Model#addRecipe(Recipe recipe)` is called on the new recipe that has the modified ingredient list.
+
+`ModifyCommand` then calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
+recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate` that matches the uuid that was passed into 
+`ModifyCommand`.
+
+**Note**: If the argument is an invalid uuid (less than or equals to 0), a
+`ParseException` will be thrown and users will be informed that there is no recipe with that uuid.
+
+**Note**: If the recipe with that uuid does not exist in the app, a `CommandException` will be thrown and users will be
+informed that there is no recipe with that uuid.
+
+The following sequence diagram shows how the modify recipe feature works: (TO BE ADDED)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -375,7 +428,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 | `***`    |  baker  |                               view recipes | see the steps and ingredients involved           |
 | `***`    |  baker  |             add recipes to the recipe book | add new recipes in my recipe book                |
 | `***`    |  baker  |        delete recipes from the recipe book | delete recipes I no longer need                  |
-| `**`     |  baker  |                             modify recipes | make changes to the recipes as required          |
+| `**`     |  baker  |                modify recipes' ingredients | make changes to the ingredients needed           |
 | `***`    |  baker  |   view the ingredients needed for a recipe | know if I have the necessary ingredients         |
 | `***`    |  baker  |                           request for help | learn how to use the recipe book when I'm lost   |
 
@@ -479,6 +532,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 #### Extensions:
 - 2a. The specified recipe does not exist
   - [Ba]king [Br]ead shows an error message
+
+
 
 ### Non-Functional Requirements
 
