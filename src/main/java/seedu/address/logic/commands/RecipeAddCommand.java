@@ -18,7 +18,7 @@ public class RecipeAddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New recipe added: %1$s";
 
-    public static final String MESSAGE_DUPLICATE_INGREDIENT = "This ingredient already exists in the inventory";
+    public static final String MESSAGE_STEP_USAGE = "Step format: NUMBER. STEP (e.g. 1. Preheat Oven)";
 
     private final Recipe toAdd;
 

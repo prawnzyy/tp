@@ -18,17 +18,17 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
 ## Table of Contents
 * [Quick Start](#quick-start)
 * [Features](#features)
-  * [Help](#viewing-help--help)
+  * [Help](#viewing-help-help)
   * [Add ingredient](#adding-an-ingredient-add)
-  * [Use ingredient](#using-up-ingredients--use)
+  * [Use ingredient](#using-up-ingredients-use)
   * [Find quantity of ingredient](#finding-the-quantity-of-an-ingredient-by-name-stock)
-  * [Clear ingredient list](#clearing-all-entries--clear)
-  * [View list of recipes](#listing-all-recipes--list)
-  * [View a recipe](#viewing-specific-recipes--view)
-  * [Add a recipe](#adding-recipes--addrecipe)
-  * [Modify a recipe](#modifying-recipes)
-  * [Search for recipes that have an ingredient](#searching-recipes--search)
-  * [Exit the program](#exiting-the-program--exit)
+  * [Clear ingredient list](#clearing-all-entries-clear)
+  * [View list of recipes](#listing-all-recipes-list)
+  * [View a recipe](#viewing-specific-recipes-view)
+  * [Add a recipe](#adding-recipes-addrecipe)
+  * [Modify a recipe](#modifying-recipes-modify)
+  * [Search for recipes that have an ingredient](#searching-recipes-search)
+  * [Exit the program](#exiting-the-program-exit)
   * [Save the data](#saving-the-data)
   * [Edit the data file](#editing-the-data-file)
 * [FAQ](#faq)
@@ -44,7 +44,7 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
 3. Copy the file to the folder you want to use as the _home folder_ for your Inventory App.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -101,7 +101,7 @@ Format: `add n/NAME q/QUANTITY u/UNIT`
 
 Restrictions:
 * Units used must be supported
-* Quantity must be positive
+* Quantity must be a positive number
 * If adding quantity to an ingredient that already exists, quantity conversions must be taken into account. If the unit 
   of the ingredient which is already in the stock is in GRAM/KILOGRAM, it cannot be converted to PIECE and vice versa.
 
@@ -125,6 +125,7 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 * If no quantity and unit is provided, the entire stock of the specified ingredient will be depleted.
 * If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
 * The quantity provided must be more than 0.
+* Note that the name **must** be exact. As such, `use butters` will not work if the ingredient list contains `butter`
 
 Restrictions:
 * Units used must be supported
@@ -226,7 +227,7 @@ complete recipe
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
-### Modifying Recipes
+### Modifying Recipes : `modify`
 
 Modifies the ingredients in a recipe.
 
@@ -263,6 +264,8 @@ Format: `search NAME`
 * `NAME` cannot be empty.
 * `NAME` is not case-sensitive.
 *  If none of the recipes contain that ingredient, an empty recipe list will be displayed instead.
+*  For ingredients with multiple words, `NAME` must be an **exact** match. As such, search chocolate will not display recipes
+   that contain chocolate chip
 
 Examples:
 * `search flour` searches for all recipes that uses `flour`

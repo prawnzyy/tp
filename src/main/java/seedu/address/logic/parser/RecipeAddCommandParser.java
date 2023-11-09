@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import seedu.address.logic.Messages;
@@ -79,7 +80,8 @@ public class RecipeAddCommandParser implements Parser<RecipeAddCommand> {
      * @return The Command instance
      */
     public RecipeAddCommand generateCommand() {
-        Recipe recipe = new Recipe(name, ingredients, recipeSteps);
+        recipeSteps.sort(Comparator.comparingInt(RecipeStep::getStepNumber));
+        Recipe recipe = new Recipe(name, List.copyOf(ingredients), List.copyOf(recipeSteps));
         return new RecipeAddCommand(recipe);
     }
 
@@ -112,8 +114,18 @@ public class RecipeAddCommandParser implements Parser<RecipeAddCommand> {
             stepList.add(ParserUtil.parseRecipeStep(recipeString));
         }
 
+        stepList.sort(Comparator.comparingInt(RecipeStep::getStepNumber));
         Recipe recipe = new Recipe(name, ingredientList, stepList);
 
         return new RecipeAddCommand(recipe);
     }
+
+    /**
+     * Reset the parser for a new recipe to add.
+     */
+    public void reset() {
+        ingredients.clear();
+        recipeSteps.clear();
+    }
+
 }

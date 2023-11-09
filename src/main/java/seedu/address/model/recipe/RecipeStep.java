@@ -48,6 +48,11 @@ public class RecipeStep {
         }
     }
 
+    /** Returns the step number. */
+    public int getStepNumber() {
+        return stepNumber;
+    }
+
     @Override
     public String toString() {
         return String.format("%d. %s", this.stepNumber, this.instruction);
