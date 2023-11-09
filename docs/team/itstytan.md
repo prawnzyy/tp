@@ -15,7 +15,10 @@ Given below are my contributions to the project.
   be reused. Much thought had went into considering the implementation and integration of the UniqueId class with this
   command.
 
-* **Enhancement:** Enhanced the UI of the app (Pull requests [\#78](), [\#83](), [\#110]())
+* **Enhancement:** Enhanced the UI of the app (Pull requests 
+[\#78](https://github.com/AY2324S1-CS2103T-F10-3/tp/pull/78), 
+[\#89](https://github.com/AY2324S1-CS2103T-F10-3/tp/pull/89),
+[\#110](https://github.com/AY2324S1-CS2103T-F10-3/tp/pull/110))
   * Updated the styling of the UI, which includes colour scheme, borders and fonts changes. 
   * Implemented the ability for the RecipeListPanel to change from listing recipes to showing a single recipe with full
   details of the recipe
