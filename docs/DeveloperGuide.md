@@ -420,7 +420,6 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
    Use case ends.
 
-
 #### Extensions
 - 2a. User does not specify what ingredients they would like to view
   - [Ba]king [Br]ead shows the entire stock of ingredients
@@ -570,3 +569,8 @@ testers are expected to do more *exploratory* testing.
    being inputted at any point in time. As such, inputs such as `flour 100g milk 100g` would be parsed as `name: flour 100g milk`,
    `quantity: 100` `unit: g`. We plan to add a check that would ensure only one ingredient can be inputted at one time.
    So `flour 100g` would work but `flour 100g milk 100g` would return an error message.
+
+5. When using ingredients, either both unit and quantity must be inputted or neither must be present. However, it would be
+   more efficient if we could just use input the quantity and use based on the unit of the ingredient. We plan to add a way
+   to input only the name and quantity without the units to be more intuitive. For example: `use n/flour q/100` will not
+   show an error but rather, consume 100 of whatever unit that flour is currently stored in.
