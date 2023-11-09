@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_MODIFY_RECIPE_SUCCESS;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showRecipeAtUuid;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 import static seedu.address.testutil.TypicalRecipe.getTypicalRecipeBook;
 
@@ -31,7 +30,7 @@ public class ModifyCommandTest {
     private Model expectedModel = new ModelManager(getTypicalInventory(), new UserPrefs(), getTypicalRecipeBook());
 
     @Test
-    public void execute_validArguments_existing_ingredient_recipeModified() {
+    public void execute_validArgumentsExistingIngredient_recipeModified() {
         UniqueId uuid = new UniqueId(1);
 
         // modify flour ingredient with a quantity of 50 grams
@@ -51,7 +50,7 @@ public class ModifyCommandTest {
     }
 
     @Test
-    public void execute_validArguments_new_ingredient_recipeModified() {
+    public void execute_validArgumentsNewIngredient_recipeModified() {
         UniqueId uuid = new UniqueId(1);
 
         // add egg ingredient with a quantity of 50 grams
@@ -71,7 +70,7 @@ public class ModifyCommandTest {
     }
 
     @Test
-    public void execute_invalid_recipe_uuid() {
+    public void execute_invalid_recipeUuid() {
         UniqueId outOfBoundUuid = new UniqueId(3);
         Ingredient ingredient = new IngredientBuilder().withName("Egg").withQuantity(50, Unit.GRAM).build();
         ModifyCommand modifyCommand = new ModifyCommand(outOfBoundUuid, ingredient);
@@ -81,8 +80,8 @@ public class ModifyCommandTest {
     @Test
     public void equals() {
         Ingredient ingredient = new IngredientBuilder().withName("Egg").withQuantity(50, Unit.GRAM).build();
-        Ingredient ingredient_second
-                = new IngredientBuilder().withName("Flour").withQuantity(50, Unit.GRAM).build();
+        Ingredient ingredientSecond = new IngredientBuilder()
+                .withName("Flour").withQuantity(50, Unit.GRAM).build();
 
         final ModifyCommand modifyCommand = new ModifyCommand(new UniqueId(1), ingredient);
 
@@ -103,7 +102,7 @@ public class ModifyCommandTest {
         assertFalse(modifyCommand.equals(new ModifyCommand(new UniqueId(2), ingredient)));
 
         // different descriptor -> returns false
-        assertFalse(modifyCommand.equals(new ModifyCommand(new UniqueId(1), ingredient_second)));
+        assertFalse(modifyCommand.equals(new ModifyCommand(new UniqueId(1), ingredientSecond)));
     }
 
     @Test

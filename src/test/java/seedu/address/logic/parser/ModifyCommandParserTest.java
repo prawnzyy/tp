@@ -1,17 +1,5 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.ModifyCommand;
-import seedu.address.logic.commands.UseCommand;
-import seedu.address.model.Name;
-import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Quantity;
-import seedu.address.model.ingredient.Unit;
-import seedu.address.model.recipe.UniqueId;
-
-import org.junit.jupiter.api.Test;
-
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NEG_UUID_DESC_RECIPE;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ZERO_UUID_DESC_RECIPE;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_FLOUR;
@@ -21,6 +9,15 @@ import static seedu.address.logic.commands.CommandTestUtil.UNIT_DESC_FLOUR;
 import static seedu.address.logic.commands.CommandTestUtil.UUID_DESC_RECIPE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+
+import seedu.address.logic.commands.ModifyCommand;
+import seedu.address.model.Name;
+import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
+import seedu.address.model.recipe.UniqueId;
+
+import org.junit.jupiter.api.Test;
 
 public class ModifyCommandParserTest {
     private ModifyCommandParser parser = new ModifyCommandParser();
@@ -53,13 +50,13 @@ public class ModifyCommandParserTest {
     }
 
     @Test
-    public void parse_UUID_equals_zero() {
+    public void parse_uuidEquals_zero() {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + INVALID_ZERO_UUID_DESC_RECIPE + NAME_DESC_FLOUR
                 + QUANTITY_DESC_FLOUR + UNIT_DESC_FLOUR, "The recipe index provided is invalid");
     }
 
     @Test
-    public void parse_UUID_negative() {
+    public void parse_uuid_negative() {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + INVALID_NEG_UUID_DESC_RECIPE + NAME_DESC_FLOUR
                 + QUANTITY_DESC_FLOUR + UNIT_DESC_FLOUR, "The recipe index provided is invalid");
     }
