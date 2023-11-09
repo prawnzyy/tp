@@ -10,6 +10,8 @@ import static seedu.address.logic.commands.CommandTestUtil.UUID_DESC_RECIPE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
+import org.junit.jupiter.api.Test;
+
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
@@ -17,7 +19,6 @@ import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.model.recipe.UniqueId;
 
-import org.junit.jupiter.api.Test;
 
 public class ModifyCommandParserTest {
     private ModifyCommandParser parser = new ModifyCommandParser();
