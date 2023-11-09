@@ -82,6 +82,7 @@
         "view-recipe-feature": "View recipe feature",
         "list-recipe-feature": "List recipe feature",
         "design-considerations": "Design Considerations:",
+        "search-recipe-feature": "Search recipe feature",
         "delete-recipe-feature": "Delete recipe feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
@@ -161,6 +162,7 @@
       "title": "User Guide",
       "headings": {
         "ba-king-br-ead-user-guide": "[BA]king [BR]ead User Guide",
+        "table-of-contents": "Table of Contents",
         "quick-start": "Quick start",
         "features": "Features",
         "viewing-help-help": "Viewing help : help",
@@ -171,14 +173,14 @@
         "listing-all-recipes-list": "Listing all Recipes : list",
         "viewing-specific-recipes-view": "Viewing Specific Recipes : view",
         "adding-recipes-addrecipe": "Adding Recipes : addrecipe",
-        "modifying-recipes": "Modifying Recipes",
+        "modifying-recipes-modify": "Modifying Recipes : modify",
         "deleting-recipes-delete": "Deleting Recipes : delete",
         "searching-recipes-search": "Searching Recipes : search",
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
         "editing-the-data-file": "Editing the data file",
         "faq": "FAQ",
-        "known-issues": "Known issues",
+        "known-issues-will-be-edited": "Known issues [will be edited]",
         "command-summary": "Command summary"
       },
       "headingKeywords": {}
@@ -198,7 +200,10 @@
     },
     {
       "src": "team/itstytan.md",
-      "headings": {},
+      "title": "Tan Tze Young's Project Portfolio Page",
+      "headings": {
+        "project-ba-king-br-ead": "Project: [Ba]king [Br]ead"
+      },
       "headingKeywords": {}
     },
     {
