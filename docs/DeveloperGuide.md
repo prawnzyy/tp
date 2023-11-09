@@ -552,7 +552,7 @@ testers are expected to do more *exploratory* testing.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**
-1. Currently, the UUIDs for the recipes are unique. As such, when deleting a recipe, the corresponding UUID will no longer
+1. Currently, the UUIDs for the recipes are unique across deleted and non deleted recipes. As such, when deleting a recipe, the corresponding UUID will no longer
    be available. For example, if there are recipes with the UUIDs 1, 2 and 3 and recipe with UUID 2 gets deleted, then the 
    next recipe added will have a UUID of 4 instead of 2 as 2 is no longer in use. We plan to make it such that when a recipe
    gets deleted, the next recipe added will take on this UUID to ensure that the UUID does not end up getting too large.
@@ -561,10 +561,10 @@ testers are expected to do more *exploratory* testing.
    steps start. This however is unrealistic as no recipe would require no ingredients to make. We plan to add a sanity check
    to ensure that at least one ingredient is inserted into the recipe.
 
-3. As a continuation from enhancement 2, addrecipe is also able to not have any steps to make. We plan to make it such that
+3. As a continuation from enhancement 2, addrecipe is also able to execute successfully without inputting any steps. We plan to make it such that
    users have to input at least one step.
 
-4. When add ingredients to a recipe during the addrecipe command, there is no check to ensure that only one ingredient is
+4. When adding ingredients to a recipe during the addrecipe command, there is no check to ensure that only one ingredient is
    being inputted at any point in time. As such, inputs such as `flour 100g milk 100g` would be parsed as `name: flour 100g milk`,
    `quantity: 100` `unit: g`. We plan to add a check that would ensure only one ingredient can be inputted at one time.
    So `flour 100g` would work but `flour 100g milk 100g` would return an error message.
