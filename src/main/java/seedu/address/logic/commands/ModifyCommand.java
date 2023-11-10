@@ -35,7 +35,7 @@ public class ModifyCommand extends Command {
             + PREFIX_UUID + "1 "
             + PREFIX_NAME + "milk "
             + PREFIX_QUANTITY + "600 "
-            + PREFIX_UNIT + "ml ";
+            + PREFIX_UNIT + "g ";
     private UniqueId recipeUuid;
     private Ingredient editedIngredient;
     /**
@@ -52,11 +52,12 @@ public class ModifyCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
+        assert recipeUuid.getId() > 0;
+
         if (!model.hasRecipe(recipeUuid)) {
             throw new CommandException(Messages.MESSAGE_RECIPE_DOES_NOT_EXIST);
         }
 
-        assert recipeUuid.getId() > 0;
         Recipe newRecipe;
         Recipe oldRecipe = model.getRecipe(recipeUuid);
 
@@ -86,12 +87,13 @@ public class ModifyCommand extends Command {
         }
 
         ModifyCommand otherModifyCommand = (ModifyCommand) other;
-        return editedIngredient.equals(otherModifyCommand.editedIngredient);
+        return editedIngredient.equals(otherModifyCommand.editedIngredient)
+                && this.recipeUuid.equals(otherModifyCommand.recipeUuid);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder(this).add("uuid", recipeUuid)
                 .add("toModify", editedIngredient)
                 .toString();
     }
