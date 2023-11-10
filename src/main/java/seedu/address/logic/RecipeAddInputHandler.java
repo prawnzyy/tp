@@ -32,6 +32,7 @@ public class RecipeAddInputHandler {
      * @param commandText The command to check
      */
     public boolean check(String commandText) {
+        commandText = commandText.trim();
         return (stage != RecipeAddInputStage.COMPLETE || commandText.equals("addrecipe"));
     }
 
@@ -41,6 +42,7 @@ public class RecipeAddInputHandler {
      * @return A command result
      */
     public CommandResult handle(String commandText) {
+        commandText = commandText.trim();
         String parseOutput = "";
         if (commandText.equals("addrecipe")) {
             recipeAddCommandParser.reset();
