@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.RecipeAddCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.model.recipe.Recipe;
@@ -25,7 +26,12 @@ public class RecipeAddCommandParserTest {
 
         Recipe expectedRecipe = new RecipeBuilder().withId(2).withName("cookie").build();
         parser.reset();
-        parser.addName("cookie");
+        try {
+            parser.addName("cookie");
+        } catch (ParseException pe) {
+            // Should never reach here
+            assert false;
+        }
         Command a = parser.generateCommand();
         Command b = new RecipeAddCommand(expectedRecipe);
         assertEquals(a.toString(), b.toString());
@@ -38,11 +44,21 @@ public class RecipeAddCommandParserTest {
                 .withName("cookie").withId(2).withIngredient(expectedIngredient).build();
         parser.reset();
         assertEquals(parser.addIngredient("flour 100g"), String.format(MESSAGE_SUCCESS_INGREDIENT, "flour 100g"));
-        parser.addName("cookie");
+        try {
+            parser.addName("cookie");
+        } catch (ParseException pe) {
+            // Should never reach here
+            assert false;
+        }
         Command a = parser.generateCommand();
         Command b = new RecipeAddCommand(expectedRecipe);
         assertEquals(a.toString(), b.toString());
-        assertEquals(parser.addName("cookie"), MESSAGE_SUCCESS_NAME);
+        try {
+            assertEquals(parser.addName("cookie"), MESSAGE_SUCCESS_NAME);
+        } catch (ParseException pe) {
+            // Should never reach here
+            assert false;
+        }
     }
     @Test
     public void parse_stepFieldPresent_success() {
@@ -50,7 +66,12 @@ public class RecipeAddCommandParserTest {
                 .withName("cookie").withId(2).withSteps("eat cookie", 1).build();
         parser.reset();
         assertEquals(parser.addStep("1. eat cookie"), MESSAGE_SUCCESS_STEP);
-        parser.addName("cookie");
+        try {
+            parser.addName("cookie");
+        } catch (ParseException pe) {
+            // Should never reach here
+            assert false;
+        }
         Command a = parser.generateCommand();
         Command b = new RecipeAddCommand(expectedRecipe);
         assertEquals(a.toString(), b.toString());
