@@ -1,4 +1,4 @@
-Seah Zi Xiang's Project Portfolio Page
+## Seah Zi Xiang's Project Portfolio Page
 
 Project: [Ba]king [Br]ead
 
@@ -16,15 +16,17 @@ Given below are my contributions to the project.
 - **Enhancement Implemented:** Adding a second window for recipe list
   - Justification: As users, we would like to be able to view both the ingredients and the recipe at the same time. Dividing 
     the screen into two separate windows allows us to view them separately.
-- Code Contribution: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=prawnzyy&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&since=2023-09-22&timeframe=commit&mergegroup=&groupSelect=groupByRepos)
-- Contribution to team task:
+- **Code Contribution**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=prawnzyy&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&since=2023-09-22&timeframe=commit&mergegroup=&groupSelect=groupByRepos)
+- **Contribution to team task**:
   - Managing of jar releases
   - Updating of README and INDEX
-- Contribution to UG:
+- **Contribution to UG**:
   - Addition of search feature write up
   - Addition of list feature write up
   - Updating of Command Summary Table
   - Standardisation of names and formatting
-- Contribution to DG:
+- **Contribution to DG**:
   - Implementation of the list command
-  - Also added ListRecipeSequenceDiagram.puml
+  - Implementation of the search command
+  - Addition of ListRecipeSequenceDiagram.puml
+  - Addition of SearchRecipeSequenceDiagram.puml

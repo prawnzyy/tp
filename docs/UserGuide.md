@@ -7,28 +7,25 @@ pageNav: 3
 # [BA]king [BR]ead User Guide
 
 [BA]king [BR]ead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
-Command Line Interface**(CLI) while still having the benefits of a Graphical User Interface (GUI). [BA]king [BR]ead is targeted
+Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). [BA]king [BR]ead is targeted
 towards bakers like yourselves to aid you on your baking journey.
 If you can type fast, [BA]king [BR]ead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
-
-<!-- * Table of Contents -->
-<page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
 * [Quick Start](#quick-start)
 * [Features](#features)
-  * [Help](#viewing-help--help)
+  * [Help](#viewing-help-help)
   * [Add ingredient](#adding-an-ingredient-add)
-  * [Use ingredient](#using-up-ingredients--use)
+  * [Use ingredient](#using-up-ingredients-use)
   * [Find quantity of ingredient](#finding-the-quantity-of-an-ingredient-by-name-stock)
-  * [Clear ingredient list](#clearing-all-entries--clear)
-  * [View list of recipes](#listing-all-recipes--list)
-  * [View a recipe](#viewing-specific-recipes--view)
-  * [Add a recipe](#adding-recipes--addrecipe)
-  * [Modify a recipe](#modifying-recipes)
-  * [Search for recipes that have an ingredient](#searching-recipes--search)
-  * [Exit the program](#exiting-the-program--exit)
+  * [Clear ingredient list](#clearing-all-entries-from-ingredient-stock-clear)
+  * [View list of all recipes](#listing-all-recipes-list)
+  * [View a recipe](#viewing-specific-recipes-view)
+  * [Add a recipe](#adding-recipes-addrecipe)
+  * [Modify a recipe](#modifying-recipes-modify)
+  * [Search for recipes that have an ingredient](#searching-recipes-given-an-ingredient-search)
+  * [Exit the program](#exiting-the-program-exit)
   * [Save the data](#saving-the-data)
   * [Edit the data file](#editing-the-data-file)
 * [FAQ](#faq)
@@ -44,7 +41,7 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
 3. Copy the file to the folder you want to use as the _home folder_ for your Inventory App.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -101,7 +98,7 @@ Format: `add n/NAME q/QUANTITY u/UNIT`
 
 Restrictions:
 * Units used must be supported
-* Quantity must be positive
+* Quantity must be a positive number
 * If adding quantity to an ingredient that already exists, quantity conversions must be taken into account. If the unit 
   of the ingredient which is already in the stock is in GRAM/KILOGRAM, it cannot be converted to PIECE and vice versa.
 
@@ -125,6 +122,7 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 * If no quantity and unit is provided, the entire stock of the specified ingredient will be depleted.
 * If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
 * The quantity provided must be more than 0.
+* Note that the name **must** be exact. As such, `use butters` will not work if the ingredient list contains `butter`
 
 Restrictions:
 * Units used must be supported
@@ -163,7 +161,7 @@ Examples:
 * `stock Butter` returns `Butter: 50g`
 * `stock Butter flour` returns `Butter: 100g`, `Flour: 2000g`<br>
 
-### Clearing all entries : `clear`
+### Clearing all entries from ingredient stock : `clear`
 
 Clears all entries from the ingredient stock.
 
@@ -226,7 +224,7 @@ complete recipe
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
-### Modifying Recipes
+### Modifying Recipes : `modify`
 
 Modifies the ingredients in a recipe.
 
@@ -254,15 +252,17 @@ Examples:
 * `delete 1` deletes the recipe with `UUID` of 1
 * `delete 21` deletes the recipe with `UUID` of 21
 
-### Searching Recipes : `search`
+### Searching Recipes given an ingredient: `search`
 
-Searches for recipes that include a specific ingredient in the recipe.
+Searches for recipes that includes a specific ingredient in the recipe.
 
 Format: `search NAME`
 
 * `NAME` cannot be empty.
 * `NAME` is not case-sensitive.
 *  If none of the recipes contain that ingredient, an empty recipe list will be displayed instead.
+*  For ingredients with multiple words, `NAME` must be an **exact** match. As such, search chocolate will not display recipes
+   that contain chocolate chip
 
 Examples:
 * `search flour` searches for all recipes that uses `flour`
@@ -309,9 +309,9 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 | Action        | Format, Examples                                                                                                                                                                    |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**       | `add n/NAME q/QUANTITY u/UNIT` <br> e.g., `add n/milk q/600 u/ml`                                                                                                                   |
+| **Add**       | `add n/NAME q/QUANTITY u/UNIT` <br> e.g., `add n/milk q/600 u/g`                                                                                                                    |
 | **Clear**     | `clear`                                                                                                                                                                             |
-| **Use**       | `use n/NAME [q/QUANTITY] [u/UNIT]`<br> e.g., `use n/milk q/200 u/ml`                                                                                                                |
+| **Use**       | `use n/NAME [q/QUANTITY] [u/UNIT]`<br> e.g., `use n/milk q/200 u/g`                                                                                                                 |
 | **Stock**     | `stock [NAME]…​`<br> e.g., `stock milk egg`                                                                                                                                         |
 | **List**      | `list`                                                                                                                                                                              |
 | **View**      | `view UUID`<br/> e.g., `view 1`                                                                                                                                                     |
