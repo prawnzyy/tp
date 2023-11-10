@@ -312,9 +312,9 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 | Action        | Format, Examples                                                                                                                                                                    |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**       | `add n/NAME q/QUANTITY u/UNIT` <br> e.g., `add n/milk q/600 u/ml`                                                                                                                   |
+| **Add**       | `add n/NAME q/QUANTITY u/UNIT` <br> e.g., `add n/milk q/600 u/g`                                                                                                                    |
 | **Clear**     | `clear`                                                                                                                                                                             |
-| **Use**       | `use n/NAME [q/QUANTITY] [u/UNIT]`<br> e.g., `use n/milk q/200 u/ml`                                                                                                                |
+| **Use**       | `use n/NAME [q/QUANTITY] [u/UNIT]`<br> e.g., `use n/milk q/200 u/g`                                                                                                                 |
 | **Stock**     | `stock [NAME]…​`<br> e.g., `stock milk egg`                                                                                                                                         |
 | **List**      | `list`                                                                                                                                                                              |
 | **View**      | `view UUID`<br/> e.g., `view 1`                                                                                                                                                     |
