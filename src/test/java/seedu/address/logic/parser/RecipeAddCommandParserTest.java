@@ -37,7 +37,7 @@ public class RecipeAddCommandParserTest {
         Recipe expectedRecipe = new RecipeBuilder()
                 .withName("cookie").withId(2).withIngredient(expectedIngredient).build();
         parser.reset();
-        assertEquals(parser.addIngredient("flour 100g"), MESSAGE_SUCCESS_INGREDIENT);
+        assertEquals(parser.addIngredient("flour 100g"), String.format(MESSAGE_SUCCESS_INGREDIENT, "flour 100g"));
         parser.addName("cookie");
         Command a = parser.generateCommand();
         Command b = new RecipeAddCommand(expectedRecipe);
