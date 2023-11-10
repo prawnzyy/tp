@@ -25,20 +25,17 @@ public class UseCommand extends Command {
             + ": Depletes a specified amount of an ingredient from stock. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
-            + PREFIX_QUANTITY + "QUANTITY "
-            + PREFIX_UNIT + "UNIT "
+            + "[" + PREFIX_QUANTITY + "QUANTITY] "
+            + "[" + PREFIX_UNIT + "UNIT] "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "milk "
             + PREFIX_QUANTITY + "600 "
             + PREFIX_UNIT + "ml ";
 
     public static final String MESSAGE_SUCCESS = "Ingredient used: %1$s";
-    public static final String MESSAGE_USED_UP = "Ingredient used up: %1$s";
 
     private final Name toUse;
     private final Quantity quantityUsed;
-
-    // Todo Add JavaDocs
     /**
      * Creates a UseCommand to use the specified {@code Ingredient}
      */
@@ -47,7 +44,6 @@ public class UseCommand extends Command {
         toUse = ingredient;
         quantityUsed = quantity;
     }
-
 
     @Override
     public CommandResult execute(Model model) throws CommandException {

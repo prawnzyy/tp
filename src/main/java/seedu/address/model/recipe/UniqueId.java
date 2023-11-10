@@ -12,13 +12,38 @@ public class UniqueId {
         this.id = ++lastId;
     }
 
-    /** Imports a unique ID with the given {@code id}, updates the previous id if the imported id is larger */
+    /** Constructs a unique ID with the given {@code id} */
     public UniqueId(int id) {
         this.id = id;
+    }
+
+    /** Imports a unique ID with the given {@code id}, updates the previous id if the imported id is larger */
+    public static UniqueId importUniqueId(int id) {
         lastId = Math.max(lastId, id);
+        return new UniqueId(id);
     }
 
     public int getId() {
         return this.id;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof UniqueId)) {
+            return false;
+        }
+
+        UniqueId otherUuid = (UniqueId) other;
+        return this.id == otherUuid.id;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id);
     }
 }

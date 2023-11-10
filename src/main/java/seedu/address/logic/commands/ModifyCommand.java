@@ -14,6 +14,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.recipe.Recipe;
 import seedu.address.model.recipe.RecipeUuidMatchesPredicate;
+import seedu.address.model.recipe.UniqueId;
 
 /**
  * Modifies an ingredient in a recipe.
@@ -34,13 +35,13 @@ public class ModifyCommand extends Command {
             + PREFIX_UUID + "1 "
             + PREFIX_NAME + "milk "
             + PREFIX_QUANTITY + "600 "
-            + PREFIX_UNIT + "ml ";
-    private int recipeUuid;
+            + PREFIX_UNIT + "g ";
+    private UniqueId recipeUuid;
     private Ingredient editedIngredient;
     /**
      * Creates a ModifyCommand to modify the specified {@code Ingredient}
      */
-    public ModifyCommand(int uuid, Ingredient newIngredient) {
+    public ModifyCommand(UniqueId uuid, Ingredient newIngredient) {
         requireNonNull(newIngredient);
         requireNonNull(uuid);
         editedIngredient = newIngredient;
@@ -51,11 +52,12 @@ public class ModifyCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
+        assert recipeUuid.getId() > 0;
+
         if (!model.hasRecipe(recipeUuid)) {
             throw new CommandException(Messages.MESSAGE_RECIPE_DOES_NOT_EXIST);
         }
 
-        assert recipeUuid > 0;
         Recipe newRecipe;
         Recipe oldRecipe = model.getRecipe(recipeUuid);
 
@@ -85,12 +87,13 @@ public class ModifyCommand extends Command {
         }
 
         ModifyCommand otherModifyCommand = (ModifyCommand) other;
-        return editedIngredient.equals(otherModifyCommand.editedIngredient);
+        return editedIngredient.equals(otherModifyCommand.editedIngredient)
+                && this.recipeUuid.equals(otherModifyCommand.recipeUuid);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder(this).add("uuid", recipeUuid)
                 .add("toModify", editedIngredient)
                 .toString();
     }

@@ -13,7 +13,7 @@ import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.exceptions.UnitConversionException;
 
 /**
- * Adds a ingredient to the inventory.
+ * Adds an ingredient to the inventory.
  */
 public class AddCommand extends Command {
 
@@ -25,9 +25,9 @@ public class AddCommand extends Command {
             + PREFIX_QUANTITY + "QUANTITY "
             + PREFIX_UNIT + "UNIT "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "milk "
+            + PREFIX_NAME + "flour "
             + PREFIX_QUANTITY + "600 "
-            + PREFIX_UNIT + "ml ";
+            + PREFIX_UNIT + "g ";
 
     public static final String MESSAGE_SUCCESS = "New ingredient added: %1$s";
     public static final String MESSAGE_DUPLICATE_INGREDIENT = "This ingredient already exists in the inventory";

@@ -37,7 +37,6 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
 
         Unit unit;
         try {
@@ -45,8 +44,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         } catch (UnitFormatException e) {
             throw new ParseException("This is not a valid unit!");
         }
-
-        Quantity quantity = new Quantity(amount, unit);
+        Quantity quantity = ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY).get(), unit);
         Ingredient ingredient = new Ingredient(name, quantity);
 
         return new AddCommand(ingredient);
