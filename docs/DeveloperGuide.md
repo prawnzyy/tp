@@ -1,3 +1,14 @@
+---
+layout: default.md
+title: "Developer Guide"
+pageNav: 3
+---
+
+# [Ba]king [Br]ead Developer Guide
+
+<!-- * Table of Contents -->
+<page-nav-print />
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
