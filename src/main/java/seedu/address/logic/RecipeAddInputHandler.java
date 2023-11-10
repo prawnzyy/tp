@@ -3,6 +3,8 @@ package seedu.address.logic;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.parser.RecipeAddCommandParser;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Name;
 
 /**
  * Handles input in the recipe adding sequence.
@@ -48,8 +50,13 @@ public class RecipeAddInputHandler {
             recipeAddCommandParser.reset();
             stage = RecipeAddInputStage.NAME;
         } else if (stage == RecipeAddInputStage.NAME) {
-            parseOutput = recipeAddCommandParser.addName(commandText);
-            stage = RecipeAddInputStage.INGREDIENT;
+            try {
+                parseOutput = recipeAddCommandParser.addName(commandText);
+                stage = RecipeAddInputStage.INGREDIENT;
+            } catch (ParseException pe) {
+                return new CommandResult(parseOutput + "\n"
+                        + Name.MESSAGE_CONSTRAINTS + "\n" + MESSAGE_PROMPT_NAME);
+            }
         } else if (commandText.equals("steps start") || commandText.equals("step start")) {
             stage = RecipeAddInputStage.STEPS;
         } else if (commandText.equals("complete recipe")) {

@@ -39,8 +39,8 @@ public class RecipeAddCommandParser implements Parser<RecipeAddCommand> {
      * @param name The name of the recipe
      * @return The success message upon adding the name
      */
-    public String addName(String name) {
-        this.name = new Name(name);
+    public String addName(String name) throws ParseException {
+        this.name = ParserUtil.parseName(name);
         return MESSAGE_SUCCESS_NAME;
     }
 
