@@ -2,12 +2,14 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
@@ -16,6 +18,8 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
+import seedu.address.model.recipe.Recipe;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -32,6 +36,8 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private IngredientListPanel ingredientListPanel;
+
+    private UiPart<Region> recipeListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -43,6 +49,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane ingredientListPanelPlaceholder;
+
+    @FXML
+    private StackPane recipeListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -112,7 +121,12 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         ingredientListPanel = new IngredientListPanel(logic.getFilteredIngredientList());
         ingredientListPanelPlaceholder.getChildren().add(ingredientListPanel.getRoot());
-
+        // Check the length of the filtered recipe
+        // If it is 1, then display full recipe
+        // Else show only name and ingredients
+        ObservableList<Recipe> recipeList = logic.getRecipeList();
+        recipeListPanel = new RecipeListPanel(recipeList);
+        recipeListPanelPlaceholder.getChildren().add(recipeListPanel.getRoot());
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -187,7 +201,7 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             return commandResult;
-        } catch (CommandException | ParseException e) {
+        } catch (CommandException | ParseException | IngredientNotFoundException e) {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;

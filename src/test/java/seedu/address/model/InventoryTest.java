@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIngredients.EGG;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 
@@ -17,7 +18,10 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
 import seedu.address.model.ingredient.exceptions.DuplicateIngredientException;
+import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 import seedu.address.testutil.IngredientBuilder;
 
 public class InventoryTest {
@@ -77,6 +81,41 @@ public class InventoryTest {
     @Test
     public void getIngredientList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> inventory.getIngredientList().remove(0));
+    }
+
+    @Test
+    public void useIngredient_sufficientIngredientInInventory_returnsTrue() {
+        Name testIngredient = new Name("Flour");
+        Quantity testQuantity = new Quantity(50, Unit.GRAM);
+        inventory.addIngredient(FLOUR);
+        inventory.useIngredient(testIngredient, testQuantity);
+        assertEquals(inventory.getQuantityOf(testIngredient), testQuantity);
+    }
+
+    @Test
+    public void useIngredient_insufficientIngredientInInventory_removesIngredient() {
+        Name testIngredient = new Name("Flour");
+        Quantity testQuantity = new Quantity(150, Unit.GRAM);
+        inventory.addIngredient(FLOUR);
+        inventory.useIngredient(testIngredient, testQuantity);
+        assertEquals(inventory.hasIngredient(testIngredient), false);
+    }
+
+    @Test
+    public void useIngredient_noIngredientInInventory_throwsIngredientNotFoundException() {
+        Name testIngredient = new Name("Flour");
+        Quantity testQuantity = new Quantity(150, Unit.GRAM);
+        assertThrows(IngredientNotFoundException.class, () -> inventory.useIngredient(testIngredient, testQuantity));
+    }
+
+    @Test
+    public void clear_ingredientInInventory_returnsEmptyList() {
+        inventory.addIngredient(FLOUR);
+        inventory.addIngredient(EGG);
+        ObservableList tmpLst = inventory.getIngredientList();
+        assertEquals(tmpLst.size(), 2);
+        inventory.clear();
+        assertEquals(tmpLst.size(), 0);
     }
 
     @Test

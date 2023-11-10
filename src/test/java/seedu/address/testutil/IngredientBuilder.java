@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
+import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
 
@@ -19,6 +19,7 @@ public class IngredientBuilder {
      */
     public IngredientBuilder() {
         name = new Name(DEFAULT_NAME);
+        quantity = new Quantity(50, Unit.GRAM);
     }
 
     /**

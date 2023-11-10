@@ -7,7 +7,7 @@ import static seedu.address.testutil.TypicalIngredients.EGG;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.ingredient.Name;
+import seedu.address.model.Name;
 import seedu.address.model.ingredient.Unit;
 import seedu.address.model.ingredient.exceptions.UnitFormatException;
 

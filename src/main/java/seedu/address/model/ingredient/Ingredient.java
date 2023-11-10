@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.Name;
 
 /**
  * Represents a Ingredient in the inventory.
@@ -24,12 +25,6 @@ public class Ingredient {
         requireAllNonNull(name);
         this.name = name;
         this.quantity = quantity;
-        /*
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
-        */
     }
 
     /**

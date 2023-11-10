@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIngredients.FLOUR;
 
@@ -19,11 +20,16 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.model.Inventory;
 import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.Name;
 import seedu.address.model.ReadOnlyInventory;
+import seedu.address.model.ReadOnlyRecipeBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
+import seedu.address.model.ingredient.Unit;
+import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.UniqueId;
 import seedu.address.testutil.IngredientBuilder;
 
 public class AddCommandTest {
@@ -45,6 +51,14 @@ public class AddCommandTest {
         assertEquals(Arrays.asList(validIngredient), modelStub.ingredientsAdded);
     }
 
+    @Test
+    public void execute_invalidQuantityConversion_throwsCommandException() {
+        Model model = new ModelManager();
+        AddCommand command = new AddCommand(new Ingredient(new Name("Flour"), new Quantity(1.0, Unit.PIECE)));
+        model.addIngredient(new IngredientBuilder().build());
+        String expectedMessage = "Unit PIECE cannot be converted to GRAM!";
+        assertCommandFailure(command, model, expectedMessage);
+    }
 
     @Test
     public void equals() {
@@ -165,6 +179,51 @@ public class AddCommandTest {
         public void useIngredient(Name name, Quantity quantity) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void setRecipeBook(ReadOnlyRecipeBook recipeBook) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyRecipeBook getRecipeBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasRecipe(UniqueId uuid) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteRecipe(Recipe recipe) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addRecipe(Recipe recipe) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String getFullRecipe(int recipeId) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Recipe> getFilteredRecipeList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredRecipeList(Predicate<Recipe> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Recipe getRecipe(UniqueId uuid) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
@@ -202,6 +261,18 @@ public class AddCommandTest {
         public void addIngredient(Ingredient ingredient) {
             requireNonNull(ingredient);
             ingredientsAdded.add(ingredient);
+        }
+
+        @Override
+        public Quantity getQuantityOf(Name ingredientName) {
+            requireNonNull(ingredientName);
+            for (Ingredient ingredient : ingredientsAdded) {
+                if (ingredient.getName().equals(ingredientName)) {
+                    return ingredient.getQuantity();
+                }
+            }
+            //If ingredient can't be found, then return 0 quantity
+            return new Quantity(0, Unit.GRAM);
         }
 
         // check this

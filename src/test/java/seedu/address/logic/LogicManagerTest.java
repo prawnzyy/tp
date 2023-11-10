@@ -2,9 +2,7 @@ package seedu.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_FLOUR;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.FLOUR;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -14,7 +12,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -22,9 +19,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyInventory;
+import seedu.address.model.RecipeBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.storage.JsonInventoryStorage;
+import seedu.address.storage.JsonRecipeBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.IngredientBuilder;
@@ -44,7 +43,9 @@ public class LogicManagerTest {
         JsonInventoryStorage inventoryStorage =
                 new JsonInventoryStorage(temporaryFolder.resolve("inventory.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage);
+        JsonRecipeBookStorage recipeBookStorage =
+                new JsonRecipeBookStorage((temporaryFolder.resolve("recipeBook.json")));
+        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage, recipeBookStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -68,7 +69,7 @@ public class LogicManagerTest {
         assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
     }
 
-    /*
+
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         assertCommandFailureForExceptionFromStorage(DUMMY_IO_EXCEPTION, String.format(
@@ -80,7 +81,7 @@ public class LogicManagerTest {
         assertCommandFailureForExceptionFromStorage(DUMMY_AD_EXCEPTION, String.format(
                 LogicManager.FILE_OPS_PERMISSION_ERROR_FORMAT, DUMMY_AD_EXCEPTION.getMessage()));
     }
-    */
+
 
     @Test
     public void getFilteredIngredientList_modifyList_throwsUnsupportedOperationException() {
@@ -123,7 +124,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs(), new RecipeBook());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -160,13 +161,15 @@ public class LogicManagerTest {
 
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage);
+        JsonRecipeBookStorage recipeBookStorage =
+                new JsonRecipeBookStorage(temporaryFolder.resolve("recipeBook.json"));
+        StorageManager storage = new StorageManager(inventoryStorage, userPrefsStorage, recipeBookStorage);
 
         logic = new LogicManager(model, storage);
 
         // Triggers the saveInventory method by executing an add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_FLOUR;
-        Ingredient expectedIngredient = new IngredientBuilder(FLOUR).build();
+        String addCommand = "add n/flour q/100 u/g";
+        Ingredient expectedIngredient = new IngredientBuilder().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addIngredient(expectedIngredient);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);

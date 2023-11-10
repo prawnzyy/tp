@@ -66,7 +66,11 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = 'recipebook.jar'
+    archiveFileName = 'bakingbread.jar'
+}
+
+run {
+    enableAssertions = true
 }
 
 defaultTasks 'clean', 'test'

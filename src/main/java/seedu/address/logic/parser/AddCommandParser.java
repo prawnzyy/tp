@@ -9,10 +9,11 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.Name;
 import seedu.address.model.ingredient.Quantity;
 import seedu.address.model.ingredient.Unit;
+import seedu.address.model.ingredient.exceptions.UnitFormatException;
 
 
 /**
@@ -36,9 +37,14 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
-        Unit unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
-        Quantity quantity = new Quantity(amount, unit);
+
+        Unit unit;
+        try {
+            unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
+        } catch (UnitFormatException e) {
+            throw new ParseException("This is not a valid unit!");
+        }
+        Quantity quantity = ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY).get(), unit);
         Ingredient ingredient = new Ingredient(name, quantity);
 
         return new AddCommand(ingredient);

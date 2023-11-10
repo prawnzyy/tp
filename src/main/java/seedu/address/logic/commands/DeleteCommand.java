@@ -1,70 +1,68 @@
-//package seedu.address.logic.commands;
-//
-//import static java.util.Objects.requireNonNull;
-//
-//import java.util.List;
-//
-//import seedu.address.commons.core.index.Index;
-//import seedu.address.commons.util.ToStringBuilder;
-//import seedu.address.logic.Messages;
-//import seedu.address.logic.commands.exceptions.CommandException;
-//import seedu.address.model.Model;
-//import seedu.address.model.ingredient.Ingredient;
-//
-///**
-// * Deletes a ingredient identified using it's displayed index from the inventory.
-// */
-//public class DeleteCommand extends Command {
-//
-//    public static final String COMMAND_WORD = "delete";
-//
-//    public static final String MESSAGE_USAGE = COMMAND_WORD
-//            + ": Deletes the ingredient identified by the index number used in the displayed ingredient list.\n"
-//            + "Parameters: INDEX (must be a positive integer)\n"
-//            + "Example: " + COMMAND_WORD + " 1";
-//
-//    public static final String MESSAGE_DELETE_INGREDIENT_SUCCESS = "Deleted Ingredient: %1$s";
-//
-//    private final Index targetIndex;
-//
-//    public DeleteCommand(Index targetIndex) {
-//        this.targetIndex = targetIndex;
-//    }
-//
-//    @Override
-//    public CommandResult execute(Model model) throws CommandException {
-//        requireNonNull(model);
-//        List<Ingredient> lastShownList = model.getFilteredIngredientList();
-//
-//        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-//            throw new CommandException(Messages.MESSAGE_INVALID_INGREDIENT_DISPLAYED_INDEX);
-//        }
-//
-//        Ingredient ingredientToDelete = lastShownList.get(targetIndex.getZeroBased());
-//        model.deleteIngredient(ingredientToDelete);
-//        return new CommandResult(String.format(MESSAGE_DELETE_INGREDIENT_SUCCESS,
-//        Messages.format(ingredientToDelete)));
-//    }
-//
-//    @Override
-//    public boolean equals(Object other) {
-//        if (other == this) {
-//            return true;
-//        }
-//
-//        // instanceof handles nulls
-//        if (!(other instanceof DeleteCommand)) {
-//            return false;
-//        }
-//
-//        DeleteCommand otherDeleteCommand = (DeleteCommand) other;
-//        return targetIndex.equals(otherDeleteCommand.targetIndex);
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return new ToStringBuilder(this)
-//                .add("targetIndex", targetIndex)
-//                .toString();
-//    }
-//}
+package seedu.address.logic.commands;
+
+import static java.util.Objects.requireNonNull;
+
+import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.recipe.Recipe;
+import seedu.address.model.recipe.UniqueId;
+
+
+/**
+ * Deletes a recipe identified using it's displayed index from the recipe book.
+ */
+public class DeleteCommand extends Command {
+
+    public static final String COMMAND_WORD = "delete";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Deletes the recipe identified by the Unique Id (uuid) in the displayed recipe list.\n"
+            + "Parameters: UUID (must be a positive integer greater than 1)\n"
+            + "Example: " + COMMAND_WORD + " 1";
+
+    public static final String MESSAGE_DELETE_RECIPE_SUCCESS = "Deleted Recipe: %1$s";
+
+    private final UniqueId uuid;
+
+    public DeleteCommand(UniqueId uuid) {
+        this.uuid = uuid;
+    }
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
+
+        if (!model.hasRecipe(this.uuid)) {
+            throw new CommandException(Messages.MESSAGE_RECIPE_DOES_NOT_EXIST);
+        }
+
+        Recipe deletedRecipe = model.getRecipe(this.uuid);
+        model.deleteRecipe(deletedRecipe);
+
+        return new CommandResult(String.format(MESSAGE_DELETE_RECIPE_SUCCESS, this.uuid));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof DeleteCommand)) {
+            return false;
+        }
+
+        DeleteCommand otherDeleteCommand = (DeleteCommand) other;
+        return (this.uuid.equals(otherDeleteCommand.uuid));
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("uuid", uuid)
+                .toString();
+    }
+}

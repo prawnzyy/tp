@@ -10,9 +10,10 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.exceptions.UnitConversionException;
 
 /**
- * Adds a ingredient to the inventory.
+ * Adds an ingredient to the inventory.
  */
 public class AddCommand extends Command {
 
@@ -24,14 +25,14 @@ public class AddCommand extends Command {
             + PREFIX_QUANTITY + "QUANTITY "
             + PREFIX_UNIT + "UNIT "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "milk "
+            + PREFIX_NAME + "flour "
             + PREFIX_QUANTITY + "600 "
-            + PREFIX_UNIT + "ml ";
+            + PREFIX_UNIT + "g ";
 
     public static final String MESSAGE_SUCCESS = "New ingredient added: %1$s";
     public static final String MESSAGE_DUPLICATE_INGREDIENT = "This ingredient already exists in the inventory";
 
-    private final Ingredient toAdd;
+    final Ingredient toAdd;
 
     /**
      * Creates an AddCommand to add the specified {@code Ingredient}
@@ -44,8 +45,13 @@ public class AddCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.addIngredient(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        try {
+            model.addIngredient(toAdd);
+        } catch (UnitConversionException uce) {
+            throw new CommandException(uce.getMessage());
+        }
+        Ingredient editedIngredient = new Ingredient(toAdd.getName(), model.getQuantityOf(toAdd.getName()));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(editedIngredient)));
     }
 
     @Override

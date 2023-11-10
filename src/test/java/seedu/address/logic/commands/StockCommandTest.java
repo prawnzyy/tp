@@ -17,15 +17,16 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.RecipeBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.ingredient.NameContainsKeywordsPredicate;
 
 /**
- * Contains integration tests (interaction with the Model) for {@code FindCommand}.
+ * Contains integration tests (interaction with the Model) for {@code StockCommand}.
  */
 public class StockCommandTest {
-    private Model model = new ModelManager(getTypicalInventory(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalInventory(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalInventory(), new UserPrefs(), new RecipeBook());
+    private Model expectedModel = new ModelManager(getTypicalInventory(), new UserPrefs(), new RecipeBook());
 
     @Test
     public void equals() {
