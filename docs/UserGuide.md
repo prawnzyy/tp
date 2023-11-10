@@ -11,9 +11,6 @@ Command Line Interface** (CLI) while still having the benefits of a Graphical Us
 towards bakers like yourselves to aid you on your baking journey.
 If you can type fast, [BA]king [BR]ead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
 
-<!-- * Table of Contents -->
-<page-nav-print />
-
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
 * [Quick Start](#quick-start)
@@ -22,12 +19,12 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
   * [Add ingredient](#adding-an-ingredient-add)
   * [Use ingredient](#using-up-ingredients-use)
   * [Find quantity of ingredient](#finding-the-quantity-of-an-ingredient-by-name-stock)
-  * [Clear ingredient list](#clearing-all-entries-clear)
-  * [View list of recipes](#listing-all-recipes-list)
+  * [Clear ingredient list](#clearing-all-entries-from-ingredient-stock-clear)
+  * [View list of all recipes](#listing-all-recipes-list)
   * [View a recipe](#viewing-specific-recipes-view)
   * [Add a recipe](#adding-recipes-addrecipe)
   * [Modify a recipe](#modifying-recipes-modify)
-  * [Search for recipes that have an ingredient](#searching-recipes-search)
+  * [Search for recipes that have an ingredient](#searching-recipes-given-an-ingredient-search)
   * [Exit the program](#exiting-the-program-exit)
   * [Save the data](#saving-the-data)
   * [Edit the data file](#editing-the-data-file)
@@ -164,7 +161,7 @@ Examples:
 * `stock Butter` returns `Butter: 50g`
 * `stock Butter flour` returns `Butter: 100g`, `Flour: 2000g`<br>
 
-### Clearing all entries : `clear`
+### Clearing all entries from ingredient stock : `clear`
 
 Clears all entries from the ingredient stock.
 
@@ -255,9 +252,9 @@ Examples:
 * `delete 1` deletes the recipe with `UUID` of 1
 * `delete 21` deletes the recipe with `UUID` of 21
 
-### Searching Recipes : `search`
+### Searching Recipes given an ingredient: `search`
 
-Searches for recipes that include a specific ingredient in the recipe.
+Searches for recipes that includes a specific ingredient in the recipe.
 
 Format: `search NAME`
 
