@@ -6,7 +6,9 @@ import static seedu.address.logic.parser.RecipeAddCommandParser.MESSAGE_FAIL_STE
 import static seedu.address.logic.parser.RecipeAddCommandParser.MESSAGE_SUCCESS_INGREDIENT;
 import static seedu.address.logic.parser.RecipeAddCommandParser.MESSAGE_SUCCESS_NAME;
 import static seedu.address.logic.parser.RecipeAddCommandParser.MESSAGE_SUCCESS_STEP;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.RecipeAddCommand;
 import seedu.address.model.ingredient.Ingredient;
@@ -30,9 +32,10 @@ public class RecipeAddCommandParserTest {
     }
 
     @Test
-    public void parse_IngredientFieldPresent_success() {
+    public void parse_ingredientFieldPresent_success() {
         Ingredient expectedIngredient = new IngredientBuilder().withName("flour").withQuantity(100, Unit.GRAM).build();
-        Recipe expectedRecipe = new RecipeBuilder().withName("cookie").withId(2).withIngredient(expectedIngredient).build();
+        Recipe expectedRecipe = new RecipeBuilder()
+                .withName("cookie").withId(2).withIngredient(expectedIngredient).build();
         parser.reset();
         assertEquals(parser.addIngredient("flour 100g"), MESSAGE_SUCCESS_INGREDIENT);
         parser.addName("cookie");
@@ -42,8 +45,9 @@ public class RecipeAddCommandParserTest {
         assertEquals(parser.addName("cookie"), MESSAGE_SUCCESS_NAME);
     }
     @Test
-    public void parse_StepFieldPresent_success() {
-        Recipe expectedRecipe = new RecipeBuilder().withName("cookie").withId(2).withSteps("eat cookie", 1).build();
+    public void parse_stepFieldPresent_success() {
+        Recipe expectedRecipe = new RecipeBuilder()
+                .withName("cookie").withId(2).withSteps("eat cookie", 1).build();
         parser.reset();
         assertEquals(parser.addStep("1. eat cookie"), MESSAGE_SUCCESS_STEP);
         parser.addName("cookie");
