@@ -35,7 +35,6 @@ Given below are my contributions to the project.
     - Wrote the implementation for the delete recipe feature
     - Wrote the implementation for the modify recipe feature
 
-
 * **Contribution to team-based tasks**
     - Helped merge and approve other team members' code
     - Updating of README
