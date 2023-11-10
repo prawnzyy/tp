@@ -15,8 +15,6 @@ pageNav: 3
 This project is based on the [AddressBook-Level3](https://se-education.org/addressbook-level3/) project created by the 
 [SE-EDU initiative](se-education.org).
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
@@ -271,7 +269,7 @@ The following sequence diagram shows how the list recipe feature works:
 
 <img src="images/UML/listrecipesequencediagram.png" width="800px">
 
-### Design Considerations:
+#### Design Considerations:
 **Aspect : How view executes:**
 - Alternative 1 (Current Choice): Gets the list from the "RecipeBook"
   - Pro: Easy to implement
