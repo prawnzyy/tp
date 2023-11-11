@@ -92,9 +92,14 @@ The `UI` component,
 
 ### Model Component
 
-**API**: Model.java
+**API**: [`Model.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-The `Model`
+<puml src="diagrams/ModelClassDiagram.puml" alt="Structure of the Model Component"/>
+
+The `Model` stores `Ingredient` and `Recipe`, the main components of this product. It provides the API to interact with
+the available list of `Ingredient` and `Recipe`.
+
+The `Model` component,
 
 - stores a `UserPref` object that represents the user's preferences.
 - stores the `Inventory` data.
@@ -104,14 +109,19 @@ The `Model`
 
 ### Storage Component
 
-**API**: Storage.java, RecipeStorage.java
+**API**: [`Storage.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-The `Storage`
+<puml src="diagrams/StorageClassDiagram.puml" alt="Structure of the Storage Component"/>
+
+The `Storage` manages the saving and reading of currently available `Ingredient` and `Recipe` to local storage.
+It allows users to use the product as-is throughout different sessions.
+
+The `Storage` component,
 
 - consists of an Inventory Storage and Recipe Book Storage sub-component.
 - saves the `UserPref` object in json format and read it back.
 - saves the `Inventory` object in json format and read it back.
-.- saves the `RecipeBook` object in json format and read it back.
+- saves the `RecipeBook` object in json format and read it back.
 
 ## Implementation
 This section describes some noteworthy details on how certain features are implemented.
@@ -588,7 +598,79 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Adding an ingredient
+
+1. Adding an ingredient with quantity and unit
+    1. Test case: `add n/Potato Starch q/100 u/g`<br>
+       Expected: Adds Potato Starch to the ingredients or increases the amount of Potato Starch by 100g if it already exists.
+   
+    1. Other incorrect add commands to try : `add`, `add n/Flour`<br>
+       Expected: Error details shown in the status message.
+
+### Using an ingredient
+
+1. Using an ingredient with quantity and unit or neither
+
+    1. Prerequisites: Ingredients to be used are currently in the ingredient list<br>
+
+    1. Test case: `use n/Flour q/100 u/g`<br>
+     Expected: Uses 100g of Potato Starch or all of it if there is less than 100g of it left.
+
+    1. Test case: `use n/Flour`<br>
+     Expected: Uses the entire stock of Potato Starch. 
+
+    1. Other incorrect add commands to try : `use`, `use n/Flour q/100`<br>
+     Expected: Error details shown in the status message.
+
+### Viewing of Ingredients
+
+1. Views all or specific ingredients
+
+    1. Test case: `stock`<br>
+       Expected: Displays all ingredients.
+
+    1. Test case: `stock butter`<br>
+       Expected: Displays all ingredients with butter in their name.
+
+### Viewing all recipes
+
+1. Displays all recipes
+
+    1. Test case: `list`<br>
+       Expected: Displays all recipes.
+
+### Viewing a specific recipe
+
+1. Views a specific recipe based on the UUID
+
+    1. Test case: `view 1`<br>
+       Expected: Displays the recipe with UUID 1.
+
+    1. Other incorrect delete commands to try: `view`, `view x`(where x is larger than the list size)<br>
+       Expected: Error details shown in the status message.
+
+### Adding a recipe
+
+1. Adds a recipe with the name, ingredients and steps
+
+    1. Test case: `addrecipe`, `Bread`, `Flour 100g`, `Milk 50g`, `steps start`, `1. Mix Flour and Milk`, `2. Bake at 300C for 30min`, `complete recipe` (**Note**: Each block represents one line or one input)<br>
+       Expected: Adds the recipe Bread with the ingredients and steps
+
+### Modifying a recipe
+
+1. Modifies the ingredients of a recipe
+
+    1. Prerequisite: To be modified recipe exists
+   
+    1. Test case: `modify i/1 n/Flour q/100 u/g`
+       Expected: Changes the quantity of flour to 100 if the ingredient exists. Adds the ingredient if it does not.
+
+### Searching for a recipe with a specific ingredient
+
+1. Searches for all recipes that contains the ingredient
+
+    1. Test case: `search flour`
+       Expected: Displays all recipes that uses the ingredient flour
 
 ### Deleting a recipe
 
@@ -605,40 +687,52 @@ testers are expected to do more *exploratory* testing.
     1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
-
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. Head over to the folder where your jar file is located and then delete both inventory.json and recipeBook.json within the data folder.
+    2. Restart the application and new sample data should be used instead.
 
-1. _{ more test cases …​ }_
+--------------------------------------------------------------------------------------------------------------------
+## **Appendix: Effort**
+To be added
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**
-1. Currently, the UUIDs for the recipes are unique across deleted and non deleted recipes. As such, when deleting a recipe, the corresponding UUID will no longer
+#### 1. Recycling of UUIDs after deleting recipes
+   Currently, the UUIDs for the recipes are unique across deleted and non deleted recipes. As such, when deleting a recipe, the corresponding UUID will no longer
    be available. For example, if there are recipes with the UUIDs 1, 2 and 3 and recipe with UUID 2 gets deleted, then the 
    next recipe added will have a UUID of 4 instead of 2 as 2 is no longer in use. We plan to make it such that when a recipe
    gets deleted, the next recipe added will take on this UUID to ensure that the UUID does not end up getting too large.
 
-2. When inputting the ingredients during the addrecipe commands, users are able to entirely skip this portion by just typing
+#### 2. Ensuring at least one ingredient in a recipe
+   When inputting the ingredients during the addrecipe commands, users are able to entirely skip this portion by just typing
    steps start. This however is unrealistic as no recipe would require no ingredients to make. We plan to add a sanity check
    to ensure that at least one ingredient is inserted into the recipe.
 
-3. As a continuation from enhancement 2, addrecipe is also able to execute successfully without inputting any steps. We plan to make it such that
+#### 3. Ensuring at least one step in a recipe
+   As a continuation from enhancement 2, addrecipe is also able to execute successfully without inputting any steps. We plan to make it such that
    users have to input at least one step.
 
-4. When adding ingredients to a recipe during the addrecipe command, there is no check to ensure that only one ingredient is
+#### 4. Checking only one ingredient inserted
+   When adding ingredients to a recipe during the addrecipe command, there is no check to ensure that only one ingredient is
    being inputted at any point in time. As such, inputs such as `flour 100g milk 100g` would be parsed as `name: flour 100g milk`,
    `quantity: 100` `unit: g`. We plan to add a check that would ensure only one ingredient can be inputted at one time.
    So `flour 100g` would work but `flour 100g milk 100g` would return an error message.
 
-5. When using ingredients, either both unit and quantity must be inputted or neither must be present. However, it would be
+#### 5. Allowing for use of default unit
+   When using ingredients, either both unit and quantity must be inputted or neither must be present. However, it would be
    more efficient if we could just use input the quantity and use based on the unit of the ingredient. We plan to add a way
    to input only the name and quantity without the units to be more intuitive. For example: `use n/flour q/100` will not
    show an error but rather, consume 100 of whatever unit that flour is currently stored in.
+<<<<<<< HEAD
+
+#### 6. Checking for recipe steps
+When adding recipe steps during the addrecipe command, the numbering of the steps is entirely dependent on the user and users
+can input in the wrong order as such `1 4 5` as it is up to user input. We plan to add a check in future where users need not type in the step number
+and the application will automatically generate the index as per the order of steps inputted.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Effort**
@@ -653,3 +747,8 @@ effort to fix.
   - Figuring out how to change the view from a recipe list to a full recipe view was not simple, how javafx updates its 
 UI components is not explained or easily understood through the UI code.
   - The UI is also made to be size responsive, the layout will retain its integrity even if the app is viewed in full-screen.
+=======
+
+
+   
+>>>>>>> master
