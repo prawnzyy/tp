@@ -616,6 +616,9 @@ testers are expected to do more *exploratory* testing.
 1. _{ more test cases …​ }_
 
 --------------------------------------------------------------------------------------------------------------------
+## **Appendix: Effort**
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**
 1. Currently, the UUIDs for the recipes are unique across deleted and non deleted recipes. As such, when deleting a recipe, the corresponding UUID will no longer
