@@ -69,9 +69,12 @@
     },
     {
       "src": "DeveloperGuide.md",
+      "title": "Developer Guide",
       "headings": {
+        "ba-king-br-ead-developer-guide": "[Ba]king [Br]ead Developer Guide",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
+        "design": "Design",
         "architecture": "Architecture",
         "ui-component": "UI component",
         "model-component": "Model Component",
@@ -81,9 +84,9 @@
         "add-recipe-feature": "Add recipe feature",
         "view-recipe-feature": "View recipe feature",
         "list-recipe-feature": "List recipe feature",
-        "design-considerations": "Design Considerations:",
         "search-recipe-feature": "Search recipe feature",
         "delete-recipe-feature": "Delete recipe feature",
+        "modify-recipe-feature": "Modify recipe feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product Scope",
@@ -93,7 +96,8 @@
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
         "deleting-a-recipe": "Deleting a recipe",
-        "saving-data": "Saving data"
+        "saving-data": "Saving data",
+        "appendix-planned-enhancements": "Appendix: Planned Enhancements"
       },
       "headingKeywords": {}
     },
@@ -169,13 +173,13 @@
         "adding-an-ingredient-add": "Adding an ingredient: add",
         "using-up-ingredients-use": "Using up ingredients : use",
         "finding-the-quantity-of-an-ingredient-by-name-stock": "Finding the quantity of an ingredient by name: stock",
-        "clearing-all-entries-clear": "Clearing all entries : clear",
+        "clearing-all-entries-from-ingredient-stock-clear": "Clearing all entries from ingredient stock : clear",
         "listing-all-recipes-list": "Listing all Recipes : list",
         "viewing-specific-recipes-view": "Viewing Specific Recipes : view",
         "adding-recipes-addrecipe": "Adding Recipes : addrecipe",
         "modifying-recipes-modify": "Modifying Recipes : modify",
         "deleting-recipes-delete": "Deleting Recipes : delete",
-        "searching-recipes-search": "Searching Recipes : search",
+        "searching-recipes-given-an-ingredient-search": "Searching Recipes given an ingredient: search",
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
         "editing-the-data-file": "Editing the data file",
@@ -195,13 +199,17 @@
     },
     {
       "src": "team/dhruvir29.md",
-      "headings": {},
+      "headings": {
+        "dhruvi-ketan-rathod-s-project-portfolio-page": "Dhruvi Ketan Rathod's Project Portfolio Page",
+        "project-ba-king-br-ead": "Project: [Ba]king [Br]ead"
+      },
       "headingKeywords": {}
     },
     {
       "src": "team/itstytan.md",
       "title": "Tan Tze Young's Project Portfolio Page",
       "headings": {
+        "tan-tze-young-s-project-portfolio-page": "Tan Tze Young's Project Portfolio Page",
         "project-ba-king-br-ead": "Project: [Ba]king [Br]ead"
       },
       "headingKeywords": {}
@@ -216,14 +224,17 @@
     },
     {
       "src": "team/prawnzyy.md",
-      "headings": {},
+      "headings": {
+        "seah-zi-xiang-s-project-portfolio-page": "Seah Zi Xiang's Project Portfolio Page"
+      },
       "headingKeywords": {}
     },
     {
       "src": "team/thaddeusong.md",
       "headings": {
         "overview": "Overview",
-        "summary-of-contributions": "Summary of Contributions",
+        "enhancements-implemented": "Enhancements implemented",
+        "contribution-to-team-based-tasks": "Contribution to team-based tasks**",
         "contributions-to-developer-guide": "Contributions to Developer Guide",
         "contributions-to-user-guide": "Contributions to User Guide"
       },
@@ -231,7 +242,10 @@
     },
     {
       "src": "team/tohliyuan.md",
-      "headings": {},
+      "headings": {
+        "toh-li-yuan-s-project-portfolio-page": "Toh Li Yuan's Project Portfolio Page",
+        "project-ba-king-br-ead": "Project: [Ba]king [Br]ead"
+      },
       "headingKeywords": {}
     },
     {
