@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalIngredients.getTypicalInventory;
 
@@ -30,7 +31,7 @@ public class AddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_newIngredient_success() {
+    public void execute__existingIngredientAddedTo_success() {
         Ingredient validIngredient = new IngredientBuilder().build();
         Ingredient expectedIngredient = new Ingredient(new Name("Flour"), new Quantity(150.0, Unit.GRAM));
 
@@ -39,5 +40,35 @@ public class AddCommandIntegrationTest {
         assertCommandSuccess(new AddCommand(validIngredient), model,
                 String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(expectedIngredient)),
                 expectedModel);
+    }
+
+    @Test
+    public void execute_newIngredient_success() {
+        Ingredient addIngredient =  new Ingredient(new Name("Lemon"), new Quantity(2, Unit.PIECE));
+        Ingredient expectedIngredient = new Ingredient(new Name("Lemon"), new Quantity(2, Unit.PIECE));
+        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs(), new RecipeBook());
+        expectedModel.addIngredient(addIngredient);
+        assertCommandSuccess(new AddCommand(addIngredient), model,
+                String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(expectedIngredient)),
+                expectedModel);
+    }
+
+    @Test
+    public void execute_unitConversion_success() {
+        Ingredient addIngredient =  new Ingredient(new Name("Flour"), new Quantity(2, Unit.KILOGRAM));
+        Ingredient expectedIngredient = new Ingredient(new Name("Flour"), new Quantity(2100, Unit.GRAM));
+        Model expectedModel = new ModelManager(model.getInventory(), new UserPrefs(), new RecipeBook());
+        expectedModel.addIngredient(addIngredient);
+        assertCommandSuccess(new AddCommand(addIngredient), model,
+                String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(expectedIngredient)),
+                expectedModel);
+    }
+
+
+    @Test
+    public void execute_unitConversion_throwsCommandException() {
+        Ingredient addIngredient =  new Ingredient(new Name("Flour"), new Quantity(2, Unit.PIECE));
+        AddCommand addCommand = new AddCommand(addIngredient);
+        assertCommandFailure(addCommand, model, "Unit PIECE cannot be converted to GRAM!");
     }
 }
