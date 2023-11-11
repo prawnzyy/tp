@@ -207,6 +207,11 @@ steps start
 complete recipe
 ```
 
+* Name of Recipe needs to be of Alphanumeric format
+* Ingredients inputted **must** be of the format `(name) (quantity)(unit)` where an example is `flour 100g`
+* For the recipe steps, the format to follow is `(index). (step)` where an example is `1. Mix Water and Flour`
+* For the recipe steps, you have to remember the index of step you are typing in and check it by yourself.
+
 Example:
 ```
 addrecipe
