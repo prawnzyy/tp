@@ -639,3 +639,17 @@ testers are expected to do more *exploratory* testing.
    more efficient if we could just use input the quantity and use based on the unit of the ingredient. We plan to add a way
    to input only the name and quantity without the units to be more intuitive. For example: `use n/flour q/100` will not
    show an error but rather, consume 100 of whatever unit that flour is currently stored in.
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
+- Significant effort went into refactoring the entire code base to change the AddressBook entities into ingredients and recipes.
+- The recipe model and ingredient model were not trivial to design.
+  - Much consideration was given to the design of the system representing the different units of an ingredient and the conversion between them.
+  - The recipe model and how to build a recipe is also complex, since a recipe composes of many steps and ingredients.
+  - Compared to AB3, our application manages more entities and has entities of greater complexity.
+- The above also meant the add recipe and modify recipe feature were not easy to implement, and were very bug prone which took
+effort to fix.
+- The UI design took a significant effort, a mockup design was first done on figma to test the color combinations and layouts.
+  - Figuring out how to change the view from a recipe list to a full recipe view was not simple, how javafx updates its 
+UI components is not explained or easily understood through the UI code.
+  - The UI is also made to be size responsive, the layout will retain its integrity even if the app is viewed in full-screen.
