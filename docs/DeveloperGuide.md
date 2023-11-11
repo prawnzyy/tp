@@ -92,9 +92,14 @@ The `UI` component,
 
 ### Model Component
 
-**API**: Model.java
+**API**: [`Model.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-The `Model`
+<puml src="diagrams/ModelClassDiagram.puml" alt="Structure of the Model Component"/>
+
+The `Model` stores `Ingredient` and `Recipe`, the main components of this product. It provides the API to interact with
+the available list of `Ingredient` and `Recipe`.
+
+The `Model` component,
 
 - stores a `UserPref` object that represents the user's preferences.
 - stores the `Inventory` data.
@@ -104,14 +109,19 @@ The `Model`
 
 ### Storage Component
 
-**API**: Storage.java, RecipeStorage.java
+**API**: [`Storage.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-The `Storage`
+<puml src="diagrams/StorageClassDiagram.puml" alt="Structure of the Storage Component"/>
+
+The `Storage` manages the saving and reading of currently available `Ingredient` and `Recipe` to local storage.
+It allows users to use the product as-is throughout different sessions.
+
+The `Storage` component,
 
 - consists of an Inventory Storage and Recipe Book Storage sub-component.
 - saves the `UserPref` object in json format and read it back.
 - saves the `Inventory` object in json format and read it back.
-.- saves the `RecipeBook` object in json format and read it back.
+- saves the `RecipeBook` object in json format and read it back.
 
 ## Implementation
 This section describes some noteworthy details on how certain features are implemented.
