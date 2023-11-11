@@ -722,3 +722,4 @@ To be added
    When adding recipe steps during the addrecipe command, the numbering of the steps is entirely dependent on the user and users
    can input in the wrong order as such `1 4 5` as it is up to user input. We plan to add a check in future where users need not type in the step number
    and the application will automatically generate the index as per the order of steps inputted.
+   
