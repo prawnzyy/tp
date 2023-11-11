@@ -695,10 +695,6 @@ testers are expected to do more *exploratory* testing.
     2. Restart the application and new sample data should be used instead.
 
 --------------------------------------------------------------------------------------------------------------------
-## **Appendix: Effort**
-To be added
-
---------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**
 #### 1. Recycling of UUIDs after deleting recipes
@@ -727,7 +723,6 @@ To be added
    more efficient if we could just use input the quantity and use based on the unit of the ingredient. We plan to add a way
    to input only the name and quantity without the units to be more intuitive. For example: `use n/flour q/100` will not
    show an error but rather, consume 100 of whatever unit that flour is currently stored in.
-<<<<<<< HEAD
 
 #### 6. Checking for recipe steps
 When adding recipe steps during the addrecipe command, the numbering of the steps is entirely dependent on the user and users
@@ -747,8 +742,4 @@ effort to fix.
   - Figuring out how to change the view from a recipe list to a full recipe view was not simple, how javafx updates its 
 UI components is not explained or easily understood through the UI code.
   - The UI is also made to be size responsive, the layout will retain its integrity even if the app is viewed in full-screen.
-=======
 
-
-   
->>>>>>> master
