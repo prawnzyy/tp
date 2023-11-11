@@ -330,23 +330,24 @@ Step 1. The user keys in `delete 1` into the UI command box. `LogicManager` take
 Step 2. `InventoryAppParser` is then called to parse the `delete 1` command.
 
 Step 3. By Polymorphism, `DeleteCommandParser` is called on to handle the parsing. The `parse(String args)` function is 
-called with the argument of "1" and the "1" is parsed as an `Integer`. It is then wrapped in a `UniqueId` constructor.
+called with the argument of "1" and the "1" is parsed as an `Integer`. This integer is then wrapped in a `UniqueId` constructor.
 
 Step 4: This results in the creation of a `DeleteCommand` object with the `UniqueId` created passed in as a parameter.
 
 Step 5: This `DeleteCommand` object is then executed by the `LogicManager`.
 
-Step 6: During execution, the recipe whose UUID matches with the UniqueId passed in is retrieved from the model and the 
-`Model#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be deleted from the 
-recipe list.
+Step 6: During execution, the recipe whose UUID matches with the UniqueId passed into the `DeleteCommand` is retrieved 
+from the recipe list through the `Model#getRecipe(UniqueId uuid)` and the `Model#deleteRecipe(Recipe recipe)` will be 
+called with this recipe, causing the recipe to be deleted from the recipe list.
 
-**Note**: If the argument is an invalid uuid (less than or equals to 0), a 
+**Note**: If the argument is an invalid UUID (less than or equals to 0), a 
 `ParseException` will be thrown and users will be informed that there is no recipe with that uuid.
 
-**Note**: If the recipe with that uuid does not exist in the app, a `CommandException` will be thrown and users will be 
+**Note**: If the recipe with that UUID does not exist in the app, a `CommandException` will be thrown and users will be 
 informed that there is no recipe with that uuid.
 
-The following sequence diagram shows how the DeleteCommand works: (TO BE ADDED)
+The following sequence diagram shows how the DeleteCommand works:
+<img src="images/UML/deletesequencediagram.png" width="800px">
 
 **Note**: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, 
 the lifeline reaches the end of diagram.
@@ -366,11 +367,11 @@ and executes it.
 Step 2. `InventoryAppParser` is then called to parse the `modify i/1 n/Milk q/100 u/g` command.
 
 Step 3. By Polymorphism, `ModifyCommandParser` is called on to handle the parsing. The `parse(String args)` function is
-called with the argument of "i/1 n/Milk q/100 u/g" and this is then tokenized into the uuid of the recipe that will be modified, 
+called with the argument of "i/1 n/Milk q/100 u/g" and this is then tokenized into the UUID of the recipe that will be modified, 
 the modified ingredient's name, amount and unit. An `Ingredient` is created with this name and quantity (which consists 
 of the amount and unit) specified. 
 
-Step 4: This results in the creation of a `ModifyCommand` object with two parameters passed in - the uuid specified 
+Step 4: This results in the creation of a `ModifyCommand` object with two parameters passed in - the UUID specified 
 earlier wrapped in a `UniqueId` constructor as well as the `Ingredient`created earlier.
 
 Step 5: This `ModifyCommand` object is then executed by the `LogicManager`.  
@@ -391,8 +392,8 @@ it was modified.
 
 Step 8: Then the `Model#addRecipe(Recipe recipe)` is called on the new recipe that has the modified ingredient list.
 
-`ModifyCommand` then calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
-recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate` that matches the uuid that was passed into 
+Step 9: `ModifyCommand` then calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
+recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate` that matches the UUID that was passed into 
 `ModifyCommand`.
 
 **Note**: If the argument is an invalid uuid (less than or equals to 0), a
@@ -401,7 +402,15 @@ recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate` that matches t
 **Note**: If the recipe with that uuid does not exist in the app, a `CommandException` will be thrown and users will be
 informed that there is no recipe with that uuid.
 
-The following sequence diagram shows how the modify recipe feature works: (TO BE ADDED)
+The following sequence diagram shows how the modify recipe feature works:
+
+<img src="images/UML/modifysequencediagram.png" width="2000px">
+
+**Note**: Due to limited space in the sequence diagram, certain behaviour could not be shown.
+1. `recipeUuid` is the UUID of the recipe that was passed into `ModifyCommand`. 
+2. `newRecipe` is the modified version of the recipe that contains the modified list of ingredients. This recipe was 
+created with interaction with `Recipe` as mentioned in Step 6 above. 
+3. `predicate` is the `RecipeUuidMatchesPredicate` that matches the UUID that was passed into `ModifyCommand`.
 
 --------------------------------------------------------------------------------------------------------------------
 
