@@ -10,7 +10,6 @@ import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.CommandTestUtil.QUANTITY_DESC_FLOUR;
 import static seedu.address.logic.commands.CommandTestUtil.UNIT_DESC_FLOUR;
 import static seedu.address.logic.commands.CommandTestUtil.UUID_DESC_RECIPE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_UUID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
