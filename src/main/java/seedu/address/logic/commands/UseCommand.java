@@ -30,7 +30,7 @@ public class UseCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "milk "
             + PREFIX_QUANTITY + "600 "
-            + PREFIX_UNIT + "ml ";
+            + PREFIX_UNIT + "g ";
 
     public static final String MESSAGE_SUCCESS = "Ingredient used: %1$s";
 

@@ -1,17 +1,25 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NEG_UUID_DESC_RECIPE;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_QUANTITY_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_UNIT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ZERO_UUID_DESC_RECIPE;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_FLOUR;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.CommandTestUtil.QUANTITY_DESC_FLOUR;
 import static seedu.address.logic.commands.CommandTestUtil.UNIT_DESC_FLOUR;
 import static seedu.address.logic.commands.CommandTestUtil.UUID_DESC_RECIPE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_UUID;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.model.Name;
 import seedu.address.model.ingredient.Ingredient;
@@ -67,5 +75,72 @@ public class ModifyCommandParserTest {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + UUID_DESC_RECIPE + NAME_DESC_FLOUR
                 + QUANTITY_DESC_FLOUR + " u/ml ", "This is not a valid unit!");
     }
+
+    @Test
+    public void parse_repeatedValue_failure() {
+        String validExpectedIngredientString = UUID_DESC_RECIPE + NAME_DESC_FLOUR + QUANTITY_DESC_FLOUR
+                + UNIT_DESC_FLOUR;
+
+        //multiple uuids
+        assertParseFailure(parser, UUID_DESC_RECIPE + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UUID));
+
+        // multiple names
+        assertParseFailure(parser, NAME_DESC_FLOUR + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+
+        // multiple quantities
+        assertParseFailure(parser, QUANTITY_DESC_FLOUR + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_QUANTITY));
+
+        // multiple units
+        assertParseFailure(parser, UNIT_DESC_FLOUR + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UNIT));
+
+        // multiple fields repeated
+        assertParseFailure(parser,
+                validExpectedIngredientString + UUID_DESC_RECIPE + NAME_DESC_FLOUR + QUANTITY_DESC_FLOUR
+                        + UNIT_DESC_FLOUR + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UUID, PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT));
+
+        // invalid value followed by valid value
+
+        // invalid uuid
+        assertParseFailure(parser, INVALID_NEG_UUID_DESC_RECIPE + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UUID));
+
+        // invalid name
+        assertParseFailure(parser, INVALID_NAME_DESC + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+
+        // invalid quantity
+        assertParseFailure(parser, INVALID_QUANTITY_DESC + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_QUANTITY));
+
+        // invalid unit
+        assertParseFailure(parser, INVALID_UNIT_DESC + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UNIT));
+
+
+        // valid value followed by invalid value
+
+        // invalid uuid
+        assertParseFailure(parser, validExpectedIngredientString + INVALID_NEG_UUID_DESC_RECIPE,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UUID));
+
+        // invalid name
+        assertParseFailure(parser, validExpectedIngredientString + INVALID_NAME_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+
+        // invalid quantity
+        assertParseFailure(parser, validExpectedIngredientString + INVALID_QUANTITY_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_QUANTITY));
+
+        // invalid quantity
+        assertParseFailure(parser, validExpectedIngredientString + INVALID_UNIT_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UNIT));
+
+    }
+
 
 }

@@ -54,6 +54,7 @@ public class CommandTestUtil {
     public static final String INVALID_NEG_UUID_DESC_RECIPE = " " + PREFIX_UUID + INVALID_NEG_UUID;
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_QUANTITY_DESC = " " + PREFIX_QUANTITY + "hundred";
+    public static final String INVALID_UNIT_DESC = " " + PREFIX_UNIT + "ml";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
