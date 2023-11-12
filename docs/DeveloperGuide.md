@@ -241,7 +241,7 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the view recipe operation works:
 
-<img src="images/UML/viewrecipesequencediagram.png">
+<img src="images/UML/viewrecipesequencediagram.png" width="700px">
 
 #### Alternatives considered:
 An alternative implementation considered is to find the first recipe with UUID that matches instead of filtering through
@@ -277,7 +277,7 @@ Step 6. After execution, the returned `CommandResult` will then be returned back
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/listrecipesequencediagram.png">
+<img src="images/UML/listrecipesequencediagram.png" width="700px">
 
 #### Design Considerations:
 **Aspect : How view executes:**
@@ -316,7 +316,7 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/searchrecipesequencediagram.png">
+<img src="images/UML/searchrecipesequencediagram.png" width="700px">
 
 ### Delete recipe feature
 #### Implementation
