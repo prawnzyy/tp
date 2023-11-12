@@ -36,7 +36,7 @@ public class Recipe {
     /** Creates a new Recipe with the specified {@code id}. */
     public Recipe(int id, Name name, List<Ingredient> ingredientList, List<RecipeStep> recipeSteps) {
         requireAllNonNull(id, name, ingredientList, recipeSteps);
-        this.uuid = new UniqueId(id);
+        this.uuid = UniqueId.importUniqueId(id);
         this.name = name;
         this.ingredientList = ingredientList;
         this.recipeSteps = recipeSteps;
@@ -50,6 +50,10 @@ public class Recipe {
         return this.uuid.getId();
     }
 
+    public UniqueId getUuid() {
+        return this.uuid;
+    }
+
     public List<Ingredient> getIngredients() {
         return this.ingredientList;
     }
@@ -57,7 +61,6 @@ public class Recipe {
     public List<String> getRecipeSteps() {
         return this.recipeSteps.stream().map(RecipeStep::toString).collect(Collectors.toList());
     }
-
 
     /** Check if the current recipe contains the specified ingredient name. */
     public boolean containsIngredient(Name ingredientName) {

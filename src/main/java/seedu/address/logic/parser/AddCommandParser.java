@@ -20,7 +20,6 @@ import seedu.address.model.ingredient.exceptions.UnitFormatException;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
-    // change later to make the unit optional
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
@@ -37,7 +36,6 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
 
         Unit unit;
         try {
@@ -45,8 +43,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         } catch (UnitFormatException e) {
             throw new ParseException("This is not a valid unit!");
         }
-
-        Quantity quantity = new Quantity(amount, unit);
+        Quantity quantity = ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY).get(), unit);
         Ingredient ingredient = new Ingredient(name, quantity);
 
         return new AddCommand(ingredient);

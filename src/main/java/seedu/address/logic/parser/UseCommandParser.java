@@ -33,6 +33,13 @@ public class UseCommandParser implements Parser<UseCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UseCommand.MESSAGE_USAGE));
         }
 
+        if ((!arePrefixesPresent(argMultimap, PREFIX_QUANTITY) && arePrefixesPresent(argMultimap, PREFIX_UNIT))
+                || (!arePrefixesPresent(argMultimap, PREFIX_UNIT)
+                && arePrefixesPresent(argMultimap, PREFIX_QUANTITY))) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UseCommand.MESSAGE_USAGE));
+        }
+
+
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_QUANTITY, PREFIX_UNIT);
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
@@ -41,7 +48,6 @@ public class UseCommandParser implements Parser<UseCommand> {
             return new UseCommand(name, null);
         }
 
-        double amount = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_QUANTITY).get());
         Unit unit;
         try {
             unit = ParserUtil.parseUnitOfIngredient(argMultimap.getValue(PREFIX_UNIT).get());
@@ -49,7 +55,8 @@ public class UseCommandParser implements Parser<UseCommand> {
             throw new ParseException("This is not a valid unit!");
         }
 
-        Quantity quantity = new Quantity(amount, unit);
+        Quantity quantity = ParserUtil.parseQuantity(argMultimap.getValue(PREFIX_QUANTITY).get(), unit);
+
         return new UseCommand(name, quantity);
     }
 
