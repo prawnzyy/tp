@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
@@ -49,11 +50,12 @@ public class RecipeAddCommandTest {
     public void equals() {
         Recipe a = new RecipeBuilder().withName("cookie").build();
         RecipeAddCommand adda = new RecipeAddCommand(a);
+        RecipeAddCommand addb = new RecipeAddCommand(a);
         // same object -> returns true
         assertEquals(adda, adda);
 
         // same values -> returns true
-        assertEquals(adda, adda);
+        assertEquals(adda, addb);
 
         // different types -> returns false
         assertNotEquals(1, adda);
@@ -62,9 +64,9 @@ public class RecipeAddCommandTest {
         assertNotEquals(null, adda);
 
         Recipe b = new RecipeBuilder().withName("cake").build();
-        RecipeAddCommand addb = new RecipeAddCommand(b);
+        RecipeAddCommand addc = new RecipeAddCommand(b);
         // different name -> returns false
-        assertNotEquals(adda, addb);
+        assertNotEquals(adda, addc);
     }
 
     @Test

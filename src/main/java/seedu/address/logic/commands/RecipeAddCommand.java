@@ -45,11 +45,11 @@ public class RecipeAddCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddCommand)) {
+        if (!(other instanceof RecipeAddCommand)) {
             return false;
         }
 
-        AddCommand otherAddCommand = (AddCommand) other;
+        RecipeAddCommand otherAddCommand = (RecipeAddCommand) other;
         return toAdd.equals(otherAddCommand.toAdd);
     }
 
