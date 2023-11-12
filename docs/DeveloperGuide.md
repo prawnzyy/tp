@@ -241,7 +241,7 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the view recipe operation works:
 
-<img src="images/UML/viewrecipesequencediagram.png" width="800px">
+<img src="images/UML/viewrecipesequencediagram.png" width="700">
 
 #### Alternatives considered:
 An alternative implementation considered is to find the first recipe with UUID that matches instead of filtering through
@@ -277,7 +277,7 @@ Step 6. After execution, the returned `CommandResult` will then be returned back
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/listrecipesequencediagram.png" width="800px">
+<img src="images/UML/listrecipesequencediagram.png" width="700">
 
 #### Design Considerations:
 **Aspect : How view executes:**
@@ -316,7 +316,7 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/searchrecipesequencediagram.png" width="800px">
+<img src="images/UML/searchrecipesequencediagram.png" width="700">
 
 ### Delete recipe feature
 #### Implementation
@@ -671,14 +671,14 @@ testers are expected to do more *exploratory* testing.
 
     1. Prerequisite: To be modified recipe exists
    
-    1. Test case: `modify i/1 n/Flour q/100 u/g`
+    1. Test case: `modify i/1 n/Flour q/100 u/g`<br>
        Expected: Changes the quantity of flour to 100 if the ingredient exists. Adds the ingredient if it does not.
 
 ### Searching for a recipe with a specific ingredient
 
 1. Searches for all recipes that contains the ingredient
 
-    1. Test case: `search flour`
+    1. Test case: `search flour`<br>
        Expected: Displays all recipes that uses the ingredient flour
 
 ### Deleting a recipe
@@ -733,10 +733,11 @@ testers are expected to do more *exploratory* testing.
    to input only the name and quantity without the units to be more intuitive. For example: `use n/flour q/100` will not
    show an error but rather, consume 100 of whatever unit that flour is currently stored in.
 
-#### 6. Checking for recipe steps
-When adding recipe steps during the addrecipe command, the numbering of the steps is entirely dependent on the user and users
-can input in the wrong order as such `1 4 5` as it is up to user input. We plan to add a check in future where users need not type in the step number
-and the application will automatically generate the index as per the order of steps inputted.
+#### 6. Checking for recipe step
+   When adding recipe steps during the addrecipe command, the numbering of the steps is entirely dependent on the user and users
+   can input in the wrong order such as `1 4 5`. We plan to add a check where users need  not type in the step number and the application will
+   automatically generate the step index as per the order of steps inputted.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Effort**
