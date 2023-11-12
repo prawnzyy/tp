@@ -61,13 +61,13 @@ public class ModifyCommandParserTest {
     @Test
     public void parse_uuidEquals_zero() {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + INVALID_ZERO_UUID_DESC_RECIPE + NAME_DESC_FLOUR
-                + QUANTITY_DESC_FLOUR + UNIT_DESC_FLOUR, "The recipe index provided is invalid");
+                + QUANTITY_DESC_FLOUR + UNIT_DESC_FLOUR, Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);
     }
 
     @Test
     public void parse_uuid_negative() {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + INVALID_NEG_UUID_DESC_RECIPE + NAME_DESC_FLOUR
-                + QUANTITY_DESC_FLOUR + UNIT_DESC_FLOUR, "The recipe index provided is invalid");
+                + QUANTITY_DESC_FLOUR + UNIT_DESC_FLOUR, Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);
     }
 
     @Test
