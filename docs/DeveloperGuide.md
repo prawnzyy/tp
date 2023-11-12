@@ -241,7 +241,7 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the view recipe operation works:
 
-<img src="images/UML/viewrecipesequencediagram.png" width="550px">
+<img src="images/UML/viewrecipesequencediagram.png">
 
 #### Alternatives considered:
 An alternative implementation considered is to find the first recipe with UUID that matches instead of filtering through
@@ -277,7 +277,7 @@ Step 6. After execution, the returned `CommandResult` will then be returned back
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/listrecipesequencediagram.png" width="550px">
+<img src="images/UML/listrecipesequencediagram.png">
 
 #### Design Considerations:
 **Aspect : How view executes:**
@@ -316,7 +316,7 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/searchrecipesequencediagram.png" width="550px">
+<img src="images/UML/searchrecipesequencediagram.png">
 
 ### Delete recipe feature
 #### Implementation
@@ -726,8 +726,9 @@ testers are expected to do more *exploratory* testing.
 
 #### 6. Checking for recipe step
    When adding recipe steps during the addrecipe command, the numbering of the steps is entirely dependent on the user and users
-   can input in the wrong order as such `1 4 5` as it is up to user input. We plan to add a check in future where users need not type in the step number
-   and the application will automatically generate the index as per the order of steps inputted.
+   can input in the wrong order such as `1 4 5`. We plan to add a check where users need  not type in the step number and the application will
+   automatically generate the step index as per the order of steps inputted.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Effort**
