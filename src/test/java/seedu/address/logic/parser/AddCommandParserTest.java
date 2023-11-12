@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_QUANTITY_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_UNIT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_FLOUR;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
@@ -39,7 +40,6 @@ public class AddCommandParserTest {
                 + UNIT_DESC_FLOUR, new AddCommand(expectedIngredient));
     }
 
-    // not yet accounted for invalid units
     @Test
     public void parse_repeatedValue_failure() {
         String validExpectedIngredientString = NAME_DESC_FLOUR + QUANTITY_DESC_FLOUR + UNIT_DESC_FLOUR;
@@ -68,9 +68,13 @@ public class AddCommandParserTest {
         assertParseFailure(parser, INVALID_NAME_DESC + validExpectedIngredientString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 
-        // invalid email
+        // invalid quantity
         assertParseFailure(parser, INVALID_QUANTITY_DESC + validExpectedIngredientString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_QUANTITY));
+
+        // invalid unit
+        assertParseFailure(parser, INVALID_UNIT_DESC + validExpectedIngredientString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UNIT));
 
 
         // valid value followed by invalid value
@@ -79,9 +83,13 @@ public class AddCommandParserTest {
         assertParseFailure(parser, validExpectedIngredientString + INVALID_NAME_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 
-        // invalid email
+        // invalid quantity
         assertParseFailure(parser, validExpectedIngredientString + INVALID_QUANTITY_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_QUANTITY));
+
+        // invalid quantity
+        assertParseFailure(parser, validExpectedIngredientString + INVALID_UNIT_DESC,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_UNIT));
 
     }
 
@@ -93,11 +101,11 @@ public class AddCommandParserTest {
         assertParseFailure(parser, VALID_NAME_FLOUR + QUANTITY_DESC_FLOUR + UNIT_DESC_FLOUR,
                 expectedMessage);
 
-        // missing phone prefix
+        // missing quantity prefix
         assertParseFailure(parser, NAME_DESC_FLOUR + VALID_AMOUNT_FLOUR + UNIT_DESC_FLOUR,
                 expectedMessage);
 
-        // missing email prefix
+        // missing unit prefix
         assertParseFailure(parser, NAME_DESC_FLOUR + QUANTITY_DESC_FLOUR + VALID_UNIT_FLOUR,
                 expectedMessage);
 
@@ -123,5 +131,24 @@ public class AddCommandParserTest {
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_FLOUR + QUANTITY_DESC_FLOUR + UNIT_DESC_FLOUR,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
+
+    @Test
+    public void parse_invalid_units() {
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR
+                + QUANTITY_DESC_FLOUR + INVALID_UNIT_DESC, "This is not a valid unit!");
+    }
+    @Test
+    public void parse_negativeQuantity_throwsParseException() {
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR + " q/-100 "
+                + UNIT_DESC_FLOUR, "Quantity has to be positive");
+    }
+
+    @Test
+    public void parse_nonNumericQuantity_throwsParseException() {
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FLOUR + " q/e "
+                + UNIT_DESC_FLOUR, "Invalid quantity: e");
+    }
+
+
 
 }

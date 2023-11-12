@@ -92,9 +92,14 @@ The `UI` component,
 
 ### Model Component
 
-**API**: Model.java
+**API**: [`Model.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-The `Model`
+<puml src="diagrams/ModelClassDiagram.puml" alt="Structure of the Model Component"/>
+
+The `Model` stores `Ingredient` and `Recipe`, the main components of this product. It provides the API to interact with
+the available list of `Ingredient` and `Recipe`.
+
+The `Model` component,
 
 - stores a `UserPref` object that represents the user's preferences.
 - stores the `Inventory` data.
@@ -104,14 +109,19 @@ The `Model`
 
 ### Storage Component
 
-**API**: Storage.java, RecipeStorage.java
+**API**: [`Storage.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-The `Storage`
+<puml src="diagrams/StorageClassDiagram.puml" alt="Structure of the Storage Component"/>
+
+The `Storage` manages the saving and reading of currently available `Ingredient` and `Recipe` to local storage.
+It allows users to use the product as-is throughout different sessions.
+
+The `Storage` component,
 
 - consists of an Inventory Storage and Recipe Book Storage sub-component.
 - saves the `UserPref` object in json format and read it back.
 - saves the `Inventory` object in json format and read it back.
-.- saves the `RecipeBook` object in json format and read it back.
+- saves the `RecipeBook` object in json format and read it back.
 
 ## Implementation
 This section describes some noteworthy details on how certain features are implemented.
@@ -685,10 +695,6 @@ testers are expected to do more *exploratory* testing.
     2. Restart the application and new sample data should be used instead.
 
 --------------------------------------------------------------------------------------------------------------------
-## **Appendix: Effort**
-To be added
-
---------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned Enhancements**
 #### 1. Recycling of UUIDs after deleting recipes
@@ -719,7 +725,21 @@ To be added
    show an error but rather, consume 100 of whatever unit that flour is currently stored in.
 
 #### 6. Checking for recipe steps
-   When adding recipe steps during the addrecipe command, the numbering of the steps is entirely dependent on the user and users
-   can input in the wrong order as such `1 4 5` as it is up to user input. We plan to add a check in future where users need not type in the step number
-   and the application will automatically generate the index as per the order of steps inputted.
-   
+When adding recipe steps during the addrecipe command, the numbering of the steps is entirely dependent on the user and users
+can input in the wrong order as such `1 4 5` as it is up to user input. We plan to add a check in future where users need not type in the step number
+and the application will automatically generate the index as per the order of steps inputted.
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
+- Significant effort went into refactoring the entire code base to change the AddressBook entities into ingredients and recipes.
+- The recipe model and ingredient model were not trivial to design.
+  - Much consideration was given to the design of the system representing the different units of an ingredient and the conversion between them.
+  - The recipe model and how to build a recipe is also complex, since a recipe composes of many steps and ingredients.
+  - Compared to AB3, our application manages more entities and has entities of greater complexity.
+- The above also meant the add recipe and modify recipe feature were not easy to implement, and were very bug prone which took
+effort to fix.
+- The UI design took a significant effort, a mockup design was first done on figma to test the color combinations and layouts.
+  - Figuring out how to change the view from a recipe list to a full recipe view was not simple, how javafx updates its 
+UI components is not explained or easily understood through the UI code.
+  - The UI is also made to be size responsive, the layout will retain its integrity even if the app is viewed in full-screen.
+

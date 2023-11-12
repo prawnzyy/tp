@@ -62,16 +62,16 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        Ingredient alice = new IngredientBuilder().withName("Alice").build();
-        Ingredient bob = new IngredientBuilder().withName("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        Ingredient flour = new IngredientBuilder().withName("FLour").build();
+        Ingredient butter = new IngredientBuilder().withName("Butter").build();
+        AddCommand addAliceCommand = new AddCommand(flour);
+        AddCommand addBobCommand = new AddCommand(butter);
 
         // same object -> returns true
         assertTrue(addAliceCommand.equals(addAliceCommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
+        AddCommand addAliceCommandCopy = new AddCommand(flour);
         assertTrue(addAliceCommand.equals(addAliceCommandCopy));
 
         // different types -> returns false
@@ -92,7 +92,7 @@ public class AddCommandTest {
     }
 
     /**
-     * A default model stub that have all of the methods failing.
+     * A default model stub that have all the methods failing.
      */
     private class ModelStub implements Model {
         @Override
@@ -150,10 +150,6 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        //  @Override
-        //  public void setIngredient(Ingredient target, Ingredient editedIngredient) {
-        //      throw new AssertionError("This method should not be called.");
-        //  }
 
         @Override
         public ObservableList<Ingredient> getFilteredIngredientList() {
@@ -254,7 +250,6 @@ public class AddCommandTest {
         public boolean hasIngredient(Name ingredient) {
             requireNonNull(ingredient);
             return true;
-            // ingredientsAdded.stream().anyMatch(ingredient::isSameIngredient);
         }
 
         @Override
