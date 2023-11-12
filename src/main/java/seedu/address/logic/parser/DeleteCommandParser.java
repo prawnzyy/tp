@@ -29,7 +29,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         }
 
         if (id <= 0) {
-            throw new ParseException(String.format(MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX));
+            throw new ParseException(MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);
         }
 
         return new DeleteCommand(new UniqueId(id));
