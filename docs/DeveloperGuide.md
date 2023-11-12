@@ -341,13 +341,15 @@ from the recipe list through the `Model#getRecipe(UniqueId uuid)` and the `Model
 called with this recipe, causing the recipe to be deleted from the recipe list.
 
 **Note**: If the argument is an invalid UUID (less than or equals to 0), a 
-`ParseException` will be thrown and users will be informed that there is no recipe with that uuid.
+`ParseException` will be thrown and users will be informed that the index provided is invalid.
 
 **Note**: If the recipe with that UUID does not exist in the app, a `CommandException` will be thrown and users will be 
-informed that there is no recipe with that uuid.
+informed that there is no recipe with that index in the recipe book.
 
 The following sequence diagram shows how the DeleteCommand works:
 <img src="images/UML/deletesequencediagram.png" width="800px">
+
+**Note**: In the diagram, `uuid` is the `UniqueId` that was passed into the `DeleteCommand` object.
 
 **Note**: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, 
 the lifeline reaches the end of diagram.
@@ -396,11 +398,11 @@ Step 9: `ModifyCommand` then calls `Model#updateFilteredRecipeList(Predicate<Rec
 recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate` that matches the UUID that was passed into 
 `ModifyCommand`.
 
-**Note**: If the argument is an invalid uuid (less than or equals to 0), a
-`ParseException` will be thrown and users will be informed that there is no recipe with that uuid.
+**Note**: If an invalid uuid (less than or equals to 0) is inputted, a
+`ParseException` will be thrown and users will be informed that the index provided is invalid.
 
 **Note**: If the recipe with that uuid does not exist in the app, a `CommandException` will be thrown and users will be
-informed that there is no recipe with that uuid.
+informed that there is no recipe with that index in the recipe book.
 
 The following sequence diagram shows how the modify recipe feature works:
 
@@ -472,12 +474,16 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
    Use case ends.
 
 #### Extensions
-- 2a. User does not specify the quantity of that ingredient
+- 1a. User does not specify the quantity of that ingredient
   - [Ba]king [Br]ead shows an error message
-- 2b. The name of the ingredient is not recognised
+- 1b. User inputs an invalid quantity (less than or equals to 0 or non-numerical)
+  - - [Ba]king [Br]ead shows an error message
+- 1c. The specified unit is not recognised
   - [Ba]king [Br]ead shows an error message
-- 2c. The specified unit is not recognised
-  - [Ba]king [Br]ead shows an error message
+- 2a. The ingredient is not in the stock
+  - [Ba]king [Br]ead will add the ingredient along with its quantity to the stock
+- 2b. The ingredient is already in the stock
+  - [Ba]king [Br]ead will add the quantity specified to the specified ingredient already in the stock
 
 #### Use case: Reduce items' quantities in the stock
 #### MSS
@@ -487,26 +493,36 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
    Use case ends.
 
 #### Extensions
+- 1a. The specified unit is not recognised
+    - [Ba]king [Br]ead shows an error message
+- 1b. User inputs an invalid quantity (less than or equals to 0 or non-numerical)
+    - [Ba]king [Br]ead shows an error message
+- 1c. User either only inputs the quantity or the unit
+    - [Ba]king [Br]ead shows an error message
+- 1d. User inputs a unit that cannot be converted to the unit specified for the specified ingredient in the stock
+    - [Ba]king [Br]ead shows an error message
 - 2a. User does not specify the quantity of that ingredient used
     - RecipeBook depletes the entire quantity of that ingredient
 - 2b. The quantity the user requests to use is more than the current quantity in stock
     - RecipeBook depletes the entire quantity of that ingredient
-- 2c. The specified unit is not recognised
-    - RecipeBook shows an error message
 
 
 #### Use case: View the stock of ingredients
 #### MSS
-1. User requests to view the stock of specific ingredients
-2. [Ba]king [Br]ead shows the ingredient and the quantity of the ingredient
+1. User requests to view the stock of specific ingredient(s)
+2. [Ba]king [Br]ead shows the ingredient(s) and the quantity of the ingredient(s)
 
    Use case ends.
 
 #### Extensions
+- 1a. The specified ingredient(s) are not in the stock
+  - [Ba]king [Br]ead shows an error message
 - 2a. User does not specify what ingredients they would like to view
   - [Ba]king [Br]ead shows the entire stock of ingredients
-- 2b. The specified ingredient(s) are not in the stock
-  - [Ba]king [Br]ead shows an error message
+- 2b. User specified one ingredient they would like to view
+  - [Ba]king [Br]ead shows the stock of that ingredient
+- 2c. User specified more than one ingredient they would like to view
+  - [Ba]king [Br]ead shows the stock of all the ingredients specified
 
 #### Use case: Find a specific recipe
 #### MSS
@@ -516,7 +532,9 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
    Use case ends.
 
 #### Extensions
-- 2a. The specified recipe does not exist
+- 1a. The specified recipe does not exist 
+  - [Ba]king [Br]ead shows an error message
+- 1b. The specified recipe UUID inputted is less than 1
   - [Ba]king [Br]ead shows an error message
 
 #### Use case: List all recipes
@@ -551,7 +569,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 2c. Multiple recipes contain that ingredient
   - All recipes will be displayed without the steps
 
-#### Use case: Delete a recipe from the recipe list.
+#### Use case: Delete a recipe from the recipe list
 #### MSS
 1. User requests to delete a specific recipe
 2. [Ba]king [Br]ead deletes the corresponding recipe
@@ -559,9 +577,25 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
    Use case ends.
 
 #### Extensions:
-- 2a. The specified recipe does not exist
+- 1a. The specified recipe does not exist
+  - [Ba]king [Br]ead shows an error message
+- 1b. The specified recipe UUID inputted is less than 1
   - [Ba]king [Br]ead shows an error message
 
+
+#### Use case: Modify the ingredients in the recipe
+1. User requests to modify an ingredient in a specific recipe
+2. [Ba]king [Br]ead modifies the corresponding recipe
+
+#### Extensions:
+- 1a. The specified recipe does not exist
+    - [Ba]king [Br]ead shows an error message
+- 1b. The specified recipe UUID inputted is less than 1
+    - [Ba]king [Br]ead shows an error message
+- 1c. User inputs an invalid quantity (less than or equals to 0 or non-numerical)
+    - [Ba]king [Br]ead shows an error message
+- 1d. The specified unit is not recognised
+    - [Ba]king [Br]ead shows an error message
 
 
 ### Non-Functional Requirements
@@ -688,7 +722,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: List all recipes using the `list` command. Multiple recipes in the list.
 
     1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+       Expected: First recipe is deleted from the list. UUID of the deleted recipe shown in the status message. Timestamp in the status bar is updated.
 
     1. Test case: `delete 0`<br>
        Expected: No recipe is deleted. Error details shown in the status message. Status bar remains the same.
@@ -737,6 +771,12 @@ testers are expected to do more *exploratory* testing.
    When adding recipe steps during the addrecipe command, the numbering of the steps is entirely dependent on the user and users
    can input in the wrong order such as `1 4 5`. We plan to add a check where users need  not type in the step number and the application will
    automatically generate the step index as per the order of steps inputted.
+
+#### 7. Modifying the steps of a recipe
+   Currently, the modify function only allows users to modify the ingredients in the recipe. However, it may be useful for users
+   to be able to modify the steps of the recipe as well, especially if they want to add on to the ingredients in the list to
+   modify the recipe.
+
 
 --------------------------------------------------------------------------------------------------------------------
 

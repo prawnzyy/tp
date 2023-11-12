@@ -8,7 +8,13 @@ pageNav: 3
 
 [BA]king [BR]ead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
 Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). [BA]king [BR]ead is targeted
-towards bakers like yourselves to aid you on your baking journey.
+towards bakers like yourselves to aid you on your baking journey. 
+
+Tired of rummaging through your cupboard to check what ingredients and how much of it you have? Fret not, with [BA]king [BR]ead, you will be able to manage your stock with ease so the next time you want
+to bake something or go grocery shopping, you know exactly what you have! And if you are tired of having to flip through physical 
+recipe books to find a recipe you want, once again [BA]king [BR]ead has you covered! With [BA]king [BR]ead you will be able to 
+view your recipes with ease, making it much easier to manage your recipes! 
+
 If you can type fast, [BA]king [BR]ead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -44,7 +50,18 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
    A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui-annotated.png)
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+
+#### As seen on the diagram above, 
+-  At the top of the screen, there is an input box. This is where you will be inputting your commands. 
+-  Below the input box is the Command result box, where [BA]king [BR]ead will return a message after you enter a command.
+-  Below the Command result box, the screen has been split into 2 windows. 
+  - The window on the left hand side is used to display the ingredients list, which contain all the ingredients with their 
+    specified quantity and unit. 
+  - The window on the right hand side is used to store the list of recipes. 
+  - After entering commands related to the stock, the left hand window's display will change and after entering commands 
+    related to the recipes, the right hand window's display will change.
+
+5. Type the command in the command result box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
     * add n/Flour q/10 u/kg (Add Command)
@@ -234,7 +251,6 @@ complete recipe
 Modifies the ingredients in a recipe.
 
 Format: `modify i/UUID n/NAME q/QUANTITY u/UNIT`
-
 * `UUID` must be an integer greater than or equal to 1.
 * The quantity provided must be more than 0.
 

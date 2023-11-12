@@ -27,11 +27,13 @@ Given below are my contributions to the project.
 * **Contribution to UG:**
     - Addition of the delete and modify recipe feature.
     - Updating of documentation of certain restrictions of the different commands
+    - Updating of the description of the app
+    - Updating of the description of the UI
     - Updating of Command Summary Table
 
 * **Contribution to DG:**
     - Completed the base documentation for product scope and user stories
-    - Completed relevant use cases for the ingredient commands as well as modify and delete
+    - Completed relevant use cases for many of the ingredient commands as well as modify and delete
     - Wrote the implementation for the delete recipe feature
     - Wrote the implementation for the modify recipe feature
 
