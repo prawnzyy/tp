@@ -38,6 +38,8 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
+<div style="page-break-after: always;"></div>
+
 ## Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
