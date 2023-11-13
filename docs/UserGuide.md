@@ -318,10 +318,6 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Known issues [will be edited]
-
---------------------------------------------------------------------------------------------------------------------
-
 ## Command summary
 
 **Note**: For `AddRecipe`, each command is to be run line and line.

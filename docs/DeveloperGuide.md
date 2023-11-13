@@ -241,7 +241,7 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the view recipe operation works:
 
-<img src="images/UML/viewrecipesequencediagram.png" width="800">
+<img src="images/UML/viewrecipesequencediagram.png" width="700">
 
 **Note**: If the argument is an invalid UUID (less than or equals to 0), a
 `ParseException` will be thrown and users will be informed that the index provided is invalid.
@@ -286,7 +286,7 @@ Step 6. After execution, the returned `CommandResult` will then be returned back
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/listrecipesequencediagram.png" width="800">
+<img src="images/UML/listrecipesequencediagram.png" width="700">
 
 #### Design Considerations:
 **Aspect : How view executes:**
@@ -325,7 +325,7 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/searchrecipesequencediagram.png" width="800">
+<img src="images/UML/searchrecipesequencediagram.png" width="700">
 
 ### Delete recipe feature
 #### Implementation
@@ -356,7 +356,7 @@ called with this recipe, causing the recipe to be deleted from the recipe list.
 informed that there is no recipe with that index in the recipe book.
 
 The following sequence diagram shows how the DeleteCommand works:
-<img src="images/UML/deletesequencediagram.png" width="800px">
+<img src="images/UML/deletesequencediagram.png" width="700px">
 
 **Note**: In the diagram, `uuid` is the `UniqueId` that was passed into the `DeleteCommand` object.
 
@@ -415,7 +415,7 @@ informed that there is no recipe with that index in the recipe book.
 
 The following sequence diagram shows how the modify recipe feature works:
 
-<img src="images/UML/modifysequencediagram.png" width="800px">
+<img src="images/UML/modifysequencediagram.png" width="700px">
 
 **Note**: Due to limited space in the sequence diagram, certain behaviour could not be shown.
 1. `recipeUuid` is the UUID of the recipe that was passed into `ModifyCommand`. 
@@ -486,7 +486,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 1a. User does not specify the quantity of that ingredient
   - [Ba]king [Br]ead shows an error message
 - 1b. User inputs an invalid quantity (less than or equals to 0 or non-numerical)
-  - - [Ba]king [Br]ead shows an error message
+  - [Ba]king [Br]ead shows an error message
 - 1c. The specified unit is not recognised
   - [Ba]king [Br]ead shows an error message
 - 2a. The ingredient is not in the stock
@@ -541,9 +541,11 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
    Use case ends.
 
 #### Extensions
-- 1a. The specified recipe does not exist 
+- 1a. There is an error in the format of the user's input command
   - [Ba]king [Br]ead shows an error message
-- 1b. The specified recipe UUID inputted is less than 1
+- 1b. The specified recipe does not exist 
+  - [Ba]king [Br]ead shows an error message
+- 1c. The specified recipe UUID inputted is less than 1
   - [Ba]king [Br]ead shows an error message
 
 #### Use case: List all recipes
