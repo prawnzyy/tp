@@ -46,7 +46,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 
 2. Download the latest `bakingbread.jar` from [here](https://github.com/AY2324S1-CS2103T-F10-3/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your Inventory App.
+3. Copy the file to the folder you want to use as the _home folder_ for [Ba]king [Br]ead.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
    A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data. For more
@@ -257,8 +257,7 @@ Format: `modify i/UUID n/NAME q/QUANTITY u/UNIT`
 * The unit used must be supported.
 
 Example:
-* Assuming flour is used in the recipe, `modify i/1 n/Flour q/100 u/g` modifies the quantity and unit of the `Flour`     
-  ingredient in the recipe.
+* Assuming flour is used in the recipe, `modify i/1 n/Flour q/100 u/g` modifies the quantity and unit of the `Flour` ingredient in the recipe.
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
   and unit to the recipe.
 
