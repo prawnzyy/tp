@@ -17,9 +17,9 @@ Given below are my contributions to the project.
   * What is does: Allows the user to modify the ingredients of a recipe 
   * Justification: This feature is critical to the working of the product as a user might want to adjust the quantity 
     and unit of measurement of an ingredient required for the recipe or a user might want to add more ingredients to the
-    list.
+    list of ingredients needed for that recipe.
 * **Enhancement:** 
-  * Coded all the parsers for the commands used for the ingredients (AddCommand, AddCommandParser, StockCommand, 
+  * Coded all the parsers for the commands used for the ingredient list(AddCommand, AddCommandParser, StockCommand, 
     StockCommandParser, UseCommand, UseCommandParser, ListCommand).
 
 * **Code Contribution:** [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=dhruvir29&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&since=2023-09-22&timeframe=commit&mergegroup=&groupSelect=groupByRepos)
@@ -35,8 +35,10 @@ Given below are my contributions to the project.
     - Completed the base documentation for product scope and user stories
     - Completed relevant use cases for many of the ingredient commands as well as modify and delete
     - Wrote the implementation for the delete recipe feature
+    - Addition of sequence diagram for the delete recipe feature
     - Wrote the implementation for the modify recipe feature
+    - Addition of sequence diagram for the modify recipe feature
 
 * **Contribution to team-based tasks**
-    - Helped merge and approve other team members' code
-    - Updating of README
+    - Helped merge and review other team members' code
+
