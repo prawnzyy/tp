@@ -330,7 +330,7 @@ Step 6. After execution, the returned `CommandResult` will then be returned back
 `SearchCommand` calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
 recipe list in `ModelManager` according to the predicate set.
 
-The following sequence diagram shows how the list recipe feature works:
+The following sequence diagram shows how the search recipe feature works:
 
 <img src="images/UML/searchrecipesequencediagram.png" width="700">
 
