@@ -425,6 +425,10 @@ The following sequence diagram shows how the modify recipe feature works:
 
 <img src="images/UML/modifysequencediagram.png" width="700px">
 
+**Note**: The lifeline for `ModifyCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML,
+the lifeline reaches the end of diagram.
+
+
 **Note**: Due to limited space in the sequence diagram, certain behaviour could not be shown.
 1. `recipeUuid` is the `UniqueId` of the recipe that was passed into `ModifyCommand`. 
 2. `newRecipe` is the modified version of the recipe that contains the modified list of ingredients. This recipe was 
@@ -499,6 +503,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
   - [Ba]king [Br]ead shows an error message
 - 1c. The specified unit is not recognised
   - [Ba]king [Br]ead shows an error message
+- 1d. There is an error in the format of the user's input command.
+  - [Ba]king [Br]ead shows an error message
 - 2a. The ingredient is not in the stock
   - [Ba]king [Br]ead will add the ingredient along with its quantity to the stock
 - 2b. The ingredient is already in the stock
@@ -519,6 +525,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 1c. User either only inputs the quantity or the unit
     - [Ba]king [Br]ead shows an error message
 - 1d. User inputs a unit that cannot be converted to the unit specified for the specified ingredient in the stock
+    - [Ba]king [Br]ead shows an error message
+- 1e. There is an error in the format of the user's input command.
     - [Ba]king [Br]ead shows an error message
 - 2a. User does not specify the quantity of that ingredient used
     - RecipeBook depletes the entire quantity of that ingredient
@@ -602,6 +610,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
   - [Ba]king [Br]ead shows an error message
 - 1b. The specified recipe UUID inputted is less than 1
   - [Ba]king [Br]ead shows an error message
+- 1c. There is an error in the format of the user's input command.
+  - [Ba]king [Br]ead shows an error message
 
 
 #### Use case: Modify the ingredients in the recipe
@@ -616,6 +626,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 1c. User inputs an invalid quantity (less than or equals to 0 or non-numerical)
     - [Ba]king [Br]ead shows an error message
 - 1d. The specified unit is not recognised
+    - [Ba]king [Br]ead shows an error message
+- 1e. There is an error in the format of the user's input command.
     - [Ba]king [Br]ead shows an error message
 
 
