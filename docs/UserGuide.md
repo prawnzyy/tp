@@ -104,6 +104,8 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
+<div style="page-break-after: always;"></div>
+
 ### Adding an ingredient: `add`
 
 Adds an ingredient to stock.
