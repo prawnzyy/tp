@@ -174,39 +174,40 @@ The add recipe mechanism is implemented as a `Command`, extending from the `Comm
 
 Given below is an example usage scenario and how the add recipe mechanism behaves at each st ep.
 
-Step 1. The user keys in the following command structure. `LogicManager` takes this string command and executes it.
-
+Step 1. The user keys in the following command. 
 ```
-addrecipe n/NAME
-ingredients start
-Flour 100g
-Water 50g
-⋮
-steps start
-1. STEP 1
-2. STEP 2
-⋮
-steps end
+addrecipe 
 ```
 
-Step 2. `InventoryAppParser` is then called to parse the command.
+Step 2. `RecipeAddInputHandler` is then used to control how the input is handled, preventing other commands from being used.
 
-Step 3. By Polymorphism, `RecipeAddCommandParser` is called to handle the parsing. The parse(String args) function is
-called.
+Step 3. The user keys in the name of the recipe.
+```
+Cookie
+```
 
-Step 4. The name of the recipe is parsed out.
+Step 4. `RecipeAddInputHandler` passes the string to `RecipeAddCommandParser`, which parses it into a `Name` instance. 
 
-Step 5. The lines in the string body are grouped into a list of ingredient strings and step strings, by looking for the
-`ingredient start` and `ingredient end` lines, as well as the `steps start` and `done` lines.
+Step 5. The user enters as many ingredients as they like one by one, in the following format:
+`flour 100g`
 
-Step 6. The list of ingredient strings is parsed using the `parseRecipeIngredient()` method in the `Ingredient`.
-This parser is more rigid than the ingredient parser used in the `AddCommandParser`, but does not require the `n/`, `q/` and `u/` tokens.
+Step 6. Each string is parsed by the `RecipeAddCommandParser`, and the parsed `Ingredient` instance is added to a list. 
+If a parsing error occurs, no ingredient is added, but the recipe creation still continues.
 
-Step 7. The list of step strings is parsed into a `List<RecipeStep>` using the `parseRecipeStep()` method from the `RecipeStep` class.
+Step 7. The user enters `steps start` to cease the adding of ingredients and begin writing steps. 
 
-Step 8. A new `Recipe` instance is created using the `Name`, `List<Ingredient>` and `List<RecipeStep>`.
+Step 8. Each string is parsed by the `RecipeAddCommandParser`, and the parsed `RecipeStep` instance is added to a list.
+If a parsing error occurs, no step is added, but the recipe creation still continues.
+
+Step 9. A new `Recipe` instance is created using the `Name`, `List<Ingredient>` and `List<RecipeStep>`. 
+The `List<RecipeStep>` is sorted by step number.
+
+Step 10. A `RecipeAddCommand` instance is created by the `RecipeAddCommandParser`, which is passed to the `ModelManager` and executed.
 
 Step 9. The `RecipeAddCommand` adds the new `Recipe` instance to the recipe list in `ModelManager`.
+
+The following sequence diagram shows how the add recipe operation works:
+![img.png](img.png)
 
 #### Alternatives considered:
 
