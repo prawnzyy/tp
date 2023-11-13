@@ -176,7 +176,6 @@ ingredients start
 Flour 100g
 Water 50g
 ⋮
-ingredients end
 steps start
 1. STEP 1
 2. STEP 2
