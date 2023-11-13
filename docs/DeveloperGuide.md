@@ -244,10 +244,10 @@ The following sequence diagram shows how the view recipe operation works:
 <img src="images/UML/viewrecipesequencediagram.png" width="700">
 
 **Note**: If the argument is an invalid UUID (less than or equals to 0), a
-`ParseException` will be thrown and users will be informed that the index provided is invalid.
+`ParseException` will be thrown and users will be informed that the UUID provided is invalid.
 
 **Note**: If the recipe with that UUID does not exist in the app, a `CommandException` will be thrown and users will be
-informed that there is no recipe with that index in the recipe book.
+informed that there is no recipe with that UUID in the recipe book.
 
 **Note**: The lifeline for `RecipeViewCommandParser` and `RecipeViewCommand` should end at the destroy marker (X) but 
 due to a limitation of PlantUML, the lifeline reaches the end of diagram.
@@ -350,10 +350,10 @@ from the recipe list through the `Model#getRecipe(UniqueId uuid)` and the `Model
 called with this recipe, causing the recipe to be deleted from the recipe list.
 
 **Note**: If the argument is an invalid UUID (less than or equals to 0), a 
-`ParseException` will be thrown and users will be informed that the index provided is invalid.
+`ParseException` will be thrown and users will be informed that the UUID provided is invalid.
 
 **Note**: If the recipe with that UUID does not exist in the app, a `CommandException` will be thrown and users will be 
-informed that there is no recipe with that index in the recipe book.
+informed that there is no recipe with that UUID in the recipe book.
 
 The following sequence diagram shows how the DeleteCommand works:
 <img src="images/UML/deletesequencediagram.png" width="700px">
@@ -408,10 +408,10 @@ recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate` that matches t
 `ModifyCommand`.
 
 **Note**: If an invalid uuid (less than or equals to 0) is inputted, a
-`ParseException` will be thrown and users will be informed that the index provided is invalid.
+`ParseException` will be thrown and users will be informed that the UUID provided is invalid.
 
 **Note**: If the recipe with that uuid does not exist in the app, a `CommandException` will be thrown and users will be
-informed that there is no recipe with that index in the recipe book.
+informed that there is no recipe with that UUID in the recipe book.
 
 The following sequence diagram shows how the modify recipe feature works:
 
