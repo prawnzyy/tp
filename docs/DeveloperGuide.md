@@ -90,6 +90,8 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Inventory` object residing in the `Model`.
 
+<div style="page-break-after: always;"></div>
+
 ### Model Component
 
 **API**: [`Model.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
@@ -122,6 +124,8 @@ The `Storage` component,
 - saves the `UserPref` object in json format and read it back.
 - saves the `Inventory` object in json format and read it back.
 - saves the `RecipeBook` object in json format and read it back.
+
+<div style="page-break-after: always;"></div>
 
 ## Implementation
 This section describes some noteworthy details on how certain features are implemented.
