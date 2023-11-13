@@ -63,10 +63,10 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
 
 ## Navigating the GUI
 ![Ui](images/Ui-annotated.png)
-`Input box`: This is where you will be inputting your commands.<br>
-`Command result box`: Where the application will return a message regarding the outcome of command inputted.<br>
-`Ingredients list`: Contain a list view of all your ingredients with their specified quantity and unit.<br>
-`Recipe list`: Contains a list view of all your recipes.<br>
+**Input box:** This is where you will be inputting your commands.<br>
+**Command result box:** Where the application will return a message regarding the outcome of command inputted.<br>
+**Ingredients list:** Contain a list view of all your ingredients with their specified quantity and unit.<br>
+**Recipe list:** Contains a list view of all your recipes.<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
