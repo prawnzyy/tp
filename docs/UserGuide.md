@@ -49,7 +49,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
    A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data. For more
-   information on how to navigate the GUI, head over to this [section](#navigating-the-gui) <br>
+   information on how to navigate the GUI, head over to this [section](#navigating-the-gui). <br>
    ![Ui](images/Ui.png)
 
 5. Type the command in the input box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -112,14 +112,14 @@ Format: `add n/NAME q/QUANTITY u/UNIT`
   ingredient.
 
 Restrictions:
-* Units used must be supported
-* Quantity must be a positive number
+* Units used must be supported.
+* Quantity must be a positive number.
 * If adding quantity to an ingredient that already exists, quantity conversions must be taken into account. If the unit 
   of the ingredient which is already in the stock is in GRAM/KILOGRAM, it cannot be converted to PIECE and vice versa.
 
 Examples:
-* `add n/Flour q/1 u/kg` adds 1kg of Flour to the stock
-* `add n/Milk q/600 u/g` adds 600g of Milk to the stock
+* `add n/Flour q/1 u/kg` adds 1kg of Flour to the stock.
+* `add n/Milk q/600 u/g` adds 600g of Milk to the stock.
 
 Supported Units:
 | Unit     | Alias                                 |
@@ -137,10 +137,10 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 * If no quantity and unit is provided, the entire stock of the specified ingredient will be depleted.
 * If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
 * The quantity provided must be more than 0.
-* Note that the name **must** be exact. As such, `use butters` will not work if the ingredient list contains `butter`
+* Note that the name **must** be exact. As such, `use butters` will not work if the ingredient list contains `butter`.
 
 Restrictions:
-* Units used must be supported
+* Units used must be supported.
 * When depleting the quantity of the ingredient, quantity conversions must be taken into account. If the unit
   of the ingredient that is in the stock is in GRAM/KILOGRAM, the use command cannot be inputted with the unit PIECE for that 
   specific ingredient and vice versa. For example, if the ingredient in the stock is 100g of Flour, `use n/flour q/50 u/pcs`
@@ -149,8 +149,8 @@ Restrictions:
   possible for both the unit and quantity to be stated or neither.
 
 Examples:
-*  `use n/Milk q/600 u/g` Depletes the current quantity of milk by 600g
-*  `use n/Egg` Fully depletes the current quantity of egg
+*  `use n/Milk q/600 u/g` Depletes the current quantity of milk by 600g.
+*  `use n/Egg` Fully depletes the current quantity of egg.
 
 Supported Units:
 | Unit     | Alias                                 |
@@ -170,11 +170,11 @@ Format: `stock [NAME]…​`
 * If no ingredients are specified, the quantity of all ingredients will be returned.
 * Only full words will be matched e.g. `Flou` will not match `Flour`.
 * For ingredients with names comprising multiple words, any ingredient that contains the keyword will also be displayed 
-   <br/> e.g. `stock butter` will display both `butter` and `butter stick`
+   <br/> e.g. `stock butter` will display both `butter` and `butter stick`.
 
 Examples:
-* `stock Butter` returns `Butter: 50g`
-* `stock Butter flour` returns `Butter: 100g`, `Flour: 2000g`<br>
+* `stock Butter` returns `Butter: 50g`.
+* `stock Butter flour` returns `Butter: 100g`, `Flour: 2000g`.<br>
 
 ### Clearing all entries from ingredient stock : `clear`
 
@@ -189,19 +189,19 @@ Lists out all recipes that is currently stored in [Ba]king [Br]ead.
 Format: `list`
 
 Examples:
-* `list` lists out all recipes within [Ba]king [Br]ead
+* `list` lists out all recipes within [Ba]king [Br]ead.
 
 ### Viewing Specific Recipes : `view`
 
 Views a specific recipe in [Ba]king [Br]ead.
 
 Format: `view UUID`
-* `UUID` must be an integer greater than or equal to 1
-* To toggle back to listing all recipes, use the `list` command
+* `UUID` must be an integer greater than or equal to 1.
+* To toggle back to listing all recipes, use the `list` command.
 
 Examples:
-* `view 1` views the recipe with `UUID` of 1
-* `view 21` views the recipe with `UUID` of 21
+* `view 1` views the recipe with `UUID` of 1.
+* `view 21` views the recipe with `UUID` of 21.
 
 ### Adding Recipes : `addrecipe`
 
@@ -222,9 +222,9 @@ steps start
 complete recipe
 ```
 
-* Name of Recipe needs to be of Alphanumeric format
-* Ingredients inputted **must** be of the format `(name) (quantity)(unit)` where an example is `flour 100g`
-* For the recipe steps, the format to follow is `(index). (step)` where an example is `1. Mix Water and Flour`
+* Name of Recipe needs to be of Alphanumeric format.
+* Ingredients inputted **must** be of the format `(name) (quantity)(unit)` where an example is `flour 100g`.
+* For the recipe steps, the format to follow is `(index). (step)` where an example is `1. Mix Water and Flour`.
 * For the recipe steps, you have to remember the index of step you are typing in and check it by yourself.
 
 Example:
@@ -254,9 +254,9 @@ Format: `modify i/UUID n/NAME q/QUANTITY u/UNIT`
 
 Example:
 * Assuming flour is used in the recipe, `modify i/1 n/Flour q/100 u/g` modifies the quantity and unit of the `Flour`     
-  ingredient in the recipe
+  ingredient in the recipe.
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
-  and unit to the recipe
+  and unit to the recipe.
 
 
 ### Deleting Recipes : `delete`
@@ -268,8 +268,8 @@ Format: `delete UUID`
 * `UUID` must be an integer greater than or equal to 1.
 
 Examples:
-* `delete 1` deletes the recipe with `UUID` of 1
-* `delete 21` deletes the recipe with `UUID` of 21
+* `delete 1` deletes the recipe with `UUID` of 1.
+* `delete 21` deletes the recipe with `UUID` of 21.
 
 ### Searching Recipes given an ingredient: `search`
 
@@ -281,7 +281,7 @@ Format: `search NAME`
 * `NAME` is not case-sensitive.
 *  If none of the recipes contain that ingredient, an empty recipe list will be displayed instead.
 *  For ingredients with multiple words, `NAME` must be an **exact** match. As such, search chocolate will not display recipes
-   that contain chocolate chip
+   that contain chocolate chip.
 
 Examples:
 * `search flour` searches for all recipes that uses `flour`
