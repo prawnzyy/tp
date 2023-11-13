@@ -109,6 +109,8 @@ The `Model` component,
 - exposes an unmodifiable `ObservableList<Ingredient>`, `ObservableList<Recipe>` that can be 'observed' by the UI.
 - does not depend on the other three components
 
+<div style="page-break-after: always;"></div>
+
 ### Storage Component
 
 **API**: [`Storage.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
@@ -265,6 +267,8 @@ However, we do not expect a user to have so many recipes that performance would 
 users to be frequently using this command either, since baking something requires much time and effort. Filtering
 through the whole list also confers an advantage of being able to assert that there is at most one such recipe
 with that particular UUID.
+
+<div style="page-break-after: always;"></div>
 
 ### List recipe feature
 #### Implementation
