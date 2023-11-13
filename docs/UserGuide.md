@@ -4,12 +4,12 @@ title: "User Guide"
 pageNav: 3
 ---
 
-# [BA]king [BR]ead User Guide
+# [Ba]king [Br]ead User Guide
 
-[BA]king [BR]ead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). [BA]king [BR]ead is targeted
+[Ba]king [Br]ead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
+Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). [Ba]king [Br]ead is targeted
 towards bakers like yourselves to aid you on your baking journey.
-If you can type fast, [BA]king [BR]ead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
+If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
@@ -169,16 +169,16 @@ Format: `clear`
 
 ### Listing all Recipes : `list`
 
-Lists out all recipes that is currently stored in [BA]king [BR]ead.
+Lists out all recipes that is currently stored in [Ba]king [Br]ead.
 
 Format: `list`
 
 Examples:
-* `list` lists out all recipes within [BA]king [BR]ead
+* `list` lists out all recipes within [Ba]king [Br]ead
 
 ### Viewing Specific Recipes : `view`
 
-Views a specific recipe in [BA]king [BR]ead.
+Views a specific recipe in [Ba]king [Br]ead.
 
 Format: `view UUID`
 * `UUID` must be an integer greater than or equal to 1
@@ -247,7 +247,7 @@ Example:
 
 ### Deleting Recipes : `delete`
 
-Deletes a specific recipe from [BA]king [BR]ead when you longer need it.
+Deletes a specific recipe from [Ba]king [Br]ead when you longer need it.
 
 Format: `delete UUID`
 
