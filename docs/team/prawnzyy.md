@@ -20,6 +20,7 @@ Given below are my contributions to the project.
 - **Contribution to team task**:
   - Managing of jar releases
   - Updating of README and INDEX
+  - Managing PRs and commenting
 - **Contribution to UG**:
   - Addition of search feature write up
   - Addition of list feature write up
@@ -30,3 +31,4 @@ Given below are my contributions to the project.
   - Implementation of the search command
   - Addition of ListRecipeSequenceDiagram.puml
   - Addition of SearchRecipeSequenceDiagram.puml
+  - Added section on Appendix : Planned Enhancements
