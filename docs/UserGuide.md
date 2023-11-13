@@ -262,11 +262,10 @@ Example:
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
   and unit to the recipe.
 
-<<<<<<< HEAD
 Note: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
-=======
+
 <div style="page-break-after: always;"></div>
->>>>>>> master
+
 
 ### Deleting Recipes : `delete`
 
