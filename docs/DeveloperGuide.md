@@ -90,6 +90,8 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Inventory` object residing in the `Model`.
 
+<div style="page-break-after: always;"></div>
+
 ### Model Component
 
 **API**: [`Model.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
@@ -107,6 +109,8 @@ The `Model` component,
 - exposes an unmodifiable `ObservableList<Ingredient>`, `ObservableList<Recipe>` that can be 'observed' by the UI.
 - does not depend on the other three components
 
+<div style="page-break-after: always;"></div>
+
 ### Storage Component
 
 **API**: [`Storage.java`](https://github.com/AY2324S1-CS2103T-F10-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
@@ -122,6 +126,8 @@ The `Storage` component,
 - saves the `UserPref` object in json format and read it back.
 - saves the `Inventory` object in json format and read it back.
 - saves the `RecipeBook` object in json format and read it back.
+
+<div style="page-break-after: always;"></div>
 
 ## Implementation
 This section describes some noteworthy details on how certain features are implemented.
@@ -260,6 +266,8 @@ However, we do not expect a user to have so many recipes that performance would 
 users to be frequently using this command either, since baking something requires much time and effort. Filtering
 through the whole list also confers an advantage of being able to assert that there is at most one such recipe
 with that particular UUID.
+
+<div style="page-break-after: always;"></div>
 
 ### List recipe feature
 #### Implementation
@@ -433,6 +441,8 @@ created with interaction with `Recipe` as mentioned in Step 6 above.
 * [DevOps guide](DevOps.md)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Requirements**
 

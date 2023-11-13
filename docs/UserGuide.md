@@ -38,6 +38,8 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
+<div style="page-break-after: always;"></div>
+
 ## Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
@@ -68,6 +70,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 **Recipe list:** Contains a list view of all your recipes.<br>
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -100,6 +103,8 @@ Shows a message explaining how to access the help page.
 ![help message](images/helpMessage.png)
 
 Format: `help`
+
+<div style="page-break-after: always;"></div>
 
 ### Adding an ingredient: `add`
 
@@ -257,7 +262,11 @@ Example:
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
   and unit to the recipe.
 
+<<<<<<< HEAD
 Note: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
+=======
+<div style="page-break-after: always;"></div>
+>>>>>>> master
 
 ### Deleting Recipes : `delete`
 
