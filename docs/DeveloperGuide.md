@@ -13,7 +13,7 @@ pageNav: 3
 
 ## **Acknowledgements**
 This project is based on the [AddressBook-Level3](https://se-education.org/addressbook-level3/) project created by the 
-[SE-EDU initiative](se-education.org).
+[SE-EDU initiative](https://se-education.org/).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -351,9 +351,11 @@ called with the argument of "1" and the "1" is parsed as an `Integer`. This inte
 
 Step 4: A `DeleteCommand` object is then created with the `UniqueId` created passed in as a parameter.
 
-Step 5: This `DeleteCommand` object is then executed. During execution, the recipe whose UUID matches with the `UniqueId` 
-passed into the `DeleteCommand` is retrieved from the recipe list through the `Model#getRecipe(UniqueId uuid)` and the 
+Step 5: This `DeleteCommand` object is then executed. During execution, the recipe that matches with the `UniqueId` 
+passed into the `DeleteCommand` is retrieved from the recipe list through the `Model#getRecipe(UniqueId uuid)` and 
 `Model#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be deleted from the recipe list.
+
+Step 6. After execution, the returned `CommandResult` will then be returned back to the `MainWindow` to be displayed.
 
 **Note**: If the argument is an invalid UUID (less than or equals to 0), a 
 `ParseException` will be thrown and users will be informed that the UUID provided is invalid.
@@ -367,7 +369,7 @@ The following sequence diagram shows how the DeleteCommand works:
 **Note**: In the diagram, `uuid` is the `UniqueId` that was passed into the `DeleteCommand` object.
 
 **Note**: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, 
-the lifeline reaches the end of diagram.
+the lifeline reaches the end of the diagram.
 
 
 ### Modify recipe feature
@@ -384,17 +386,16 @@ Step 2. `InventoryAppParser` is then called to parse the `modify i/1 n/Milk q/10
 
 Step 3. By Polymorphism, `ModifyCommandParser` is called on to handle the parsing. The `parse(String args)` function is
 called with the argument of "i/1 n/Milk q/100 u/g" and this is then tokenized into the UUID of the recipe that will be modified, 
-the modified ingredient's name, amount and unit. An `Ingredient` is created with this name and quantity (which consists 
-of the amount and unit) specified. 
+the modified ingredient's name, amount and unit. An `Ingredient` is then created with this name, amount and unit specified. 
 
 Step 4: A `ModifyCommand` object is then created with two parameters passed in - the UUID specified 
-earlier wrapped in a `UniqueId` constructor as well as the `Ingredient`created earlier.
+earlier wrapped in a `UniqueId` constructor as well as the `Ingredient` created earlier.
 
-Step 5: This `ModifyCommand` object is then executed. During execution, the recipe whose UUID matches with the `UniqueId`
+Step 5: This `ModifyCommand` object is then executed. During execution, the recipe that matches with the `UniqueId`
 passed into the `ModifyCommand` is retrieved from the recipe list through the `Model#getRecipe(UniqueId uuid)`. This is the old recipe
 before the ingredients are modified.
 
-Step 6: During execution, there are 2 possibilities. 
+Step 6: Following that during the execution, there are 2 possibilities. 
 
 If the recipe already contains the ingredient that was specified,
 the `Recipe#modifyIngredients(String oldIngredient, Ingredient newIngredient)` will be called with the
@@ -405,16 +406,19 @@ If the recipe does not already contain the ingredient that was specified, the `R
 will be called with the `Ingredient` that was passed into `ModifyCommand` such that the ingredient is added to the 
 ingredient list of that recipe. 
 
-In both cases, this results in the creation of a new recipe with a modified ingredient list.
+In both cases, this results in the creation of a new recipe object with a modified ingredient list.
 
-Step 7: Then the `Model#deleteRecipe(Recipe recipe)` is called on the old recipe that had the ingredient list before 
-it was modified. 
+Step 7: The `Model#deleteRecipe(Recipe recipe)` is called with the old recipe that had the ingredient list before 
+it was modified, deleting the old recipe from the recipe list. 
 
-Step 8: Then the `Model#addRecipe(Recipe recipe)` is called on the new recipe that has the modified ingredient list.
+Step 8: The `Model#addRecipe(Recipe recipe)` is called with the new recipe that has the modified ingredient list, adding the new
+recipe to the recipe list.
 
 Step 9: `ModifyCommand` then calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
-recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate` that matches the `UniqueId` that was passed into 
-`ModifyCommand`.
+recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate`, which ultimately shows the recipe that matches
+the `UniqueId` that was passed into `ModifyCommand`.
+
+Step 10. After execution, the returned `CommandResult` will then be returned back to the `MainWindow` to be displayed.
 
 **Note**: If an invalid UUID (less than or equals to 0) is inputted, a
 `ParseException` will be thrown and users will be informed that the UUID provided is invalid.
@@ -426,15 +430,14 @@ The following sequence diagram shows how the modify recipe feature works:
 
 <img src="images/UML/modifysequencediagram.png" width="700px">
 
-**Note**: The lifeline for `ModifyCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML,
-the lifeline reaches the end of diagram.
-
-
 **Note**: Due to limited space in the sequence diagram, certain behaviour could not be shown.
 1. `recipeUuid` is the `UniqueId` of the recipe that was passed into `ModifyCommand`. 
 2. `newRecipe` is the modified version of the recipe that contains the modified list of ingredients. This recipe was 
 created with interaction with `Recipe` as mentioned in Step 6 above. 
-3. `predicate` is the `RecipeUuidMatchesPredicate` that matches the `UniqueId` that was passed into `ModifyCommand`.
+3. `predicate` is the `RecipeUuidMatchesPredicate` with the `UniqueId` that was passed into `ModifyCommand` as its parameter.
+
+**Note**: The lifeline for `ModifyCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML,
+the lifeline reaches the end of the diagram.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -499,7 +502,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
    Use case ends.
 
 #### Extensions
-- 1a. User does not specify the quantity of that ingredient
+- 1a. User does not specify the quantity and/or unit of that ingredient
   - [Ba]king [Br]ead shows an error message
 - 1b. User inputs an invalid quantity (less than or equals to 0 or non-numerical)
   - [Ba]king [Br]ead shows an error message
@@ -631,6 +634,10 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
     - [Ba]king [Br]ead shows an error message
 - 1e. There is an error in the format of the user's input command.
     - [Ba]king [Br]ead shows an error message
+- 2a. The ingredient specified in the command is already in the recipe's ingredient list
+    - [Ba]king [Br]ead modifies the ingredient in the ingredient list of the recipe
+- 2b. The ingredient specified in the command is not in the recipe's ingredient list
+    - [Ba]king [Br]ead adds the ingredient to the ingredient list of the recipe
 
 <div style="page-break-after: always;"></div>
 
