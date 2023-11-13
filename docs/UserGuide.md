@@ -49,7 +49,7 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
    A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data. For more
-   information on how to navigate the GUI, head over to this [section](#navigating-the-gui)
+   information on how to navigate the GUI, head over to this [section](#navigating-the-gui) <br>
    ![Ui](images/Ui.png)
 
 5. Type the command in the input box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
