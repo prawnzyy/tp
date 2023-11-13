@@ -140,11 +140,11 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
 * If no quantity and unit is provided, the entire stock of the specified ingredient will be depleted.
 * If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
-* The quantity provided must be more than 0.
 * Note that the name **must** be exact. As such, `use butters` will not work if the ingredient list contains `butter`.
 
 Restrictions:
 * Units used must be supported.
+* The quantity provided must be more than 0.
 * When depleting the quantity of the ingredient, quantity conversions must be taken into account. If the unit
   of the ingredient that is in the stock is in GRAM/KILOGRAM, the use command cannot be inputted with the unit PIECE for that 
   specific ingredient and vice versa. For example, if the ingredient in the stock is 100g of Flour, `use n/flour q/50 u/pcs`
@@ -215,9 +215,7 @@ Format:
 ```
 addrecipe 
 NAME
-INGREDIENT_NAME INGREDIENT_QUANTITY
-Water 100g
-Flour 1kg
+(INGREDIENT_NAME) (INGREDIENT_QUANTITY)(INGREDIENT_UNIT)
 ⋮
 steps start
 1. STEP 1
@@ -228,6 +226,7 @@ complete recipe
 
 * Name of Recipe needs to be of Alphanumeric format.
 * Ingredients inputted **must** be of the format `(name) (quantity)(unit)` where an example is `flour 100g`.
+* The quantity of the ingredient must be positive and the unit must be supported.
 * For the recipe steps, the format to follow is `(index). (step)` where an example is `1. Mix Water and Flour`.
 * For the recipe steps, you have to remember the index of step you are typing in and check it by yourself.
 
@@ -255,6 +254,7 @@ Modifies the ingredients in a recipe.
 Format: `modify i/UUID n/NAME q/QUANTITY u/UNIT`
 * `UUID` must be an integer greater than or equal to 1.
 * The quantity provided must be more than 0.
+* The unit used must be supported.
 
 Example:
 * Assuming flour is used in the recipe, `modify i/1 n/Flour q/100 u/g` modifies the quantity and unit of the `Flour`     
@@ -262,7 +262,10 @@ Example:
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
   and unit to the recipe.
 
+Note: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
+
 <div style="page-break-after: always;"></div>
+
 
 ### Deleting Recipes : `delete`
 

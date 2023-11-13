@@ -182,7 +182,6 @@ ingredients start
 Flour 100g
 Water 50g
 ⋮
-ingredients end
 steps start
 1. STEP 1
 2. STEP 2
@@ -349,13 +348,11 @@ Step 2. `InventoryAppParser` is then called to parse the `delete 1` command.
 Step 3. By Polymorphism, `DeleteCommandParser` is called on to handle the parsing. The `parse(String args)` function is 
 called with the argument of "1" and the "1" is parsed as an `Integer`. This integer is then wrapped in a `UniqueId` constructor.
 
-Step 4: This results in the creation of a `DeleteCommand` object with the `UniqueId` created passed in as a parameter.
+Step 4: A `DeleteCommand` object is then created with the `UniqueId` created passed in as a parameter.
 
-Step 5: This `DeleteCommand` object is then executed by the `LogicManager`.
-
-Step 6: During execution, the recipe whose UUID matches with the UniqueId passed into the `DeleteCommand` is retrieved 
-from the recipe list through the `Model#getRecipe(UniqueId uuid)` and the `Model#deleteRecipe(Recipe recipe)` will be 
-called with this recipe, causing the recipe to be deleted from the recipe list.
+Step 5: This `DeleteCommand` object is then executed. During execution, the recipe whose UUID matches with the `UniqueId` 
+passed into the `DeleteCommand` is retrieved from the recipe list through the `Model#getRecipe(UniqueId uuid)` and the 
+`Model#deleteRecipe(Recipe recipe)` will be called with this recipe, causing the recipe to be deleted from the recipe list.
 
 **Note**: If the argument is an invalid UUID (less than or equals to 0), a 
 `ParseException` will be thrown and users will be informed that the UUID provided is invalid.
@@ -376,9 +373,8 @@ the lifeline reaches the end of diagram.
 #### Implementation
 The modify recipe mechanism is implemented as a `Command`, extending from the `Command` abstract class.
 
-Given below is an example usage scenario, assuming that the ingredient is already present in the recipe, and how the 
-modify recipe mechanism behaves at each step. The application is assumed to be initialised with at least one recipe 
-loaded in the `ModelManager`.
+Given below is an example usage scenario and how the modify recipe mechanism behaves at each step. The application is 
+assumed to be initialised with at least one recipe loaded in the `ModelManager`.
 
 Step 1. The user keys in `modify i/1 n/Milk q/100 u/g` into the UI command box. `LogicManager` takes this string command 
 and executes it.
@@ -390,21 +386,25 @@ called with the argument of "i/1 n/Milk q/100 u/g" and this is then tokenized in
 the modified ingredient's name, amount and unit. An `Ingredient` is created with this name and quantity (which consists 
 of the amount and unit) specified. 
 
-Step 4: This results in the creation of a `ModifyCommand` object with two parameters passed in - the UUID specified 
+Step 4: A `ModifyCommand` object is then created with two parameters passed in - the UUID specified 
 earlier wrapped in a `UniqueId` constructor as well as the `Ingredient`created earlier.
 
-Step 5: This `ModifyCommand` object is then executed by the `LogicManager`.  
+Step 5: This `ModifyCommand` object is then executed. During execution, the recipe whose UUID matches with the `UniqueId`
+passed into the `ModifyCommand` is retrieved from the recipe list through the `Model#getRecipe(UniqueId uuid)`. This is the old recipe
+before the ingredients are modified.
 
 Step 6: During execution, there are 2 possibilities. 
 
 If the recipe already contains the ingredient that was specified,
-the `Recipe#modifyIngredients(String oldIngredient, Ingredient newIngredient)` will be called with the String of 
+the `Recipe#modifyIngredients(String oldIngredient, Ingredient newIngredient)` will be called with the
 name of the ingredient that is to be modified as well as the `Ingredient` that was passed into `ModifyCommand` such that 
 the amount and unit of the ingredient can be modified. 
 
 If the recipe does not already contain the ingredient that was specified, the `Recipe#addIngredient(Ingredient ingredient)` 
 will be called with the `Ingredient` that was passed into `ModifyCommand` such that the ingredient is added to the 
-ingredient list of that recipe. A new recipe will be created with this modified ingredient list.
+ingredient list of that recipe. 
+
+In both cases, this results in the creation of a new recipe with a modified ingredient list.
 
 Step 7: Then the `Model#deleteRecipe(Recipe recipe)` is called on the old recipe that had the ingredient list before 
 it was modified. 
@@ -412,24 +412,28 @@ it was modified.
 Step 8: Then the `Model#addRecipe(Recipe recipe)` is called on the new recipe that has the modified ingredient list.
 
 Step 9: `ModifyCommand` then calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
-recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate` that matches the UUID that was passed into 
+recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate` that matches the `UniqueId` that was passed into 
 `ModifyCommand`.
 
-**Note**: If an invalid uuid (less than or equals to 0) is inputted, a
+**Note**: If an invalid UUID (less than or equals to 0) is inputted, a
 `ParseException` will be thrown and users will be informed that the UUID provided is invalid.
 
-**Note**: If the recipe with that uuid does not exist in the app, a `CommandException` will be thrown and users will be
+**Note**: If the recipe with that UUID does not exist in the app, a `CommandException` will be thrown and users will be
 informed that there is no recipe with that UUID in the recipe book.
 
 The following sequence diagram shows how the modify recipe feature works:
 
 <img src="images/UML/modifysequencediagram.png" width="700px">
 
+**Note**: The lifeline for `ModifyCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML,
+the lifeline reaches the end of diagram.
+
+
 **Note**: Due to limited space in the sequence diagram, certain behaviour could not be shown.
-1. `recipeUuid` is the UUID of the recipe that was passed into `ModifyCommand`. 
+1. `recipeUuid` is the `UniqueId` of the recipe that was passed into `ModifyCommand`. 
 2. `newRecipe` is the modified version of the recipe that contains the modified list of ingredients. This recipe was 
 created with interaction with `Recipe` as mentioned in Step 6 above. 
-3. `predicate` is the `RecipeUuidMatchesPredicate` that matches the UUID that was passed into `ModifyCommand`.
+3. `predicate` is the `RecipeUuidMatchesPredicate` that matches the `UniqueId` that was passed into `ModifyCommand`.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -452,7 +456,7 @@ created with interaction with `Recipe` as mentioned in Step 6 above.
 **Target User Profile**
 
 - is a home-baker
-- has a need to manage and use their inventory of ingredients
+- has a need to manage and use their stock of ingredients
 - has a need to manage a significant amount of recipes and view the ingredients needed
 - is reasonably comfortable using CLI apps
 - prefer desktop apps over other types
@@ -499,6 +503,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
   - [Ba]king [Br]ead shows an error message
 - 1c. The specified unit is not recognised
   - [Ba]king [Br]ead shows an error message
+- 1d. There is an error in the format of the user's input command.
+  - [Ba]king [Br]ead shows an error message
 - 2a. The ingredient is not in the stock
   - [Ba]king [Br]ead will add the ingredient along with its quantity to the stock
 - 2b. The ingredient is already in the stock
@@ -520,10 +526,12 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
     - [Ba]king [Br]ead shows an error message
 - 1d. User inputs a unit that cannot be converted to the unit specified for the specified ingredient in the stock
     - [Ba]king [Br]ead shows an error message
+- 1e. There is an error in the format of the user's input command.
+    - [Ba]king [Br]ead shows an error message
 - 2a. User does not specify the quantity of that ingredient used
-    - RecipeBook depletes the entire quantity of that ingredient
+    - [Ba]king [Br]ead depletes the entire quantity of that ingredient
 - 2b. The quantity the user requests to use is more than the current quantity in stock
-    - RecipeBook depletes the entire quantity of that ingredient
+    - [Ba]king [Br]ead depletes the entire quantity of that ingredient
 
 
 #### Use case: View the stock of ingredients
@@ -602,6 +610,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
   - [Ba]king [Br]ead shows an error message
 - 1b. The specified recipe UUID inputted is less than 1
   - [Ba]king [Br]ead shows an error message
+- 1c. There is an error in the format of the user's input command.
+  - [Ba]king [Br]ead shows an error message
 
 
 #### Use case: Modify the ingredients in the recipe
@@ -616,6 +626,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 1c. User inputs an invalid quantity (less than or equals to 0 or non-numerical)
     - [Ba]king [Br]ead shows an error message
 - 1d. The specified unit is not recognised
+    - [Ba]king [Br]ead shows an error message
+- 1e. There is an error in the format of the user's input command.
     - [Ba]king [Br]ead shows an error message
 
 <div style="page-break-after: always;"></div>
