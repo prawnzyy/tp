@@ -529,9 +529,9 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 1e. There is an error in the format of the user's input command.
     - [Ba]king [Br]ead shows an error message
 - 2a. User does not specify the quantity of that ingredient used
-    - RecipeBook depletes the entire quantity of that ingredient
+    - [Ba]king [Br]ead depletes the entire quantity of that ingredient
 - 2b. The quantity the user requests to use is more than the current quantity in stock
-    - RecipeBook depletes the entire quantity of that ingredient
+    - [Ba]king [Br]ead depletes the entire quantity of that ingredient
 
 
 #### Use case: View the stock of ingredients
