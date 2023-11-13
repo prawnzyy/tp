@@ -330,7 +330,7 @@ Step 6. After execution, the returned `CommandResult` will then be returned back
 `SearchCommand` calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
 recipe list in `ModelManager` according to the predicate set.
 
-The following sequence diagram shows how the list recipe feature works:
+The following sequence diagram shows how the search recipe feature works:
 
 <img src="images/UML/searchrecipesequencediagram.png" width="700">
 
@@ -465,8 +465,9 @@ created with interaction with `Recipe` as mentioned in Step 6 above.
 **Value Propositions**
 
 Home-bakers often struggle with managing their recipe book as well as checking if they have the ingredients needed for
-a particular recipe. This application is designed for home-bakers to search for the recipes that they want along with
-the necessary ingredients required to make baking a more convenient and easy process.
+a particular recipe. This application is designed for home-bakers to easily check what ingredients they already have and 
+search for the recipes that they want along with the necessary ingredients required, which makes baking a more convenient 
+and easy process.
 
 **User Stories**
 
@@ -682,7 +683,7 @@ testers are expected to do more *exploratory* testing.
        Expected: Adds Potato Starch to the ingredients or increases the amount of Potato Starch by 100g if it already exists.
    
     1. Other incorrect add commands to try : `add`, `add n/Flour`<br>
-       Expected: Error details shown in the status message.
+       Expected: Error details shown in the command result message.
 
 ### Using an ingredient
 
@@ -697,7 +698,7 @@ testers are expected to do more *exploratory* testing.
      Expected: Uses the entire stock of Potato Starch. 
 
     1. Other incorrect add commands to try : `use`, `use n/Flour q/100`<br>
-     Expected: Error details shown in the status message.
+     Expected: Error details shown in the command result message.
 
 ### Viewing of Ingredients
 
@@ -724,7 +725,7 @@ testers are expected to do more *exploratory* testing.
        Expected: Displays the recipe with UUID 1.
 
     1. Other incorrect delete commands to try: `view`, `view x`(where x is larger than the list size)<br>
-       Expected: Error details shown in the status message.
+       Expected: Error details shown in the command result message.
 
 ### Adding a recipe
 
@@ -756,10 +757,10 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: List all recipes using the `list` command. Multiple recipes in the list.
 
     1. Test case: `delete 1`<br>
-       Expected: First recipe is deleted from the list. UUID of the deleted recipe shown in the status message. Timestamp in the status bar is updated.
+       Expected: First recipe is deleted from the list. UUID of the deleted recipe shown in the command result message. 
 
     1. Test case: `delete 0`<br>
-       Expected: No recipe is deleted. Error details shown in the status message. Status bar remains the same.
+       Expected: No recipe is deleted. Error details shown in the command result message. 
 
     1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.

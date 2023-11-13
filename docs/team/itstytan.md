@@ -41,7 +41,7 @@ Given below are my contributions to the project.
   - Wrote the UI section in the Architecture section.
   - Added class diagram for UI component.
   - Wrote the implementation for the view recipe feature.
-  - Added activity diagram for the view recipe feature.
+  - Added sequence diagram for the view recipe feature.
   - Added the appendix on effort.
 
 * **Contribution to team-based tasks**
