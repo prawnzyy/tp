@@ -254,7 +254,7 @@ The following sequence diagram shows how the view recipe operation works:
 **Note**: If the recipe with that UUID does not exist in the app, a `CommandException` will be thrown and users will be
 informed that there is no recipe with that UUID in the recipe book.
 
-**Note**: The lifeline for `RecipeViewCommandParser` and `RecipeViewCommand` should end at the destroy marker (X) but 
+**Note**: The lifeline for `RecipeViewCommandParser` should end at the destroy marker (X) but 
 due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 #### Alternatives considered:
