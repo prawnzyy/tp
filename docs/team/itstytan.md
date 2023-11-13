@@ -42,8 +42,10 @@ Given below are my contributions to the project.
   - Added class diagram for UI component.
   - Wrote the implementation for the view recipe feature.
   - Added activity diagram for the view recipe feature.
+  - Added the appendix on effort.
 
 * **Contribution to team-based tasks**
   - Push user story issues onto GitHub.
   - Created UI mockups for the project.
+  - Helped to merge and edit the demo video.
 
