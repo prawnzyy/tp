@@ -46,7 +46,7 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
         }
 
         if (id <= 0) {
-            throw new ParseException(String.format(MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX));
+            throw new ParseException(MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());

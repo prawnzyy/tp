@@ -8,12 +8,19 @@ pageNav: 3
 
 [Ba]king [Br]ead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
 Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). [Ba]king [Br]ead is targeted
-towards bakers like yourselves to aid you on your baking journey.
+towards bakers like yourselves to aid you on your baking journey. 
+
+Tired of rummaging through your cupboard to check what ingredients and how much of it you have? Fret not, with [Ba]king [Br]ead, you will be able to manage your stock with ease so the next time you want
+to bake something or go grocery shopping, you know exactly what you have! And if you are tired of having to flip through physical 
+recipe books to find a recipe you want, once again [Ba]king [Br]ead has you covered! With [Ba]king [Br]ead you will be able to 
+view your recipes with ease, making it much easier to manage your recipes! 
+
 If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
 * [Quick Start](#quick-start)
+* [Navigating the GUI](#navigating-the-gui)
 * [Features](#features)
   * [Help](#viewing-help-help)
   * [Add ingredient](#adding-an-ingredient-add)
@@ -41,10 +48,11 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 3. Copy the file to the folder you want to use as the _home folder_ for your Inventory App.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
-   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data. For more
+   information on how to navigate the GUI, head over to this [section](#navigating-the-gui) <br>
    ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the input box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
     * add n/Flour q/10 u/kg (Add Command)
@@ -52,6 +60,13 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
     * stock Flour           (Stock Command)
 
 6. Refer to the [Features](#features) below for details of each command.
+
+## Navigating the GUI
+![Ui](images/Ui-annotated.png)
+**Input box:** This is where you will be inputting your commands.<br>
+**Command result box:** Where the application will return a message regarding the outcome of command inputted.<br>
+**Ingredients list:** Contain a list view of all your ingredients with their specified quantity and unit.<br>
+**Recipe list:** Contains a list view of all your recipes.<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -234,7 +249,6 @@ complete recipe
 Modifies the ingredients in a recipe.
 
 Format: `modify i/UUID n/NAME q/QUANTITY u/UNIT`
-
 * `UUID` must be an integer greater than or equal to 1.
 * The quantity provided must be more than 0.
 
@@ -301,10 +315,6 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous [Ba]king [Br]ead home folder.
-
---------------------------------------------------------------------------------------------------------------------
-
-## Known issues [will be edited]
 
 --------------------------------------------------------------------------------------------------------------------
 

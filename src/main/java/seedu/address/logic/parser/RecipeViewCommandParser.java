@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX;
 
 import seedu.address.logic.commands.RecipeViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -26,6 +27,11 @@ public class RecipeViewCommandParser implements Parser<RecipeViewCommand> {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecipeViewCommand.MESSAGE_USAGE), pe);
         }
+
+        if (id <= 0) {
+            throw new ParseException(MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);
+        }
+
         return new RecipeViewCommand(new RecipeUuidMatchesPredicate(new UniqueId(id)));
     }
 }

@@ -2,8 +2,8 @@
 
 Project: [Ba]king [Br]ead
 
-[Ba]king [Br]ead is a desktop inventory and recipe book application that allows its users to add ingredients and view the 
-recipes. The user interacts with it using a CLI, and it has a GUI using JavaFX. It is written in Java.
+[Ba]king [Br]ead is a desktop inventory and recipe book management application that allows users to add ingredients and view
+recipes. The user interacts with it through a CLI. The GUI is implemented using JavaFX and the project is written in Java.
 
 Given below are my contributions to the project.
 
