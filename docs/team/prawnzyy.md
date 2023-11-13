@@ -1,6 +1,6 @@
 ## Seah Zi Xiang's Project Portfolio Page
 
-Project: [Ba]king [Br]ead
+### Project: [Ba]king [Br]ead
 
 [Ba]king [Br]ead is a desktop inventory and recipe book management application that allows users to add ingredients and view
 recipes. The user interacts with it through a CLI. The GUI is implemented using JavaFX and the project is written in Java.

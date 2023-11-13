@@ -36,8 +36,9 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
   * [Save the data](#saving-the-data)
   * [Edit the data file](#editing-the-data-file)
 * [FAQ](#faq)
-* [Known Issues](#known-issues-will-be-edited)
 * [Command Summary](#command-summary)
+
+<div style="page-break-after: always;"></div>
 
 ## Quick start
 
