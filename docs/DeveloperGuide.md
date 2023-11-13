@@ -241,7 +241,16 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the view recipe operation works:
 
-<img src="images/UML/viewrecipesequencediagram.png" width="700">
+<img src="images/UML/viewrecipesequencediagram.png" width="800">
+
+**Note**: If the argument is an invalid UUID (less than or equals to 0), a
+`ParseException` will be thrown and users will be informed that the index provided is invalid.
+
+**Note**: If the recipe with that UUID does not exist in the app, a `CommandException` will be thrown and users will be
+informed that there is no recipe with that index in the recipe book.
+
+**Note**: The lifeline for `RecipeViewCommandParser` and `RecipeViewCommand` should end at the destroy marker (X) but 
+due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 #### Alternatives considered:
 An alternative implementation considered is to find the first recipe with UUID that matches instead of filtering through
@@ -277,7 +286,7 @@ Step 6. After execution, the returned `CommandResult` will then be returned back
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/listrecipesequencediagram.png" width="700">
+<img src="images/UML/listrecipesequencediagram.png" width="800">
 
 #### Design Considerations:
 **Aspect : How view executes:**
@@ -316,7 +325,7 @@ recipe list in `ModelManager` according to the predicate set.
 
 The following sequence diagram shows how the list recipe feature works:
 
-<img src="images/UML/searchrecipesequencediagram.png" width="700">
+<img src="images/UML/searchrecipesequencediagram.png" width="800">
 
 ### Delete recipe feature
 #### Implementation
@@ -406,7 +415,7 @@ informed that there is no recipe with that index in the recipe book.
 
 The following sequence diagram shows how the modify recipe feature works:
 
-<img src="images/UML/modifysequencediagram.png" width="2000px">
+<img src="images/UML/modifysequencediagram.png" width="800px">
 
 **Note**: Due to limited space in the sequence diagram, certain behaviour could not be shown.
 1. `recipeUuid` is the UUID of the recipe that was passed into `ModifyCommand`. 

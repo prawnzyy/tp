@@ -20,6 +20,7 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
 * [Quick Start](#quick-start)
+* [Navigating the GUI](#navigating-the-gui)
 * [Features](#features)
   * [Help](#viewing-help-help)
   * [Add ingredient](#adding-an-ingredient-add)
@@ -47,21 +48,11 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
 3. Copy the file to the folder you want to use as the _home folder_ for your Inventory App.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
-   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui-annotated.png)
+   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data. For more
+   information on how to navigate the GUI, head over to this [section](#navigating-the-gui)
+   ![Ui](images/Ui.png)
 
-
-#### As seen on the diagram above, 
--  At the top of the screen, there is an input box. This is where you will be inputting your commands. 
--  Below the input box is the Command result box, where [BA]king [BR]ead will return a message after you enter a command.
--  Below the Command result box, the screen has been split into 2 windows. 
-  - The window on the left hand side is used to display the ingredients list, which contain all the ingredients with their 
-    specified quantity and unit. 
-  - The window on the right hand side is used to store the list of recipes. 
-  - After entering commands related to the stock, the left hand window's display will change and after entering commands 
-    related to the recipes, the right hand window's display will change.
-
-5. Type the command in the command result box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the input box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
     * add n/Flour q/10 u/kg (Add Command)
@@ -69,6 +60,13 @@ If you can type fast, [BA]king [BR]ead can get your ingredient and recipe manage
     * stock Flour           (Stock Command)
 
 6. Refer to the [Features](#features) below for details of each command.
+
+## Navigating the GUI
+![Ui](images/Ui-annotated.png)
+**Input box:** This is where you will be inputting your commands.<br>
+**Command result box:** Where the application will return a message regarding the outcome of command inputted.<br>
+**Ingredients list:** Contain a list view of all your ingredients with their specified quantity and unit.<br>
+**Recipe list:** Contains a list view of all your recipes.<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
