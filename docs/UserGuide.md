@@ -70,6 +70,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 **Recipe list:** Contains a list view of all your recipes.<br>
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Features
 
