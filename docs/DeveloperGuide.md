@@ -405,12 +405,13 @@ If the recipe does not already contain the ingredient that was specified, the `R
 will be called with the `Ingredient` that was passed into `ModifyCommand` such that the ingredient is added to the 
 ingredient list of that recipe. 
 
-In both cases, this results in the creation of a new recipe with a modified ingredient list.
+In both cases, this results in the creation of a new recipe object with a modified ingredient list.
 
 Step 7: The `Model#deleteRecipe(Recipe recipe)` is called with the old recipe that had the ingredient list before 
-it was modified. 
+it was modified, deleting the old recipe from the recipe list. 
 
-Step 8: The `Model#addRecipe(Recipe recipe)` is called with the new recipe that has the modified ingredient list.
+Step 8: The `Model#addRecipe(Recipe recipe)` is called with the new recipe that has the modified ingredient list, adding the new
+recipe to the recipe list.
 
 Step 9: `ModifyCommand` then calls `Model#updateFilteredRecipeList(Predicate<Recipe> predicate)`, filtering the
 recipe list in `ModelManager` with a `RecipeUuidMatchesPredicate`, which ultimately shows the recipe that matches
