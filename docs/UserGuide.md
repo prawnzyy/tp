@@ -230,6 +230,9 @@ complete recipe
 * For the recipe steps, the format to follow is `(index). (step)` where an example is `1. Mix Water and Flour`.
 * For the recipe steps, you have to remember the index of step you are typing in and check it by yourself.
 
+**Note**: There is no error message when inputting negative quantities for ingredients. As such, it is up to the user to ensure
+          that a positive quantity is inputted.
+
 Example:
 ```
 addrecipe
