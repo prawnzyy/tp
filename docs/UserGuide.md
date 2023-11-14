@@ -266,9 +266,6 @@ Example:
 
 **Note**: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
 
-<div style="page-break-after: always;"></div>
-
-
 ### Deleting Recipes : `delete`
 
 Deletes a specific recipe from [Ba]king [Br]ead when you longer need it.
