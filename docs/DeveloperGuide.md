@@ -586,6 +586,26 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 - 2c. There are currently no recipes stored
   - No updates will be made to the screen
 
+#### Use case: Add a new recipe
+#### MSS
+1. User requests to start adding a recipe
+2. User enters the name of the recipe
+3. User enters the ingredients of the recipe
+4. User enters command to move to the steps portion
+5. User enters the steps of the recipe
+6. User enters command to finalise the add recipe command
+7. [Ba]king [Br]ead adds the recipe to the recipe list
+
+    Use case ends
+
+#### Extensions:
+- 2a. Name is not of alphanumeric format
+  - [Ba]king [Br]ead shows an error message
+- 3a. Ingredient inputted does not follow given format
+  - [Ba]king [Br]ead shows an error message
+- 5a. Step inputted does not contain an index at the start
+  - [Ba]king [Br]ead shows an error message
+
 #### Use case: Search for a recipe with a specific ingredient
 #### MSS
 1. User requests to search for recipes with a specific ingredient
