@@ -206,8 +206,6 @@ Step 10. A `RecipeAddCommand` instance is created by the `RecipeAddCommandParser
 
 Step 9. The `RecipeAddCommand` adds the new `Recipe` instance to the recipe list in `ModelManager`.
 
-<div style="page-break-after: always;"></div>
-
 The following sequence diagram shows how the add recipe operation works:
 ![img.png](img.png)
 
@@ -269,8 +267,6 @@ However, we do not expect a user to have so many recipes that performance would 
 users to be frequently using this command either, since baking something requires much time and effort. Filtering
 through the whole list also confers an advantage of being able to assert that there is at most one such recipe
 with that particular UUID.
-
-<div style="page-break-after: always;"></div>
 
 ### List recipe feature
 #### Implementation
