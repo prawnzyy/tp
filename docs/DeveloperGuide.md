@@ -206,6 +206,8 @@ Step 10. A `RecipeAddCommand` instance is created by the `RecipeAddCommandParser
 
 Step 9. The `RecipeAddCommand` adds the new `Recipe` instance to the recipe list in `ModelManager`.
 
+<div style="page-break-after: always;"></div>
+
 The following sequence diagram shows how the add recipe operation works:
 ![img.png](img.png)
 
