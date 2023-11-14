@@ -125,6 +125,14 @@ Examples:
 * `add n/Flour q/1 u/kg` adds 1kg of Flour to the stock.
 * `add n/Milk q/600 u/g` adds 600g of Milk to the stock.
 
+Example Used: `add n/Flour q/1 u/kg` **Note**: Sample data starts off with 3kg of Flour.
+
+![Add Ingredient Example](images/ug-images/addIngredient.png)
+
+Example Used: `add n/Milk q/600 u/g` **Note**: Sample data does not contain Milk.
+
+![Add New Ingredient Example](images/ug-images/addIngredientNew.png)
+
 Supported Units:
 | Unit     | Alias                                 |
 |----------|---------------------------------------|
@@ -156,13 +164,16 @@ Examples:
 *  `use n/Milk q/600 u/g` Depletes the current quantity of milk by 600g.
 *  `use n/Egg` Fully depletes the current quantity of egg.
 
+Example Used: `use n/Milk q/600 u/g` **Note**: Data shown started with 1kg of Milk.
+
+![Use Ingredient Example](images/ug-images/useIngredient.png)
+
 Supported Units:
 | Unit     | Alias                                 |
 |----------|---------------------------------------|
 | GRAM     | g, gram, GRAM                         |
 | KILOGRAM | kg, kilogram, KILOGRAM                |
 | PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
-
 
 ### Finding the quantity of an ingredient by name: `stock`
 
@@ -175,10 +186,16 @@ Format: `stock [NAME]…​`
 * Only full words will be matched e.g. `Flou` will not match `Flour`.
 * For ingredients with names comprising multiple words, any ingredient that contains the keyword will also be displayed 
    <br/> e.g. `stock butter` will display both `butter` and `butter stick`.
+* When no names are specified, all ingredients will be displayed.
 
 Examples:
 * `stock Butter` returns `Butter: 50g`.
-* `stock Butter flour` returns `Butter: 100g`, `Flour: 2000g`.<br>
+* `stock Butter flour` returns `Butter: 100g`, `Flour: 2000g`.
+* `stock` returns all ingredients.<br>
+
+Example used: `stock butter`
+
+![Stock Example](images/ug-images/stock.png)
 
 ### Clearing all entries from ingredient stock : `clear`
 
@@ -186,11 +203,19 @@ Clears all entries from the ingredient stock.
 
 Format: `clear`
 
+Example used: `clear`
+
+![Stock Example](images/ug-images/clear.png)
+
 ### Listing all Recipes : `list`
 
 Lists out all recipes that is currently stored in [Ba]king [Br]ead.
 
 Format: `list`
+
+Example Used: `list`
+
+![List Example](images/ug-images/list.png)
 
 Examples:
 * `list` lists out all recipes within [Ba]king [Br]ead.
@@ -206,6 +231,10 @@ Format: `view UUID`
 Examples:
 * `view 1` views the recipe with `UUID` of 1.
 * `view 21` views the recipe with `UUID` of 21.
+
+Example Used: `view 1`
+
+![View Example](images/ug-images/view.png)
 
 ### Adding Recipes : `addrecipe`
 
@@ -266,6 +295,14 @@ Example:
 
 **Note**: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
 
+Example Used: `modify i/1 n/Flour q/100 u/g` **Note**: Recipe being modified has 200g of flour as part of the ingredient list
+
+![Modify Existing Example](images/ug-images/modifyExisting.png)
+
+Example Used: `modify i/1 n/Cream q/100 u/g` **Note**: Recipe being modified does not have cream in its ingredient list
+
+![Modify New Example](images/ug-images/modifyNew.png)
+
 ### Deleting Recipes : `delete`
 
 Deletes a specific recipe from [Ba]king [Br]ead when you longer need it.
@@ -293,6 +330,14 @@ Format: `search NAME`
 Examples:
 * `search flour` searches for all recipes that uses `flour`
 * `search butter` searches for all recipes that uses `butter`
+
+Example used: `search flour`: **Note**: Multiple recipes use the ingredient flour
+
+![Search Multiple Example](images/ug-images/searchMultiple.png)
+
+Example used: `search blueberry`: **Note**: Only one recipe uses the ingredient blueberry
+
+![Search Single Example](images/ug-images/searchSingle.png)
 
 ### Exiting the program : `exit`
 
