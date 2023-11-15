@@ -113,7 +113,7 @@ into the application's input box as shown below.<br><br>
 <img src='images/ug-images/quickstart_addingredient1.png' width='650'> <br><br>
 2. Press enter to execute the command.
 3. You should see the ingredient added into your ingredient list as seen below. Hooray! You have added your first ingredient!<br><br>
-<img src='images/ug-images/quickstart_addingredient2.png' width='650'>
+<img src='images/ug-images/quickstart_addingredient2.png' width='860'>
 
 #### Adding your first recipe
 Recipe adding is a little more complicated! But don't worry, you will get the hang of it in no time! Refer to the
