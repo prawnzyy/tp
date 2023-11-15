@@ -19,6 +19,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
+* [Glossary](#glossary)
 * [Quick Start](#quick-start)
 * [Navigating the GUI](#navigating-the-gui)
 * [Features](#features)
@@ -40,7 +41,21 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 
 <div style="page-break-after: always;"></div>
 
+## Glossary
+Listed below are the definitions of the terminology used throughout the User Guide
+
+| Term                                 | Definition                                                         | 
+|:-------------------------------------|:-------------------------------------------------------------------|
+| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead                           | 
+| Command                              | A set of words that execute a certain operation                    |
+| Parameter                            | Specific information that a command needs for it to be run         | 
+| UUID (Universally Unique IDentifier) | An integer that is used to identify the recipes                    |
+
+
 ## Quick start
+
+<<<<<<< HEAD
+New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to get started!
 
 ### Setting up [Ba]king [Br]ead
 1. Ensure you have Java `11` or above installed in your Computer.
@@ -69,8 +84,16 @@ The GUI may be confusing if you are a first time user of our application. Here i
     * stock Flour           (Stock Command)
 
 2. Refer to the [Features](#features) below for details of each command.
+=======
 
 
+>>>>>>> master
+
+
+
+<<<<<<< HEAD
+=======
+>>>>>>> master
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
@@ -99,9 +122,27 @@ The GUI may be confusing if you are a first time user of our application. Here i
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
   </box>
 
+List of parameters:
+
+| Parameter |             Description             | Constraints                                      | Valid examples        | Invalid examples |
+|:----------|:-----------------------------------:|--------------------------------------------------|-----------------------|------------------|
+| `n/`      |       Name of the ingredient        | Alphanumeric characters (a to z, A to Z, 0 to 9) | Flour, Chocolate Chip | Chocolate-Chip   |
+| `q/`      |     Quantity of the ingredient      | Must be numeric and more than 0                  | 1000, 1, 200          | -100, hundred, 0 |
+| `u/`      | Unit used to measure the ingredient | Must be one of the supported units               | GRAM, KILOGRAM, PIECE | ML, L, TSP       |
+| `i/`      |           UUID of recipe            | UUID must be at least 1                          | 1, 2, 3               | 0, -1, 0.1       |
+
+Supported Units:
+
+| Unit     | Alias                                 |
+|----------|---------------------------------------|
+| GRAM     | g, gram, GRAM                         |
+| KILOGRAM | kg, kilogram, KILOGRAM                |
+| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
+
+
 ### Viewing help : `help`
 
-Shows a message explaining how to access the help page.
+If you are not sure how to use [Ba]king [Br]ead, this command will show a pop-up with a link to access the help page.
 
 <img src='images/helpMessage.png' width='650' align="center">
 
@@ -111,7 +152,7 @@ Format: `help`
 
 ### Adding an ingredient: `add`
 
-Adds an ingredient to stock.
+Adds an ingredient to the stock.
 
 Format: `add n/NAME q/QUANTITY u/UNIT`
 
@@ -145,7 +186,7 @@ Supported Units:
 
 ### Using up ingredients : `use`
 
-Depletes a specified amount of an ingredient from stock.
+Depletes a specified amount of an ingredient from the stock.
 
 Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
@@ -180,7 +221,7 @@ Supported Units:
 
 ### Finding the quantity of an ingredient by name: `stock`
 
-Lists the quantity of the specified ingredients.
+Lists the quantity of the specified ingredient(s).
 
 Format: `stock [NAME]…​`
 
