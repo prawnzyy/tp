@@ -5,9 +5,8 @@ pageNav: 3
 ---
 
 # [Ba]king [Br]ead User Guide
-
-Welcome! If you are a new baker suffering under the mess and stress of baking, look no further, [Ba]king [Br]ead is here 
-to help organise your kitchen and recipes.
+Welcome! If you are a new baker suffering under the mess and stress of baking, [Ba]king [Br]ead is here to help organise 
+your kitchen and recipes.
 
 [Ba]king [Br]ead will help you to:
 1. Keep track of all your baking ingredients in your kitchen
