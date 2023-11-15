@@ -5,19 +5,18 @@ pageNav: 3
 ---
 
 # [Ba]king [Br]ead User Guide
+Welcome! If you are a new baker suffering under the mess and stress of baking, [Ba]king [Br]ead is here to help organise 
+your kitchen and recipes.
 
-[Ba]king [Br]ead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). [Ba]king [Br]ead is targeted
-towards bakers like yourselves to aid you on your baking journey. 
+[Ba]king [Br]ead will help you to:
+1. Keep track of all your baking ingredients in your kitchen
+2. Collate all your recipes digitally for easy viewing
+3. Do all the above with blazing efficiency, your fast fingers and our application's command line interface makes this
+uniquely possible.
 
-Tired of rummaging through your cupboard to check what ingredients you have? Tired of scrolling through ad-ridden webpages of needlessly complicated recipes? 
-
-Fret not, with [Ba]king [Br]ead, you will be able to:
-* Manage your stock with ease!
-* Find recipes to make with your stock!
-* View and add your own recipes!
-
-If you can type fast, [Ba]king [Br]ead can help you get your ingredient and recipe management tasks done faster than traditional GUI apps.
+You will never forget what Ingredient you need to stock up on during your next trip to the supermarket. You will never 
+have to flip through heavy physical recipe books any longer. What are you waiting for? Master [Ba]king [Br]ead and 
+fast-track your baking journey now!
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
@@ -46,7 +45,8 @@ If you can type fast, [Ba]king [Br]ead can help you get your ingredient and reci
 <div style="page-break-after: always;"></div>
 
 ## Using this Guide
-This user guide contains all the information you will need in order to use [Ba]king [Br]ead.
+This user guide contains all the information you will need in order to use [Ba]king [Br]ead. For new users, this document will also guide you in using the application,
+starting with the more essential features.
 
 **For new users**:
 - Start using [Ba]king [Br]ead by heading over to the [Quick Start](#quick-start) to learn how to set up the app and use it.
@@ -100,7 +100,7 @@ New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to g
 
 ### Navigating the GUI
 The GUI may be confusing if you are a first time user of our application. Here is the breakdown of the GUI for [Ba]king [Br]ead.
-![Ui](images/Ui-annotated.png)
+![Ui](images/Ui-annotated.png)<br>
 **Input box:** This is where you will be inputting your commands.<br>
 **Command result box:** Where the application will return a message regarding the outcome of command inputted.<br>
 **Ingredients list:** Contain a list view of all your ingredients with their specified quantity and unit.<br>
@@ -216,13 +216,6 @@ Example Used: `add n/Milk q/600 u/g` **Note**: Sample did not have any Milk in t
 
 <img src='images/ug-images/addIngredientNew.png' width='650'>
 
-Supported Units:
-| Unit     | Alias                                 |
-|----------|---------------------------------------|
-| GRAM     | g, gram, GRAM                         |
-| KILOGRAM | kg, kilogram, KILOGRAM                |
-| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
-
 ### Using up ingredients : `use`
 
 Depletes a specified quantity of an ingredient from the stock.
@@ -249,13 +242,6 @@ Examples:
 Example Used: `use n/Milk q/600 u/g` **Note**: Sample started with 1kg of Milk in the stock.
 
 <img src='images/ug-images/useIngredient.png' width='650'>
-
-Supported Units:
-| Unit     | Alias                                 |
-|----------|---------------------------------------|
-| GRAM     | g, gram, GRAM                         |
-| KILOGRAM | kg, kilogram, KILOGRAM                |
-| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
 
 <box type="warning">
 If you try to use an ingredient which is not in the stock, the error message `Ingredient does not exist in Inventory` will appear. <br>
