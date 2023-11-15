@@ -122,6 +122,7 @@ into the application's input box as shown below.<br><br>
 3. You should see the ingredient added into your ingredient list as seen below. Hooray! You have added your first ingredient!<br><br>
 <img src='images/ug-images/quickstart_addingredient2.png' width='700'>
 
+<div style="page-break-after: always;"></div>
 #### Adding your first recipe
 Recipe adding is a little more complicated! But don't worry, you will get the hang of it in no time! Refer to the
 infographic below for step-by-step instructions on adding your first recipe.
@@ -217,16 +218,12 @@ Examples:
 
 Example Used: `add n/Flour q/1 u/kg` **Note**: Sample started with 3kg of Flour in the stock.
 
-<img src='images/ug-images/addIngredient.png' width='650' height="400" class="center">
+<img src='images/ug-images/addIngredient.png' width='650'>
 
 
 Example Used: `add n/Milk q/600 u/g` **Note**: Sample did not have any Milk in the stock.
 
-<<<<<<< HEAD
 <img src='images/ug-images/addIngredientNew.png' width='650'><br>
-=======
-
->>>>>>> master
 
 ### Using up ingredients : `use`
 
@@ -253,7 +250,7 @@ Examples:
 
 Example Used: `use n/Milk q/600 u/g` **Note**: Sample started with 1kg of Milk in the stock.<br>
 
-<img src='images/ug-images/useIngredient.png' width='650' height="480" class="center">
+<img src='images/ug-images/useIngredient.png' width='650'>
 
 <br>
 <box type="warning">
@@ -281,11 +278,8 @@ Examples:
 
 Example used: `stock butter`
 
-<<<<<<< HEAD
 <img src='images/ug-images/stock.png' width='650'><br>
-=======
 
->>>>>>> master
 
 ### Clearing all ingredients from ingredient stock : `clear`
 
@@ -295,12 +289,8 @@ Format: `clear`
 
 Example used: `clear`
 
-<<<<<<< HEAD
 <img src='images/ug-images/clear.png' width='650'><br>
-=======
-<img src='images/ug-images/clear.png' width='650' height="480" class="center">
 
->>>>>>> master
 
 ### Listing all Recipes : `list`
 
@@ -310,11 +300,7 @@ Format: `list`
 
 Example Used: `list`
 
-<<<<<<< HEAD
 <img src='images/ug-images/list.png' width='650'><br>
-=======
-
->>>>>>> master
 
 ### Viewing Specific Recipes : `view`
 
@@ -330,10 +316,8 @@ Examples:
 
 Example Used: `view 1`
 
-<<<<<<< HEAD
 <img src='images/ug-images/view.png' width='650'><br>
-=======
->>>>>>> master
+
 
 <box type="info">
 
@@ -383,23 +367,15 @@ steps start
 complete recipe
 ```
 
-
 <box type="warning">
-
 When encountering the error message `Failed to add ingredient`, ensure that the ingredient specified follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
 </box>
 
 <box type="warning">
-
-<<<<<<< HEAD
-When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been specified been in before keying in the step itself<br>
-=======
->>>>>>> master
-      Example: `1. Mix Water and Flour` **Note**: Ensure that a period and space is present after the index.
+When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been specified been in before keying in the step itself
 </box>
 
 <box type="info">
-
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
@@ -420,13 +396,13 @@ Example Used: `modify i/1 n/Flour q/100 u/g`
 
 **Note**: Recipe being modified has 200g of flour as part of the ingredient list
 
-<img src='images/ug-images/modifyExisting.png' width='650' height="480" class="center">
+<img src='images/ug-images/modifyExisting.png' width='650'>
 
 
 Example Used: `modify i/1 n/Cream q/100 u/g` 
 **Note**: Recipe being modified does not have cream in its ingredient list
 
-<img src='images/ug-images/modifyNew.png' width='650' height="480" class="center">
+<img src='images/ug-images/modifyNew.png' width='650'>
 
 <box type="info">
 
@@ -477,13 +453,12 @@ Examples:
 
 Example used: `search flour` **Note**: Multiple recipes use the ingredient flour
 
-<img src='images/ug-images/searchMultiple.png' width='650' height="480" class="center">
+<img src='images/ug-images/searchMultiple.png' width='650'>
 
 
 Example used: `search blueberry` **Note**: Only one recipe uses the ingredient blueberry
 
-<img src='images/ug-images/searchSingle.png' width='650'>
-
+<img src='images/ug-images/searchSingle.png' width='650'><br>
 
 ### Exiting the program : `exit`
 
@@ -498,7 +473,7 @@ Inventory and Recipe data are saved in the hard disk automatically after any com
 <box type="info">
 
 **Note**: When the application loads for the first time and no command is run, no inventory or recipe data will be saved.
-</box>
+</box><br>
 ### Editing the data file
 
 Inventory data are saved automatically as a JSON file `[JAR file location]/data/inventory.json`. Advanced users are welcome to update data directly by editing that data file.
