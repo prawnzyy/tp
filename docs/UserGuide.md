@@ -207,13 +207,6 @@ Example Used: `add n/Milk q/600 u/g` **Note**: Sample data does not contain Milk
 
 <img src='images/ug-images/addIngredientNew.png' width='650'>
 
-Supported Units:
-| Unit     | Alias                                 |
-|----------|---------------------------------------|
-| GRAM     | g, gram, GRAM                         |
-| KILOGRAM | kg, kilogram, KILOGRAM                |
-| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
-
 ### Using up ingredients : `use`
 
 Depletes a specified amount of an ingredient from the stock.
@@ -241,13 +234,6 @@ Examples:
 Example Used: `use n/Milk q/600 u/g` **Note**: Data shown started with 1kg of Milk.
 
 <img src='images/ug-images/useIngredient.png' width='650'>
-
-Supported Units:
-| Unit     | Alias                                 |
-|----------|---------------------------------------|
-| GRAM     | g, gram, GRAM                         |
-| KILOGRAM | kg, kilogram, KILOGRAM                |
-| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
 
 <box type="warning">
 When encountering the error message `Ingredient does not exist in Inventory`, either add it in first or use a different ingredient
