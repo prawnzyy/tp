@@ -122,6 +122,7 @@ into the application's input box as shown below.<br><br>
 3. You should see the ingredient added into your ingredient list as seen below. Hooray! You have added your first ingredient!<br><br>
 <img src='images/ug-images/quickstart_addingredient2.png' width='700'>
 
+<div style="page-break-after: always;"></div>
 #### Adding your first recipe
 Recipe adding is a little more complicated! But don't worry, you will get the hang of it in no time! Refer to the
 infographic below for step-by-step instructions on adding your first recipe.
@@ -191,7 +192,7 @@ If you are not sure how to use [Ba]king [Br]ead, this command will show a pop-up
 
 Format: `help`
 
-<img src='images/helpMessage.png' width='650'>
+<img src='images/helpMessage.png' width='650'><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -217,13 +218,12 @@ Examples:
 
 Example Used: `add n/Flour q/1 u/kg` **Note**: Sample started with 3kg of Flour in the stock.
 
-<img src='images/ug-images/addIngredient.png' width='650' height="400" class="center">
+<img src='images/ug-images/addIngredient.png' width='650'>
 
 
 Example Used: `add n/Milk q/600 u/g` **Note**: Sample did not have any Milk in the stock.
 
-<img src='images/ug-images/addIngredientNew.png' width='650' height="480" class="center">
-
+<img src='images/ug-images/addIngredientNew.png' width='650'><br>
 
 ### Using up ingredients : `use`
 
@@ -248,9 +248,9 @@ Examples:
 *  `use n/Milk q/600 u/g` Depletes the current quantity of milk by 600g.
 *  `use n/Egg` Fully depletes the current quantity of egg.
 
-Example Used: `use n/Milk q/600 u/g` **Note**: Sample started with 1kg of Milk in the stock.
+Example Used: `use n/Milk q/600 u/g` **Note**: Sample started with 1kg of Milk in the stock.<br>
 
-<img src='images/ug-images/useIngredient.png' width='650' height="480" class="center">
+<img src='images/ug-images/useIngredient.png' width='650'>
 
 <br>
 <box type="warning">
@@ -278,7 +278,7 @@ Examples:
 
 Example used: `stock butter`
 
-<img src='images/ug-images/stock.png' width='650' height="480" class="center">
+<img src='images/ug-images/stock.png' width='650'><br>
 
 
 ### Clearing all ingredients from ingredient stock : `clear`
@@ -289,7 +289,7 @@ Format: `clear`
 
 Example used: `clear`
 
-<img src='images/ug-images/clear.png' width='650' height="480" class="center">
+<img src='images/ug-images/clear.png' width='650'><br>
 
 
 ### Listing all Recipes : `list`
@@ -300,8 +300,7 @@ Format: `list`
 
 Example Used: `list`
 
-<img src='images/ug-images/list.png' width='650' height="480" class="center">
-
+<img src='images/ug-images/list.png' width='650'><br>
 
 ### Viewing Specific Recipes : `view`
 
@@ -317,7 +316,8 @@ Examples:
 
 Example Used: `view 1`
 
-<img src='images/ug-images/view.png' width='650' height="480" class="center">
+<img src='images/ug-images/view.png' width='650'><br>
+
 
 <box type="info">
 
@@ -344,7 +344,7 @@ complete recipe
 ```
 
 * Name of Recipe needs to be of Alphanumeric format.
-* Ingredients inputted **must** be of the format `(NAME) (QUANTITY)(UNIT)`, such as `flour 100g`.
+* Ingredients specified **must** be of the format `(NAME) (QUANTITY)(UNIT)`, such as `flour 100g`.
 * The quantity of the ingredient must be positive and the unit must be supported.
 * For the recipe steps, the format to follow is `(STEP_NUMBER). (STEP)` such as `1. Mix Water and Flour`.
 * For the recipe steps, you should input the appropriate step number at each step, or the order of the steps may be incorrect in the completed recipe.
@@ -352,7 +352,7 @@ complete recipe
 <box type="info">
 
 **Note**: There is no error message when inputting negative quantities for ingredients. As such, it is up to the user to ensure
-          that a positive quantity is inputted.
+          that a positive quantity is specified.
 </box>
 
 Example:
@@ -367,20 +367,15 @@ steps start
 complete recipe
 ```
 
-
 <box type="warning">
-
-When encountering the error message `Failed to add ingredient`, ensure that the ingredient keyed in follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
+When encountering the error message `Failed to add ingredient`, ensure that the ingredient specified follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
 </box>
 
 <box type="warning">
-
-When encountering the error message `Failed to add step`, ensure that the index (A whole number) has been keyed been in before keying in the step itself<br>
-      Example: `1. Mix Water and Flour` **Note**: Ensure that a period and space is present after the index.
+When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been specified been in before keying in the step itself
 </box>
 
 <box type="info">
-
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
@@ -401,13 +396,13 @@ Example Used: `modify i/1 n/Flour q/100 u/g`
 
 **Note**: Recipe being modified has 200g of flour as part of the ingredient list
 
-<img src='images/ug-images/modifyExisting.png' width='650' height="480" class="center">
+<img src='images/ug-images/modifyExisting.png' width='650'>
 
 
 Example Used: `modify i/1 n/Cream q/100 u/g` 
 **Note**: Recipe being modified does not have cream in its ingredient list
 
-<img src='images/ug-images/modifyNew.png' width='650' height="480" class="center">
+<img src='images/ug-images/modifyNew.png' width='650'>
 
 <box type="info">
 
@@ -458,13 +453,12 @@ Examples:
 
 Example used: `search flour` **Note**: Multiple recipes use the ingredient flour
 
-<img src='images/ug-images/searchMultiple.png' width='650' height="480" class="center">
+<img src='images/ug-images/searchMultiple.png' width='650'>
 
 
 Example used: `search blueberry` **Note**: Only one recipe uses the ingredient blueberry
 
-<img src='images/ug-images/searchSingle.png' width='650'>
-
+<img src='images/ug-images/searchSingle.png' width='650'><br>
 
 ### Exiting the program : `exit`
 
@@ -479,7 +473,7 @@ Inventory and Recipe data are saved in the hard disk automatically after any com
 <box type="info">
 
 **Note**: When the application loads for the first time and no command is run, no inventory or recipe data will be saved.
-</box>
+</box><br>
 ### Editing the data file
 
 Inventory data are saved automatically as a JSON file `[JAR file location]/data/inventory.json`. Advanced users are welcome to update data directly by editing that data file.
@@ -496,12 +490,12 @@ If your changes to the data file makes its format invalid, all data will be disc
 
 | Error Message  | What to do                                                                             |
 |-----------------------------------|----------------------------------------------------------------------------------------|
-| Unknown command | Ensure that the command keyed in is one of the commands mentioned within this document |
-| Invalid Command Format | Ensure that all parameters have keyed in and that none are left empty                  |
+| Unknown command | Ensure that the command specified is one of the commands mentioned within this document |
+| Invalid Command Format | Ensure that all parameters have specified and that none are left empty                  |
 | Names should only contain alphanumeric characters and spaces, and it should not be blank | Ensure that only letters and numbers are used for names                                |
-| Quantity has to be positive | Ensure that the quantity valued keyed in is **greater** than 0                         |
+| Quantity has to be positive | Ensure that the quantity value specified is **greater** than 0                         |
 | There is no recipe with the recipe UUID provided in the recipe book | Check the UUID of recipe attempting to use and ensure that it is correct               |
-| The recipe UUID provided is invalid | Ensure that the UUID you have entered is valid (ie. it is a positive integer           |
+| The recipe UUID provided is invalid | Ensure that the UUID you have entered is valid (ie. it is a positive integer)          |
 
 --------------------------------------------------------------------------------------------------------------------
 
