@@ -37,6 +37,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
   * [Exit the program](#exiting-the-program-exit)
   * [Save the data](#saving-the-data)
   * [Edit the data file](#editing-the-data-file)
+* [Common Errors](#common-possible-errors)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
@@ -247,9 +248,9 @@ Supported Units:
 | KILOGRAM | kg, kilogram, KILOGRAM                |
 | PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
 
-Potential Error Message
-1. Ingredient does not exist in Inventory 
-   - What to do: Use an ingredient that does exist within the current ingredient list or add it in first before using. 
+<box type="warning">
+When encountering the error message `Ingredient does not exist in Inventory`, either add it in first or use a different ingredient
+</box>
 
 ### Finding the quantity of an ingredient by name: `stock`
 
@@ -350,15 +351,17 @@ steps start
 complete recipe
 ```
 
-<box type="tip" seamless>
 
-Potential Error Messages:
-1. Failed to add ingredient
-    - What to do: Ensure that the ingredient keyed in follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
-2. Failed to add step
-    - What to do: Ensure that the index(A whole number) has been keyed been in before keying in the step itself<br>
+<box type="warning">
+When encountering the error message `Failed to add ingredient`, ensure that the ingredient keyed in follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
+</box>
+
+<box type="warning">
+When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been keyed been in before keying in the step itself<br>
       Example: `1. Mix Water and Flour` **Note**: Ensure that a period and space is present after the index.
+</box>
 
+<box type="warning" seamless>
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
