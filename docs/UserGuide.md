@@ -19,6 +19,7 @@ You will never forget what Ingredient you need to stock up on during your next t
 flip through heavy physical recipe books any longer.
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
+* [Using this Guide](#using-this-guide)
 * [Glossary](#glossary)
 * [Quick Start](#quick-start)
 * [Navigating the GUI](#navigating-the-gui)
@@ -36,20 +37,51 @@ flip through heavy physical recipe books any longer.
   * [Exit the program](#exiting-the-program-exit)
   * [Save the data](#saving-the-data)
   * [Edit the data file](#editing-the-data-file)
+* [Common Errors](#common-possible-errors)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
 <div style="page-break-after: always;"></div>
 
+## Using this Guide
+This user guide contains all the information you will need in order to use [Ba]king [Br]ead. For new users, this document will also guide you in using the application,
+starting with the more essential features.
+
+**For new users**:
+- Start using [Ba]king [Br]ead by heading over to the [Quick Start](#quick-start) to learn how to set up the app and use it.
+
+**For experienced users:**
+- Utilise the [Table of Contents](#table-of-contents) to refresh your memory on the various features
+
+Do take note of the following highlighted information panels as we will be using this throughout the User Guide.
+
+<box type="info">
+
+**Note:**
+Used to highlight essential information
+</box>
+
+<box type="tip">
+
+**Tip:**
+Used to highlight helpful tips
+</box>
+
+<box type="warning">
+
+**Caution:**
+Used to highlight errors to look out for
+</box>
+
 ## Glossary
 Listed below are the definitions of the terminology used throughout the User Guide
 
-| Term                                 | Definition                                                         | 
-|:-------------------------------------|:-------------------------------------------------------------------|
-| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead                           | 
-| Command                              | A set of words that execute a certain operation                    |
-| Parameter                            | Specific information that a command needs for it to be run         | 
-| UUID (Universally Unique IDentifier) | An integer that is used to identify the recipes                    |
+| Term                                 | Definition                                                    | 
+|:-------------------------------------|:--------------------------------------------------------------|
+| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead                      | 
+| Command                              | A set of words that execute a certain operation               |
+| Parameter                            | Specific input information that a command needs for it to run | 
+| UUID (Universally Unique IDentifier) | An integer that is used to identify the recipes               |
 
 
 ## Quick start
@@ -91,16 +123,22 @@ infographic below for step-by-step instructions on adding your first recipe.
 ![Addrecipe Instructions](images/ug-images/addrecipe_instructions1.png)
 ![Addrecipe Instructions](images/ug-images/addrecipe_instructions2.png)
 
-<box type="tip">If you are stuck at any point, typing **`help`** and pressing Enter will open the help window to guide you along.</box>
+<box type="tip">
 
-<box type="tip">Refer to the [Features](#features) below for details of the other commands available!</box>
+If you are stuck at any point, typing **`help`** and pressing Enter will open the help window to guide you along.
+</box>
+
+<box type="tip">
+
+Refer to the [Features](#features) below for details of the other commands available!
+</box>
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
 
 ## Features
 
-<box type="info" seamless>
+<box type="info">
 
 **Notes about the command format:**<br>
 
@@ -122,7 +160,7 @@ infographic below for step-by-step instructions on adding your first recipe.
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
   </box>
 
-List of parameters:
+#### List of parameters:
 
 | Parameter |             Description             | Constraints                                      | Valid examples        | Invalid examples |
 |:----------|:-----------------------------------:|--------------------------------------------------|-----------------------|------------------|
@@ -131,7 +169,8 @@ List of parameters:
 | `u/`      | Unit used to measure the ingredient | Must be one of the supported units               | GRAM, KILOGRAM, PIECE | ML, L, TSP       |
 | `i/`      |           UUID of recipe            | UUID must be at least 1                          | 1, 2, 3               | 0, -1, 0.1       |
 
-Supported Units:
+
+#### Supported Units:
 
 | Unit     | Alias                                 |
 |----------|---------------------------------------|
@@ -177,13 +216,6 @@ Example Used: `add n/Milk q/600 u/g` **Note**: Sample data does not contain Milk
 
 <img src='images/ug-images/addIngredientNew.png' width='650'>
 
-Supported Units:
-| Unit     | Alias                                 |
-|----------|---------------------------------------|
-| GRAM     | g, gram, GRAM                         |
-| KILOGRAM | kg, kilogram, KILOGRAM                |
-| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
-
 ### Using up ingredients : `use`
 
 Depletes a specified amount of an ingredient from the stock.
@@ -212,12 +244,10 @@ Example Used: `use n/Milk q/600 u/g` **Note**: Data shown started with 1kg of Mi
 
 <img src='images/ug-images/useIngredient.png' width='650'>
 
-Supported Units:
-| Unit     | Alias                                 |
-|----------|---------------------------------------|
-| GRAM     | g, gram, GRAM                         |
-| KILOGRAM | kg, kilogram, KILOGRAM                |
-| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
+<box type="warning">
+
+**Caution**: When encountering the error message `Ingredient does not exist in Inventory`, either add it in first or use a different ingredient
+</box>
 
 ### Finding the quantity of an ingredient by name: `stock`
 
@@ -303,8 +333,11 @@ complete recipe
 * For the recipe steps, the format to follow is `(index). (step)` where an example is `1. Mix Water and Flour`.
 * For the recipe steps, you have to remember the index of step you are typing in and check it by yourself.
 
+<box type="info">
+
 **Note**: There is no error message when inputting negative quantities for ingredients. As such, it is up to the user to ensure
           that a positive quantity is inputted.
+</box>
 
 Example:
 ```
@@ -318,7 +351,19 @@ steps start
 complete recipe
 ```
 
-<box type="tip" seamless>
+
+<box type="warning">
+
+**Caution**: When encountering the error message `Failed to add ingredient`, ensure that the ingredient keyed in follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
+</box>
+
+<box type="warning">
+
+**Caution**: When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been keyed been in before keying in the step itself<br>
+      Example: `1. Mix Water and Flour` **Note**: Ensure that a period and space is present after the index.
+</box>
+
+<box type="warning">
 
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
@@ -337,13 +382,22 @@ Example:
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
   and unit to the recipe.
 
-**Note**: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
 
-Example Used: `modify i/1 n/Flour q/100 u/g` **Note**: Recipe being modified has 200g of flour as part of the ingredient list
+<box type="info">
+
+**Note**: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
+</box>
+
+
+Example Used: `modify i/1 n/Flour q/100 u/g` 
+
+**Note**: Recipe being modified has 200g of flour as part of the ingredient list
 
 <img src='images/ug-images/modifyExisting.png' width='650'>
 
-Example Used: `modify i/1 n/Cream q/100 u/g` **Note**: Recipe being modified does not have cream in its ingredient list
+
+Example Used: `modify i/1 n/Cream q/100 u/g` 
+**Note**: Recipe being modified does not have cream in its ingredient list
 
 <img src='images/ug-images/modifyNew.png' width='650'>
 
@@ -405,6 +459,18 @@ Inventory data are saved automatically as a JSON file `[JAR file location]/data/
 **Caution:**
 If your changes to the data file makes its format invalid, Inventory will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Common Possible Errors
+
+| Error Message  | What to do  |
+|-----------------------------------|---------------------------------------|
+| Unknown command | Ensure that the command keyed in is one of the commands mentioned within this document|
+| Invalid Command Format | Ensure that all parameters have keyed in and that none are left empty|
+| Names should only contain alphanumeric characters and spaces, and it should not be blank | Ensure that only letters and numbers are used for names |
+| Quantity has to be positive | Ensure that the quantity valued keyed in is **greater** than 0 |
+| There is no recipe with the recipe UUID provided in the recipe book | Check the UUID of recipe attempting to use and ensure that it is correct|
 
 --------------------------------------------------------------------------------------------------------------------
 
