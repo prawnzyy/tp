@@ -279,6 +279,9 @@ complete recipe
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
+![Addrecipe Instructions](images/ug-images/addrecipe_instructions1.png)
+![Addrecipe Instructions](images/ug-images/addrecipe_instructions2.png)
+
 ### Modifying Recipes : `modify`
 
 Modifies the ingredients in a recipe.
