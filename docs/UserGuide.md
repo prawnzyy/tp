@@ -64,7 +64,6 @@ Used to highlight errors to look out for
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
-* [Using this Guide](#using-this-guide)
 * [Glossary](#glossary)
 * [Getting Started](#quick-start)
 * [Navigating the GUI](#navigating-the-gui)
@@ -88,37 +87,6 @@ Used to highlight errors to look out for
 
 <div style="page-break-after: always;"></div>
 
-<<<<<<< HEAD
-## Using this Guide
-This user guide contains all the information you will need in order to use [Ba]king [Br]ead. For new users, this document will also guide you in using the application,
-starting with the more essential features.
-
-**For new users**:
-- Start using [Ba]king [Br]ead by heading over to the [Quick Start](#quick-start) to learn how to set up the app and use it.
-
-**For experienced users:**
-- Utilise the [Table of Contents](#table-of-contents) to refresh your memory on the various features
-
-Do take note of the following highlighted information panels as we will be using this throughout the User Guide.
-
-<box type="info">
-
-**Note:**
-Used to highlight essential information
-</box>
-
-<box type="tip">
-
-**Tip:**
-Used to highlight helpful tips
-</box>
-
-<box type="warning">
-
-**Caution:**
-Used to highlight errors to look out for
-</box>
-
 ## Glossary
 Listed below are the definitions of the terminology used throughout the User Guide
 
@@ -131,8 +99,6 @@ Listed below are the definitions of the terminology used throughout the User Gui
 | Case-insensitive                     | Parameters are not treated differently if they are in capitals or lower-case text. Eg. MILK is the same as milk |
 
 
-=======
->>>>>>> master
 ## Quick start
 New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to get started!
 
