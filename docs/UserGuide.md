@@ -35,12 +35,13 @@ starting with the more essential features.
 
 Listed below are the definitions of the terminology used throughout the User Guide
 
-| Term                                 | Definition                                         | 
-|:-------------------------------------|:---------------------------------------------------|
-| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead           | 
-| Command                              | A set of words that execute a certain operation    |
-| Parameter                            | Key information that a user specifies in a command | 
-| UUID (Universally Unique IDentifier) | A number that is used to identify the recipes      |
+| Term                                 | Definition                                                                                                      | 
+|:-------------------------------------|:----------------------------------------------------------------------------------------------------------------|
+| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead                                                                        | 
+| Command                              | A set of words that execute a certain operation                                                                 |
+| Parameter                            | Key information that a user specifies in a command                                                              | 
+| UUID (Universally Unique IDentifier) | A unique number that is used to identify the recipes                                                            |
+| Case-insensitive                     | Parameters are not treated differently if they are in capitals or lower-case text. Eg. MILK is the same as milk |
 
 Do also take note of the following highlighted information panels as we will be using this throughout the User Guide.
 
@@ -64,7 +65,6 @@ Used to highlight errors to look out for
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
-* [Glossary](#glossary)
 * [Getting Started](#quick-start)
 * [Navigating the GUI](#navigating-the-gui)
 * [Features](#features)
@@ -86,18 +86,6 @@ Used to highlight errors to look out for
 * [Command Summary](#command-summary)
 
 <div style="page-break-after: always;"></div>
-
-## Glossary
-Listed below are the definitions of the terminology used throughout the User Guide
-
-| Term                                 | Definition                                                                                                      | 
-|:-------------------------------------|:----------------------------------------------------------------------------------------------------------------|
-| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead                                                                        | 
-| Command                              | A set of words that execute a certain operation                                                                 |
-| Parameter                            | Key information that a user specifies in a command                                                              | 
-| UUID (Universally Unique IDentifier) | A unique number that is used to identify the recipes                                                            |
-| Case-insensitive                     | Parameters are not treated differently if they are in capitals or lower-case text. Eg. MILK is the same as milk |
-
 
 ## Quick start
 New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to get started!
@@ -169,7 +157,7 @@ Refer to the [Features](#features) below for details of the other commands avail
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME q/QUANTITY`, `q/QUANTITY n/NAME` is also acceptable.
 
-* Parameters are not case-sensitive.
+* Parameters are case-insensitive.
   e.g. A parameter specified as `n/Milk` is functionally identical to `n/MILK` or `n/milk`.
 
 * Extraneous parameters for commands that do not require parameters (such as `help`, `exit` , `list` and `clear`) will be ignored.<br>
@@ -457,7 +445,7 @@ Searches for recipes that include a specific ingredient.
 Format: `search NAME`
 
 * `NAME` cannot be empty.
-* `NAME` is not case-sensitive.
+* `NAME` is case-insensitive.
 *  If none of the recipes contain that ingredient, an empty recipe list will be displayed instead.
 *  For ingredients with multiple words, `NAME` must be an **exact** match. As such, `search chocolate` will not display recipes
    that contain `chocolate chips`.
