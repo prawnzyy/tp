@@ -122,9 +122,15 @@ infographic below for step-by-step instructions on adding your first recipe.
 ![Addrecipe Instructions](images/ug-images/addrecipe_instructions1.png)
 ![Addrecipe Instructions](images/ug-images/addrecipe_instructions2.png)
 
-<box type="tip">If you are stuck at any point, typing **`help`** and pressing Enter will open the help window to guide you along.</box>
+<box type="tip">
 
-<box type="tip">Refer to the [Features](#features) below for details of the other commands available!</box>
+If you are stuck at any point, typing **`help`** and pressing Enter will open the help window to guide you along.
+</box>
+
+<box type="tip">
+
+Refer to the [Features](#features) below for details of the other commands available!
+</box>
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
@@ -252,6 +258,7 @@ Supported Units:
 | PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
 
 <box type="warning">
+
 When encountering the error message `Ingredient does not exist in Inventory`, either add it in first or use a different ingredient
 </box>
 
@@ -339,8 +346,11 @@ complete recipe
 * For the recipe steps, the format to follow is `(index). (step)` where an example is `1. Mix Water and Flour`.
 * For the recipe steps, you have to remember the index of step you are typing in and check it by yourself.
 
+<box type="info">
+
 **Note**: There is no error message when inputting negative quantities for ingredients. As such, it is up to the user to ensure
           that a positive quantity is inputted.
+</box>
 
 Example:
 ```
@@ -356,15 +366,18 @@ complete recipe
 
 
 <box type="warning">
+
 When encountering the error message `Failed to add ingredient`, ensure that the ingredient keyed in follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
 </box>
 
 <box type="warning">
+
 When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been keyed been in before keying in the step itself<br>
       Example: `1. Mix Water and Flour` **Note**: Ensure that a period and space is present after the index.
 </box>
 
-<box type="warning" seamless>
+<box type="warning">
+
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
@@ -382,13 +395,22 @@ Example:
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the `Flour` ingredient with its quantity 
   and unit to the recipe.
 
-**Note**: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
 
-Example Used: `modify i/1 n/Flour q/100 u/g` **Note**: Recipe being modified has 200g of flour as part of the ingredient list
+<box type="info">
+
+**Note**: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
+</box>
+
+
+Example Used: `modify i/1 n/Flour q/100 u/g` 
+
+**Note**: Recipe being modified has 200g of flour as part of the ingredient list
 
 <img src='images/ug-images/modifyExisting.png' width='650'>
 
-Example Used: `modify i/1 n/Cream q/100 u/g` **Note**: Recipe being modified does not have cream in its ingredient list
+
+Example Used: `modify i/1 n/Cream q/100 u/g` 
+**Note**: Recipe being modified does not have cream in its ingredient list
 
 <img src='images/ug-images/modifyNew.png' width='650'>
 
