@@ -44,7 +44,8 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 <div style="page-break-after: always;"></div>
 
 ## Using this Guide
-This user guide contains all the information you will need in order to use [Ba]king [Br]ead.
+This user guide contains all the information you will need in order to use [Ba]king [Br]ead. For new users, this document will also guide you in using the application,
+starting with the more essential features.
 
 **For new users**:
 - Start using [Ba]king [Br]ead by heading over to the [Quick Start](#quick-start) to learn how to set up the app and use it.
