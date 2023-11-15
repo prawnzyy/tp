@@ -23,6 +23,45 @@ have to flip through endless heavy physical recipe books just to find a recipe y
 
 So, what are you waiting for? Master [Ba]king [Br]ead and fast-track your baking journey now!
 
+## Using this Guide
+This user guide contains all the information you will need in order to use [Ba]king [Br]ead. For new users, this document will also guide you in using the application,
+starting with the more essential features.
+
+**For new users**:
+- Start using [Ba]king [Br]ead by heading over to the [Quick Start](#quick-start) to learn how to set up the app and use it.
+
+**For experienced users:**
+- Utilise the [Table of Contents](#table-of-contents) to refresh your memory on the various features
+
+Listed below are the definitions of the terminology used throughout the User Guide
+
+| Term                                 | Definition                                         | 
+|:-------------------------------------|:---------------------------------------------------|
+| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead           | 
+| Command                              | A set of words that execute a certain operation    |
+| Parameter                            | Key information that a user specifies in a command | 
+| UUID (Universally Unique IDentifier) | A number that is used to identify the recipes      |
+
+Do also take note of the following highlighted information panels as we will be using this throughout the User Guide.
+
+<box type="info">
+
+**Note:**
+Used to highlight essential information
+</box>
+
+<box type="tip">
+
+**Tip:**
+Used to highlight helpful tips
+</box>
+
+<box type="warning">
+
+**Caution:**
+Used to highlight errors to look out for
+</box>
+
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
 * [Using this Guide](#using-this-guide)
@@ -49,6 +88,7 @@ So, what are you waiting for? Master [Ba]king [Br]ead and fast-track your baking
 
 <div style="page-break-after: always;"></div>
 
+<<<<<<< HEAD
 ## Using this Guide
 This user guide contains all the information you will need in order to use [Ba]king [Br]ead. For new users, this document will also guide you in using the application,
 starting with the more essential features.
@@ -91,6 +131,8 @@ Listed below are the definitions of the terminology used throughout the User Gui
 | Case-insensitive                     | Parameters are not treated differently if they are in capitals or lower-case text. Eg. MILK is the same as milk |
 
 
+=======
+>>>>>>> master
 ## Quick start
 New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to get started!
 
@@ -122,7 +164,7 @@ into the application's input box as shown below.<br><br>
 <img src='images/ug-images/quickstart_addingredient1.png' width='650'> <br><br>
 2. Press enter to execute the command.
 3. You should see the ingredient added into your ingredient list as seen below. Hooray! You have added your first ingredient!<br><br>
-<img src='images/ug-images/quickstart_addingredient2.png' width='650'>
+<img src='images/ug-images/quickstart_addingredient2.png' width='700'>
 
 #### Adding your first recipe
 Recipe adding is a little more complicated! But don't worry, you will get the hang of it in no time! Refer to the
@@ -130,6 +172,8 @@ infographic below for step-by-step instructions on adding your first recipe.
 
 ![Addrecipe Instructions](images/ug-images/addrecipe_instructions1.png)
 ![Addrecipe Instructions](images/ug-images/addrecipe_instructions2.png)
+
+And there you have it, your first recipe added to [Ba]king [Br]ead!
 
 <box type="tip">
 
