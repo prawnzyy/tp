@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_UUID;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -35,6 +36,9 @@ public class CommandTestUtil {
     public static final String VALID_NAME_BUTTER = "Butter";
     public static final String VALID_AMOUNT_BUTTER = "100";
     public static final String VALID_UNIT_BUTTER = "GRAM";
+    public static final String VALID_UUID = "1";
+    public static final String INVALID_ZERO_UUID = "0";
+    public static final String INVALID_NEG_UUID = "-100";
 
     public static final String NAME_DESC_FLOUR = " " + PREFIX_NAME + VALID_NAME_FLOUR;
     public static final String NAME_DESC_EGG = " " + PREFIX_NAME + VALID_NAME_EGG;
@@ -45,9 +49,12 @@ public class CommandTestUtil {
     public static final String UNIT_DESC_FLOUR = " " + PREFIX_UNIT + VALID_UNIT_FLOUR;
     public static final String UNIT_DESC_EGG = " " + PREFIX_UNIT + VALID_UNIT_EGG;
     public static final String UNIT_DESC_BUTTER = " " + PREFIX_UNIT + VALID_UNIT_BUTTER;
-
+    public static final String UUID_DESC_RECIPE = " " + PREFIX_UUID + VALID_UUID;
+    public static final String INVALID_ZERO_UUID_DESC_RECIPE = " " + PREFIX_UUID + INVALID_ZERO_UUID;
+    public static final String INVALID_NEG_UUID_DESC_RECIPE = " " + PREFIX_UUID + INVALID_NEG_UUID;
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_QUANTITY_DESC = " " + PREFIX_QUANTITY + "hundred";
+    public static final String INVALID_UNIT_DESC = " " + PREFIX_UNIT + "ml";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -137,7 +144,6 @@ public class CommandTestUtil {
 
     public static void showRecipeAtUuid(Model model, UniqueId uuid) {
         model.updateFilteredRecipeList(new RecipeUuidMatchesPredicate(uuid));
-
         assertEquals(1, model.getFilteredRecipeList().size());
     }
 }

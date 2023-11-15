@@ -116,7 +116,7 @@ public class ParserUtil {
 
     /**
      * Parse a recipeStep for the RecipeAddCommand.
-     * @param recipeStepString
+     * @param recipeStepString The string format for the RecipeAddCommand
      * @return The recipeStep instance
      * @throws ParseException When step is incorrectly formatted
      */
@@ -124,7 +124,6 @@ public class ParserUtil {
         try {
             return RecipeStep.parseRecipeStep(recipeStepString);
         } catch (RecipeStepFormatException rsfe) {
-
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 RecipeAddCommand.MESSAGE_INGREDIENT_USAGE));
         }

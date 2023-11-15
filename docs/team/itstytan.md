@@ -3,14 +3,15 @@ layout: default.md
 title: "Tan Tze Young's Project Portfolio Page"
 ---
 
+## Tan Tze Young's Project Portfolio Page
+
 ### Project: [Ba]king [Br]ead
 
-[Ba]king [Br]ead is a desktop inventory and recipe book application that allows its users to add ingredients and view the
-recipes. The user interacts with it using a CLI, and it has a GUI using JavaFX. It is written in Java.
+[Ba]king [Br]ead is a desktop inventory and recipe book management application that allows users to add ingredients and view
+recipes. The user interacts with it through a CLI. The GUI is implemented using JavaFX and the project is written in Java.
 
 Given below are my contributions to the project.
 
-#### Enhancements Implemented:
 * **New Feature:** Added the ability to view specific recipes.
   * What it does: Allows the user to view a specific recipe by using the recipe's unique identifier.
   * Justification: This feature is critical to the working of the product as a user needs to be able to view the steps 
@@ -19,7 +20,10 @@ Given below are my contributions to the project.
   be reused. Much thought had went into considering the implementation and integration of the UniqueId class with this
   command.
 
-* **Enhancement:** Enhanced the UI of the app (Pull requests [\#78](), [\#83](), [\#110]())
+* **Enhancement:** Enhanced the UI of the app (Pull requests 
+[\#78](https://github.com/AY2324S1-CS2103T-F10-3/tp/pull/78), 
+[\#89](https://github.com/AY2324S1-CS2103T-F10-3/tp/pull/89),
+[\#110](https://github.com/AY2324S1-CS2103T-F10-3/tp/pull/110))
   * Updated the styling of the UI, which includes colour scheme, borders and fonts changes. 
   * Implemented the ability for the RecipeListPanel to change from listing recipes to showing a single recipe with full
   details of the recipe
@@ -37,9 +41,11 @@ Given below are my contributions to the project.
   - Wrote the UI section in the Architecture section.
   - Added class diagram for UI component.
   - Wrote the implementation for the view recipe feature.
-  - Added activity diagram for the view recipe feature.
+  - Added sequence diagram for the view recipe feature.
+  - Added the appendix on effort.
 
 * **Contribution to team-based tasks**
   - Push user story issues onto GitHub.
   - Created UI mockups for the project.
+  - Helped to merge and edit the demo video.
 

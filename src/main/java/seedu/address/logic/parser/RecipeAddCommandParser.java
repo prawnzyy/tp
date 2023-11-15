@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.RecipeAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Name;
@@ -16,12 +15,12 @@ import seedu.address.model.recipe.RecipeStep;
  * Parses input arguments and creates a new AddRecipeCommand object
  */
 public class RecipeAddCommandParser implements Parser<RecipeAddCommand> {
-    private static final String MESSAGE_SUCCESS_NAME = "Name has been set!";
+    public static final String MESSAGE_SUCCESS_NAME = "Name has been set!";
 
-    private static final String MESSAGE_SUCCESS_INGREDIENT = "Ingredient added: %1$s";
-    private static final String MESSAGE_FAIL_INGREDIENT = "Failed to add ingredient";
-    private static final String MESSAGE_SUCCESS_STEP = "Step added successfully to recipe";
-    private static final String MESSAGE_FAIL_STEP = "Failed to add step";
+    public static final String MESSAGE_SUCCESS_INGREDIENT = "Ingredient added: %1$s";
+    public static final String MESSAGE_FAIL_INGREDIENT = "Failed to add ingredient";
+    public static final String MESSAGE_SUCCESS_STEP = "Step added successfully to recipe";
+    public static final String MESSAGE_FAIL_STEP = "Failed to add step";
 
     private Name name;
     private final List<Ingredient> ingredients;
@@ -40,8 +39,8 @@ public class RecipeAddCommandParser implements Parser<RecipeAddCommand> {
      * @param name The name of the recipe
      * @return The success message upon adding the name
      */
-    public String addName(String name) {
-        this.name = new Name(name);
+    public String addName(String name) throws ParseException {
+        this.name = ParserUtil.parseName(name);
         return MESSAGE_SUCCESS_NAME;
     }
 
@@ -69,7 +68,7 @@ public class RecipeAddCommandParser implements Parser<RecipeAddCommand> {
         try {
             Ingredient toAdd = ParserUtil.parseRecipeIngredient(ingredient);
             ingredients.add(toAdd);
-            return String.format(MESSAGE_SUCCESS_INGREDIENT, Messages.format(toAdd));
+            return String.format(MESSAGE_SUCCESS_INGREDIENT, ingredient);
         } catch (ParseException pe) {
             return MESSAGE_FAIL_INGREDIENT;
         }
@@ -84,6 +83,8 @@ public class RecipeAddCommandParser implements Parser<RecipeAddCommand> {
         Recipe recipe = new Recipe(name, List.copyOf(ingredients), List.copyOf(recipeSteps));
         return new RecipeAddCommand(recipe);
     }
+
+    // Method unused. Each line must be parsed in sequence to detect parsing errors on a line-by-line basis.
 
     @Override
     public RecipeAddCommand parse(String args) throws ParseException {

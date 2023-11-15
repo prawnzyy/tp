@@ -2,15 +2,11 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.FLOUR;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -18,83 +14,73 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
-import seedu.address.model.Inventory;
 import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
 import seedu.address.model.Name;
 import seedu.address.model.ReadOnlyInventory;
 import seedu.address.model.ReadOnlyRecipeBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.RecipeBook;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.Quantity;
-import seedu.address.model.ingredient.Unit;
 import seedu.address.model.recipe.Recipe;
 import seedu.address.model.recipe.UniqueId;
-import seedu.address.testutil.IngredientBuilder;
+import seedu.address.testutil.RecipeBuilder;
 
-public class AddCommandTest {
+public class RecipeAddCommandTest {
+    @Test
+    public void execute_recipeAcceptedByModel_addRecipeSuccessful() throws Exception {
+        ModelStubAcceptingRecipeAdded
+            modelStub = new ModelStubAcceptingRecipeAdded();
+        Recipe validRecipe = new RecipeBuilder().build();
+
+        CommandResult commandResult = new RecipeAddCommand(validRecipe).execute(modelStub);
+
+        assertEquals(String.format(RecipeAddCommand.MESSAGE_SUCCESS, Messages.format(validRecipe)),
+            commandResult.getFeedbackToUser());
+        assertEquals(List.of(validRecipe), modelStub.recipeBook.getRecipeList());
+    }
 
     @Test
     public void constructor_nullIngredient_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddCommand(null));
-    }
-
-    @Test
-    public void execute_ingredientAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingIngredientAdded modelStub = new ModelStubAcceptingIngredientAdded();
-        Ingredient validIngredient = new IngredientBuilder().build();
-
-        CommandResult commandResult = new AddCommand(validIngredient).execute(modelStub);
-
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validIngredient)),
-                commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validIngredient), modelStub.ingredientsAdded);
-    }
-
-    @Test
-    public void execute_invalidQuantityConversion_throwsCommandException() {
-        Model model = new ModelManager();
-        AddCommand command = new AddCommand(new Ingredient(new Name("Flour"), new Quantity(1.0, Unit.PIECE)));
-        model.addIngredient(new IngredientBuilder().build());
-        String expectedMessage = "Unit PIECE cannot be converted to GRAM!";
-        assertCommandFailure(command, model, expectedMessage);
+        assertThrows(NullPointerException.class, () -> new RecipeAddCommand(null));
     }
 
     @Test
     public void equals() {
-        Ingredient flour = new IngredientBuilder().withName("FLour").build();
-        Ingredient butter = new IngredientBuilder().withName("Butter").build();
-        AddCommand addAliceCommand = new AddCommand(flour);
-        AddCommand addBobCommand = new AddCommand(butter);
-
+        Recipe a = new RecipeBuilder().withName("cookie").build();
+        RecipeAddCommand adda = new RecipeAddCommand(a);
+        RecipeAddCommand addb = new RecipeAddCommand(a);
         // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        assertEquals(adda, adda);
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(flour);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        assertEquals(adda, addb);
 
         // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        assertNotEquals(1, adda);
 
         // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        assertNotEquals(null, adda);
 
-        // different ingredient -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        Recipe b = new RecipeBuilder().withName("cake").build();
+        RecipeAddCommand addc = new RecipeAddCommand(b);
+        // different name -> returns false
+        assertNotEquals(adda, addc);
     }
 
     @Test
     public void toStringMethod() {
-        AddCommand addCommand = new AddCommand(FLOUR);
-        String expected = AddCommand.class.getCanonicalName() + "{toAdd=" + FLOUR + "}";
-        assertEquals(expected, addCommand.toString());
+        Recipe a = new RecipeBuilder().withName("cookie").build();
+        RecipeAddCommand recipeAddCommand = new RecipeAddCommand(a);
+        String expected = RecipeAddCommand.class.getCanonicalName() + "{toAdd=" + a + "}";
+        assertEquals(expected, recipeAddCommand.toString());
     }
 
+
     /**
-     * A default model stub that have all the methods failing.
+     * A default model stub that has all the methods failing.
      */
-    private class ModelStub implements Model {
+    private static class ModelStub implements Model {
         @Override
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
@@ -150,6 +136,10 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        //  @Override
+        //  public void setIngredient(Ingredient target, Ingredient editedIngredient) {
+        //      throw new AssertionError("This method should not be called.");
+        //  }
 
         @Override
         public ObservableList<Ingredient> getFilteredIngredientList() {
@@ -223,58 +213,16 @@ public class AddCommandTest {
     }
 
     /**
-     * A Model stub that contains a single ingredient.
+     * A Model stub that always accept the recipe being added.
      */
-    private class ModelStubWithIngredient extends ModelStub {
-        private final Ingredient ingredient;
-
-        ModelStubWithIngredient(Ingredient ingredient) {
-            requireNonNull(ingredient);
-            this.ingredient = ingredient;
-        }
-
+    private static class ModelStubAcceptingRecipeAdded extends ModelStub {
+        final RecipeBook recipeBook = new RecipeBook();
         @Override
-        public boolean hasIngredient(Name ingredient) {
-            requireNonNull(ingredient);
-            return this.ingredient.getName().equals(ingredient);
-        }
-    }
-
-    /**
-     * A Model stub that always accept the ingredient being added.
-     */
-    private class ModelStubAcceptingIngredientAdded extends ModelStub {
-        final ArrayList<Ingredient> ingredientsAdded = new ArrayList<>();
-
-        @Override
-        public boolean hasIngredient(Name ingredient) {
-            requireNonNull(ingredient);
-            return true;
-        }
-
-        @Override
-        public void addIngredient(Ingredient ingredient) {
-            requireNonNull(ingredient);
-            ingredientsAdded.add(ingredient);
-        }
-
-        @Override
-        public Quantity getQuantityOf(Name ingredientName) {
-            requireNonNull(ingredientName);
-            for (Ingredient ingredient : ingredientsAdded) {
-                if (ingredient.getName().equals(ingredientName)) {
-                    return ingredient.getQuantity();
-                }
-            }
-            //If ingredient can't be found, then return 0 quantity
-            return new Quantity(0, Unit.GRAM);
-        }
-
-        // check this
-        @Override
-        public ReadOnlyInventory getInventory() {
-            return new Inventory();
+        public void addRecipe(Recipe recipe) {
+            requireNonNull(recipe);
+            this.recipeBook.addRecipe(recipe);
         }
     }
 
 }
+

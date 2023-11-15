@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT;
@@ -42,6 +43,10 @@ public class ModifyCommandParser implements Parser<ModifyCommand> {
             id = Integer.parseInt(argMultimap.getValue(PREFIX_UUID).get());
         } catch (NumberFormatException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE), pe);
+        }
+
+        if (id <= 0) {
+            throw new ParseException(MESSAGE_INVALID_RECIPE_DISPLAYED_INDEX);
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
