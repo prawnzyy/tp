@@ -37,6 +37,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
   * [Exit the program](#exiting-the-program-exit)
   * [Save the data](#saving-the-data)
   * [Edit the data file](#editing-the-data-file)
+* [Common Errors](#common-possible-errors)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
 
@@ -130,7 +131,7 @@ infographic below for step-by-step instructions on adding your first recipe.
 
 ## Features
 
-<box type="info" seamless>
+<box type="info">
 
 **Notes about the command format:**<br>
 
@@ -250,6 +251,10 @@ Supported Units:
 | KILOGRAM | kg, kilogram, KILOGRAM                |
 | PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
 
+<box type="warning">
+When encountering the error message `Ingredient does not exist in Inventory`, either add it in first or use a different ingredient
+</box>
+
 ### Finding the quantity of an ingredient by name: `stock`
 
 Lists the quantity of the specified ingredient(s).
@@ -349,8 +354,17 @@ steps start
 complete recipe
 ```
 
-<box type="tip" seamless>
 
+<box type="warning">
+When encountering the error message `Failed to add ingredient`, ensure that the ingredient keyed in follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
+</box>
+
+<box type="warning">
+When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been keyed been in before keying in the step itself<br>
+      Example: `1. Mix Water and Flour` **Note**: Ensure that a period and space is present after the index.
+</box>
+
+<box type="warning" seamless>
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
@@ -436,6 +450,18 @@ Inventory data are saved automatically as a JSON file `[JAR file location]/data/
 **Caution:**
 If your changes to the data file makes its format invalid, Inventory will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Common Possible Errors
+
+| Error Message  | What to do  |
+|-----------------------------------|---------------------------------------|
+| Unknown command | Ensure that the command keyed in is one of the commands mentioned within this document|
+| Invalid Command Format | Ensure that all parameters have keyed in and that none are left empty|
+| Names should only contain alphanumeric characters and spaces, and it should not be blank | Ensure that only letters and numbers are used for names |
+| Quantity has to be positive | Ensure that the quantity valued keyed in is **greater** than 0 |
+| There is no recipe with the recipe UUID provided in the recipe book | Check the UUID of recipe attempting to use and ensure that it is correct|
 
 --------------------------------------------------------------------------------------------------------------------
 
