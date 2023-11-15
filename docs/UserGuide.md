@@ -252,9 +252,9 @@ Example Used: `use n/Milk q/600 u/g` **Note**: Sample started with 1kg of Milk i
 
 <img src='images/ug-images/useIngredient.png' width='650' height="480" class="center">
 
-
+<br>
 <box type="warning">
-If you try to use an ingredient which is not in the stock, the error message "Ingredient does not exist in Inventory" will appear. <br>
+If you try to use an ingredient which is not in the stock, the error message "Ingredient does not exist in Inventory" will appear.
 Only ingredients already in the stock can be specified when using this command.
 </box>
 
@@ -487,7 +487,7 @@ Inventory data are saved automatically as a JSON file `[JAR file location]/data/
 <box type="warning" >
 
 **Caution:**
-If your changes to the data file makes its format invalid, Inventory will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
+If your changes to the data file makes its format invalid, all data will be discarded and you will start with an empty data file the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
