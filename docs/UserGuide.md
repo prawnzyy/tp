@@ -5,18 +5,23 @@ pageNav: 3
 ---
 
 # [Ba]king [Br]ead User Guide
-Welcome! If you are a new baker suffering under the mess and stress of baking, [Ba]king [Br]ead is here to help organise 
-your kitchen and recipes.
+Welcome new bakers!
+If you're feeling overwhelmed by the chaos of baking, fret not because [Ba]king [Br]ead is here to save the day!
+We're here to help you manage the overwhelming number of ingredients in your kitchen and the endless recipes you have stored, 
+making your baking experience a lot smoother!
 
 [Ba]king [Br]ead will help you to:
 1. Keep track of all your baking ingredients in your kitchen
-2. Collate all your recipes digitally for easy viewing
-3. Do all the above with blazing efficiency, your fast fingers and our application's command line interface makes this
-uniquely possible.
+2. Collate all your recipes digitally for easy viewing 
+3. Achieve maximum efficiency 
 
-You will never forget what Ingredient you need to stock up on during your next trip to the supermarket. You will never 
-have to flip through heavy physical recipe books any longer. What are you waiting for? Master [Ba]king [Br]ead and 
-fast-track your baking journey now!
+Our application's command-line interface, coupled with your fast fingers, makes baking a whole lot more seamless and relaxing!
+
+Long gone are the days when you have to rummage through your cupboards to see what you have. Now with [Ba]king [Br]ead, 
+you will never forget what ingredient you need to stock up on during your next trip to the supermarket. And now, you will never 
+have to flip through endless heavy physical recipe books just to find a recipe you like.
+
+So, what are you waiting for? Master [Ba]king [Br]ead and fast-track your baking journey now!
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
@@ -77,12 +82,13 @@ Used to highlight errors to look out for
 ## Glossary
 Listed below are the definitions of the terminology used throughout the User Guide
 
-| Term                                 | Definition                                         | 
-|:-------------------------------------|:---------------------------------------------------|
-| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead           | 
-| Command                              | A set of words that execute a certain operation    |
-| Parameter                            | Key information that a user specifies in a command | 
-| UUID (Universally Unique IDentifier) | A number that is used to identify the recipes      |
+| Term                                 | Definition                                                                                                      | 
+|:-------------------------------------|:----------------------------------------------------------------------------------------------------------------|
+| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead                                                                        | 
+| Command                              | A set of words that execute a certain operation                                                                 |
+| Parameter                            | Key information that a user specifies in a command                                                              | 
+| UUID (Universally Unique IDentifier) | A unique number that is used to identify the recipes                                                            |
+| Case-insensitive                     | Parameters are not treated differently if they are in capitals or lower-case text. Eg. MILK is the same as milk |
 
 
 ## Quick start
@@ -95,8 +101,9 @@ New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to g
 
 3. Copy the file to the folder you want to use as the _home folder_ for [Ba]king [Br]ead.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
-   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.
+4. Double-click on the jar and a GUI similar to the one below should appear in a few seconds. If this does not work for you, check the [FAQ](#faq)
+
+![Ui](images/Ui.png)
 
 ### Navigating the GUI
 The GUI may be confusing if you are a first time user of our application. Here is the breakdown of the GUI for [Ba]king [Br]ead.
@@ -152,7 +159,7 @@ Refer to the [Features](#features) below for details of the other commands avail
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME q/QUANTITY`, `q/QUANTITY n/NAME` is also acceptable.
 
-* Parameters are case-insensitive.
+* Parameters are not case-sensitive.
   e.g. A parameter specified as `n/Milk` is functionally identical to `n/MILK` or `n/milk`.
 
 * Extraneous parameters for commands that do not require parameters (such as `help`, `exit` , `list` and `clear`) will be ignored.<br>
@@ -182,9 +189,9 @@ Refer to the [Features](#features) below for details of the other commands avail
 
 If you are not sure how to use [Ba]king [Br]ead, this command will show a pop-up with a link to access the help page.
 
-<img src='images/helpMessage.png' width='650'>
-
 Format: `help`
+
+<img src='images/helpMessage.png' width='650'>
 
 <div style="page-break-after: always;"></div>
 
@@ -212,9 +219,11 @@ Example Used: `add n/Flour q/1 u/kg` **Note**: Sample started with 3kg of Flour 
 
 <img src='images/ug-images/addIngredient.png' width='650'>
 
+
 Example Used: `add n/Milk q/600 u/g` **Note**: Sample did not have any Milk in the stock.
 
 <img src='images/ug-images/addIngredientNew.png' width='650'>
+
 
 ### Using up ingredients : `use`
 
@@ -224,7 +233,7 @@ Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
 * If no quantity and unit is specified, the entire stock of the specified ingredient will be depleted.
 * If the quantity depleted exceeds the current quantity in stock, the entire stock will be depleted but will not go into the negative.
-* Note that the specified name **must** be exact. As such, `use butters` will not work if the ingredient list contains `butter`.
+* Note that the specified name **must** be exact. As such, `use n/butters` will not work if the ingredient list contains `butter`.
 
 Restrictions:
 * Unit specified must be supported.
@@ -243,9 +252,10 @@ Example Used: `use n/Milk q/600 u/g` **Note**: Sample started with 1kg of Milk i
 
 <img src='images/ug-images/useIngredient.png' width='650'>
 
+
 <box type="warning">
-If you try to use an ingredient which is not in the stock, the error message `Ingredient does not exist in Inventory` will appear. <br>
-Only ingredients in stock can be specified when using this command.
+If you try to use an ingredient which is not in the stock, the error message "Ingredient does not exist in Inventory" will appear. <br>
+Only ingredients already in the stock can be specified when using this command.
 </box>
 
 ### Finding the quantity of an ingredient by name: `stock`
@@ -270,6 +280,7 @@ Example used: `stock butter`
 
 <img src='images/ug-images/stock.png' width='650'>
 
+
 ### Clearing all ingredients from ingredient stock : `clear`
 
 Clears all ingredients from the ingredient stock.
@@ -279,6 +290,7 @@ Format: `clear`
 Example used: `clear`
 
 <img src='images/ug-images/clear.png' width='650'>
+
 
 ### Listing all Recipes : `list`
 
@@ -290,8 +302,6 @@ Example Used: `list`
 
 <img src='images/ug-images/list.png' width='650'>
 
-Examples:
-* `list` lists out all recipes within [Ba]king [Br]ead.
 
 ### Viewing Specific Recipes : `view`
 
@@ -308,6 +318,13 @@ Examples:
 Example Used: `view 1`
 
 <img src='images/ug-images/view.png' width='650'>
+
+<box type="info">
+
+**Note:**
+Only recipes that are currently in the recipe list can be viewed.
+</box>
+
 
 ### Adding Recipes : `addrecipe`
 
@@ -362,7 +379,7 @@ When encountering the error message `Failed to add step`, ensure that the index(
       Example: `1. Mix Water and Flour` **Note**: Ensure that a period and space is present after the index.
 </box>
 
-<box type="warning">
+<box type="info">
 
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
@@ -380,13 +397,6 @@ Example:
 * Assuming flour is used in the recipe, `modify i/1 n/Flour q/100 u/g` modifies the `Flour` ingredient in the recipe to 100 grams of flour.
 * Assuming flour is not used in the recipe, `modify i/1 n/Flour q/100 u/g` adds the 100 grams of the `Flour` ingredient to the recipe.
 
-
-<box type="info">
-
-**Note**: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
-</box>
-
-
 Example Used: `modify i/1 n/Flour q/100 u/g` 
 
 **Note**: Recipe being modified has 200g of flour as part of the ingredient list
@@ -398,6 +408,18 @@ Example Used: `modify i/1 n/Cream q/100 u/g`
 **Note**: Recipe being modified does not have cream in its ingredient list
 
 <img src='images/ug-images/modifyNew.png' width='650'>
+
+<box type="info">
+
+**Note:**
+Only recipes that are currently in the recipe list can be modified.
+</box>
+
+<box type="info">
+
+**Note**: After a recipe has been modified, it will be pushed to the bottom of the recipe list.
+</box>
+
 
 ### Deleting Recipes : `delete`
 
@@ -411,6 +433,12 @@ Format: `delete UUID`
 Examples:
 * `delete 1` deletes the recipe with `UUID` of 1.
 * `delete 21` deletes the recipe with `UUID` of 21.
+
+<box type="info">
+
+**Note:**
+Only recipes that are currently in the recipe list can be deleted.
+</box>
 
 ### Searching Recipes given an ingredient: `search`
 
@@ -437,6 +465,7 @@ Example used: `search blueberry`: **Note**: Only one recipe uses the ingredient 
 
 <img src='images/ug-images/searchSingle.png' width='650'>
 
+
 ### Exiting the program : `exit`
 
 Exits the program.
@@ -453,7 +482,7 @@ Inventory and Recipe data are saved in the hard disk automatically after any com
 
 Inventory data are saved automatically as a JSON file `[JAR file location]/data/inventory.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="warning" >
 
 **Caution:**
 If your changes to the data file makes its format invalid, Inventory will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
@@ -463,13 +492,14 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 ### Common Possible Errors
 
-| Error Message  | What to do  |
-|-----------------------------------|---------------------------------------|
-| Unknown command | Ensure that the command keyed in is one of the commands mentioned within this document|
-| Invalid Command Format | Ensure that all parameters have keyed in and that none are left empty|
-| Names should only contain alphanumeric characters and spaces, and it should not be blank | Ensure that only letters and numbers are used for names |
-| Quantity has to be positive | Ensure that the quantity valued keyed in is **greater** than 0 |
-| There is no recipe with the recipe UUID provided in the recipe book | Check the UUID of recipe attempting to use and ensure that it is correct|
+| Error Message  | What to do                                                                             |
+|-----------------------------------|----------------------------------------------------------------------------------------|
+| Unknown command | Ensure that the command keyed in is one of the commands mentioned within this document |
+| Invalid Command Format | Ensure that all parameters have keyed in and that none are left empty                  |
+| Names should only contain alphanumeric characters and spaces, and it should not be blank | Ensure that only letters and numbers are used for names                                |
+| Quantity has to be positive | Ensure that the quantity valued keyed in is **greater** than 0                         |
+| There is no recipe with the recipe UUID provided in the recipe book | Check the UUID of recipe attempting to use and ensure that it is correct               |
+| The recipe UUID provided is invalid | Ensure that the UUID you have entered is valid (ie. it is a positive integer           |
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -477,6 +507,10 @@ If your changes to the data file makes its format invalid, Inventory will discar
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous [Ba]king [Br]ead home folder.
+
+**Q**: The application does not run when I double-click it!<br>
+**A**: First, check if you have Jave `11` installed in your computer. If you do and still have issues, try this: Open a command terminal, `cd` into the 
+folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
