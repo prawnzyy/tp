@@ -18,6 +18,32 @@ You will never forget what Ingredient you need to stock up on during your next t
 have to flip through heavy physical recipe books any longer. What are you waiting for? Master [Ba]king [Br]ead and 
 fast-track your baking journey now!
 
+--------------------------------------------------------------------------------------------------------------------
+## Table of Contents
+* [Using this Guide](#using-this-guide)
+* [Glossary](#glossary)
+* [Quick Start](#quick-start)
+* [Navigating the GUI](#navigating-the-gui)
+* [Features](#features)
+  * [Help](#viewing-help-help)
+  * [Add ingredient](#adding-an-ingredient-add)
+  * [Use ingredient](#using-up-ingredients-use)
+  * [Find quantity of ingredient](#finding-the-quantity-of-an-ingredient-by-name-stock)
+  * [Clear ingredient list](#clearing-all-entries-from-ingredient-stock-clear)
+  * [View list of all recipes](#listing-all-recipes-list)
+  * [View a recipe](#viewing-specific-recipes-view)
+  * [Add a recipe](#adding-recipes-addrecipe)
+  * [Modify a recipe](#modifying-recipes-modify)
+  * [Search for recipes that have an ingredient](#searching-recipes-given-an-ingredient-search)
+  * [Exit the program](#exiting-the-program-exit)
+  * [Save the data](#saving-the-data)
+  * [Edit the data file](#editing-the-data-file)
+* [Common Errors](#common-possible-errors)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
+
+<div style="page-break-after: always;"></div>
+
 ## Using this Guide
 This user guide contains all the information you will need in order to use [Ba]king [Br]ead. For new users, this document will also guide you in using the application,
 starting with the more essential features.
@@ -47,31 +73,6 @@ Used to highlight helpful tips
 **Caution:**
 Used to highlight errors to look out for
 </box>
---------------------------------------------------------------------------------------------------------------------
-## Table of Contents
-* [Using this Guide](#using-this-guide)
-* [Glossary](#glossary)
-* [Quick Start](#quick-start)
-* [Navigating the GUI](#navigating-the-gui)
-* [Features](#features)
-  * [Help](#viewing-help-help)
-  * [Add ingredient](#adding-an-ingredient-add)
-  * [Use ingredient](#using-up-ingredients-use)
-  * [Find quantity of ingredient](#finding-the-quantity-of-an-ingredient-by-name-stock)
-  * [Clear ingredient list](#clearing-all-entries-from-ingredient-stock-clear)
-  * [View list of all recipes](#listing-all-recipes-list)
-  * [View a recipe](#viewing-specific-recipes-view)
-  * [Add a recipe](#adding-recipes-addrecipe)
-  * [Modify a recipe](#modifying-recipes-modify)
-  * [Search for recipes that have an ingredient](#searching-recipes-given-an-ingredient-search)
-  * [Exit the program](#exiting-the-program-exit)
-  * [Save the data](#saving-the-data)
-  * [Edit the data file](#editing-the-data-file)
-* [Common Errors](#common-possible-errors)
-* [FAQ](#faq)
-* [Command Summary](#command-summary)
-
-<div style="page-break-after: always;"></div>
 
 ## Glossary
 Listed below are the definitions of the terminology used throughout the User Guide
