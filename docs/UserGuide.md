@@ -54,16 +54,19 @@ This user guide contains all the information you will need in order to use [Ba]k
 Do take note of the following highlighted information panels as we will be using this throughout the User Guide.
 
 <box type="info">
+
 **Note:**
 Used to highlight essential information
 </box>
 
 <box type="tip">
+
 **Tip:**
 Used to highlight helpful tips
 </box>
 
 <box type="warning">
+
 **Caution:**
 Used to highlight errors to look out for
 </box>
