@@ -128,7 +128,7 @@ infographic below for step-by-step instructions on adding your first recipe.
 
 ## Features
 
-<box type="info" seamless>
+<box type="info">
 
 **Notes about the command format:**<br>
 
