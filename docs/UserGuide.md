@@ -51,7 +51,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
    A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data. For more
    information on how to navigate the GUI, head over to this [section](#navigating-the-gui). <br>
-   ![Ui](images/Ui.png)
+   <img src='images/Ui.png' width='650'>
 
 5. Type the command in the input box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -100,7 +100,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 
 Shows a message explaining how to access the help page.
 
-![help message](images/helpMessage.png)
+<img src='images/helpMessage.png' width='650' align="center">
 
 Format: `help`
 
@@ -127,11 +127,11 @@ Examples:
 
 Example Used: `add n/Flour q/1 u/kg` **Note**: Sample data starts off with 3kg of Flour.
 
-![Add Ingredient Example](images/ug-images/addIngredient.png)
+<img src='images/ug-images/addIngredient.png' width='650' align="center">
 
 Example Used: `add n/Milk q/600 u/g` **Note**: Sample data does not contain Milk.
 
-![Add New Ingredient Example](images/ug-images/addIngredientNew.png)
+<img src='images/ug-images/addIngredientNew.png' width='650'>
 
 Supported Units:
 | Unit     | Alias                                 |
@@ -166,7 +166,7 @@ Examples:
 
 Example Used: `use n/Milk q/600 u/g` **Note**: Data shown started with 1kg of Milk.
 
-![Use Ingredient Example](images/ug-images/useIngredient.png)
+<img src='images/ug-images/useIngredient.png' width='650' align="center">
 
 Supported Units:
 | Unit     | Alias                                 |
@@ -195,7 +195,7 @@ Examples:
 
 Example used: `stock butter`
 
-![Stock Example](images/ug-images/stock.png)
+<img src='images/ug-images/stock.png' width='650' align="center">
 
 ### Clearing all entries from ingredient stock : `clear`
 
@@ -205,7 +205,7 @@ Format: `clear`
 
 Example used: `clear`
 
-![Stock Example](images/ug-images/clear.png)
+<img src='images/ug-images/clear.png' width='650' align="center">
 
 ### Listing all Recipes : `list`
 
@@ -215,7 +215,7 @@ Format: `list`
 
 Example Used: `list`
 
-![List Example](images/ug-images/list.png)
+<img src='images/ug-images/list.png' width='650' align="center">
 
 Examples:
 * `list` lists out all recipes within [Ba]king [Br]ead.
@@ -234,7 +234,7 @@ Examples:
 
 Example Used: `view 1`
 
-![View Example](images/ug-images/view.png)
+<img src='images/ug-images/view.png' width='650' align="center">
 
 ### Adding Recipes : `addrecipe`
 
@@ -300,11 +300,11 @@ Example:
 
 Example Used: `modify i/1 n/Flour q/100 u/g` **Note**: Recipe being modified has 200g of flour as part of the ingredient list
 
-![Modify Existing Example](images/ug-images/modifyExisting.png)
+<img src='images/ug-images/modifyExisting.png' width='650' align="center">
 
 Example Used: `modify i/1 n/Cream q/100 u/g` **Note**: Recipe being modified does not have cream in its ingredient list
 
-![Modify New Example](images/ug-images/modifyNew.png)
+<img src='images/ug-images/modifyNew.png' width='650' align="center">
 
 ### Deleting Recipes : `delete`
 
@@ -336,11 +336,12 @@ Examples:
 
 Example used: `search flour`: **Note**: Multiple recipes use the ingredient flour
 
-![Search Multiple Example](images/ug-images/searchMultiple.png)
+<img src='images/ug-images/searchMultiple.png' width='650' align="center">
+
 
 Example used: `search blueberry`: **Note**: Only one recipe uses the ingredient blueberry
 
-![Search Single Example](images/ug-images/searchSingle.png)
+<img src='images/ug-images/searchSingle.png' width='650' align="center">
 
 ### Exiting the program : `exit`
 
