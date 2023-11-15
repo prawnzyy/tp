@@ -6,17 +6,17 @@ pageNav: 3
 
 # [Ba]king [Br]ead User Guide
 
-[Ba]king [Br]ead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). [Ba]king [Br]ead is targeted
-towards bakers like yourselves to aid you on your baking journey. 
+Welcome! If you are a new baker suffering under the mess and stress of baking, look no further, [Ba]king [Br]ead is here 
+to help organise your kitchen and recipes.
 
-Tired of rummaging through your cupboard to check what ingredients and how much of it you have? Fret not, with [Ba]king [Br]ead, you will be able to manage your stock with ease so the next time you want
-to bake something or go grocery shopping, you know exactly what you have! And if you are tired of having to flip through physical 
-recipe books to find a recipe you want, once again [Ba]king [Br]ead has you covered! With [Ba]king [Br]ead you will be able to 
-view your recipes with ease, making it much easier to manage your recipes! 
+[Ba]king [Br]ead will help you to:
+1. Keep track of all your baking ingredients in your kitchen
+2. Collate all your recipes digitally for easy viewing
+3. Do all the above with blazing efficiency, your fast fingers and our application's command line interface makes this
+uniquely possible.
 
-If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe management tasks done faster than traditional GUI apps.
-
+You will never forget what Ingredient you need to stock up on during your next trip to the supermarket. You will never have to
+flip through heavy physical recipe books any longer.
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
 * [Glossary](#glossary)
@@ -67,7 +67,7 @@ New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to g
 
 ### Navigating the GUI
 The GUI may be confusing if you are a first time user of our application. Here is the breakdown of the GUI for [Ba]king [Br]ead.
-![Ui](images/Ui-annotated.png)
+![Ui](images/Ui-annotated.png)<br>
 **Input box:** This is where you will be inputting your commands.<br>
 **Command result box:** Where the application will return a message regarding the outcome of command inputted.<br>
 **Ingredients list:** Contain a list view of all your ingredients with their specified quantity and unit.<br>
@@ -78,11 +78,11 @@ The GUI may be confusing if you are a first time user of our application. Here i
 Time to add your first ingredient! Take any ingredient from your kitchen, weigh the quantity of that ingredient and
 let's get started!
 1. Suppose you decided flour would be your first ingredient, and that you have 100 grams of flour. Type in the command 
-into the application's input box as shown below.<br>
+into the application's input box as shown below.<br><br>
 <img src='images/ug-images/quickstart_addingredient1.png' width='650'> <br><br>
 2. Press enter to execute the command
-3. You should see the ingredient added into your ingredient list as seen below. Hooray! You have added your first ingredient!<br>
-<img src='images/ug-images/quickstart_addingredient2.png' width='650'>
+3. You should see the ingredient added into your ingredient list as seen below. Hooray! You have added your first ingredient!<br><br>
+<img src='images/ug-images/quickstart_addingredient2.png' width='860'>
 
 #### Adding your first recipe
 Recipe adding is a little more complicated! But do not worry, you will get the hang of it in no time. Refer to the
