@@ -5,7 +5,7 @@ pageNav: 3
 ---
 
 # [Ba]king [Br]ead User Guide
-Welcome new bakers!
+Welcome **new bakers**!
 If you're feeling overwhelmed by the chaos of baking, fret not because [Ba]king [Br]ead is here to save the day!
 We're here to help you manage the overwhelming number of ingredients in your kitchen and the endless recipes you have stored, 
 making your baking experience a lot smoother!
@@ -98,6 +98,8 @@ New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to g
 3. Copy the file to the folder you want to use as the _home folder_ for [Ba]king [Br]ead.
 
 4. Double-click on the jar and a GUI similar to the one below should appear in a few seconds. If this does not work for you, check the [FAQ](#faq)
+
+5. Some sample data has been preloaded into the application
 
 ![Ui](images/Ui.png)
 
@@ -215,12 +217,16 @@ Examples:
 
 Example Used: `add n/Flour q/1 u/kg` **Note**: Sample started with 3kg of Flour in the stock.
 
-<img src='images/ug-images/addIngredient.png' width='650'>
+<img src='images/ug-images/addIngredient.png' width='650' height="400" class="center">
 
 
 Example Used: `add n/Milk q/600 u/g` **Note**: Sample did not have any Milk in the stock.
 
+<<<<<<< HEAD
 <img src='images/ug-images/addIngredientNew.png' width='650'><br>
+=======
+
+>>>>>>> master
 
 ### Using up ingredients : `use`
 
@@ -247,11 +253,11 @@ Examples:
 
 Example Used: `use n/Milk q/600 u/g` **Note**: Sample started with 1kg of Milk in the stock.<br>
 
-<img src='images/ug-images/useIngredient.png' width='650'>
+<img src='images/ug-images/useIngredient.png' width='650' height="480" class="center">
 
-
+<br>
 <box type="warning">
-If you try to use an ingredient which is not in the stock, the error message "Ingredient does not exist in Inventory" will appear. <br>
+If you try to use an ingredient which is not in the stock, the error message "Ingredient does not exist in Inventory" will appear.
 Only ingredients already in the stock can be specified when using this command.
 </box>
 
@@ -275,7 +281,11 @@ Examples:
 
 Example used: `stock butter`
 
+<<<<<<< HEAD
 <img src='images/ug-images/stock.png' width='650'><br>
+=======
+
+>>>>>>> master
 
 ### Clearing all ingredients from ingredient stock : `clear`
 
@@ -285,7 +295,12 @@ Format: `clear`
 
 Example used: `clear`
 
+<<<<<<< HEAD
 <img src='images/ug-images/clear.png' width='650'><br>
+=======
+<img src='images/ug-images/clear.png' width='650' height="480" class="center">
+
+>>>>>>> master
 
 ### Listing all Recipes : `list`
 
@@ -295,7 +310,11 @@ Format: `list`
 
 Example Used: `list`
 
+<<<<<<< HEAD
 <img src='images/ug-images/list.png' width='650'><br>
+=======
+
+>>>>>>> master
 
 ### Viewing Specific Recipes : `view`
 
@@ -311,7 +330,10 @@ Examples:
 
 Example Used: `view 1`
 
+<<<<<<< HEAD
 <img src='images/ug-images/view.png' width='650'><br>
+=======
+>>>>>>> master
 
 <box type="info">
 
@@ -369,7 +391,10 @@ When encountering the error message `Failed to add ingredient`, ensure that the 
 
 <box type="warning">
 
+<<<<<<< HEAD
 When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been specified been in before keying in the step itself<br>
+=======
+>>>>>>> master
       Example: `1. Mix Water and Flour` **Note**: Ensure that a period and space is present after the index.
 </box>
 
@@ -395,13 +420,13 @@ Example Used: `modify i/1 n/Flour q/100 u/g`
 
 **Note**: Recipe being modified has 200g of flour as part of the ingredient list
 
-<img src='images/ug-images/modifyExisting.png' width='650'>
+<img src='images/ug-images/modifyExisting.png' width='650' height="480" class="center">
 
 
 Example Used: `modify i/1 n/Cream q/100 u/g` 
 **Note**: Recipe being modified does not have cream in its ingredient list
 
-<img src='images/ug-images/modifyNew.png' width='650'>
+<img src='images/ug-images/modifyNew.png' width='650' height="480" class="center">
 
 <box type="info">
 
@@ -450,12 +475,12 @@ Examples:
 * `search flour` searches for all recipes that use `flour`
 * `search butter` searches for all recipes that use `butter`
 
-Example used: `search flour`: **Note**: Multiple recipes use the ingredient flour
+Example used: `search flour` **Note**: Multiple recipes use the ingredient flour
 
-<img src='images/ug-images/searchMultiple.png' width='650'>
+<img src='images/ug-images/searchMultiple.png' width='650' height="480" class="center">
 
 
-Example used: `search blueberry`: **Note**: Only one recipe uses the ingredient blueberry
+Example used: `search blueberry` **Note**: Only one recipe uses the ingredient blueberry
 
 <img src='images/ug-images/searchSingle.png' width='650'>
 
@@ -470,8 +495,10 @@ Format: `exit`
 
 Inventory and Recipe data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-**Tip**: When the application loads for the first time and no command is run, no inventory or recipe data will be saved.
+<box type="info">
 
+**Note**: When the application loads for the first time and no command is run, no inventory or recipe data will be saved.
+</box>
 ### Editing the data file
 
 Inventory data are saved automatically as a JSON file `[JAR file location]/data/inventory.json`. Advanced users are welcome to update data directly by editing that data file.
@@ -479,7 +506,7 @@ Inventory data are saved automatically as a JSON file `[JAR file location]/data/
 <box type="warning" >
 
 **Caution:**
-If your changes to the data file makes its format invalid, Inventory will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
+If your changes to the data file makes its format invalid, all data will be discarded and you will start with an empty data file the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -503,7 +530,7 @@ If your changes to the data file makes its format invalid, Inventory will discar
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous [Ba]king [Br]ead home folder.
 
 **Q**: The application does not run when I double-click it!<br>
-**A**: First, check if you have Jave `11` installed in your computer. If you do and still have issues, try this: Open a command terminal, `cd` into the 
+**A**: First, check if you have Java `11` installed in your computer. If you do and still have issues, try this: Open a command terminal, `cd` into the 
 folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
 
 --------------------------------------------------------------------------------------------------------------------
