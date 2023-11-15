@@ -19,6 +19,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
+* [Using this Guide](#using-this-guide)
 * [Glossary](#glossary)
 * [Quick Start](#quick-start)
 * [Navigating the GUI](#navigating-the-gui)
@@ -40,6 +41,32 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 * [Command Summary](#command-summary)
 
 <div style="page-break-after: always;"></div>
+
+## Using this Guide
+This user guide contains all the information you will need in order to use [Ba]king [Br]ead.
+
+**For new users**:
+- Start using [Ba]king [Br]ead by heading over to the [Quick Start](#quick-start) to learn how to set up the app and use it.
+
+**For experienced users:**
+- Utilise the [Table of Contents](#table-of-contents) to refresh your memory on the various features
+
+Do take note of the following highlighted information panels as we will be using this throughout the User Guide.
+
+<box type="info">
+**Note:**
+Used to highlight essential information
+</box>
+
+<box type="tip">
+**Tip:**
+Used to highlight helpful tips
+</box>
+
+<box type="warning">
+**Caution:**
+Used to highlight errors to look out for
+</box>
 
 ## Glossary
 Listed below are the definitions of the terminology used throughout the User Guide
@@ -122,7 +149,7 @@ infographic below for step-by-step instructions on adding your first recipe.
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
   </box>
 
-List of parameters:
+#### List of parameters:
 
 | Parameter |             Description             | Constraints                                      | Valid examples        | Invalid examples |
 |:----------|:-----------------------------------:|--------------------------------------------------|-----------------------|------------------|
@@ -131,7 +158,8 @@ List of parameters:
 | `u/`      | Unit used to measure the ingredient | Must be one of the supported units               | GRAM, KILOGRAM, PIECE | ML, L, TSP       |
 | `i/`      |           UUID of recipe            | UUID must be at least 1                          | 1, 2, 3               | 0, -1, 0.1       |
 
-Supported Units:
+
+#### Supported Units:
 
 | Unit     | Alias                                 |
 |----------|---------------------------------------|
