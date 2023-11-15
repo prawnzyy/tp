@@ -76,12 +76,12 @@ Used to highlight errors to look out for
 ## Glossary
 Listed below are the definitions of the terminology used throughout the User Guide
 
-| Term                                 | Definition                                                         | 
-|:-------------------------------------|:-------------------------------------------------------------------|
-| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead                           | 
-| Command                              | A set of words that execute a certain operation                    |
-| Parameter                            | Specific information that a command needs for it to be run         | 
-| UUID (Universally Unique IDentifier) | An integer that is used to identify the recipes                    |
+| Term                                 | Definition                                                    | 
+|:-------------------------------------|:--------------------------------------------------------------|
+| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead                      | 
+| Command                              | A set of words that execute a certain operation               |
+| Parameter                            | Specific input information that a command needs for it to run | 
+| UUID (Universally Unique IDentifier) | An integer that is used to identify the recipes               |
 
 
 ## Quick start
@@ -246,7 +246,7 @@ Example Used: `use n/Milk q/600 u/g` **Note**: Data shown started with 1kg of Mi
 
 <box type="warning">
 
-When encountering the error message `Ingredient does not exist in Inventory`, either add it in first or use a different ingredient
+**Caution**: When encountering the error message `Ingredient does not exist in Inventory`, either add it in first or use a different ingredient
 </box>
 
 ### Finding the quantity of an ingredient by name: `stock`
@@ -354,12 +354,12 @@ complete recipe
 
 <box type="warning">
 
-When encountering the error message `Failed to add ingredient`, ensure that the ingredient keyed in follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
+**Caution**: When encountering the error message `Failed to add ingredient`, ensure that the ingredient keyed in follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
 </box>
 
 <box type="warning">
 
-When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been keyed been in before keying in the step itself<br>
+**Caution**: When encountering the error message `Failed to add step`, ensure that the index(A whole number) has been keyed been in before keying in the step itself<br>
       Example: `1. Mix Water and Flour` **Note**: Ensure that a period and space is present after the index.
 </box>
 
