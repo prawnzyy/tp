@@ -19,6 +19,8 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
+* [Using this Guide](#using-this-guide)
+* [Glossary](#glossary)
 * [Quick Start](#quick-start)
 * [Navigating the GUI](#navigating-the-gui)
 * [Features](#features)
@@ -40,8 +42,47 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 
 <div style="page-break-after: always;"></div>
 
-## Quick start
+## Using this Guide
+This user guide contains all the information you will need in order to use [Ba]king [Br]ead.
 
+**For new users**:
+- Start using [Ba]king [Br]ead by heading over to the [Quick Start](#quick-start) to learn how to set up the app and use it.
+
+**For experienced users:**
+- Utilise the [Table of Contents](#table-of-contents) to refresh your memory on the various features
+
+Do take note of the following highlighted information panels as we will be using this throughout the User Guide.
+
+<box type="info">
+**Note:**
+Used to highlight essential information
+</box>
+
+<box type="tip">
+**Tip:**
+Used to highlight helpful tips
+</box>
+
+<box type="warning">
+**Caution:**
+Used to highlight errors to look out for
+</box>
+
+## Glossary
+Listed below are the definitions of the terminology used throughout the User Guide
+
+| Term                                 | Definition                                                         | 
+|:-------------------------------------|:-------------------------------------------------------------------|
+| GUI (Graphical User Interface)       | The visual interface of [Ba]king [Br]ead                           | 
+| Command                              | A set of words that execute a certain operation                    |
+| Parameter                            | Specific information that a command needs for it to be run         | 
+| UUID (Universally Unique IDentifier) | An integer that is used to identify the recipes                    |
+
+
+## Quick start
+New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to get started!
+
+### Setting up [Ba]king [Br]ead
 1. Ensure you have Java `11` or above installed in your Computer.
 
 2. Download the latest `bakingbread.jar` from [here](https://github.com/AY2324S1-CS2103T-F10-3/tp/releases).
@@ -49,25 +90,37 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 3. Copy the file to the folder you want to use as the _home folder_ for [Ba]king [Br]ead.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
-   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data. For more
-   information on how to navigate the GUI, head over to this [section](#navigating-the-gui). <br>
-   ![Ui](images/Ui.png)
+   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.
 
-5. Type the command in the input box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
-
-    * add n/Flour q/10 u/kg (Add Command)
-    * use n/Flour q/5 u/kg  (Use Command)
-    * stock Flour           (Stock Command)
-
-6. Refer to the [Features](#features) below for details of each command.
-
-## Navigating the GUI
+### Navigating the GUI
+The GUI may be confusing if you are a first time user of our application. Here is the breakdown of the GUI for [Ba]king [Br]ead.
 ![Ui](images/Ui-annotated.png)
 **Input box:** This is where you will be inputting your commands.<br>
 **Command result box:** Where the application will return a message regarding the outcome of command inputted.<br>
 **Ingredients list:** Contain a list view of all your ingredients with their specified quantity and unit.<br>
 **Recipe list:** Contains a list view of all your recipes.<br>
+
+### Tutorial
+#### Adding your first ingredient
+Time to add your first ingredient! Take any ingredient from your kitchen, weigh the quantity of that ingredient and
+let's get started!
+1. Suppose you decided flour would be your first ingredient, and that you have 100 grams of flour. Type in the command 
+into the application's input box as shown below.<br>
+<img src='images/ug-images/quickstart_addingredient1.png' width='650'> <br><br>
+2. Press enter to execute the command
+3. You should see the ingredient added into your ingredient list as seen below. Hooray! You have added your first ingredient!<br>
+<img src='images/ug-images/quickstart_addingredient2.png' width='650'>
+
+#### Adding your first recipe
+Recipe adding is a little more complicated! But do not worry, you will get the hang of it in no time. Refer to the
+infographic below for step-by-step instructions on adding your first recipe.
+
+![Addrecipe Instructions](images/ug-images/addrecipe_instructions1.png)
+![Addrecipe Instructions](images/ug-images/addrecipe_instructions2.png)
+
+<box type="tip">If you are stuck at any point, typing **`help`** and pressing Enter will open the help window to guide you along.</box>
+
+<box type="tip">Refer to the [Features](#features) below for details of the other commands available!</box>
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
@@ -96,11 +149,30 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
   </box>
 
+#### List of parameters:
+
+| Parameter |             Description             | Constraints                                      | Valid examples        | Invalid examples |
+|:----------|:-----------------------------------:|--------------------------------------------------|-----------------------|------------------|
+| `n/`      |       Name of the ingredient        | Alphanumeric characters (a to z, A to Z, 0 to 9) | Flour, Chocolate Chip | Chocolate-Chip   |
+| `q/`      |     Quantity of the ingredient      | Must be numeric and more than 0                  | 1000, 1, 200          | -100, hundred, 0 |
+| `u/`      | Unit used to measure the ingredient | Must be one of the supported units               | GRAM, KILOGRAM, PIECE | ML, L, TSP       |
+| `i/`      |           UUID of recipe            | UUID must be at least 1                          | 1, 2, 3               | 0, -1, 0.1       |
+
+
+#### Supported Units:
+
+| Unit     | Alias                                 |
+|----------|---------------------------------------|
+| GRAM     | g, gram, GRAM                         |
+| KILOGRAM | kg, kilogram, KILOGRAM                |
+| PIECE    | pc, pcs, piece, pieces, PIECE, PIECES |
+
+
 ### Viewing help : `help`
 
-Shows a message explaining how to access the help page.
+If you are not sure how to use [Ba]king [Br]ead, this command will show a pop-up with a link to access the help page.
 
-![help message](images/helpMessage.png)
+<img src='images/helpMessage.png' width='650'>
 
 Format: `help`
 
@@ -108,7 +180,7 @@ Format: `help`
 
 ### Adding an ingredient: `add`
 
-Adds an ingredient to stock.
+Adds an ingredient to the stock.
 
 Format: `add n/NAME q/QUANTITY u/UNIT`
 
@@ -127,11 +199,11 @@ Examples:
 
 Example Used: `add n/Flour q/1 u/kg` **Note**: Sample data starts off with 3kg of Flour.
 
-![Add Ingredient Example](images/ug-images/addIngredient.png)
+<img src='images/ug-images/addIngredient.png' width='650'>
 
 Example Used: `add n/Milk q/600 u/g` **Note**: Sample data does not contain Milk.
 
-![Add New Ingredient Example](images/ug-images/addIngredientNew.png)
+<img src='images/ug-images/addIngredientNew.png' width='650'>
 
 Supported Units:
 | Unit     | Alias                                 |
@@ -142,7 +214,7 @@ Supported Units:
 
 ### Using up ingredients : `use`
 
-Depletes a specified amount of an ingredient from stock.
+Depletes a specified amount of an ingredient from the stock.
 
 Format: `use n/NAME [q/QUANTITY] [u/UNIT]`
 
@@ -166,7 +238,7 @@ Examples:
 
 Example Used: `use n/Milk q/600 u/g` **Note**: Data shown started with 1kg of Milk.
 
-![Use Ingredient Example](images/ug-images/useIngredient.png)
+<img src='images/ug-images/useIngredient.png' width='650'>
 
 Supported Units:
 | Unit     | Alias                                 |
@@ -181,7 +253,7 @@ Potential Error Message
 
 ### Finding the quantity of an ingredient by name: `stock`
 
-Lists the quantity of the specified ingredients.
+Lists the quantity of the specified ingredient(s).
 
 Format: `stock [NAME]…​`
 
@@ -199,7 +271,7 @@ Examples:
 
 Example used: `stock butter`
 
-![Stock Example](images/ug-images/stock.png)
+<img src='images/ug-images/stock.png' width='650'>
 
 ### Clearing all entries from ingredient stock : `clear`
 
@@ -209,7 +281,7 @@ Format: `clear`
 
 Example used: `clear`
 
-![Stock Example](images/ug-images/clear.png)
+<img src='images/ug-images/clear.png' width='650'>
 
 ### Listing all Recipes : `list`
 
@@ -219,7 +291,7 @@ Format: `list`
 
 Example Used: `list`
 
-![List Example](images/ug-images/list.png)
+<img src='images/ug-images/list.png' width='650'>
 
 Examples:
 * `list` lists out all recipes within [Ba]king [Br]ead.
@@ -238,7 +310,7 @@ Examples:
 
 Example Used: `view 1`
 
-![View Example](images/ug-images/view.png)
+<img src='images/ug-images/view.png' width='650'>
 
 ### Adding Recipes : `addrecipe`
 
@@ -290,9 +362,6 @@ Potential Error Messages:
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
-![Addrecipe Instructions](images/ug-images/addrecipe_instructions1.png)
-![Addrecipe Instructions](images/ug-images/addrecipe_instructions2.png)
-
 ### Modifying Recipes : `modify`
 
 Modifies the ingredients in a recipe.
@@ -311,11 +380,11 @@ Example:
 
 Example Used: `modify i/1 n/Flour q/100 u/g` **Note**: Recipe being modified has 200g of flour as part of the ingredient list
 
-![Modify Existing Example](images/ug-images/modifyExisting.png)
+<img src='images/ug-images/modifyExisting.png' width='650'>
 
 Example Used: `modify i/1 n/Cream q/100 u/g` **Note**: Recipe being modified does not have cream in its ingredient list
 
-![Modify New Example](images/ug-images/modifyNew.png)
+<img src='images/ug-images/modifyNew.png' width='650'>
 
 ### Deleting Recipes : `delete`
 
@@ -347,11 +416,12 @@ Examples:
 
 Example used: `search flour`: **Note**: Multiple recipes use the ingredient flour
 
-![Search Multiple Example](images/ug-images/searchMultiple.png)
+<img src='images/ug-images/searchMultiple.png' width='650'>
+
 
 Example used: `search blueberry`: **Note**: Only one recipe uses the ingredient blueberry
 
-![Search Single Example](images/ug-images/searchSingle.png)
+<img src='images/ug-images/searchSingle.png' width='650'>
 
 ### Exiting the program : `exit`
 
