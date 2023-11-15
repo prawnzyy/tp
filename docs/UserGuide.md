@@ -6,11 +6,9 @@ pageNav: 3
 
 # [Ba]king [Br]ead User Guide
 
-[Ba]king [Br]ead is a desktop app for **managing recipes and ingredient inventory**, optimized for use via a 
-**Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). 
-
-[Ba]king [Br]ead is targeted
-towards **homebakers** like yourselves to aid you on your baking journey. 
+[Ba]king [Br]ead is a **desktop app for managing recipes and ingredient inventory, optimized for use via a 
+Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). [Ba]king [Br]ead is targeted
+towards bakers like yourselves to aid you on your baking journey. 
 
 Tired of rummaging through your cupboard to check what ingredients you have? Tired of scrolling through ad-ridden webpages of needlessly complicated recipes? 
 
@@ -275,6 +273,7 @@ Format: `stock [NAME]…​`
 * Only full words will be matched e.g. `Flou` will not match `Flour`.
 * For ingredients with names comprising multiple words, any ingredient that contains the specified word will also be listed. 
    <br/> e.g. `stock butter` will display both `butter` and `butter stick`.
+* When no names are specified, all ingredients will be displayed.
 
 Examples:
 * `stock Butter` will show the `Butter` ingredient in the list.
@@ -305,13 +304,15 @@ Example Used: `list`
 
 <img src='images/ug-images/list.png' width='650'>
 
+Examples:
+* `list` lists out all recipes within [Ba]king [Br]ead.
+
 ### Viewing Specific Recipes : `view`
 
 Views a specific recipe in [Ba]king [Br]ead.
 
 Format: `view UUID`
 * `UUID` must be an integer greater than or equal to 1.
-* `UUID` should match one of the UUIDs of the existing recipes.
 * To toggle back to listing all recipes, use the `list` command.
 
 Examples:
@@ -363,6 +364,7 @@ steps start
 complete recipe
 ```
 
+
 <box type="warning">
 
 When encountering the error message `Failed to add ingredient`, ensure that the ingredient keyed in follows the following format **exactly** : `(NAME) (QUANTITY)(UNIT)` Example: `Milk 100g`
@@ -377,7 +379,6 @@ When encountering the error message `Failed to add step`, ensure that the index(
 <box type="warning">
 
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
-If any of the ingredients or steps are formatted incorrectly, they will not be added to the completed recipe.
 </box>
 
 ### Modifying Recipes : `modify`
@@ -386,7 +387,6 @@ Modifies the ingredients in a recipe.
 
 Format: `modify i/UUID n/NAME q/QUANTITY u/UNIT`
 * `UUID` must be an integer greater than or equal to 1.
-* `UUID` should match one of the UUIDs of the existing recipes.
 * The quantity provided must be more than 0.
 * The unit used must be supported.
 
@@ -468,7 +468,6 @@ Inventory and Recipe data are saved in the hard disk automatically after any com
 Inventory data are saved automatically as a JSON file `[JAR file location]/data/inventory.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
-
 
 **Caution:**
 If your changes to the data file makes its format invalid, Inventory will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
