@@ -74,7 +74,7 @@ Used to highlight errors to look out for
   * [Add ingredient](#adding-an-ingredient-add)
   * [Use ingredient](#using-up-ingredients-use)
   * [Find quantity of ingredient](#finding-the-quantity-of-an-ingredient-by-name-stock)
-  * [Clear ingredient list](#clearing-all-entries-from-ingredient-stock-clear)
+  * [Clear ingredient list](#clearing-all-ingredients-from-ingredient-stock-clear)
   * [View list of all recipes](#listing-all-recipes-list)
   * [View a recipe](#viewing-specific-recipes-view)
   * [Add a recipe](#adding-recipes-addrecipe)
