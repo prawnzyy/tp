@@ -42,6 +42,7 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 
 ## Quick start
 
+### Setting up [Ba]king [Br]ead
 1. Ensure you have Java `11` or above installed in your Computer.
 
 2. Download the latest `bakingbread.jar` from [here](https://github.com/AY2324S1-CS2103T-F10-3/tp/releases).
@@ -49,25 +50,27 @@ If you can type fast, [Ba]king [Br]ead can get your ingredient and recipe manage
 3. Copy the file to the folder you want to use as the _home folder_ for [Ba]king [Br]ead.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar bakingbread.jar` command to run the application.<br>
-   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data. For more
-   information on how to navigate the GUI, head over to this [section](#navigating-the-gui). <br>
-   <img src='images/Ui.png' width='650'>
+   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.
 
-5. Type the command in the input box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+### Navigating the GUI
+The GUI may be confusing if you are a first time user of our application. Here is the breakdown of the GUI for [Ba]king [Br]ead.
+![Ui](images/Ui-annotated.png)
+**Input box:** This is where you will be inputting your commands.<br>
+**Command result box:** Where the application will return a message regarding the outcome of command inputted.<br>
+**Ingredients list:** Contain a list view of all your ingredients with their specified quantity and unit.<br>
+**Recipe list:** Contains a list view of all your recipes.<br>
+
+### Tutorial: Adding your first ingredients and recipes
+1. Type the command in the input box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
     * add n/Flour q/10 u/kg (Add Command)
     * use n/Flour q/5 u/kg  (Use Command)
     * stock Flour           (Stock Command)
 
-6. Refer to the [Features](#features) below for details of each command.
+2. Refer to the [Features](#features) below for details of each command.
 
-## Navigating the GUI
-![Ui](images/Ui-annotated.png)
-**Input box:** This is where you will be inputting your commands.<br>
-**Command result box:** Where the application will return a message regarding the outcome of command inputted.<br>
-**Ingredients list:** Contain a list view of all your ingredients with their specified quantity and unit.<br>
-**Recipe list:** Contains a list view of all your recipes.<br>
+
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
