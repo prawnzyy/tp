@@ -53,8 +53,6 @@ Listed below are the definitions of the terminology used throughout the User Gui
 
 
 ## Quick start
-
-<<<<<<< HEAD
 New to [Ba]king [Br]ead? Not to worry, simply follow the instructions below to get started!
 
 ### Setting up [Ba]king [Br]ead
@@ -75,25 +73,27 @@ The GUI may be confusing if you are a first time user of our application. Here i
 **Ingredients list:** Contain a list view of all your ingredients with their specified quantity and unit.<br>
 **Recipe list:** Contains a list view of all your recipes.<br>
 
-### Tutorial: Adding your first ingredients and recipes
-1. Type the command in the input box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+### Tutorial
+#### Adding your first ingredient
+Time to add your first ingredient! Take any ingredient from your kitchen, weigh the quantity of that ingredient and
+let's get started!
+1. Suppose you decided flour would be your first ingredient, and that you have 100 grams of flour. Type in the command 
+into the application's input box as shown below.<br>
+<img src='images/ug-images/quickstart_addingredient1.png' width='650'> <br><br>
+2. Press enter to execute the command
+3. You should see the ingredient added into your ingredient list as seen below. Hooray! You have added your first ingredient!<br>
+<img src='images/ug-images/quickstart_addingredient2.png' width='650'>
 
-    * add n/Flour q/10 u/kg (Add Command)
-    * use n/Flour q/5 u/kg  (Use Command)
-    * stock Flour           (Stock Command)
+#### Adding your first recipe
+Recipe adding is a little more complicated! But do not worry, you will get the hang of it in no time. Refer to the
+infographic below for step-by-step instructions on adding your first recipe.
 
-2. Refer to the [Features](#features) below for details of each command.
-=======
+![Addrecipe Instructions](images/ug-images/addrecipe_instructions1.png)
+![Addrecipe Instructions](images/ug-images/addrecipe_instructions2.png)
 
+<box type="tip">If you are stuck at any point, typing **`help`** and pressing Enter will open the help window to guide you along.</box>
 
->>>>>>> master
-
-
-
-<<<<<<< HEAD
-=======
->>>>>>> master
+<box type="tip">Refer to the [Features](#features) below for details of the other commands available!</box>
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
@@ -144,7 +144,7 @@ Supported Units:
 
 If you are not sure how to use [Ba]king [Br]ead, this command will show a pop-up with a link to access the help page.
 
-<img src='images/helpMessage.png' width='650' align="center">
+<img src='images/helpMessage.png' width='650'>
 
 Format: `help`
 
@@ -171,7 +171,7 @@ Examples:
 
 Example Used: `add n/Flour q/1 u/kg` **Note**: Sample data starts off with 3kg of Flour.
 
-<img src='images/ug-images/addIngredient.png' width='650' align="center">
+<img src='images/ug-images/addIngredient.png' width='650'>
 
 Example Used: `add n/Milk q/600 u/g` **Note**: Sample data does not contain Milk.
 
@@ -210,7 +210,7 @@ Examples:
 
 Example Used: `use n/Milk q/600 u/g` **Note**: Data shown started with 1kg of Milk.
 
-<img src='images/ug-images/useIngredient.png' width='650' align="center">
+<img src='images/ug-images/useIngredient.png' width='650'>
 
 Supported Units:
 | Unit     | Alias                                 |
@@ -239,7 +239,7 @@ Examples:
 
 Example used: `stock butter`
 
-<img src='images/ug-images/stock.png' width='650' align="center">
+<img src='images/ug-images/stock.png' width='650'>
 
 ### Clearing all entries from ingredient stock : `clear`
 
@@ -249,7 +249,7 @@ Format: `clear`
 
 Example used: `clear`
 
-<img src='images/ug-images/clear.png' width='650' align="center">
+<img src='images/ug-images/clear.png' width='650'>
 
 ### Listing all Recipes : `list`
 
@@ -259,7 +259,7 @@ Format: `list`
 
 Example Used: `list`
 
-<img src='images/ug-images/list.png' width='650' align="center">
+<img src='images/ug-images/list.png' width='650'>
 
 Examples:
 * `list` lists out all recipes within [Ba]king [Br]ead.
@@ -278,7 +278,7 @@ Examples:
 
 Example Used: `view 1`
 
-<img src='images/ug-images/view.png' width='650' align="center">
+<img src='images/ug-images/view.png' width='650'>
 
 ### Adding Recipes : `addrecipe`
 
@@ -323,9 +323,6 @@ complete recipe
 **Caution:** As this function relies heavily on the user's input, please do check that your input is of the correct format.
 </box>
 
-![Addrecipe Instructions](images/ug-images/addrecipe_instructions1.png)
-![Addrecipe Instructions](images/ug-images/addrecipe_instructions2.png)
-
 ### Modifying Recipes : `modify`
 
 Modifies the ingredients in a recipe.
@@ -344,11 +341,11 @@ Example:
 
 Example Used: `modify i/1 n/Flour q/100 u/g` **Note**: Recipe being modified has 200g of flour as part of the ingredient list
 
-<img src='images/ug-images/modifyExisting.png' width='650' align="center">
+<img src='images/ug-images/modifyExisting.png' width='650'>
 
 Example Used: `modify i/1 n/Cream q/100 u/g` **Note**: Recipe being modified does not have cream in its ingredient list
 
-<img src='images/ug-images/modifyNew.png' width='650' align="center">
+<img src='images/ug-images/modifyNew.png' width='650'>
 
 ### Deleting Recipes : `delete`
 
@@ -380,12 +377,12 @@ Examples:
 
 Example used: `search flour`: **Note**: Multiple recipes use the ingredient flour
 
-<img src='images/ug-images/searchMultiple.png' width='650' align="center">
+<img src='images/ug-images/searchMultiple.png' width='650'>
 
 
 Example used: `search blueberry`: **Note**: Only one recipe uses the ingredient blueberry
 
-<img src='images/ug-images/searchSingle.png' width='650' align="center">
+<img src='images/ug-images/searchSingle.png' width='650'>
 
 ### Exiting the program : `exit`
 
