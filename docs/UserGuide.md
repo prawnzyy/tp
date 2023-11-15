@@ -122,6 +122,8 @@ infographic below for step-by-step instructions on adding your first recipe.
 ![Addrecipe Instructions](images/ug-images/addrecipe_instructions1.png)
 ![Addrecipe Instructions](images/ug-images/addrecipe_instructions2.png)
 
+And there you have it, your first recipe added to [Ba]king [Br]ead!
+
 <box type="tip">
 
 If you are stuck at any point, typing **`help`** and pressing Enter will open the help window to guide you along.
